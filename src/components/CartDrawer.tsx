@@ -1,0 +1,138 @@
+'use client'
+
+import { useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { X, Minus, Plus, Trash2 } from 'lucide-react'
+import { useCart } from '@/lib/cart'
+
+export default function CartDrawer() {
+  const { items, isOpen, closeCart, removeItem, updateQuantity, total } = useCart()
+  const cartTotal = total()
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  if (!isOpen) return null
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-charcoal/40 z-50"
+        onClick={closeCart}
+        aria-hidden="true"
+      />
+
+      {/* Drawer */}
+      <div className="fixed right-0 top-0 h-full w-full max-w-sm bg-warm-white z-50 flex flex-col shadow-2xl">
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
+          <h2 className="font-display text-lg font-semibold text-charcoal">
+            Your Cart
+          </h2>
+          <button
+            onClick={closeCart}
+            aria-label="Close cart"
+            className="p-1 text-charcoal-muted hover:text-charcoal transition-colors"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Items */}
+        <div className="flex-1 overflow-y-auto px-5 py-4">
+          {items.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full gap-4 text-charcoal-muted">
+              <p className="text-center">Your cart is empty.</p>
+              <button
+                onClick={closeCart}
+                className="text-terracotta text-sm underline underline-offset-2"
+              >
+                Continue shopping
+              </button>
+            </div>
+          ) : (
+            <ul className="flex flex-col gap-5">
+              {items.map((item) => (
+                <li key={item.id} className="flex gap-4">
+                  <div className="relative w-20 h-20 rounded overflow-hidden bg-cream flex-shrink-0">
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <div className="flex flex-col flex-1 gap-1">
+                    <p className="font-medium text-charcoal text-sm leading-snug">
+                      {item.name}
+                    </p>
+                    <p className="text-sm text-charcoal-light">
+                      R{item.price}
+                    </p>
+
+                    <div className="flex items-center gap-2 mt-auto">
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        aria-label="Decrease quantity"
+                        className="w-6 h-6 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
+                      >
+                        <Minus size={12} />
+                      </button>
+                      <span className="text-sm w-4 text-center">{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        aria-label="Increase quantity"
+                        className="w-6 h-6 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
+                      >
+                        <Plus size={12} />
+                      </button>
+
+                      <button
+                        onClick={() => removeItem(item.id)}
+                        aria-label="Remove item"
+                        className="ml-auto text-charcoal-muted hover:text-terracotta transition-colors"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* Footer */}
+        {items.length > 0 && (
+          <div className="px-5 py-5 border-t border-border flex flex-col gap-4">
+            <div className="flex items-center justify-between text-charcoal font-medium">
+              <span>Total</span>
+              <span>R{cartTotal}</span>
+            </div>
+            <p className="text-xs text-charcoal-muted">
+              Free delivery across South Africa · 3-5 days
+            </p>
+            <Link
+              href="/checkout"
+              onClick={closeCart}
+              className="w-full bg-terracotta text-warm-white py-3 px-6 rounded text-sm font-medium tracking-wide text-center hover:bg-terracotta-dark transition-colors"
+            >
+              Checkout — R{cartTotal}
+            </Link>
+          </div>
+        )}
+      </div>
+    </>
+  )
+}

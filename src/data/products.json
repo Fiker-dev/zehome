@@ -1,0 +1,114 @@
+[
+  {
+    "id": "3d-solar-projection-lamp",
+    "slug": "3d-solar-projection-lamp",
+    "name": "3D Solar Projection Lamp",
+    "price": 349,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Your walls have never looked like this. The 3D Solar Projection Lamp's tree of life cutout casts intricate golden shadow patterns across your walls and ceiling — the kind of thing you stop and stare at. Solar powered, so it works indoors and outdoors with no plug, no cables, no hassle. Just light, doing something beautiful.",
+    "bullets": [
+      "Intricate tree of life shadow projection — fills your whole room",
+      "Solar powered — no plug, no cables, works anywhere",
+      "Warm amber glow that shifts beautifully with distance",
+      "Works indoors and outdoors — bedroom, patio, garden",
+      "Free delivery across South Africa — 3-5 days to your door"
+    ],
+    "images": [
+      "/images/lamp-3d-hero.jpg",
+      "/images/lamp-3d-product.jpg",
+      "/images/lamp-3d-room.jpg"
+    ],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "3D solar projection lamp South Africa",
+      "tree of life shadow lamp SA",
+      "solar powered room lamp",
+      "aesthetic shadow lamp south africa",
+      "outdoor indoor solar lamp SA"
+    ],
+    "seo": {
+      "title": "3D Solar Projection Lamp SA | Ze Home Finds",
+      "description": "Transform your walls with the 3D Solar Projection Lamp. Intricate tree of life shadows, solar powered. Free delivery across South Africa.",
+      "ogTitle": "Your walls have never looked like this",
+      "alt": "3D solar projection lamp tree of life shadow pattern on bedroom wall",
+      "h1": "3D Solar Projection Lamp"
+    }
+  },
+  {
+    "id": "stretchable-atmosphere-sunset-lamp",
+    "slug": "stretchable-atmosphere-sunset-lamp",
+    "name": "Stretchable Atmosphere Sunset Lamp",
+    "price": 349,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Cast a warm rainbow glow across your walls in seconds. The Stretchable Atmosphere Sunset Lamp is the same lamp you've seen all over TikTok and Instagram — now available in SA with free delivery. Adjust the angle, stretch the glow, set your mood.",
+    "bullets": [
+      "Rainbow circular projection on any surface",
+      "360° rotatable and adjustable holder",
+      "USB powered — plug into any port",
+      "Intensity grows the further from the wall",
+      "Free delivery across South Africa"
+    ],
+    "images": [
+      "/images/lamp-sunset-hero.jpg",
+      "/images/lamp-sunset-room.jpg",
+      "/images/lamp-sunset-lifestyle.jpg"
+    ],
+    "trustLine": "As seen on TikTok. Delivered to your door in 3–5 days.",
+    "keywords": [
+      "stretchable atmosphere sunset lamp south africa",
+      "TikTok sunset lamp SA",
+      "rainbow projection lamp johannesburg",
+      "stretchable sunset lamp SA",
+      "viral TikTok lamp south africa"
+    ],
+    "seo": {
+      "title": "Stretchable Atmosphere Sunset Lamp SA | Ze Home Finds",
+      "description": "The viral TikTok sunset lamp. Rainbow projection, 360° adjustable, USB powered. Free delivery across South Africa from Ze Home Finds.",
+      "ogTitle": "The lamp TikTok can't stop talking about",
+      "alt": "Stretchable atmosphere LED sunset lamp projecting rainbow circular glow on bedroom wall",
+      "h1": "Stretchable Atmosphere Sunset Lamp"
+    }
+  },
+  {
+    "id": "sunset-projection-lamp",
+    "slug": "sunset-projection-lamp",
+    "name": "RGB Sunset Projection Lamp",
+    "price": 399,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "That golden-hour glow you keep saving on Pinterest? Now it lives in your room. The RGB Sunset Projection Lamp floods your walls with warm, rich colour in seconds — 16 colour modes, 4 light effects, and a remote so you never have to get up. Rotate it 360°, tilt it 180°, point it wherever the vibe needs to go. Plug in. Switch on. Done.",
+    "bullets": [
+      "16 RGB colour modes + 4 light effects — dial in the exact vibe",
+      "Remote control included — change your mood without leaving the couch",
+      "360° left/right rotation + 180° up/down tilt — works in any room, any corner",
+      "USB plug-and-play, 1.5m cable — no rewiring, no electrician",
+      "Free delivery across South Africa — at your door in 3-5 days"
+    ],
+    "images": [
+      "/images/lamp-hero.jpg",
+      "/images/lamp-product.jpg",
+      "/images/lamp-room.jpg",
+      "/images/lamp-lifestyle.jpg"
+    ],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "sunset projection lamp South Africa",
+      "RGB sunset lamp SA",
+      "bedroom atmosphere light",
+      "room transformation lamp johannesburg",
+      "aesthetic room light south africa"
+    ],
+    "seo": {
+      "title": "Sunset Projection Lamp | Ze Home Finds | Free Delivery SA",
+      "description": "Transform your bedroom instantly. The RGB Sunset Projection Lamp creates a warm golden-hour glow with 16 colour modes and remote control. Free delivery across South Africa. Order from Ze Home Finds.",
+      "ogTitle": "Change your whole room for R400",
+      "alt": "RGB sunset projection lamp casting warm orange glow across bedroom wall",
+      "h1": "Sunset Projection Lamp"
+    }
+  }
+]
