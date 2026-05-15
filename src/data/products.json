@@ -7,17 +7,17 @@
     "currency": "ZAR",
     "inStock": true,
     "deliveryDays": "3-5",
-    "description": "Your walls have never looked like this. The 3D Solar Projection Lamp's tree of life cutout casts intricate golden shadow patterns across your walls and ceiling — the kind of thing you stop and stare at. Solar powered, so it works indoors and outdoors with no plug, no cables, no hassle. Just light, doing something beautiful.",
+    "description": "Set it down. Switch it on. Watch the room change. The 3D Solar Projection Lamp is a cylindrical metal lantern with a hand-cut tree of life pattern — roots, trunk, branches, every detail. When it lights up, intricate tree shadows spread across your table, floor, and walls in warm amber gold. Solar powered, so there's no plug, no cable, no setup. Just pick it up and put it wherever the vibe needs to go.",
     "bullets": [
-      "Intricate tree of life shadow projection — fills your whole room",
-      "Solar powered — no plug, no cables, works anywhere",
-      "Warm amber glow that shifts beautifully with distance",
-      "Works indoors and outdoors — bedroom, patio, garden",
+      "Hand-cut tree of life pattern casts intricate amber shadows around it",
+      "Shadows spread across your table, floor, and walls — the whole atmosphere changes",
+      "Solar powered — no plug, no cables, works indoors and outdoors",
+      "Hanging wire handle — use it on a table, shelf, patio, or garden",
       "Free delivery across South Africa — 3-5 days to your door"
     ],
     "images": [
-      "/images/lamp-3d-hero.jpg",
       "/images/lamp-3d-product.jpg",
+      "/images/lamp-3d-hero.jpg",
       "/images/lamp-3d-room.jpg"
     ],
     "trustLine": "No plug needed. Works indoors and outdoors.",
@@ -29,10 +29,10 @@
       "outdoor indoor solar lamp SA"
     ],
     "seo": {
-      "title": "3D Solar Projection Lamp SA | Ze Home Finds",
-      "description": "Transform your walls with the 3D Solar Projection Lamp. Intricate tree of life shadows, solar powered. Free delivery across South Africa.",
-      "ogTitle": "Your walls have never looked like this",
-      "alt": "3D solar projection lamp tree of life shadow pattern on bedroom wall",
+      "title": "3D Solar Tree of Life Lantern SA | Ze Home Finds",
+      "description": "A hand-cut tree of life lantern that fills your space with warm amber shadows. Solar powered, no plug needed. Free delivery across South Africa.",
+      "ogTitle": "Watch the shadows spread across the room",
+      "alt": "3D solar tree of life lantern casting warm amber shadow patterns across a table",
       "h1": "3D Solar Projection Lamp"
     }
   },
