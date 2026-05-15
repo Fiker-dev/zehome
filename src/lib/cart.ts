@@ -74,7 +74,7 @@ export const useCart = create<CartStore>()(
       count: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
     {
-      name: 'ze-home-cart',
+      name: 'ze-home-cart-v2',
       partialize: (state) => ({ items: state.items }),
     }
   )
