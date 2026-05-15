@@ -24,13 +24,16 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'Premium mood lighting delivered to your door. Projection lamps, moon lights, neon strips and more. Free delivery across South Africa in 3-5 days.',
+    "SA's mood lighting store. Projection lamps, sunset lamps, moon lamps, neon strips and more. Set the mood in any room. Free delivery across South Africa in 3-5 days.",
   keywords: [
     'mood lighting south africa',
-    'projection lamp SA',
+    'atmosphere lamp SA',
+    'projection lamp south africa',
     'aesthetic room lighting johannesburg',
-    'sunset lamp south africa',
-    'free delivery homeware SA',
+    'neon strip lights SA',
+    'moon lamp south africa',
+    'sunset lamp SA',
+    'ambient lighting south africa',
   ],
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
@@ -51,6 +54,26 @@ export default function RootLayout({
   return (
     <html lang="en-ZA" className={`${dmSans.variable} ${playfair.variable}`}>
       <body className="bg-background text-charcoal font-body min-h-screen flex flex-col text-[15px] leading-[1.6]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Ze Home Finds',
+              url: 'https://zehomefinds.co.za',
+              logo: 'https://zehomefinds.co.za/images/logo.png',
+              description: 'SA mood and atmosphere lighting store',
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+27710278563',
+                contactType: 'customer service',
+                availableLanguage: 'English',
+              },
+              sameAs: ['https://www.tiktok.com/@zehomefinds'],
+            }),
+          }}
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

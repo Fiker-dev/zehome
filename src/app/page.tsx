@@ -22,15 +22,15 @@ const ORDER = [
 ]
 
 const CATEGORIES: Record<string, string> = {
-  'neon-flex-light-strip-3m':            'NEON LIGHTING',
-  'led-neon-rope-light-10m':             'NEON LIGHTING',
+  'neon-flex-light-strip-3m':            'NEON STRIP',
+  'led-neon-rope-light-10m':             'NEON ROPE',
   'stretchable-atmosphere-sunset-lamp':  'SUNSET LAMP',
   'sunset-projection-lamp':             'SUNSET LAMP',
   'star-projector-galaxy-night-light':  'STAR PROJECTOR',
   '3d-solar-projection-lamp':           'PROJECTION LAMP',
   'crystal-touch-lamp':                 'TOUCH LAMP',
-  '3d-moon-light-lamp-20cm':            'AMBIENT LIGHT',
-  '3d-moon-lamp-humidifier':            'MOOD + WELLNESS',
+  '3d-moon-light-lamp-20cm':            'MOON LAMP',
+  '3d-moon-lamp-humidifier':            'MOON LAMP',
 }
 
 const BADGES: Record<string, string> = {
@@ -48,7 +48,7 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section className="relative bg-charcoal flex flex-col items-center justify-center overflow-hidden" style={{ minHeight: '70vh' }}>
         <Image
-          src="/images/lamp-lifestyle.jpg"
+          src="/images/lamp-product.jpg"
           alt="Warm mood lighting in a South African home"
           fill
           className="object-cover opacity-40"

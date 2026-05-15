@@ -21,7 +21,7 @@ export default function Footer() {
             Mood lighting, delivered.
           </p>
           <p className="font-body text-warm-gray mt-2" style={{ fontSize: '13px', lineHeight: '1.6' }}>
-            Premium mood lighting for South African homes.<br />
+            SA&apos;s home for atmosphere and mood lighting.<br />
             Free delivery. 3-5 days nationwide.
           </p>
         </div>

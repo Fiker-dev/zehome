@@ -11,15 +11,15 @@ interface Props {
 }
 
 const CATEGORIES: Record<string, string> = {
-  'neon-flex-light-strip-3m':           'NEON LIGHTING',
-  'led-neon-rope-light-10m':            'NEON LIGHTING',
+  'neon-flex-light-strip-3m':           'NEON STRIP',
+  'led-neon-rope-light-10m':            'NEON ROPE',
   'stretchable-atmosphere-sunset-lamp': 'SUNSET LAMP',
   'sunset-projection-lamp':            'SUNSET LAMP',
   'star-projector-galaxy-night-light': 'STAR PROJECTOR',
   '3d-solar-projection-lamp':          'PROJECTION LAMP',
   'crystal-touch-lamp':                'TOUCH LAMP',
-  '3d-moon-light-lamp-20cm':           'AMBIENT LIGHT',
-  '3d-moon-lamp-humidifier':           'MOOD + WELLNESS',
+  '3d-moon-light-lamp-20cm':           'MOON LAMP',
+  '3d-moon-lamp-humidifier':           'MOON LAMP',
 }
 
 const BADGES: Record<string, string> = {
@@ -75,8 +75,30 @@ export default async function ProductPage({ params }: Props) {
     .filter((p) => p.slug !== product.slug)
     .slice(0, 3)
 
+  const storeUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: product.images.map((img) => `${storeUrl}${img}`),
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: 'ZAR',
+      availability: product.inStock
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      seller: { '@type': 'Organization', name: 'Ze Home Finds' },
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 font-body text-warm-gray" style={{ fontSize: '12px' }}>
