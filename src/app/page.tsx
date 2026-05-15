@@ -48,7 +48,7 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section className="relative bg-charcoal flex flex-col items-center justify-center overflow-hidden" style={{ minHeight: '70vh' }}>
         <Image
-          src="/images/lamp-product.jpg"
+          src="/images/lamp-lifestyle-hero.jpg"
           alt="Warm mood lighting in a South African home"
           fill
           className="object-cover opacity-40"
@@ -116,7 +116,7 @@ export default function HomePage() {
             The Collection
           </p>
           <h2 className="font-display text-charcoal" style={{ fontSize: '36px' }}>
-            Mood lighting for every space
+            Set the mood. Change the room.
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
