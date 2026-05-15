@@ -75,6 +75,7 @@ export const useCart = create<CartStore>()(
     }),
     {
       name: 'ze-home-cart',
+      partialize: (state) => ({ items: state.items }),
     }
   )
 )
