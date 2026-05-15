@@ -57,9 +57,6 @@ export function buildPayFastParams(fields: PayFastParams): Record<string, string
       : {}),
   }
 
-  const passphrase = process.env.PAYFAST_PASSPHRASE ?? ''
-  params.signature = generateSignature(params, passphrase)
-
   return {
     ...params,
     _endpoint: isSandbox
