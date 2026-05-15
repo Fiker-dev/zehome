@@ -74,6 +74,204 @@
     }
   },
   {
+    "id": "star-projector-galaxy-night-light",
+    "slug": "star-projector-galaxy-night-light",
+    "name": "Star Projector Galaxy Night Light",
+    "price": 349,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Your ceiling just became the night sky. The Star Projector Galaxy Night Light is an astronaut-shaped 360° projector that covers every wall and your ceiling in stars, nebula clouds, and galaxy patterns. Built-in music sync means the colours move with whatever you're playing. Plug in and watch your room transform.",
+    "bullets": [
+      "Astronaut-shaped projector — 360° rotating head",
+      "Stars + galaxy + nebula patterns fill the whole room",
+      "Built-in speaker with music sync colour response",
+      "Multiple colour modes and brightness levels",
+      "USB powered — no batteries needed"
+    ],
+    "images": ["/images/lamp-galaxy-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "galaxy projector south africa",
+      "star projector SA",
+      "astronaut lamp south africa",
+      "galaxy night light johannesburg",
+      "room star projector SA"
+    ],
+    "seo": {
+      "title": "Star Projector Galaxy Night Light | Ze Home Finds",
+      "description": "Astronaut galaxy projector covers your room in stars and nebula. Music sync, 360° rotation, USB powered. Free delivery across South Africa.",
+      "ogTitle": "Your ceiling just became the night sky",
+      "alt": "Astronaut-shaped galaxy star projector casting stars and nebula on bedroom ceiling",
+      "h1": "Star Projector Galaxy Night Light"
+    }
+  },
+  {
+    "id": "3d-moon-light-lamp-20cm",
+    "slug": "3d-moon-light-lamp-20cm",
+    "name": "3D Moon Light Lamp 20CM",
+    "price": 449,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "The moon. On your desk. Every crater, ridge, and shadow — 3D printed with the same surface data used in aerospace mapping. Touch it once for warm light. Touch again for cool white. Leave it running for up to 30 hours on a single charge. It's not a lamp. It's a conversation piece.",
+    "bullets": [
+      "Realistic 3D-printed lunar surface texture",
+      "Touch controls — warm white and cool white modes",
+      "Rechargeable — up to 30 hours battery life",
+      "Eco-friendly PLA material, not plastic",
+      "20cm diameter — the right size for any desk or shelf"
+    ],
+    "images": ["/images/lamp-moon-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "moon lamp south africa",
+      "3D moon light SA",
+      "moon lamp johannesburg",
+      "aesthetic moon lamp SA",
+      "rechargeable moon lamp south africa"
+    ],
+    "seo": {
+      "title": "3D Moon Light Lamp 20CM | Ze Home Finds",
+      "description": "Realistic lunar surface, touch controls, 30-hour battery. The moon lamp South Africa keeps ordering. Free delivery.",
+      "ogTitle": "The moon. On your desk.",
+      "alt": "20cm 3D moon lamp glowing warm white light on a bedside table",
+      "h1": "3D Moon Light Lamp 20CM"
+    }
+  },
+  {
+    "id": "3d-moon-lamp-humidifier",
+    "slug": "3d-moon-lamp-humidifier",
+    "name": "3D Moon Lamp Humidifier",
+    "price": 549,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Mist. Light. Scent. Three things that make a room feel like somewhere worth being. The Moon Lamp Humidifier combines a realistic 3D lunar lamp with a whisper-quiet ultrasonic humidifier — add a few drops of your favourite essential oil and the mist carries it across the room. Up to 6 hours of continuous atmosphere.",
+    "bullets": [
+      "Moon lamp + ultrasonic humidifier in one unit",
+      "Essential oil compatible — mist carries scent across the room",
+      "200ml tank, up to 6 hours continuous mist",
+      "Whisper-quiet under 30dB — won't disturb sleep",
+      "Adjustable warm and cool white light modes"
+    ],
+    "images": ["/images/lamp-moon-humidifier-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "moon lamp humidifier south africa",
+      "3D moon humidifier SA",
+      "moon lamp with mist johannesburg",
+      "aromatherapy moon lamp SA",
+      "humidifier mood lamp south africa"
+    ],
+    "seo": {
+      "title": "3D Moon Lamp Humidifier | Ze Home Finds",
+      "description": "Moon lamp meets ultrasonic humidifier. Mist, light, and aromatherapy in one. Free delivery across South Africa.",
+      "ogTitle": "Mist. Light. Scent. Three things that change a room.",
+      "alt": "3D moon lamp with ultrasonic mist rising on a wooden surface",
+      "h1": "3D Moon Lamp Humidifier"
+    }
+  },
+  {
+    "id": "crystal-touch-lamp",
+    "slug": "crystal-touch-lamp",
+    "name": "Crystal Touch Lamp",
+    "price": 399,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Cut from clear acrylic and lit from within, the Crystal Touch Lamp refracts light in every direction — warm, neutral, or cool white, dialled in with a single touch. No cord dangling off your shelf. No bulb to replace. Fully rechargeable, 22cm wide, and the kind of thing people ask about the moment they walk into your room.",
+    "bullets": [
+      "Acrylic crystal refracts light in every direction",
+      "Three colour temperatures — warm, neutral, cool white",
+      "Touch controls, USB rechargeable, fully cordless",
+      "22cm wide — statement shelf or desk piece",
+      "No bulb replacement ever needed"
+    ],
+    "images": ["/images/lamp-crystal-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "crystal lamp south africa",
+      "acrylic touch lamp SA",
+      "crystal mood light johannesburg",
+      "rechargeable crystal lamp SA",
+      "aesthetic crystal desk lamp south africa"
+    ],
+    "seo": {
+      "title": "Crystal Touch Lamp | Ze Home Finds",
+      "description": "Acrylic crystal that refracts light beautifully. Three modes, cordless, rechargeable. Free delivery across South Africa.",
+      "ogTitle": "The lamp people ask about the moment they walk in.",
+      "alt": "Crystal acrylic touch lamp glowing warm white light on a shelf",
+      "h1": "Crystal Touch Lamp"
+    }
+  },
+  {
+    "id": "neon-flex-light-strip-3m",
+    "slug": "neon-flex-light-strip-3m",
+    "name": "Neon Flex Light Strip 3M",
+    "price": 199,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Three metres of flexible silicone RGB rope that bends around anything — desk edges, headboards, shelves, door frames. Sixteen million colours. A built-in mic that syncs the light to your music. App and remote control. At R199, this is the easiest room upgrade on the site.",
+    "bullets": [
+      "3m flexible silicone RGB neon rope",
+      "Music sync via built-in microphone",
+      "App + remote — 16 million colours",
+      "Chasing rainbow and breathing effect modes",
+      "USB powered, IP68 waterproof"
+    ],
+    "images": ["/images/lamp-neon-rope-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "LED neon rope light south africa",
+      "RGB flex strip SA",
+      "neon light strip johannesburg",
+      "music sync LED strip SA",
+      "room LED strip south africa"
+    ],
+    "seo": {
+      "title": "Neon Flex Light Strip 3M | Ze Home Finds",
+      "description": "3m RGB neon rope with music sync, app control, 16M colours. The easiest R199 room upgrade in SA. Free delivery.",
+      "ogTitle": "R199. Three metres. Your room, transformed.",
+      "alt": "3m RGB neon flex rope light glowing rainbow colours along a bedroom wall",
+      "h1": "Neon Flex Light Strip 3M"
+    }
+  },
+  {
+    "id": "led-neon-rope-light-10m",
+    "slug": "led-neon-rope-light-10m",
+    "name": "LED Neon Rope Light 10M",
+    "price": 799,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-5",
+    "description": "Ten metres covers a full room perimeter — skirting boards, ceiling edges, behind your TV, all of it. The RGB-IC chip means each section lights independently, so you get genuine chasing and wave effects, not a flat colour wash. Music sync, app control, voice assistant compatible. This is the room transformation video waiting to happen.",
+    "bullets": [
+      "10 metres — covers a full room perimeter",
+      "RGB-IC chasing and wave effects — not a flat colour wash",
+      "Music sync + app + voice assistant control",
+      "DIY cuttable and bendable silicone rope",
+      "USB powered, IP65 water resistant"
+    ],
+    "images": ["/images/lamp-neon-10m-hero.jpg"],
+    "trustLine": "Delivered to your door in 3-5 days. No hassle returns.",
+    "keywords": [
+      "10m LED rope light south africa",
+      "neon rope light SA",
+      "full room LED strip johannesburg",
+      "RGB IC neon light south africa",
+      "room perimeter LED SA"
+    ],
+    "seo": {
+      "title": "LED Neon Rope Light 10M | Ze Home Finds",
+      "description": "10m RGB-IC neon rope with chasing effects, music sync, and app control. Full room transformation. Free delivery across South Africa.",
+      "ogTitle": "Ten metres. Your whole room, wrapped in colour.",
+      "alt": "10m RGB-IC LED neon rope light wrapping a bedroom in colour",
+      "h1": "LED Neon Rope Light 10M"
+    }
+  },
+  {
     "id": "sunset-projection-lamp",
     "slug": "sunset-projection-lamp",
     "name": "RGB Sunset Projection Lamp",
