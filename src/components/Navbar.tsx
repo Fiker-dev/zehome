@@ -18,7 +18,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link
             href="/"
-            className="font-display text-xl font-semibold text-charcoal tracking-wide"
+            className="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-widest"
           >
             Ze Home Finds
           </Link>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Truck, Clock, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import ProductCard from '@/components/ProductCard'
@@ -47,21 +48,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Product grid */}
-      <section className="max-w-6xl mx-auto px-4 py-20">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <p className="text-xs uppercase tracking-widest text-terracotta font-medium mb-2">
-              The collection
-            </p>
-            <h2 className="font-display text-3xl font-semibold text-charcoal">
-              Light that changes everything
-            </h2>
-          </div>
-          <p className="text-sm text-charcoal-muted max-w-xs sm:text-right">
+      {/* Trust bar */}
+      <section className="bg-warm-white border-y border-border py-5">
+        <div className="max-w-6xl mx-auto px-4">
+          <ul className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-12">
+            <li className="flex items-center gap-2.5 text-sm text-charcoal">
+              <Truck size={16} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span>Free Delivery</span>
+            </li>
+            <li className="hidden sm:block text-border">·</li>
+            <li className="flex items-center gap-2.5 text-sm text-charcoal">
+              <Clock size={16} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span>3-5 Days SA</span>
+            </li>
+            <li className="hidden sm:block text-border">·</li>
+            <li className="flex items-center gap-2.5 text-sm text-charcoal">
+              <ShieldCheck size={16} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span>Secure Checkout</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Collection hero */}
+      <section className="relative w-full overflow-hidden bg-charcoal" style={{ minHeight: '360px' }}>
+        <Image
+          src="/images/lamp-lifestyle.jpg"
+          alt="Warm projection lamp glow in a room"
+          fill
+          className="object-cover opacity-55"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/75 via-charcoal/40 to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4 flex flex-col justify-center" style={{ minHeight: '360px' }}>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-terracotta font-medium mb-4">
+            The Collection
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-warm-white leading-tight max-w-lg">
+            Transform your space tonight
+          </h2>
+          <p className="text-warm-white/70 mt-4 text-base max-w-sm">
             Three lamps. One for every mood and every room.
           </p>
         </div>
+      </section>
+
+      {/* Product grid */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((p) => (
             <ProductCard
@@ -71,7 +104,6 @@ export default function HomePage() {
               name={p.name}
               price={p.price}
               image={p.images[0]}
-              trustLine={p.trustLine}
             />
           ))}
         </div>

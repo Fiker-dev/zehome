@@ -10,7 +10,7 @@ interface ProductCardProps {
   name: string
   price: number
   image: string
-  trustLine?: string
+  category?: string
 }
 
 export default function ProductCard({
@@ -19,7 +19,7 @@ export default function ProductCard({
   name,
   price,
   image,
-  trustLine,
+  category = 'MOOD LIGHTING',
 }: ProductCardProps) {
   const { addItem } = useCart()
 
@@ -29,7 +29,7 @@ export default function ProductCard({
 
   return (
     <div className="group bg-warm-white rounded-lg overflow-hidden border border-border flex flex-col">
-      <Link href={`/product/${slug}`} className="relative aspect-square block overflow-hidden bg-cream">
+      <Link href={`/product/${slug}`} className="relative aspect-[4/5] block overflow-hidden bg-cream">
         <Image
           src={image}
           alt={name}
@@ -39,19 +39,18 @@ export default function ProductCard({
         />
       </Link>
 
-      <div className="p-5 flex flex-col flex-1 gap-3">
+      <div className="p-5 flex flex-col flex-1 gap-4">
         <div>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-terracotta font-medium mb-1.5">
+            {category}
+          </p>
           <Link href={`/product/${slug}`}>
-            <h3 className="font-display text-lg font-semibold text-charcoal hover:text-terracotta transition-colors">
+            <h3 className="font-display text-lg font-semibold text-charcoal hover:text-terracotta transition-colors leading-snug line-clamp-1">
               {name}
             </h3>
           </Link>
           <p className="text-charcoal-light font-medium mt-1">R{price}</p>
         </div>
-
-        {trustLine && (
-          <p className="text-xs text-charcoal-muted">{trustLine}</p>
-        )}
 
         <button
           onClick={handleAddToCart}
