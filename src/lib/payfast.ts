@@ -58,7 +58,9 @@ export function buildPayFastParams(fields: PayFastParams): Record<string, string
   }
 
   const passphrase = process.env.PAYFAST_PASSPHRASE ?? ''
-  params.signature = generateSignature(params, passphrase)
+  // merchant_key is sent in the form but excluded from signature per PayFast docs
+  const { merchant_key: _mk, ...signatureData } = params
+  params.signature = generateSignature(signatureData, passphrase)
 
   return {
     ...params,
