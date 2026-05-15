@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Lamp shade -->
+  <path d="M9 14 L12 6 L20 6 L23 14 Z" fill="#C4622D"/>
+  <!-- Shade bottom rim -->
+  <rect x="8.5" y="13.5" width="15" height="2" rx="1" fill="#A0501F"/>
+  <!-- Pole -->
+  <rect x="15" y="15.5" width="2" height="8" rx="1" fill="#A0501F"/>
+  <!-- Base -->
+  <ellipse cx="16" cy="24.5" rx="5" ry="2" fill="#A0501F"/>
+  <!-- Glow -->
+  <ellipse cx="16" cy="14" rx="5" ry="3" fill="#F5A623" opacity="0.4"/>
+</svg>
