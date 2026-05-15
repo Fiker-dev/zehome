@@ -238,7 +238,7 @@
       "USB powered, IP68 waterproof"
     ],
     "images": [
-      "/images/lamp-neon-strip-hero.jpg",
+      "/images/lamp-neon-strip-lifestyle.jpg",
       "/images/lamp-neon-rope-room.jpg",
       "/images/lamp-neon-rope-detail.jpg"
     ],
@@ -293,44 +293,6 @@
       "ogTitle": "Ten metres. Your whole room, wrapped in colour.",
       "alt": "10m RGB-IC LED neon rope light wrapping bedroom walls and ceiling in colour",
       "h1": "LED Neon Rope Light 10M"
-    }
-  },
-  {
-    "id": "sunset-projection-lamp",
-    "slug": "sunset-projection-lamp",
-    "name": "RGB Sunset Projection Lamp",
-    "price": 399,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "3-5",
-    "description": "That golden-hour glow you keep saving on Pinterest? Now it lives in your room. The RGB Sunset Projection Lamp floods your walls with warm, rich colour in seconds — 16 colour modes, 4 light effects, and a remote so you never have to get up. Rotate it 360°, tilt it 180°, point it wherever the vibe needs to go. Plug in. Switch on. Done.",
-    "bullets": [
-      "16 RGB colour modes + 4 light effects — dial in the exact vibe",
-      "Remote control included — change your mood without leaving the couch",
-      "360° left/right rotation + 180° up/down tilt — works in any room, any corner",
-      "USB plug-and-play, 1.5m cable — no rewiring, no electrician",
-      "Free delivery across South Africa — at your door in 3-5 days"
-    ],
-    "images": [
-      "/images/lamp-rgb-product.jpg",
-      "/images/lamp-product.jpg",
-      "/images/lamp-room.jpg",
-      "/images/lamp-lifestyle.jpg"
-    ],
-    "trustLine": "16 colour modes. Remote included.",
-    "keywords": [
-      "sunset projection lamp South Africa",
-      "RGB sunset lamp SA",
-      "bedroom atmosphere light",
-      "room transformation lamp johannesburg",
-      "aesthetic room light south africa"
-    ],
-    "seo": {
-      "title": "Sunset Projection Lamp | Ze Home Finds | Free Delivery SA",
-      "description": "Transform your bedroom instantly. The RGB Sunset Projection Lamp creates a warm golden-hour glow with 16 colour modes and remote control. Free delivery across South Africa. Order from Ze Home Finds.",
-      "ogTitle": "Change your whole room for R400",
-      "alt": "RGB sunset projection lamp casting warm orange glow across bedroom wall",
-      "h1": "Sunset Projection Lamp"
     }
   }
 ]

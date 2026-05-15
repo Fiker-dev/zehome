@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 const ORDER = [
   'neon-flex-light-strip-3m',
   'stretchable-atmosphere-sunset-lamp',
-  'sunset-projection-lamp',
   'star-projector-galaxy-night-light',
   '3d-solar-projection-lamp',
   'crystal-touch-lamp',
@@ -25,7 +24,6 @@ const CATEGORIES: Record<string, string> = {
   'neon-flex-light-strip-3m':            'NEON STRIP',
   'led-neon-rope-light-10m':             'NEON ROPE',
   'stretchable-atmosphere-sunset-lamp':  'SUNSET LAMP',
-  'sunset-projection-lamp':             'SUNSET LAMP',
   'star-projector-galaxy-night-light':  'STAR PROJECTOR',
   '3d-solar-projection-lamp':           'PROJECTION LAMP',
   'crystal-touch-lamp':                 'TOUCH LAMP',
@@ -35,7 +33,6 @@ const CATEGORIES: Record<string, string> = {
 
 const BADGES: Record<string, string> = {
   'stretchable-atmosphere-sunset-lamp': 'As seen on TikTok',
-  'sunset-projection-lamp':            'As seen on TikTok',
 }
 
 export default function HomePage() {
