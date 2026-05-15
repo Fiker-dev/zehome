@@ -1,20 +1,89 @@
+import Link from 'next/link'
+
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-warm-white mt-16">
-      <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-charcoal-muted">
-        <p className="font-display text-charcoal font-medium tracking-wide">
-          Ze Home Finds
-        </p>
+    <footer className="bg-charcoal border-t border-[#2E2A26]">
+      {/* Main columns */}
+      <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
 
-        <ul className="flex items-center gap-6">
-          <li>Free delivery across South Africa</li>
-          <li>·</li>
-          <li>3-5 day shipping</li>
-          <li>·</li>
-          <li>No hassle returns</li>
-        </ul>
+        {/* Left — brand */}
+        <div className="flex flex-col gap-3">
+          <p
+            className="font-display font-medium text-white leading-none"
+            style={{ fontSize: '22px', letterSpacing: '0.02em' }}
+          >
+            Ze Home Finds
+          </p>
+          <p
+            className="font-body text-warm-gray uppercase tracking-[0.12em]"
+            style={{ fontSize: '11px' }}
+          >
+            Mood lighting, delivered.
+          </p>
+          <p className="font-body text-warm-gray mt-2" style={{ fontSize: '13px', lineHeight: '1.6' }}>
+            Premium mood lighting for South African homes.<br />
+            Free delivery. 3-5 days nationwide.
+          </p>
+        </div>
 
-        <p>© {new Date().getFullYear()} Ze Home Finds</p>
+        {/* Center — nav */}
+        <div className="flex flex-col gap-4">
+          <p
+            className="font-body text-warm-gray uppercase tracking-[0.12em]"
+            style={{ fontSize: '11px' }}
+          >
+            Navigate
+          </p>
+          <nav className="flex flex-col gap-3">
+            {[
+              { label: 'Home', href: '/' },
+              { label: 'Products', href: '/#products' },
+              { label: 'Delivery Info', href: '/#delivery' },
+              { label: 'Returns', href: '/#returns' },
+            ].map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="font-body text-[#B5AFA8] hover:text-white transition-colors"
+                style={{ fontSize: '14px' }}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* Right — contact */}
+        <div className="flex flex-col gap-4">
+          <p
+            className="font-body text-warm-gray uppercase tracking-[0.12em]"
+            style={{ fontSize: '11px' }}
+          >
+            Questions?
+          </p>
+          <p className="font-body text-[#B5AFA8]" style={{ fontSize: '14px' }}>
+            WhatsApp us and we&apos;ll get back to you within a few hours.
+          </p>
+          <a
+            href="https://wa.me/27640000000"
+            className="inline-flex items-center gap-2 font-body font-medium text-white hover:text-terracotta transition-colors"
+            style={{ fontSize: '14px' }}
+          >
+            +27 64 000 0000
+          </a>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-[#2E2A26]">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+          <p className="font-body text-warm-gray" style={{ fontSize: '11px' }}>
+            © {new Date().getFullYear()} Ze Home Finds. All rights reserved.
+          </p>
+          <p className="font-body text-warm-gray" style={{ fontSize: '11px' }}>
+            Secure checkout via PayFast
+          </p>
+        </div>
       </div>
     </footer>
   )
