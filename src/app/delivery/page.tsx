@@ -3,30 +3,30 @@ import { Truck, Clock, MapPin, Package } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Delivery Info | Ze Home Finds',
-  description: 'Free delivery across South Africa in 3-5 business days. We ship nationwide via courier with tracking.',
+  description: 'Standard delivery R79. All orders delivered in 3-5 business days nationwide across South Africa.',
   alternates: { canonical: '/delivery' },
 }
 
 const items = [
   {
     icon: Truck,
-    title: 'Free delivery on all orders',
-    body: 'No minimum order. Every single order ships free to your door, anywhere in South Africa.',
+    title: 'Standard Delivery: R79',
+    body: 'All Ze Home Finds products qualify for standard delivery (under 10kg).',
   },
   {
     icon: Clock,
     title: '3–5 business days nationwide',
-    body: 'Orders are dispatched within 1 business day. Delivery takes 3–5 business days depending on your area.',
+    body: 'We process orders daily — you will receive tracking information via email once your order has been dispatched.',
   },
   {
     icon: MapPin,
-    title: 'We ship everywhere in SA',
-    body: 'Johannesburg, Cape Town, Durban, Pretoria — and everywhere in between. No PO boxes.',
+    title: 'Main cities and surrounding areas',
+    body: 'Johannesburg, Cape Town, Durban, Pretoria and surrounding areas. No PO boxes.',
   },
   {
     icon: Package,
-    title: 'Courier tracking included',
-    body: "You'll receive a tracking number via WhatsApp once your order has been dispatched.",
+    title: 'Delivery partner: Perfect Dealz',
+    body: 'Dispatched from Sandton, Johannesburg. Nationwide door-to-door courier.',
   },
 ]
 
@@ -41,7 +41,7 @@ export default function DeliveryPage() {
           Delivery info
         </h1>
         <p className="font-body text-warm-gray" style={{ fontSize: '15px' }}>
-          We keep it simple — free delivery, fast dispatch, nationwide coverage.
+          Flat rate R79 delivery. Fast dispatch. Nationwide coverage.
         </p>
       </div>
 
@@ -62,7 +62,7 @@ export default function DeliveryPage() {
       <div className="mt-14 bg-cream border border-border p-8 flex flex-col gap-3">
         <p className="font-display text-charcoal" style={{ fontSize: '20px' }}>Questions about your order?</p>
         <p className="font-body text-warm-gray" style={{ fontSize: '14px' }}>
-          WhatsApp us and we'll get back to you within a few hours.
+          WhatsApp us and we&apos;ll get back to you within a few hours.
         </p>
         <a
           href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%20have%20a%20question%20about%20delivery"

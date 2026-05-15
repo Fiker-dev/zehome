@@ -36,7 +36,7 @@ export default async function OrderSuccessPage({
         )}
         <p>Free delivery across South Africa</p>
         <p>Estimated arrival: 3-5 business days</p>
-        <p>Any questions? WhatsApp us on 064 601 3518</p>
+        <p>Any questions? WhatsApp us on +27 71 027 8563</p>
       </div>
 
       <Link
