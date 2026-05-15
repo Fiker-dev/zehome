@@ -24,7 +24,8 @@ export default function AddToCartButton({ product }: { product: Product }) {
           image: product.images[0],
         })
       }
-      className="w-full bg-terracotta text-warm-white py-4 px-8 rounded text-base font-medium tracking-wide hover:bg-terracotta-dark transition-colors"
+      className="w-full bg-terracotta hover:bg-terracotta-dark text-white font-body font-medium uppercase tracking-[0.1em] transition-colors min-h-[52px] px-8"
+      style={{ fontSize: '13px' }}
     >
       Get yours now — R{product.price}
     </button>

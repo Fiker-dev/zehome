@@ -1,11 +1,30 @@
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import products from '@/data/products.json'
 import AddToCartButton from './AddToCartButton'
+import ImageGallery from './ImageGallery'
+import ProductCard from '@/components/ProductCard'
 
 interface Props {
   params: Promise<{ slug: string }>
+}
+
+const CATEGORIES: Record<string, string> = {
+  'neon-flex-light-strip-3m':           'NEON LIGHTING',
+  'led-neon-rope-light-10m':            'NEON LIGHTING',
+  'stretchable-atmosphere-sunset-lamp': 'SUNSET LAMP',
+  'sunset-projection-lamp':            'SUNSET LAMP',
+  'star-projector-galaxy-night-light': 'STAR PROJECTOR',
+  '3d-solar-projection-lamp':          'PROJECTION LAMP',
+  'crystal-touch-lamp':                'TOUCH LAMP',
+  '3d-moon-light-lamp-20cm':           'AMBIENT LIGHT',
+  '3d-moon-lamp-humidifier':           'MOOD + WELLNESS',
+}
+
+const BADGES: Record<string, string> = {
+  'stretchable-atmosphere-sunset-lamp': 'As seen on TikTok',
+  'sunset-projection-lamp':            'As seen on TikTok',
 }
 
 export async function generateStaticParams() {
@@ -52,70 +71,94 @@ export default async function ProductPage({ params }: Props) {
   const product = products.find((p) => p.slug === slug)
   if (!product) notFound()
 
-  return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        {/* Images */}
-        <div className="flex flex-col gap-3">
-          <div className="relative aspect-square rounded-lg overflow-hidden bg-warm-white">
-            <Image
-              src={product.images[0]}
-              alt={product.seo.alt}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          {product.images.length > 1 && (
-            <div className="flex gap-3">
-              {product.images.slice(1).map((img, i) => (
-                <div
-                  key={i}
-                  className="relative w-20 h-20 rounded overflow-hidden bg-warm-white border border-border"
-                >
-                  <Image
-                    src={img}
-                    alt={`${product.name} view ${i + 2}`}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+  const related = products
+    .filter((p) => p.slug !== product.slug)
+    .slice(0, 3)
 
-        {/* Detail */}
-        <div className="flex flex-col gap-6">
-          <div>
-            <h1 className="font-display text-3xl md:text-4xl font-semibold text-charcoal leading-snug">
-              {product.seo.h1}
-            </h1>
-            <p className="text-2xl text-charcoal-light font-medium mt-3">
-              R{product.price}
+  return (
+    <>
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Breadcrumb */}
+        <nav className="mb-8 flex items-center gap-2 font-body text-warm-gray" style={{ fontSize: '12px' }}>
+          <Link href="/" className="hover:text-charcoal transition-colors">
+            Ze Home Finds
+          </Link>
+          <span>/</span>
+          <Link href="/#products" className="hover:text-charcoal transition-colors">
+            Mood Lighting
+          </Link>
+          <span>/</span>
+          <span className="text-charcoal">{product.name}</span>
+        </nav>
+
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Image gallery */}
+          <ImageGallery images={product.images} alt={product.seo.alt} />
+
+          {/* Detail */}
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
+                {CATEGORIES[product.slug] ?? 'MOOD LIGHTING'}
+              </p>
+              <h1 className="font-display text-charcoal leading-snug" style={{ fontSize: '32px' }}>
+                {product.seo.h1}
+              </h1>
+              <p className="font-body font-medium text-charcoal" style={{ fontSize: '24px' }}>
+                R{product.price}
+              </p>
+            </div>
+
+            <p className="font-body text-charcoal-light leading-relaxed" style={{ fontSize: '15px' }}>
+              {product.description}
+            </p>
+
+            <ul className="flex flex-col gap-2">
+              {product.bullets.map((b, i) => (
+                <li key={i} className="flex items-start gap-2 font-body text-charcoal-light" style={{ fontSize: '14px' }}>
+                  <span className="text-terracotta mt-0.5 flex-shrink-0">✓</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <AddToCartButton product={product} />
+
+            <p className="font-body text-warm-gray" style={{ fontSize: '12px' }}>
+              {product.trustLine}
             </p>
           </div>
-
-          <p className="text-charcoal-light leading-relaxed">
-            {product.description}
-          </p>
-
-          <ul className="flex flex-col gap-2">
-            {product.bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-charcoal-light">
-                <span className="text-terracotta mt-0.5">✓</span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-
-          <AddToCartButton product={product} />
-
-          <p className="text-xs text-charcoal-muted">{product.trustLine}</p>
         </div>
       </div>
-    </div>
+
+      {/* You might also like */}
+      <section className="bg-cream border-t border-border mt-16">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="mb-10 flex flex-col gap-2">
+            <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
+              More from the collection
+            </p>
+            <h2 className="font-display text-charcoal" style={{ fontSize: '28px' }}>
+              You might also like
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {related.map((p) => (
+              <ProductCard
+                key={p.id}
+                id={p.id}
+                slug={p.slug}
+                name={p.name}
+                price={p.price}
+                image={p.images[0]}
+                trustLine={p.trustLine}
+                category={CATEGORIES[p.slug]}
+                badge={BADGES[p.slug]}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   )
 }

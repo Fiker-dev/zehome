@@ -65,11 +65,11 @@ export default function Footer() {
             WhatsApp us and we&apos;ll get back to you within a few hours.
           </p>
           <a
-            href="https://wa.me/27640000000"
+            href="https://wa.me/27710278563"
             className="inline-flex items-center gap-2 font-body font-medium text-white hover:text-terracotta transition-colors"
             style={{ fontSize: '14px' }}
           >
-            +27 64 000 0000
+            +27 71 027 8563
           </a>
         </div>
       </div>
