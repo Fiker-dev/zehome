@@ -36,7 +36,12 @@ export default async function OrderSuccessPage({
         )}
         <p>Free delivery across South Africa</p>
         <p>Estimated arrival: 3-7 business days</p>
-        <p>Any questions? WhatsApp us on +27 71 027 8563</p>
+        <a
+          href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%20have%20a%20question%20about%20my%20order."
+          className="text-terracotta hover:text-terracotta-dark transition-colors"
+        >
+          Questions about your order? WhatsApp us — we&apos;ll get back to you as soon as we can.
+        </a>
       </div>
 
       <Link
