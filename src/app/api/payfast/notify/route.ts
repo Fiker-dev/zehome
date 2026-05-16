@@ -58,7 +58,9 @@ export async function POST(req: NextRequest) {
         postalCode: params.custom_str5 ?? '',
         product: params.item_name ?? '',
         amount: params.amount_gross ?? '',
-        status: 'Paid — awaiting dispatch',
+        paymentStatus: 'Paid',
+        dispatchStatus: 'Awaiting dispatch',
+        reminder: '',
       })
       console.log(JSON.stringify({
         event: 'order_complete',

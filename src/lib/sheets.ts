@@ -11,7 +11,9 @@ export interface OrderRow {
   postalCode: string
   product: string
   amount: string
-  status: string
+  paymentStatus: string
+  dispatchStatus: string
+  reminder: string
 }
 
 export async function appendOrderRow(row: OrderRow): Promise<void> {
