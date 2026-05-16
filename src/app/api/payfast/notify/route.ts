@@ -45,11 +45,11 @@ export async function POST(req: NextRequest) {
     const orderId = params.m_payment_id
 
     if (paymentStatus === 'COMPLETE') {
-      const name = `${params.name_first ?? ''} ${params.name_last ?? ''}`.trim()
       await appendOrderRow({
-        orderId,
+        orderId: orderId ?? '',
         date: new Date().toISOString(),
-        name,
+        firstName: params.name_first ?? '',
+        lastName: params.name_last ?? '',
         email: params.email_address ?? '',
         phone: params.custom_str1 ?? '',
         address: params.custom_str2 ?? '',
@@ -57,8 +57,8 @@ export async function POST(req: NextRequest) {
         province: params.custom_str4 ?? '',
         postalCode: params.custom_str5 ?? '',
         product: params.item_name ?? '',
-        amount: params.amount ?? '',
-        status: 'COMPLETE',
+        amount: params.amount_gross ?? '',
+        status: 'Paid — awaiting dispatch',
       })
       console.log(JSON.stringify({
         event: 'order_complete',

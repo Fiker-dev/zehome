@@ -1,9 +1,8 @@
-import { google } from 'googleapis'
-
 export interface OrderRow {
   orderId: string
   date: string
-  name: string
+  firstName: string
+  lastName: string
   email: string
   phone: string
   address: string
@@ -16,41 +15,25 @@ export interface OrderRow {
 }
 
 export async function appendOrderRow(row: OrderRow): Promise<void> {
-  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
-  const sheetId = process.env.GOOGLE_SHEET_ID
+  const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL
 
-  if (!clientEmail || !privateKey || !sheetId) {
-    console.warn('Google Sheets env vars not set — skipping sheet log')
+  if (!webhookUrl) {
+    console.warn('GOOGLE_SHEETS_WEBHOOK_URL is not set - skipping order log')
     return
   }
 
-  const auth = new google.auth.GoogleAuth({
-    credentials: { client_email: clientEmail, private_key: privateKey },
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-  })
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(row),
+    })
 
-  const sheets = google.sheets({ version: 'v4', auth })
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId: sheetId,
-    range: 'Orders!A:L',
-    valueInputOption: 'USER_ENTERED',
-    requestBody: {
-      values: [[
-        row.orderId,
-        row.date,
-        row.name,
-        row.email,
-        row.phone,
-        row.address,
-        row.city,
-        row.province,
-        row.postalCode,
-        row.product,
-        row.amount,
-        row.status,
-      ]],
-    },
-  })
+    if (!res.ok) {
+      const body = await res.text()
+      throw new Error(`Google Sheets webhook failed: ${res.status} ${body}`)
+    }
+  } catch (err) {
+    console.error('Google Sheets order log failed:', err)
+  }
 }
