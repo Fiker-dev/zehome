@@ -60,7 +60,7 @@ export default function HomePage() {
             Transform your space tonight
           </h1>
           <p className="font-body text-white max-w-md" style={{ fontSize: '16px', opacity: 0.8 }}>
-            Mood lighting delivered to your door in 3-5 days across South Africa
+            Mood lighting delivered to your door in 3-7 business days across South Africa
           </p>
           <Link
             href="#products"
@@ -92,7 +92,7 @@ export default function HomePage() {
             <li className="flex items-center gap-2.5">
               <Clock size={15} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
               <span className="font-body text-warm-gray uppercase tracking-[0.08em]" style={{ fontSize: '12px' }}>
-                Ships in 3-5 days SA-wide
+                Ships in 3-7 business days SA-wide
               </span>
             </li>
             <li className="hidden sm:block text-border text-xs">·</li>

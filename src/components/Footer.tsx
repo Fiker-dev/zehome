@@ -22,7 +22,7 @@ export default function Footer() {
           </p>
           <p className="font-body text-warm-gray mt-2" style={{ fontSize: '13px', lineHeight: '1.6' }}>
             SA&apos;s home for atmosphere and mood lighting.<br />
-            Free delivery. 3-5 days nationwide.
+            Free delivery. 3-7 business days nationwide.
           </p>
         </div>
 

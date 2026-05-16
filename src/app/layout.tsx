@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    "SA's mood lighting store. Projection lamps, sunset lamps, moon lamps, neon strips and more. Set the mood in any room. Free delivery across South Africa in 3-5 days.",
+    "SA's mood lighting store. Projection lamps, sunset lamps, moon lamps, neon strips and more. Set the mood in any room. Free delivery across South Africa in 3-7 business days.",
   keywords: [
     'mood lighting south africa',
     'atmosphere lamp SA',

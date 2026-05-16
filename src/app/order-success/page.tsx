@@ -35,7 +35,7 @@ export default async function OrderSuccessPage({
           <p className="font-medium text-charcoal">Order ref: {m_payment_id}</p>
         )}
         <p>Free delivery across South Africa</p>
-        <p>Estimated arrival: 3-5 business days</p>
+        <p>Estimated arrival: 3-7 business days</p>
         <p>Any questions? WhatsApp us on +27 71 027 8563</p>
       </div>
 

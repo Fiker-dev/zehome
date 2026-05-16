@@ -3,7 +3,7 @@ import { Truck, Clock, MapPin, Package } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Delivery Info | Ze Home Finds',
-  description: 'Standard delivery R79. All orders delivered in 3-5 business days nationwide across South Africa.',
+  description: 'Standard delivery R79. All orders delivered in 3-7 business days nationwide across South Africa.',
   alternates: { canonical: '/delivery' },
 }
 
@@ -15,7 +15,7 @@ const items = [
   },
   {
     icon: Clock,
-    title: '3–5 business days nationwide',
+    title: '3–7 business days nationwide',
     body: 'We process orders daily — you will receive tracking information via email once your order has been dispatched.',
   },
   {

@@ -97,7 +97,7 @@ export default function CheckoutPage() {
           <span>R{cartTotal}</span>
         </div>
         <p className="text-xs text-charcoal-muted mt-2">
-          Free delivery · 3-5 days
+          Free delivery · 3-7 business days
         </p>
       </div>
 

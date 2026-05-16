@@ -88,7 +88,7 @@ export default function CartPage() {
             <span>R{cartTotal}</span>
           </div>
           <p className="text-xs text-charcoal-muted">
-            Free delivery across South Africa · 3-5 business days
+            Free delivery across South Africa · 3-7 business days
           </p>
           <Link
             href="/checkout"
