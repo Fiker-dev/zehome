@@ -38,6 +38,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
   ),
+  verification: {
+    google: 'so4EC5gmUDYwm_Yu6_Ib5sbtrpYAHSkOZUAfKP9Llss',
+  },
   openGraph: {
     siteName: 'Ze Home Finds',
     locale: 'en_ZA',
