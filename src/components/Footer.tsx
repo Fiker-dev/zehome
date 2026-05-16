@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal border-t border-[#2E2A26]">
+    <footer className="bg-[#141210] border-t border-[#2A2520]">
       {/* Main columns */}
-      <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
 
         {/* Left — brand */}
         <div className="flex flex-col gap-3">
@@ -75,8 +75,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[#2E2A26]">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <div className="border-t border-[#2A2520]">
+        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
           <p className="font-body text-warm-gray" style={{ fontSize: '11px' }}>
             © {new Date().getFullYear()} Ze Home Finds. All rights reserved.
           </p>

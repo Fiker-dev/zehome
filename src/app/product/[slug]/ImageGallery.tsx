@@ -32,10 +32,10 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
             <button
               key={i}
               onClick={() => setSelected(i)}
-              className={`relative flex-shrink-0 overflow-hidden border-2 transition-colors focus:outline-none ${
+              className={`relative flex-shrink-0 overflow-hidden border transition-all duration-200 focus:outline-none ${
                 i === selected
-                  ? 'border-terracotta'
-                  : 'border-border hover:border-warm-gray'
+                  ? 'border-terracotta/70 ring-1 ring-terracotta/30'
+                  : 'border-border/60 hover:border-warm-gray/60'
               }`}
               style={{ width: 72, height: 72 }}
               aria-label={`View image ${i + 1}`}

@@ -32,7 +32,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="group bg-white flex flex-col border border-border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+    <div className="group bg-white flex flex-col transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_48px_rgba(0,0,0,0.1)]">
       {/* Image — 4:5 portrait */}
       <Link href={`/product/${slug}`} className="relative block overflow-hidden bg-cream" style={{ aspectRatio: '4/5' }}>
         <Image
@@ -74,8 +74,8 @@ export default function ProductCard({
 
         <button
           onClick={handleAddToCart}
-          className="mt-auto w-full bg-terracotta hover:bg-terracotta-dark text-white font-body font-medium uppercase tracking-[0.1em] transition-colors min-h-[48px] px-6"
-          style={{ fontSize: '12px' }}
+          className="mt-auto w-full bg-charcoal hover:bg-terracotta text-white font-body font-medium uppercase tracking-[0.14em] transition-colors duration-300 min-h-[48px] px-6"
+          style={{ fontSize: '11px' }}
         >
           Get yours now
         </button>

@@ -127,7 +127,7 @@ export default function CartDrawer() {
             <Link
               href="/checkout"
               onClick={closeCart}
-              className="w-full bg-terracotta text-warm-white py-3 px-6 rounded text-sm font-medium tracking-wide text-center hover:bg-terracotta-dark transition-colors"
+              className="w-full bg-charcoal hover:bg-terracotta text-white py-4 px-6 text-xs font-medium tracking-[0.14em] uppercase text-center transition-colors duration-300"
             >
               Checkout — R{cartTotal}
             </Link>

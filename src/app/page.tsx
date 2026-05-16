@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Truck, Clock, ShieldCheck, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import ProductCard from '@/components/ProductCard'
@@ -55,8 +55,8 @@ export default function HomePage() {
           </p>
           <Link
             href="#products"
-            className="inline-flex items-center justify-center bg-terracotta hover:bg-terracotta-dark text-white font-body font-medium uppercase tracking-[0.1em] transition-colors w-full sm:w-auto px-10 min-h-[48px]"
-            style={{ fontSize: '13px' }}
+            className="inline-flex items-center justify-center border border-white/70 text-white hover:bg-white hover:text-charcoal font-body font-medium uppercase tracking-[0.16em] transition-all duration-300 w-full sm:w-auto px-10 min-h-[50px]"
+            style={{ fontSize: '12px' }}
           >
             Shop the collection
           </Link>
@@ -67,28 +67,19 @@ export default function HomePage() {
       </section>
 
       {/* ── TRUST BAR ── */}
-      <section className="bg-cream border-y border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-          <ul className="flex flex-row items-center justify-center gap-4 sm:gap-14 overflow-x-auto">
-            <li className="flex items-center gap-2 flex-shrink-0">
-              <Truck size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
-                Free Delivery
-              </span>
+      <section className="bg-cream border-y border-border/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5">
+          <ul className="flex flex-row items-center justify-center gap-5 sm:gap-12 overflow-x-auto">
+            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
+              Free Delivery
             </li>
-            <li className="text-border text-xs flex-shrink-0">·</li>
-            <li className="flex items-center gap-2 flex-shrink-0">
-              <Clock size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
-                3-7 days SA-wide
-              </span>
+            <li className="text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
+            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
+              3–7 Days SA-Wide
             </li>
-            <li className="text-border text-xs flex-shrink-0">·</li>
-            <li className="flex items-center gap-2 flex-shrink-0">
-              <ShieldCheck size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
-                Secure checkout
-              </span>
+            <li className="text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
+            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
+              Secure Checkout
             </li>
           </ul>
         </div>
@@ -96,12 +87,15 @@ export default function HomePage() {
 
       {/* ── PRODUCTS ── */}
       <section id="products" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="mb-8 sm:mb-12 flex flex-col gap-3">
-          <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
-            The Collection
-          </p>
-          <h2 className="font-display text-charcoal" style={{ fontSize: '36px' }}>
-            Set the mood. Change the room.
+        <div className="mb-10 sm:mb-14 flex flex-col gap-4">
+          <div className="flex items-center gap-4">
+            <div className="h-px bg-border flex-1 max-w-[40px]" />
+            <p className="font-body text-terracotta uppercase font-medium tracking-[0.22em]" style={{ fontSize: '10px' }}>
+              The Collection
+            </p>
+          </div>
+          <h2 className="font-display italic text-charcoal leading-tight" style={{ fontSize: 'clamp(30px, 5vw, 42px)' }}>
+            Set the mood.<br className="sm:hidden" /> Change the room.
           </h2>
         </div>
         <div className="flex flex-wrap justify-center gap-6">
