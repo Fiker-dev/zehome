@@ -62,7 +62,7 @@ export default function Footer() {
             Questions?
           </p>
           <p className="font-body text-[#B5AFA8]" style={{ fontSize: '14px' }}>
-            WhatsApp us and we&apos;ll get back to you within a few hours.
+            WhatsApp us and we&apos;ll get back to you as soon as we can.
           </p>
           <a
             href="https://wa.me/27710278563"

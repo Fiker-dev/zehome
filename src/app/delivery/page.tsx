@@ -62,7 +62,7 @@ export default function DeliveryPage() {
       <div className="mt-14 bg-cream border border-border p-8 flex flex-col gap-3">
         <p className="font-display text-charcoal" style={{ fontSize: '20px' }}>Questions about your order?</p>
         <p className="font-body text-warm-gray" style={{ fontSize: '14px' }}>
-          WhatsApp us and we&apos;ll get back to you within a few hours.
+          WhatsApp us and we&apos;ll get back to you as soon as we can.
         </p>
         <a
           href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%20have%20a%20question%20about%20delivery"
