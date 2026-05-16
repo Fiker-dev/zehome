@@ -11,12 +11,9 @@ interface Props {
 }
 
 const CATEGORIES: Record<string, string> = {
-  'neon-flex-light-strip-3m':           'NEON STRIP',
-  'led-neon-rope-light-10m':            'NEON ROPE',
   'stretchable-atmosphere-sunset-lamp': 'SUNSET LAMP',
   'star-projector-galaxy-night-light': 'STAR PROJECTOR',
   '3d-solar-projection-lamp':          'PROJECTION LAMP',
-  'crystal-touch-lamp':                'TOUCH LAMP',
   '3d-moon-light-lamp-20cm':           'MOON LAMP',
   '3d-moon-lamp-humidifier':           'MOON LAMP',
 }

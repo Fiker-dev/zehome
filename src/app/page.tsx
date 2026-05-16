@@ -10,23 +10,17 @@ export const metadata: Metadata = {
 }
 
 const ORDER = [
-  'neon-flex-light-strip-3m',
   'stretchable-atmosphere-sunset-lamp',
-  'star-projector-galaxy-night-light',
   '3d-solar-projection-lamp',
-  'crystal-touch-lamp',
+  'star-projector-galaxy-night-light',
   '3d-moon-light-lamp-20cm',
   '3d-moon-lamp-humidifier',
-  'led-neon-rope-light-10m',
 ]
 
 const CATEGORIES: Record<string, string> = {
-  'neon-flex-light-strip-3m':            'NEON STRIP',
-  'led-neon-rope-light-10m':             'NEON ROPE',
   'stretchable-atmosphere-sunset-lamp':  'SUNSET LAMP',
   'star-projector-galaxy-night-light':  'STAR PROJECTOR',
   '3d-solar-projection-lamp':           'PROJECTION LAMP',
-  'crystal-touch-lamp':                 'TOUCH LAMP',
   '3d-moon-light-lamp-20cm':            'MOON LAMP',
   '3d-moon-lamp-humidifier':            'MOON LAMP',
 }
