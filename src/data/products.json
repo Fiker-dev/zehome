@@ -39,44 +39,6 @@
     }
   },
   {
-    "id": "stretchable-atmosphere-sunset-lamp",
-    "slug": "stretchable-atmosphere-sunset-lamp",
-    "name": "Stretchable Atmosphere Sunset Lamp",
-    "price": 349,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "3-7 business days",
-    "description": "Cast a warm circular sunset glow across your walls in seconds. One fixed warm tone — pure, clean, beautiful. The Stretchable Atmosphere Sunset Lamp is the same lamp you've seen all over TikTok and Instagram — now available in SA with free delivery. Adjust the angle, stretch the glow, set your mood.",
-    "bullets": [
-      "Warm circular sunset projection on any surface",
-      "Single warm sunset colour — no colour changes",
-      "360° rotatable and adjustable holder",
-      "USB powered — plug into any USB port",
-      "Intensity grows the further from the wall",
-      "Free delivery across South Africa"
-    ],
-    "images": [
-      "/images/lamp-sunset-product.jpg",
-      "/images/lamp-sunset-glow.jpg",
-      "/images/lamp-sunset-modes.jpg"
-    ],
-    "trustLine": "The one you've been seeing on TikTok.",
-    "keywords": [
-      "stretchable atmosphere sunset lamp south africa",
-      "TikTok sunset lamp SA",
-      "rainbow projection lamp johannesburg",
-      "stretchable sunset lamp SA",
-      "viral TikTok lamp south africa"
-    ],
-    "seo": {
-      "title": "Stretchable Atmosphere Sunset Lamp SA | Ze Home Finds",
-      "description": "The viral TikTok sunset lamp. Rainbow projection, 360° adjustable, USB powered. Free delivery across South Africa from Ze Home Finds.",
-      "ogTitle": "The lamp TikTok can't stop talking about",
-      "alt": "Stretchable atmosphere LED sunset lamp projecting rainbow circular glow on bedroom wall",
-      "h1": "Stretchable Atmosphere Sunset Lamp"
-    }
-  },
-  {
     "id": "star-projector-galaxy-night-light",
     "slug": "star-projector-galaxy-night-light",
     "name": "Star Projector Galaxy Night Light",

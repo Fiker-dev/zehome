@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 
 const ORDER = [
-  'stretchable-atmosphere-sunset-lamp',
   '3d-solar-projection-lamp',
   'star-projector-galaxy-night-light',
   '3d-moon-light-lamp-20cm',
@@ -18,16 +17,13 @@ const ORDER = [
 ]
 
 const CATEGORIES: Record<string, string> = {
-  'stretchable-atmosphere-sunset-lamp':  'SUNSET LAMP',
   'star-projector-galaxy-night-light':  'STAR PROJECTOR',
   '3d-solar-projection-lamp':           'PROJECTION LAMP',
   '3d-moon-light-lamp-20cm':            'COLOUR MOON LAMP',
   '3d-moon-lamp-humidifier':            'MOON LAMP + HUMIDIFIER',
 }
 
-const BADGES: Record<string, string> = {
-  'stretchable-atmosphere-sunset-lamp': 'As seen on TikTok',
-}
+const BADGES: Record<string, string> = {}
 
 export default function HomePage() {
   const sorted = ORDER
@@ -63,9 +59,6 @@ export default function HomePage() {
           >
             Shop the collection
           </Link>
-          <p className="font-body italic text-warm-gray" style={{ fontSize: '11px' }}>
-            Join 200+ SA homes already transformed
-          </p>
         </div>
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white opacity-50 animate-bounce">
           <ChevronDown size={20} strokeWidth={1.5} />
