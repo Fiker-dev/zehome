@@ -38,8 +38,8 @@ export default function Footer() {
             {[
               { label: 'Home', href: '/' },
               { label: 'Products', href: '/#products' },
-              { label: 'Delivery Info', href: '/#delivery' },
-              { label: 'Returns', href: '/#returns' },
+              { label: 'Delivery Info', href: '/delivery' },
+              { label: 'Returns', href: '/returns' },
             ].map(({ label, href }) => (
               <Link
                 key={label}

@@ -3,7 +3,7 @@ import { RotateCcw, CheckCircle, XCircle, MessageCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Returns Policy | Ze Home Finds',
-  description: '7-day returns on all orders. Easy process, no hassle. Consumer Protection Act compliant.',
+  description: '14-day returns policy. Items must be unused and in original packaging. Defects reported within 7 working days. Compliant with the Consumer Protection Act.',
   alternates: { canonical: '/returns' },
 }
 
@@ -18,7 +18,7 @@ export default function ReturnsPage() {
           Returns policy
         </h1>
         <p className="font-body text-warm-gray" style={{ fontSize: '15px' }}>
-          Not happy? No problem. We offer a 7-day return policy — no questions asked.
+          14 days from purchase. Items must be unused and in original packaging.
         </p>
       </div>
 
@@ -27,9 +27,9 @@ export default function ReturnsPage() {
         <h2 className="font-display text-charcoal" style={{ fontSize: '22px' }}>How returns work</h2>
 
         {[
-          { icon: MessageCircle, step: '1', text: 'WhatsApp us within 7 days of receiving your order to initiate a return.' },
-          { icon: RotateCcw, step: '2', text: "Pack the item in its original packaging and we'll arrange collection." },
-          { icon: CheckCircle,  step: '3', text: 'Once we receive and inspect the item, your refund is processed within 3-5 business days.' },
+          { icon: MessageCircle, step: '1', text: 'WhatsApp us within 14 days of purchase to initiate a return. Item must be unused and in original packaging.' },
+          { icon: RotateCcw,     step: '2', text: "Pack the item securely in its original packaging and we'll arrange collection or advise drop-off." },
+          { icon: CheckCircle,   step: '3', text: 'Once we receive and inspect the item, your refund is processed within 7 business days. Delivery costs are not refunded on returns.' },
         ].map(({ icon: Icon, step, text }) => (
           <div key={step} className="flex gap-5 items-start border-b border-border pb-6 last:border-0 last:pb-0">
             <div className="flex-shrink-0 w-10 h-10 bg-cream flex items-center justify-center">
@@ -52,11 +52,11 @@ export default function ReturnsPage() {
           </div>
           <ul className="flex flex-col gap-2">
             {[
-              'Item received damaged or faulty',
+              'Item received damaged or defective',
               'Wrong item delivered',
               'Item not as described',
-              'Returned within 7 days of delivery',
-              'In original, undamaged packaging',
+              'Within 14 days of purchase',
+              'Unused and in original packaging',
             ].map((t) => (
               <li key={t} className="font-body text-warm-gray flex items-start gap-2" style={{ fontSize: '13px' }}>
                 <span className="text-terracotta mt-0.5 flex-shrink-0">✓</span>
@@ -73,10 +73,11 @@ export default function ReturnsPage() {
           </div>
           <ul className="flex flex-col gap-2">
             {[
-              'More than 7 days after delivery',
+              'More than 14 days after purchase',
+              'Item has been used or opened',
               'Missing original packaging',
-              'Item has been used or damaged by buyer',
-              'Change of mind after 7 days',
+              'Delivery costs — not refunded on returns',
+              'Change of mind after 14 days',
             ].map((t) => (
               <li key={t} className="font-body text-warm-gray flex items-start gap-2" style={{ fontSize: '13px' }}>
                 <span className="flex-shrink-0 mt-0.5">×</span>
@@ -87,15 +88,26 @@ export default function ReturnsPage() {
         </div>
       </div>
 
-      <p className="font-body text-warm-gray mb-14" style={{ fontSize: '13px', lineHeight: '1.6' }}>
-        Our returns policy is compliant with the Consumer Protection Act (CPA) of South Africa.
-        If your item is faulty or not as described, you are entitled to a full refund or replacement within 6 months of purchase.
-      </p>
+      {/* Defects note */}
+      <div className="bg-cream border border-border p-6 mb-14 flex flex-col gap-2">
+        <p className="font-display text-charcoal" style={{ fontSize: '16px' }}>Defective or damaged items</p>
+        <p className="font-body text-warm-gray" style={{ fontSize: '13px', lineHeight: '1.6' }}>
+          Report any defects or damage within 7 working days of receiving your order.
+          For defect queries, you can also email{' '}
+          <a
+            href="mailto:info@perfectdealz.co.za"
+            className="text-terracotta hover:text-terracotta-dark transition-colors"
+          >
+            info@perfectdealz.co.za
+          </a>
+          . Exchanges are offered for defective or damaged items.
+        </p>
+      </div>
 
       <div className="bg-cream border border-border p-8 flex flex-col gap-3">
         <p className="font-display text-charcoal" style={{ fontSize: '20px' }}>Start a return</p>
         <p className="font-body text-warm-gray" style={{ fontSize: '14px' }}>
-          WhatsApp us with your order details and we'll sort it out straight away.
+          WhatsApp us with your order details and we&apos;ll sort it out straight away.
         </p>
         <a
           href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%20would%20like%20to%20return%20my%20order"
