@@ -145,7 +145,7 @@ export default function CheckoutPage() {
               value={form.firstName}
               onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
               className={inputClass}
-              placeholder="Lerato"
+              placeholder="Alex"
             />
           </div>
 
@@ -161,7 +161,7 @@ export default function CheckoutPage() {
               value={form.lastName}
               onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
               className={inputClass}
-              placeholder="Dlamini"
+              placeholder="Smith"
             />
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             className={inputClass}
-            placeholder="lerato@email.com"
+            placeholder="alex@email.com"
           />
         </div>
 
