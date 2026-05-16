@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-2 font-body text-warm-gray" style={{ fontSize: '12px' }}>
           <Link href="/" className="hover:text-charcoal transition-colors">
@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: Props) {
           <span className="text-charcoal">{product.name}</span>
         </nav>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Image gallery */}
           <ImageGallery images={product.images} alt={product.seo.alt} />
 
@@ -148,7 +148,7 @@ export default async function ProductPage({ params }: Props) {
 
       {/* You might also like */}
       <section className="bg-cream border-t border-border mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <div className="mb-10 flex flex-col gap-2">
             <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
               More from the collection

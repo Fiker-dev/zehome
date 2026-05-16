@@ -21,12 +21,12 @@ export default function Navbar() {
           <Link href="/" className="flex flex-col items-start gap-0.5">
             <span
               className="font-display font-medium text-charcoal leading-none"
-              style={{ fontSize: '28px', letterSpacing: '0.02em' }}
+              style={{ fontSize: 'clamp(20px, 5vw, 28px)', letterSpacing: '0.02em' }}
             >
               Ze Home Finds
             </span>
             <span
-              className="font-body text-warm-gray uppercase tracking-[0.12em]"
+              className="hidden sm:block font-body text-warm-gray uppercase tracking-[0.12em]"
               style={{ fontSize: '12px' }}
             >
               Mood lighting, delivered.

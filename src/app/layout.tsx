@@ -7,8 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500'],
   variable: '--font-dm-sans',
+  display: 'swap',
 })
 
 const playfair = Playfair_Display({
@@ -16,6 +17,7 @@ const playfair = Playfair_Display({
   weight: ['400', '500'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {

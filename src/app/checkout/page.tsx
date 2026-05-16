@@ -96,7 +96,7 @@ export default function CheckoutPage() {
   }
 
   const inputClass =
-    'w-full border border-border rounded px-4 py-3 text-sm text-charcoal placeholder:text-charcoal-muted focus:outline-none focus:border-terracotta transition-colors bg-warm-white'
+    'w-full border border-border rounded px-4 py-3 text-base text-charcoal placeholder:text-charcoal-muted focus:outline-none focus:border-terracotta transition-colors bg-warm-white'
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">

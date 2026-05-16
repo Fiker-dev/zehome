@@ -41,8 +41,9 @@ export default function HomePage() {
           className="object-cover opacity-40"
           priority
           sizes="100vw"
+          quality={85}
         />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 text-center flex flex-col items-center gap-6">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center flex flex-col items-center gap-5 sm:gap-6">
           <h1
             className="font-display italic text-white leading-tight"
             style={{ fontSize: 'clamp(48px, 8vw, 64px)' }}
@@ -67,26 +68,26 @@ export default function HomePage() {
 
       {/* ── TRUST BAR ── */}
       <section className="bg-cream border-y border-border">
-        <div className="max-w-6xl mx-auto px-6 py-5">
-          <ul className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-14">
-            <li className="flex items-center gap-2.5">
-              <Truck size={15} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em]" style={{ fontSize: '12px' }}>
-                Free Delivery on all orders
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+          <ul className="flex flex-row items-center justify-center gap-4 sm:gap-14 overflow-x-auto">
+            <li className="flex items-center gap-2 flex-shrink-0">
+              <Truck size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
+                Free Delivery
               </span>
             </li>
-            <li className="hidden sm:block text-border text-xs">·</li>
-            <li className="flex items-center gap-2.5">
-              <Clock size={15} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em]" style={{ fontSize: '12px' }}>
-                Ships in 3-7 business days SA-wide
+            <li className="text-border text-xs flex-shrink-0">·</li>
+            <li className="flex items-center gap-2 flex-shrink-0">
+              <Clock size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
+                3-7 days SA-wide
               </span>
             </li>
-            <li className="hidden sm:block text-border text-xs">·</li>
-            <li className="flex items-center gap-2.5">
-              <ShieldCheck size={15} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
-              <span className="font-body text-warm-gray uppercase tracking-[0.08em]" style={{ fontSize: '12px' }}>
-                Secure checkout via PayFast
+            <li className="text-border text-xs flex-shrink-0">·</li>
+            <li className="flex items-center gap-2 flex-shrink-0">
+              <ShieldCheck size={13} className="text-terracotta flex-shrink-0" strokeWidth={1.5} />
+              <span className="font-body text-warm-gray uppercase tracking-[0.08em] whitespace-nowrap" style={{ fontSize: '11px' }}>
+                Secure checkout
               </span>
             </li>
           </ul>
@@ -94,8 +95,8 @@ export default function HomePage() {
       </section>
 
       {/* ── PRODUCTS ── */}
-      <section id="products" className="max-w-6xl mx-auto px-6 py-20">
-        <div className="mb-12 flex flex-col gap-3">
+      <section id="products" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="mb-8 sm:mb-12 flex flex-col gap-3">
           <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
             The Collection
           </p>

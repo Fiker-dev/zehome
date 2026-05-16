@@ -42,7 +42,7 @@ export default function CartDrawer() {
           <button
             onClick={closeCart}
             aria-label="Close cart"
-            className="p-1 text-charcoal-muted hover:text-charcoal transition-colors"
+            className="p-2 -mr-1 text-charcoal-muted hover:text-charcoal transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
             <X size={20} />
           </button>
@@ -69,6 +69,7 @@ export default function CartDrawer() {
                       src={item.image}
                       alt={item.name}
                       fill
+                      sizes="80px"
                       className="object-cover"
                     />
                   </div>
@@ -85,17 +86,17 @@ export default function CartDrawer() {
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
                         aria-label="Decrease quantity"
-                        className="w-6 h-6 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
+                        className="w-9 h-9 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
                       >
-                        <Minus size={12} />
+                        <Minus size={14} />
                       </button>
-                      <span className="text-sm w-4 text-center">{item.quantity}</span>
+                      <span className="text-sm w-5 text-center">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                         aria-label="Increase quantity"
-                        className="w-6 h-6 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
+                        className="w-9 h-9 border border-border rounded flex items-center justify-center text-charcoal hover:border-terracotta transition-colors"
                       >
-                        <Plus size={12} />
+                        <Plus size={14} />
                       </button>
 
                       <button
