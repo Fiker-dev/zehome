@@ -3,15 +3,15 @@ import { Truck, Clock, MapPin, Package } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Delivery Info | Ze Home Finds',
-  description: 'Standard delivery R79. All orders delivered in 3-7 business days nationwide across South Africa.',
+  description: 'Free delivery on all orders. Delivered in 3-7 business days nationwide across South Africa.',
   alternates: { canonical: '/delivery' },
 }
 
 const items = [
   {
     icon: Truck,
-    title: 'Standard Delivery: R79',
-    body: 'All Ze Home Finds products qualify for standard delivery (under 10kg).',
+    title: 'Free delivery on every order',
+    body: 'No minimum spend. No hidden fees. What you see at checkout is what you pay.',
   },
   {
     icon: Clock,
@@ -20,13 +20,13 @@ const items = [
   },
   {
     icon: MapPin,
-    title: 'Main cities and surrounding areas',
-    body: 'Johannesburg, Cape Town, Durban, Pretoria and surrounding areas. No PO boxes.',
+    title: 'We deliver across South Africa',
+    body: 'Johannesburg, Cape Town, Durban, Pretoria and all surrounding areas. No PO boxes.',
   },
   {
     icon: Package,
-    title: 'Delivery partner: Perfect Dealz',
-    body: 'Dispatched from Sandton, Johannesburg. Nationwide door-to-door courier.',
+    title: 'Door-to-door, tracked',
+    body: 'Dispatched from Johannesburg via a trusted nationwide courier. Your lamp arrives safely, every time.',
   },
 ]
 
@@ -41,7 +41,7 @@ export default function DeliveryPage() {
           Delivery info
         </h1>
         <p className="font-body text-warm-gray" style={{ fontSize: '15px' }}>
-          Flat rate R79 delivery. Fast dispatch. Nationwide coverage.
+          Free delivery. Fast dispatch. Nationwide coverage.
         </p>
       </div>
 
