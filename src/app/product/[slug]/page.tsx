@@ -14,8 +14,8 @@ const CATEGORIES: Record<string, string> = {
   'stretchable-atmosphere-sunset-lamp': 'SUNSET LAMP',
   'star-projector-galaxy-night-light': 'STAR PROJECTOR',
   '3d-solar-projection-lamp':          'PROJECTION LAMP',
-  '3d-moon-light-lamp-20cm':           'MOON LAMP',
-  '3d-moon-lamp-humidifier':           'MOON LAMP',
+  '3d-moon-light-lamp-20cm':           'COLOUR MOON LAMP',
+  '3d-moon-lamp-humidifier':           'MOON LAMP + HUMIDIFIER',
 }
 
 const BADGES: Record<string, string> = {

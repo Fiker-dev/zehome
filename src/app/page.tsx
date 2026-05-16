@@ -21,8 +21,8 @@ const CATEGORIES: Record<string, string> = {
   'stretchable-atmosphere-sunset-lamp':  'SUNSET LAMP',
   'star-projector-galaxy-night-light':  'STAR PROJECTOR',
   '3d-solar-projection-lamp':           'PROJECTION LAMP',
-  '3d-moon-light-lamp-20cm':            'MOON LAMP',
-  '3d-moon-lamp-humidifier':            'MOON LAMP',
+  '3d-moon-light-lamp-20cm':            'COLOUR MOON LAMP',
+  '3d-moon-lamp-humidifier':            'MOON LAMP + HUMIDIFIER',
 }
 
 const BADGES: Record<string, string> = {
@@ -110,19 +110,20 @@ export default function HomePage() {
             Set the mood. Change the room.
           </h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {sorted.map((p) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              slug={p.slug}
-              name={p.name}
-              price={p.price}
-              image={p.images[0]}
-              trustLine={p.trustLine}
-              category={CATEGORIES[p.slug]}
-              badge={BADGES[p.slug]}
-            />
+            <div key={p.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <ProductCard
+                id={p.id}
+                slug={p.slug}
+                name={p.name}
+                price={p.price}
+                image={p.images[0]}
+                trustLine={p.trustLine}
+                category={CATEGORIES[p.slug]}
+                badge={BADGES[p.slug]}
+              />
+            </div>
           ))}
         </div>
       </section>
