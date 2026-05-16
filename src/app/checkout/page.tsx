@@ -5,10 +5,27 @@ import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 import PayFastForm from '@/components/PayFastForm'
 
+const SA_PROVINCES = [
+  'Eastern Cape',
+  'Free State',
+  'Gauteng',
+  'KwaZulu-Natal',
+  'Limpopo',
+  'Mpumalanga',
+  'North West',
+  'Northern Cape',
+  'Western Cape',
+]
+
 interface FormState {
   firstName: string
   lastName: string
   email: string
+  phone: string
+  address: string
+  city: string
+  province: string
+  postalCode: string
 }
 
 export default function CheckoutPage() {
@@ -19,6 +36,11 @@ export default function CheckoutPage() {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
+    address: '',
+    city: '',
+    province: '',
+    postalCode: '',
   })
   const [payFastParams, setPayFastParams] = useState<Record<string, string> | null>(null)
   const [loading, setLoading] = useState(false)
@@ -53,6 +75,11 @@ export default function CheckoutPage() {
           firstName: form.firstName,
           lastName: form.lastName,
           email: form.email,
+          phone: form.phone,
+          address: form.address,
+          city: form.city,
+          province: form.province,
+          postalCode: form.postalCode,
           amount: cartTotal,
           itemName: items.map((i) => `${i.name} x${i.quantity}`).join(', '),
         }),
@@ -153,6 +180,94 @@ export default function CheckoutPage() {
             className={inputClass}
             placeholder="lerato@email.com"
           />
+        </div>
+
+        <h2 className="font-medium text-charcoal text-sm uppercase tracking-wider pt-2">
+          Delivery address
+        </h2>
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="phone" className="text-sm text-charcoal-light">
+            WhatsApp number
+          </label>
+          <input
+            id="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            value={form.phone}
+            onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+            className={inputClass}
+            placeholder="071 027 8563"
+          />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="address" className="text-sm text-charcoal-light">
+            Street address
+          </label>
+          <input
+            id="address"
+            type="text"
+            required
+            autoComplete="street-address"
+            value={form.address}
+            onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
+            className={inputClass}
+            placeholder="12 Mandela Street, Sandton"
+          />
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="city" className="text-sm text-charcoal-light">
+              City
+            </label>
+            <input
+              id="city"
+              type="text"
+              required
+              autoComplete="address-level2"
+              value={form.city}
+              onChange={(e) => setForm((f) => ({ ...f, city: e.target.value }))}
+              className={inputClass}
+              placeholder="Johannesburg"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="postalCode" className="text-sm text-charcoal-light">
+              Postal code
+            </label>
+            <input
+              id="postalCode"
+              type="text"
+              required
+              autoComplete="postal-code"
+              value={form.postalCode}
+              onChange={(e) => setForm((f) => ({ ...f, postalCode: e.target.value }))}
+              className={inputClass}
+              placeholder="2196"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="province" className="text-sm text-charcoal-light">
+            Province
+          </label>
+          <select
+            id="province"
+            required
+            value={form.province}
+            onChange={(e) => setForm((f) => ({ ...f, province: e.target.value }))}
+            className={inputClass}
+          >
+            <option value="">Select province</option>
+            {SA_PROVINCES.map((p) => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
         </div>
 
         {error && <p className="text-sm text-red-600">{error}</p>}

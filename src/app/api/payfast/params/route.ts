@@ -4,9 +4,9 @@ import { buildPayFastParams } from '@/lib/payfast'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { firstName, lastName, email, amount, itemName } = body
+    const { firstName, lastName, email, phone, address, city, province, postalCode, amount, itemName } = body
 
-    if (!firstName || !lastName || !email || !amount || !itemName) {
+    if (!firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode || !amount || !itemName) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -25,6 +25,11 @@ export async function POST(req: NextRequest) {
       m_payment_id: orderId,
       amount: Number(amount).toFixed(2),
       item_name: String(itemName).substring(0, 100),
+      custom_str1: String(phone),
+      custom_str2: String(address),
+      custom_str3: String(city),
+      custom_str4: String(province),
+      custom_str5: String(postalCode),
     })
 
     return NextResponse.json(params)

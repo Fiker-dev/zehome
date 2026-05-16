@@ -13,6 +13,12 @@ export interface PayFastParams {
   amount: string
   item_name: string
   item_description?: string
+  // Delivery address passed through PayFast custom fields
+  custom_str1?: string // phone
+  custom_str2?: string // street address
+  custom_str3?: string // city
+  custom_str4?: string // province
+  custom_str5?: string // postal code
 }
 
 export function generateSignature(
@@ -52,9 +58,12 @@ export function buildPayFastParams(fields: PayFastParams): Record<string, string
     m_payment_id: fields.m_payment_id,
     amount: fields.amount,
     item_name: fields.item_name,
-    ...(fields.item_description
-      ? { item_description: fields.item_description }
-      : {}),
+    ...(fields.item_description ? { item_description: fields.item_description } : {}),
+    ...(fields.custom_str1 ? { custom_str1: fields.custom_str1 } : {}),
+    ...(fields.custom_str2 ? { custom_str2: fields.custom_str2 } : {}),
+    ...(fields.custom_str3 ? { custom_str3: fields.custom_str3 } : {}),
+    ...(fields.custom_str4 ? { custom_str4: fields.custom_str4 } : {}),
+    ...(fields.custom_str5 ? { custom_str5: fields.custom_str5 } : {}),
   }
 
   return {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateSignature } from '@/lib/payfast'
+import { appendOrderRow } from '@/lib/sheets'
 
 const PAYFAST_IPS = [
   '197.97.145.144',
@@ -44,6 +45,21 @@ export async function POST(req: NextRequest) {
     const orderId = params.m_payment_id
 
     if (paymentStatus === 'COMPLETE') {
+      const name = `${params.name_first ?? ''} ${params.name_last ?? ''}`.trim()
+      await appendOrderRow({
+        orderId,
+        date: new Date().toISOString(),
+        name,
+        email: params.email_address ?? '',
+        phone: params.custom_str1 ?? '',
+        address: params.custom_str2 ?? '',
+        city: params.custom_str3 ?? '',
+        province: params.custom_str4 ?? '',
+        postalCode: params.custom_str5 ?? '',
+        product: params.item_name ?? '',
+        amount: params.amount ?? '',
+        status: 'COMPLETE',
+      })
       console.log(JSON.stringify({
         event: 'order_complete',
         orderId,
