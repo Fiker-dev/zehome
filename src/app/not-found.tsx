@@ -10,7 +10,7 @@ export default function NotFound() {
         Page not found
       </h1>
       <p className="font-body text-warm-gray max-w-sm mb-10" style={{ fontSize: '15px', lineHeight: '1.6' }}>
-        The page you're looking for doesn't exist. Let's get you back to the good stuff.
+        The page you&apos;re looking for doesn&apos;t exist. Let&apos;s get you back to the good stuff.
       </p>
       <Link
         href="/"

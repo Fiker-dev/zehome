@@ -1,16 +1,16 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ShoppingBag } from 'lucide-react'
 import { useCart } from '@/lib/cart'
 import CartDrawer from './CartDrawer'
 
 export default function Navbar() {
-  const { count, openCart } = useCart()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  const itemCount = mounted ? count() : 0
+  const itemCount = useCart((state) => state.items.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  ))
+  const openCart = useCart((state) => state.openCart)
 
   return (
     <>

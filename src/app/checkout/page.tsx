@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 import PayFastForm from '@/components/PayFastForm'
@@ -13,9 +12,8 @@ interface FormState {
 }
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCart()
+  const { items, total } = useCart()
   const cartTotal = total()
-  const router = useRouter()
 
   const [form, setForm] = useState<FormState>({
     firstName: '',
