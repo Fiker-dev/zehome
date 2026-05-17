@@ -15,6 +15,12 @@ export async function POST(req: NextRequest) {
     const orderId = `ORD-${Date.now()}`
     const amountValue = Number(amount).toFixed(2)
     const product = String(itemName).substring(0, 100)
+    const returnUrl = new URL('/order-success', storeUrl)
+    const cancelUrl = new URL('/api/payfast/cancel', storeUrl)
+    const notifyUrl = new URL('/api/payfast/notify', storeUrl)
+
+    returnUrl.searchParams.set('m_payment_id', orderId)
+    cancelUrl.searchParams.set('orderId', orderId)
 
     await appendOrderRow({
       orderId,
@@ -37,9 +43,9 @@ export async function POST(req: NextRequest) {
     const params = buildPayFastParams({
       merchant_id: process.env.PAYFAST_MERCHANT_ID ?? '',
       merchant_key: process.env.PAYFAST_MERCHANT_KEY ?? '',
-      return_url: `${storeUrl}/order-success`,
-      cancel_url: `${storeUrl}/order-cancelled`,
-      notify_url: `${storeUrl}/api/payfast/notify`,
+      return_url: returnUrl.toString(),
+      cancel_url: cancelUrl.toString(),
+      notify_url: notifyUrl.toString(),
       name_first: firstName,
       name_last: lastName,
       email_address: email,

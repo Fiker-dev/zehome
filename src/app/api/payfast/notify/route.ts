@@ -13,6 +13,36 @@ const PAYFAST_IPS = [
   '41.74.179.197',
 ]
 
+function mapPaymentStatus(status = '') {
+  switch (status.toUpperCase()) {
+    case 'COMPLETE':
+      return {
+        paymentStatus: 'Paid',
+        dispatchStatus: 'Awaiting dispatch',
+      }
+    case 'PENDING':
+      return {
+        paymentStatus: 'Pending via PayFast',
+        dispatchStatus: 'Awaiting payment',
+      }
+    case 'FAILED':
+      return {
+        paymentStatus: 'Failed',
+        dispatchStatus: 'Payment failed',
+      }
+    case 'CANCELLED':
+      return {
+        paymentStatus: 'Cancelled',
+        dispatchStatus: 'Payment cancelled',
+      }
+    default:
+      return {
+        paymentStatus: status ? `PayFast status: ${status}` : 'PayFast status received',
+        dispatchStatus: 'Review payment status',
+      }
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.text()
@@ -43,33 +73,34 @@ export async function POST(req: NextRequest) {
 
     const paymentStatus = params.payment_status
     const orderId = params.m_payment_id
+    const mappedStatus = mapPaymentStatus(paymentStatus)
 
-    if (paymentStatus === 'COMPLETE') {
-      await appendOrderRow({
-        orderId: orderId ?? '',
-        date: new Date().toISOString(),
-        firstName: params.name_first ?? '',
-        lastName: params.name_last ?? '',
-        email: params.email_address ?? '',
-        phone: params.custom_str1 ?? '',
-        address: params.custom_str2 ?? '',
-        city: params.custom_str3 ?? '',
-        province: params.custom_str4 ?? '',
-        postalCode: params.custom_str5 ?? '',
-        product: params.item_name ?? '',
-        amount: params.amount_gross ?? '',
-        paymentStatus: 'Paid',
-        dispatchStatus: 'Awaiting dispatch',
-        reminder: '',
-      })
-      console.log(JSON.stringify({
-        event: 'order_complete',
-        orderId,
-        amount: params.amount,
-        pfPaymentId: params.pf_payment_id,
-        timestamp: new Date().toISOString(),
-      }))
-    }
+    await appendOrderRow({
+      orderId: orderId ?? '',
+      date: new Date().toISOString(),
+      firstName: params.name_first ?? '',
+      lastName: params.name_last ?? '',
+      email: params.email_address ?? '',
+      phone: params.custom_str1 ?? '',
+      address: params.custom_str2 ?? '',
+      city: params.custom_str3 ?? '',
+      province: params.custom_str4 ?? '',
+      postalCode: params.custom_str5 ?? '',
+      product: params.item_name ?? '',
+      amount: params.amount_gross ?? '',
+      paymentStatus: mappedStatus.paymentStatus,
+      dispatchStatus: mappedStatus.dispatchStatus,
+      reminder: params.pf_payment_id ? `PayFast ref: ${params.pf_payment_id}` : '',
+    })
+
+    console.log(JSON.stringify({
+      event: 'payfast_itn',
+      orderId,
+      paymentStatus,
+      amount: params.amount_gross,
+      pfPaymentId: params.pf_payment_id,
+      timestamp: new Date().toISOString(),
+    }))
 
     return new NextResponse('OK', { status: 200 })
   } catch (err) {

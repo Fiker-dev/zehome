@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   robots: 'noindex',
 }
 
-export default function OrderCancelledPage() {
+export default async function OrderCancelledPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ orderId?: string }>
+}) {
+  const { orderId } = await searchParams
+
   return (
     <div className="max-w-lg mx-auto px-4 py-24 flex flex-col items-center gap-6 text-center">
       <div className="w-16 h-16 rounded-full bg-charcoal-muted/10 flex items-center justify-center text-charcoal-muted text-3xl">
@@ -21,6 +27,12 @@ export default function OrderCancelledPage() {
         Your payment was not completed. Your cart has been saved — you can try
         again whenever you are ready.
       </p>
+
+      {orderId && (
+        <p className="text-sm text-charcoal-muted">
+          Order ref: {orderId}
+        </p>
+      )}
 
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
