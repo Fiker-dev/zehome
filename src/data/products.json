@@ -1,122 +1,83 @@
 [
   {
-    "id": "self-cleaning-pet-hair-remover-2-pack",
-    "slug": "self-cleaning-pet-hair-remover-2-pack",
-    "name": "Self-Cleaning Pet Hair Remover (2-Pack)",
+    "id": "pet-grooming-kit",
+    "slug": "pet-grooming-kit",
+    "name": "Pet Grooming Kit (3-Piece)",
     "category": "Pet Care",
-    "price": 399,
+    "price": 449,
     "currency": "ZAR",
     "inStock": true,
-    "deliveryDays": "8-16 days",
-    "description": "Swipe it back and forth over the couch and watch the fur come up. No sticky sheets, no refills, no batteries. All the hair collects in the built-in chamber — press the button to open it and tip it straight into the bin without touching a thing. It works on couches, beds, blankets and clothes. You get two: one for the lounge, one for the car or the cupboard by the door.",
+    "deliveryDays": "3-7 business days",
+    "description": "Everything for a fur-free home and a happy pet, in one box. The 3-in-1 steam pet brush detangles and lifts loose fur with a fine mist and cleans itself at the press of a button. The reusable pet hair roller takes fur off couches and clothes with no sticky refills. And the leak-proof water bottle with built-in bowl keeps your dog hydrated on walks.",
     "bullets": [
-      "Lifts pet hair and fluff off couches, beds, blankets and clothes",
-      "Self-cleaning — hair collects in the chamber, one press to empty",
-      "Reusable forever — no sticky sheets, no refills, no batteries",
-      "2-pack in blush pink — one for home, one for the car",
-      "Free delivery across South Africa — arrives in 8-16 days"
+      "3-in-1 steam pet brush — mist, groom and self-clean, for cats and dogs",
+      "Reusable pet hair roller — no sticky sheets or refills",
+      "Leak-proof dog water bottle with built-in bowl for walks",
+      "Three pet essentials for less than buying separately elsewhere",
+      "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-3.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/benefits.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/how-it-works.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/compare.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-4.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-1.png"
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/94d692aa-3-in-1-Electric-Steam-Pet-Brush.jpg?v=1768539279",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/acd1cd79-3-in-1-Electric-Steam-Pet-Brush-2.jpg?v=1768539279",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/1811eb67-Reusable_Multi_function_Sticky_Picker_Perfect_Dealz5__70215.jpg?v=1768537470",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/06667d50-Reusable-Picker-Cleaner-Lint-Roller-Pet-Hair-Remover-Brush-2.jpg?v=1768537469",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/H18293839370d4ba8b5c2352582e8ab0dZ.webp?v=1778511238",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/H43716e609151493c8593009f1396def90.webp?v=1778511244"
     ],
-    "trustLine": "No refills. No batteries. Just swipe and empty.",
+    "trustLine": "Three pet essentials. One box. Local stock.",
     "keywords": [
-      "pet hair remover south africa",
-      "reusable lint roller SA",
-      "dog hair remover couch",
-      "cat hair remover roller",
-      "self cleaning pet hair remover"
-    ],
-    "seo": {
-      "title": "Self-Cleaning Pet Hair Remover 2-Pack SA | Ze Home Finds",
-      "description": "Swipe pet hair off your couch, bed and clothes. Reusable, self-cleaning, no refills or batteries. 2-pack with free delivery across South Africa.",
-      "ogTitle": "The fur comes right off. Every time.",
-      "alt": "Pink self-cleaning pet hair remover roller lifting dog hair off a couch",
-      "h1": "Self-Cleaning Pet Hair Remover"
-    }
-  },
-  {
-    "id": "3-in-1-pet-steam-brush",
-    "slug": "3-in-1-pet-steam-brush",
-    "name": "3-in-1 Pet Steam Brush",
-    "category": "Pet Care",
-    "price": 299,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "The brush your cat actually lets you use. A fine mist settles loose fur and static as you brush, the soft teeth give a gentle massage, and the shed hair stays in the brush instead of on your couch. Works on cats and dogs, short or long hair.",
-    "bullets": [
-      "Fine mist settles loose fur and static as you brush",
-      "Soft teeth for a gentle, calming massage",
-      "Catches shed hair so it stays off your furniture",
-      "For cats and dogs, short or long hair",
-      "Free delivery across South Africa — arrives in 15-33 days"
-    ],
-    "images": [
-      "/images/products/3-in-1-pet-steam-brush/photo-2.png",
-      "/images/products/3-in-1-pet-steam-brush/benefits.jpg",
-      "/images/products/3-in-1-pet-steam-brush/how-it-works.jpg",
-      "/images/products/3-in-1-pet-steam-brush/compare.jpg",
-      "/images/products/3-in-1-pet-steam-brush/photo-1.png"
-    ],
-    "trustLine": "Less shedding. Happier pet. Cleaner couch.",
-    "keywords": [
-      "pet steam brush south africa",
+      "pet grooming kit south africa",
       "cat steam brush SA",
-      "steamy cat brush",
-      "dog grooming brush with spray",
-      "tiktok cat brush"
+      "pet hair remover roller",
+      "dog water bottle for walks",
+      "pet gift set SA"
     ],
     "seo": {
-      "title": "3-in-1 Pet Steam Brush SA | Ze Home Finds",
-      "description": "The viral steamy pet brush: fine mist, gentle massage and loose fur caught in one stroke. For cats and dogs. Free delivery across South Africa.",
-      "ogTitle": "The brush your cat actually likes",
-      "alt": "Green 3-in-1 pet steam brush misting while brushing a cat",
-      "h1": "3-in-1 Pet Steam Brush"
+      "title": "Pet Grooming Kit (Steam Brush, Hair Roller, Water Bottle) | Ze Home Finds",
+      "description": "Steam pet brush, reusable pet hair roller and leak-proof dog water bottle in one kit. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Everything your pet (and your couch) needs",
+      "alt": "Pet grooming kit with steam pet brush, reusable hair roller and dog water bottle",
+      "h1": "Pet Grooming Kit"
     }
   },
   {
-    "id": "ice-face-roller",
-    "slug": "ice-face-roller",
-    "name": "Ice Face Roller",
+    "id": "glow-up-kit",
+    "slug": "glow-up-kit",
+    "name": "Glow-Up Kit (3-Piece)",
     "category": "Beauty",
-    "price": 299,
+    "price": 449,
     "currency": "ZAR",
     "inStock": true,
-    "deliveryDays": "8-16 days",
-    "description": "The five-minute morning reset. Fill it with water, freeze it, then roll the ice over your face, under your eyes and down your neck. The silicone holder keeps your fingers warm and the ice in one piece. Reusable every day.",
+    "deliveryDays": "3-7 business days",
+    "description": "The three viral self-care tools, together. A cooling ice roller with a gel-filled head for a fresh morning reset, an electric makeup brush cleaner that spins out old makeup and oil so your brushes stay soft, and a scalp massager comb for a relaxing wash-day ritual.",
     "bullets": [
-      "Fill with water, freeze, and roll",
-      "Cooling roll for face, under-eyes and neck",
-      "Silicone holder keeps your hands warm",
-      "Reusable — just refill and refreeze",
-      "Free delivery across South Africa — arrives in 8-16 days"
+      "Cooling facial ice roller — gel-filled head, no batteries needed",
+      "Electric makeup brush cleaner — spins brushes clean in seconds",
+      "Scalp massager comb for a relaxing hair-care routine",
+      "The perfect gift — three self-care favourites in one box",
+      "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
-      "/images/products/ice-face-roller/photo-2.jpg",
-      "/images/products/ice-face-roller/benefits.jpg",
-      "/images/products/ice-face-roller/how-it-works.jpg",
-      "/images/products/ice-face-roller/compare.jpg"
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/Gemini_Generated_Image_xxwzzxxxwzzxxxwz.png?v=1778494217",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/Haf197b8e140a4ad2ab19cb47d67e1551N.webp?v=1778492957",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/Hf9ad48af4105409fbd61a08f8554d00ff.webp?v=1772025562",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/Hf30204113675447282926ac826f629c6Y.webp?v=1772025567",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/2b3d5557-ScalpMassagerCombPerfectDealz4__38273.jpg?v=1768537474"
     ],
-    "trustLine": "Freeze. Roll. Wake up.",
+    "trustLine": "Three self-care favourites. One box.",
     "keywords": [
       "ice roller south africa",
-      "ice face roller SA",
-      "silicone ice roller",
-      "skincare ice roller",
-      "tiktok skincare SA"
+      "makeup brush cleaner SA",
+      "self care gift set south africa",
+      "skincare gift SA",
+      "scalp massager"
     ],
     "seo": {
-      "title": "Ice Face Roller SA | Ze Home Finds",
-      "description": "Fill, freeze and roll: the viral silicone ice roller for a cooling morning reset on face, eyes and neck. Free delivery across South Africa.",
-      "ogTitle": "The five-minute morning reset",
-      "alt": "Pink silicone ice face roller held against the cheek",
-      "h1": "Ice Face Roller"
+      "title": "Glow-Up Kit (Ice Roller, Brush Cleaner, Scalp Massager) | Ze Home Finds",
+      "description": "Cooling ice roller, electric makeup brush cleaner and scalp massager comb in one self-care kit. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Three self-care favourites in one box",
+      "alt": "Glow-up kit with cooling ice roller, electric makeup brush cleaner and scalp massager",
+      "h1": "Glow-Up Kit"
     }
   },
   {
@@ -124,24 +85,23 @@
     "slug": "flame-aroma-diffuser",
     "name": "Flame Aroma Diffuser",
     "category": "Home Fragrance",
-    "price": 549,
+    "price": 399,
     "currency": "ZAR",
     "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "It looks like a real flame. It's cool mist. Add water and a few drops of your favourite oil, and the Flame Aroma Diffuser fills the room with scent while a soft, flickering flame effect dances on top. Switch between colours to match the mood. 130ml tank, USB powered, and nothing to light.",
+    "deliveryDays": "3-7 business days",
+    "description": "It looks like a real flame. It's cool mist. The Flame Aroma Diffuser combines a soft LED flame-effect night light with an ultrasonic humidifier and essential-oil diffuser, turning your bedroom, lounge or desk into a calm, glowing retreat.",
     "bullets": [
-      "Realistic flame effect on cool, scented mist",
-      "Multiple flame colours to match the mood",
-      "130ml tank — add water and a few drops of oil",
-      "USB powered — no open flame, nothing to light",
-      "Free delivery across South Africa — arrives in 15-33 days"
+      "LED flame-effect night light for a cosy glow",
+      "Ultrasonic humidifier adds moisture to dry air",
+      "Add a few drops of essential oil for aromatherapy",
+      "No open flame — nothing to light",
+      "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
-      "/images/products/flame-aroma-diffuser/photo-1.jpg",
-      "/images/products/flame-aroma-diffuser/benefits.jpg",
-      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
-      "/images/products/flame-aroma-diffuser/compare.jpg",
-      "/images/products/flame-aroma-diffuser/photo-2.jpg"
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/FlameAirDiffuser_Humidifier_1.webp?v=1771253302",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/FlameAirDiffuser_Humidifier_2.webp?v=1771253302",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/FlameAirDiffuser_Humidifier_3.webp?v=1771253302",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/FlameAirDiffuser_Humidifier_4.webp?v=1771253302"
     ],
     "trustLine": "All the mood of a flame. None of the fire.",
     "keywords": [
@@ -153,10 +113,119 @@
     ],
     "seo": {
       "title": "Flame Aroma Diffuser SA | Ze Home Finds",
-      "description": "Cool-mist aroma diffuser with a realistic flickering flame effect. Multiple colours, 130ml tank, USB powered. Free delivery across South Africa.",
+      "description": "LED flame-effect diffuser and ultrasonic humidifier for essential oils. Free delivery across South Africa in 3-7 business days.",
       "ogTitle": "It looks like fire. It's mist.",
-      "alt": "Black flame aroma diffuser with a glowing orange flame effect in the mist",
+      "alt": "Flame aroma diffuser with glowing flame-effect mist",
       "h1": "Flame Aroma Diffuser"
+    }
+  },
+  {
+    "id": "mini-massage-gun",
+    "slug": "mini-massage-gun",
+    "name": "Mini Massage Gun",
+    "category": "Wellness",
+    "price": 449,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "Your pocket-sized recovery tool. The mini massage gun uses rapid percussion to work into tight neck, shoulder and leg muscles after a long day at the desk or a hard workout — and it's quiet enough to use while you watch TV.",
+    "bullets": [
+      "Rapid percussion for tight neck, shoulders and legs",
+      "Quiet, compact and easy to hold",
+      "Small enough for your gym bag or desk drawer",
+      "Great after workouts or long office days",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/1706341997594838929.jpg?v=1779953986",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/94048baa-aab7-495d-8b9f-e4edd85b38b9.jpg?v=1779953987"
+    ],
+    "trustLine": "Recovery that fits in your bag.",
+    "keywords": [
+      "mini massage gun south africa",
+      "massage gun SA price",
+      "portable massage gun",
+      "muscle massager SA",
+      "gym recovery tool"
+    ],
+    "seo": {
+      "title": "Mini Massage Gun SA | Ze Home Finds",
+      "description": "Quiet, compact mini massage gun for tight neck, shoulders and legs. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Recovery that fits in your bag",
+      "alt": "Compact mini massage gun held against the shoulder",
+      "h1": "Mini Massage Gun"
+    }
+  },
+  {
+    "id": "cordless-handheld-vacuum",
+    "slug": "cordless-handheld-vacuum",
+    "name": "3-in-1 Cordless Handheld Vacuum",
+    "category": "Home Cleaning",
+    "price": 349,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "Crumbs on the couch, sand in the car, dust on the desk — grab it and go. The 3-in-1 cordless handheld vacuum is compact, lightweight and 120W, so quick clean-ups don't mean dragging out the big vacuum.",
+    "bullets": [
+      "3-in-1 handheld vacuum for quick everyday clean-ups",
+      "Cordless — no plug, no cable to drag around",
+      "120W in a compact, lightweight body",
+      "Ideal for the car, couch, desk and corners",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/1757f3cd-2_in_1_Handheld_Cordless_Vacuum_Perfect_Dealz__32740.jpg?v=1768538414"
+    ],
+    "trustLine": "Quick clean-ups. No cables.",
+    "keywords": [
+      "cordless handheld vacuum south africa",
+      "car vacuum SA",
+      "mini vacuum cleaner",
+      "handheld vacuum price SA",
+      "3 in 1 vacuum"
+    ],
+    "seo": {
+      "title": "3-in-1 Cordless Handheld Vacuum SA | Ze Home Finds",
+      "description": "Compact 120W cordless handheld vacuum for the car, couch and desk. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Quick clean-ups. No cables.",
+      "alt": "Matte black 3-in-1 cordless handheld vacuum",
+      "h1": "3-in-1 Cordless Handheld Vacuum"
+    }
+  },
+  {
+    "id": "one-step-hair-dryer-brush",
+    "slug": "one-step-hair-dryer-brush",
+    "name": "One-Step Hair Dryer Brush",
+    "category": "Beauty",
+    "price": 499,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "Salon-style blow-dry at home, in one step. The hot air brush dries, smooths and adds volume at the same time — the bristles detangle as you go and lift at the roots, so you get a smooth, bouncy finish without juggling a dryer and a round brush.",
+    "bullets": [
+      "Dries, smooths and volumises in one step",
+      "Bristles detangle and lift at the roots",
+      "Replaces a separate dryer and round brush",
+      "Cuts your styling time",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/68dbbf2b-Hot_Air_Brush_One_Step_Hair_Brush_Straightener_Perfect_Dealz__88326.jpg?v=1768537417"
+    ],
+    "trustLine": "Salon blow-dry. One tool. At home.",
+    "keywords": [
+      "hair dryer brush south africa",
+      "hot air brush SA",
+      "one step hair dryer",
+      "blow dry brush price SA",
+      "volumizer brush"
+    ],
+    "seo": {
+      "title": "One-Step Hair Dryer Brush SA | Ze Home Finds",
+      "description": "Hot air brush that dries, smooths and volumises in one step. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Salon blow-dry, one tool",
+      "alt": "One-step hair dryer brush volumiser",
+      "h1": "One-Step Hair Dryer Brush"
     }
   }
 ]

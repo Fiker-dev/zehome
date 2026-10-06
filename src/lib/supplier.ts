@@ -6,6 +6,8 @@ interface SupplierInfo {
   supplierUrl: string | null
   cjVariant?: string
   supplierVariant?: string
+  // Bundles: the separate supplier items that make up one of our products
+  components?: { title: string; url: string; quantity: number }[]
 }
 
 const costs = supplierCosts as Record<string, SupplierInfo>
@@ -25,8 +27,10 @@ export function supplierOrderNote(lines: OrderLine[]): string {
     const info = costs[id]
     const supplier = info?.supplier ?? 'Unknown supplier'
     const variant = info?.supplierVariant ?? info?.cjVariant
-    const item = `${quantity}× ${product?.name ?? id}${variant ? ` (${variant})` : ''} ${info?.supplierUrl ?? ''}`.trim()
-    bySupplier.set(supplier, [...(bySupplier.get(supplier) ?? []), item])
+    const items = info?.components?.length
+      ? info.components.map((c) => `${quantity * c.quantity}× ${c.title} ${c.url} [for ${product?.name ?? id}]`)
+      : [`${quantity}× ${product?.name ?? id}${variant ? ` (${variant})` : ''} ${info?.supplierUrl ?? ''}`.trim()]
+    bySupplier.set(supplier, [...(bySupplier.get(supplier) ?? []), ...items])
   }
   return 'BUY → ' + [...bySupplier].map(([s, items]) => `${s}: ${items.join('; ')}`).join(' | ')
 }
