@@ -1,84 +1,5 @@
 [
   {
-    "id": "flame-aroma-diffuser",
-    "slug": "flame-aroma-diffuser",
-    "name": "Flame Aroma Diffuser",
-    "category": "Home Fragrance",
-    "price": 549,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "It looks like a real flame. It's cool mist. Add water and a few drops of your favourite oil, and the Flame Aroma Diffuser fills the room with scent while a soft, flickering flame effect dances on top. Switch between colours to match the mood. 130ml tank, USB powered, and nothing to light.",
-    "bullets": [
-      "Realistic flame effect on cool, scented mist",
-      "Multiple flame colours to match the mood",
-      "130ml tank — add water and a few drops of oil",
-      "USB powered — no open flame, nothing to light",
-      "Free delivery across South Africa — arrives in 15-33 days"
-    ],
-    "images": [
-      "/images/products/flame-aroma-diffuser/photo-1.jpg",
-      "/images/products/flame-aroma-diffuser/benefits.jpg",
-      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
-      "/images/products/flame-aroma-diffuser/compare.jpg",
-      "/images/products/flame-aroma-diffuser/photo-2.jpg"
-    ],
-    "trustLine": "All the mood of a flame. None of the fire.",
-    "keywords": [
-      "flame diffuser south africa",
-      "flame humidifier SA",
-      "aroma diffuser with flame effect",
-      "essential oil diffuser SA",
-      "tiktok flame diffuser"
-    ],
-    "seo": {
-      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
-      "description": "Cool-mist aroma diffuser with a realistic flickering flame effect. Multiple colours, 130ml tank, USB powered. Free delivery across South Africa.",
-      "ogTitle": "It looks like fire. It's mist.",
-      "alt": "Black flame aroma diffuser with a glowing orange flame effect in the mist",
-      "h1": "Flame Aroma Diffuser"
-    }
-  },
-  {
-    "id": "water-ripple-crystal-lamp",
-    "slug": "water-ripple-crystal-lamp",
-    "name": "Water Ripple Crystal Lamp",
-    "category": "Mood Lighting",
-    "price": 449,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "Switch it on and your ceiling turns into the surface of a pool. The Water Ripple Crystal Lamp throws slow, moving ripples of light across the walls and ceiling — like sunlight through water. Pick from 16 colours with the remote, then let it run. USB rechargeable, so it goes from the bedside table to the bath to the balcony with no cable in the way.",
-    "bullets": [
-      "Moving water-ripple light across walls and ceiling",
-      "16 colours — change them with the remote",
-      "USB rechargeable — no cable once it's charged",
-      "Compact crystal design — bedside, desk or shelf",
-      "Free delivery across South Africa — arrives in 15-33 days"
-    ],
-    "images": [
-      "/images/products/water-ripple-crystal-lamp/photo-1.png",
-      "/images/products/water-ripple-crystal-lamp/benefits.jpg",
-      "/images/products/water-ripple-crystal-lamp/how-it-works.jpg",
-      "/images/products/water-ripple-crystal-lamp/compare.jpg"
-    ],
-    "trustLine": "Rechargeable. Remote included. 16 colours.",
-    "keywords": [
-      "water ripple lamp south africa",
-      "ocean wave projector lamp SA",
-      "aesthetic room lamp",
-      "crystal night light SA",
-      "tiktok ripple lamp"
-    ],
-    "seo": {
-      "title": "Water Ripple Crystal Lamp SA | Ze Home Finds",
-      "description": "Turn your ceiling into a pool of moving light. 16 colours, remote control, USB rechargeable. Free delivery across South Africa.",
-      "ogTitle": "Your ceiling, but underwater",
-      "alt": "Crystal lamp projecting blue water-ripple light across a bedroom ceiling",
-      "h1": "Water Ripple Crystal Lamp"
-    }
-  },
-  {
     "id": "self-cleaning-pet-hair-remover-2-pack",
     "slug": "self-cleaning-pet-hair-remover-2-pack",
     "name": "Self-Cleaning Pet Hair Remover (2-Pack)",
@@ -160,46 +81,6 @@
     }
   },
   {
-    "id": "mini-bag-sealer-2-pack",
-    "slug": "mini-bag-sealer-2-pack",
-    "name": "Mini Bag Sealer (2-Pack)",
-    "category": "Kitchen",
-    "price": 349,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "Half-eaten chips, coffee, frozen veg — seal any bag shut in one slide. The mini heat sealer is rechargeable and pocket-sized, with a built-in cutter to open the bag again neatly. Two in the box: one for the kitchen, one for the snack drawer.",
-    "bullets": [
-      "Slide it along any plastic snack or food bag to seal it shut",
-      "Built-in cutter to open bags neatly",
-      "Rechargeable and pocket-sized",
-      "2-pack — one for the kitchen, one for the snack drawer",
-      "Free delivery across South Africa — arrives in 15-33 days"
-    ],
-    "images": [
-      "/images/products/mini-bag-sealer-2-pack/photo-1.png",
-      "/images/products/mini-bag-sealer-2-pack/benefits.jpg",
-      "/images/products/mini-bag-sealer-2-pack/how-it-works.jpg",
-      "/images/products/mini-bag-sealer-2-pack/compare.jpg",
-      "/images/products/mini-bag-sealer-2-pack/photo-2.png"
-    ],
-    "trustLine": "No more stale chips. No more clips.",
-    "keywords": [
-      "mini bag sealer south africa",
-      "heat sealer for chip bags SA",
-      "rechargeable bag sealer",
-      "snack bag sealer",
-      "tiktok kitchen gadget SA"
-    ],
-    "seo": {
-      "title": "Mini Bag Sealer 2-Pack SA | Ze Home Finds",
-      "description": "Seal chips, coffee and snack bags in one slide. Rechargeable mini heat sealer with built-in cutter. 2-pack with free delivery across South Africa.",
-      "ogTitle": "Seal any bag in one slide",
-      "alt": "Mini rechargeable bag sealer sliding along a chip packet to seal it",
-      "h1": "Mini Bag Sealer"
-    }
-  },
-  {
     "id": "ice-face-roller",
     "slug": "ice-face-roller",
     "name": "Ice Face Roller",
@@ -239,42 +120,43 @@
     }
   },
   {
-    "id": "rechargeable-lint-shaver",
-    "slug": "rechargeable-lint-shaver",
-    "name": "Rechargeable Lint Shaver",
-    "category": "Home Cleaning",
-    "price": 449,
+    "id": "flame-aroma-diffuser",
+    "slug": "flame-aroma-diffuser",
+    "name": "Flame Aroma Diffuser",
+    "category": "Home Fragrance",
+    "price": 549,
     "currency": "ZAR",
     "inStock": true,
     "deliveryDays": "15-33 days",
-    "description": "Bobbly jersey, pilled couch cushion, fuzzy leggings — one pass and they look new again. The rechargeable lint shaver trims fuzz and pills off fabric and collects them in its tray. The LED display shows how much charge is left.",
+    "description": "It looks like a real flame. It's cool mist. Add water and a few drops of your favourite oil, and the Flame Aroma Diffuser fills the room with scent while a soft, flickering flame effect dances on top. Switch between colours to match the mood. 130ml tank, USB powered, and nothing to light.",
     "bullets": [
-      "Trims fuzz and pills off clothes, couches and blankets",
-      "Collects the fluff in a tray you empty in seconds",
-      "Rechargeable, with an LED charge display",
-      "Compact enough for the cupboard or a suitcase",
+      "Realistic flame effect on cool, scented mist",
+      "Multiple flame colours to match the mood",
+      "130ml tank — add water and a few drops of oil",
+      "USB powered — no open flame, nothing to light",
       "Free delivery across South Africa — arrives in 15-33 days"
     ],
     "images": [
-      "/images/products/rechargeable-lint-shaver/photo-2.png",
-      "/images/products/rechargeable-lint-shaver/benefits.jpg",
-      "/images/products/rechargeable-lint-shaver/how-it-works.jpg",
-      "/images/products/rechargeable-lint-shaver/compare.jpg"
+      "/images/products/flame-aroma-diffuser/photo-1.jpg",
+      "/images/products/flame-aroma-diffuser/benefits.jpg",
+      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
+      "/images/products/flame-aroma-diffuser/compare.jpg",
+      "/images/products/flame-aroma-diffuser/photo-2.jpg"
     ],
-    "trustLine": "Make old jerseys look new again.",
+    "trustLine": "All the mood of a flame. None of the fire.",
     "keywords": [
-      "lint shaver south africa",
-      "fabric shaver SA",
-      "rechargeable lint remover",
-      "bobble remover clothes",
-      "pill remover jersey SA"
+      "flame diffuser south africa",
+      "flame humidifier SA",
+      "aroma diffuser with flame effect",
+      "essential oil diffuser SA",
+      "tiktok flame diffuser"
     ],
     "seo": {
-      "title": "Rechargeable Lint Shaver SA | Ze Home Finds",
-      "description": "Trim fuzz and pills off jerseys, couches and blankets in one pass. Rechargeable with LED display. Free delivery across South Africa.",
-      "ogTitle": "Make old jerseys look new",
-      "alt": "Beige rechargeable lint shaver removing pills from a knit jersey",
-      "h1": "Rechargeable Lint Shaver"
+      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
+      "description": "Cool-mist aroma diffuser with a realistic flickering flame effect. Multiple colours, 130ml tank, USB powered. Free delivery across South Africa.",
+      "ogTitle": "It looks like fire. It's mist.",
+      "alt": "Black flame aroma diffuser with a glowing orange flame effect in the mist",
+      "h1": "Flame Aroma Diffuser"
     }
   }
 ]

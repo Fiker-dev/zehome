@@ -50,57 +50,6 @@
       ]
     }
   },
-  "water-ripple-crystal-lamp": {
-    "eyebrow": "Mood lighting",
-    "benefits": {
-      "headline": "Your ceiling, but underwater",
-      "points": [
-        "Moving water-ripple light on walls and ceiling",
-        "16 colours, switched with the remote",
-        "USB rechargeable, so no cable once it's charged",
-        "Fits a bedside table, desk or shelf"
-      ]
-    },
-    "steps": {
-      "headline": "How it works",
-      "items": [
-        [
-          "Charge",
-          "Top it up with the USB cable"
-        ],
-        [
-          "Pick",
-          "Choose one of 16 colours on the remote"
-        ],
-        [
-          "Relax",
-          "Lights off. Watch the ripples move"
-        ]
-      ]
-    },
-    "compare": {
-      "headline": "More than a night light",
-      "left": "Ordinary night light",
-      "right": "Ripple crystal lamp",
-      "rows": [
-        [
-          "Effect",
-          "Flat glow",
-          "Moving ripples"
-        ],
-        [
-          "Colours",
-          "One",
-          "16"
-        ],
-        [
-          "Cable",
-          "Always plugged in",
-          "Rechargeable"
-        ]
-      ]
-    }
-  },
   "flame-aroma-diffuser": {
     "eyebrow": "Home fragrance",
     "benefits": {
@@ -203,57 +152,6 @@
       ]
     }
   },
-  "mini-bag-sealer-2-pack": {
-    "eyebrow": "Kitchen",
-    "benefits": {
-      "headline": "No more stale chips.",
-      "points": [
-        "Seals snack and food bags in one slide",
-        "Built-in cutter to open them neatly",
-        "Rechargeable and pocket-sized",
-        "Two in the box"
-      ]
-    },
-    "steps": {
-      "headline": "How it works",
-      "items": [
-        [
-          "Charge",
-          "Top it up with the USB cable"
-        ],
-        [
-          "Slide",
-          "Run it along the top of the bag"
-        ],
-        [
-          "Sealed",
-          "Open it again with the built-in cutter"
-        ]
-      ]
-    },
-    "compare": {
-      "headline": "Ditch the bag clips",
-      "left": "Bag clip",
-      "right": "Mini bag sealer",
-      "rows": [
-        [
-          "Seal",
-          "Air still gets in",
-          "Sealed shut"
-        ],
-        [
-          "Size",
-          "Bulky in the drawer",
-          "Pocket-sized"
-        ],
-        [
-          "Opening",
-          "Scissors needed",
-          "Built-in cutter"
-        ]
-      ]
-    }
-  },
   "ice-face-roller": {
     "eyebrow": "Beauty",
     "benefits": {
@@ -301,57 +199,6 @@
           "Use",
           "Once and done",
           "Refill and reuse"
-        ]
-      ]
-    }
-  },
-  "rechargeable-lint-shaver": {
-    "eyebrow": "Home cleaning",
-    "benefits": {
-      "headline": "Old jerseys, new again.",
-      "points": [
-        "Trims fuzz and pills off fabric",
-        "Fluff collects in an easy-empty tray",
-        "Rechargeable, with an LED charge display",
-        "Works on clothes, couches and blankets"
-      ]
-    },
-    "steps": {
-      "headline": "How it works",
-      "items": [
-        [
-          "Charge",
-          "Top it up with the USB cable"
-        ],
-        [
-          "Glide",
-          "Move it gently over the bobbly fabric"
-        ],
-        [
-          "Empty",
-          "Tip the fluff out of the tray"
-        ]
-      ]
-    },
-    "compare": {
-      "headline": "Smarter than a razor",
-      "left": "Disposable razor",
-      "right": "Lint shaver",
-      "rows": [
-        [
-          "Risk",
-          "Can cut the fabric",
-          "Guarded blades"
-        ],
-        [
-          "Mess",
-          "Fluff everywhere",
-          "Caught in the tray"
-        ],
-        [
-          "Big areas",
-          "Slow going",
-          "Couches and blankets"
         ]
       ]
     }

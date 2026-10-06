@@ -39,11 +39,15 @@ Target market: SA local — Johannesburg and surrounding areas
   goods; anything with a battery/electronics is forced onto "CJPacket
   Sensitive" 13-30 days. Shipping is ~R200+ per parcel even at ~240 g, so
   retail starts around R399.
-- Live catalogue (6 Oct 2026, only products on current TikTok viral lists):
-  flame aroma diffuser R549, water ripple crystal lamp R449, self-cleaning pet
-  hair remover 2-pack R399, 3-in-1 pet steam brush R299, mini bag sealer
-  2-pack R349, ice face roller R299, rechargeable lint shaver R449. Dropped: tumbler (trend peaked), motion light (not
-  trending), sunset lamp (needs R699, undercut locally). Photos are stored in
+- PRODUCT RULE (owner): enter with products already selling in SA, priced and
+  delivered competitively. Before adding/replacing/repricing ANY product, follow
+  .claude/skills/sa-product-research/SKILL.md and show the owner the scorecard.
+- Live catalogue (6 Oct 2026, see docs/product-scorecard-2026-10.md): pet hair
+  remover 2-pack R399, pet steam brush R299, ice face roller R299, flame aroma
+  diffuser R549 — organic-content tests only; none survives a R150 ad cost.
+  Dropped: lint shaver, crystal lamp, bag sealer (cheaper locally). Next: get
+  Perfect Dealz dropship/trade prices to sell proven SA sellers with local
+  stock. Earlier drops: tumbler, motion light, sunset lamp. Photos are stored in
   public/images/products/ (GitHub Action copies any remote CJ image), branded
   cards via `npm run cards`, share image via `npm run og`.
 - Vercel connector works without teamId (team-scoped calls return nothing).

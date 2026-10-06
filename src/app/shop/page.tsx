@@ -5,7 +5,7 @@ import { categories, categorySlug, hoverPhoto, products } from '@/lib/catalog'
 
 export const metadata: Metadata = {
   title: 'Shop all finds | Ze Home Finds',
-  description: 'Every viral find we stock — home, lighting, pet care, kitchen, beauty and cleaning. Free delivery across South Africa.',
+  description: 'Every viral find we stock, from pet care to beauty and home. Free delivery across South Africa.',
   alternates: { canonical: '/shop' },
 }
 
