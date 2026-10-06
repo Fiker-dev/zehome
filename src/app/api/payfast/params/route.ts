@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import products from '@/data/products.json'
 import { buildPayFastParams, createOrderId } from '@/lib/payfast'
 import { appendOrderRow } from '@/lib/sheets'
+import { supplierOrderNote } from '@/lib/supplier'
 
 export async function POST(req: NextRequest) {
   try {
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
       amount: amountValue,
       paymentStatus: 'Pending payment',
       dispatchStatus: 'Awaiting payment',
-      reminder: '',
+      reminder: supplierOrderNote(validLines.map((l) => ({ id: l.product!.id, quantity: l.quantity }))),
     })
 
     const params = buildPayFastParams({

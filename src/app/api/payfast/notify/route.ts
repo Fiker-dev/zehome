@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { confirmItnWithPayFast, orderAmountMatches, verifyItnSignature } from '@/lib/payfast'
 import { appendOrderRow } from '@/lib/sheets'
+import { linesFromItemName, supplierOrderNote } from '@/lib/supplier'
 
 const PAYFAST_IPS = [
   '197.97.145.144',
@@ -104,7 +105,11 @@ export async function POST(req: NextRequest) {
       amount: params.amount_gross ?? '',
       paymentStatus: mappedStatus.paymentStatus,
       dispatchStatus: mappedStatus.dispatchStatus,
-      reminder: params.pf_payment_id ? `PayFast ref: ${params.pf_payment_id}` : '',
+      reminder: [
+        params.pf_payment_id ? `PayFast ref: ${params.pf_payment_id}` : '',
+        // On a good paid order, put the supplier shopping list right on the row
+        mappedStatus.paymentStatus === 'Paid' ? supplierOrderNote(linesFromItemName(params.item_name ?? '')) : '',
+      ].filter(Boolean).join(' · '),
     })
 
     console.log(JSON.stringify({
