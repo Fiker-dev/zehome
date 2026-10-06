@@ -41,7 +41,7 @@ export default function StickyAddToCart({ product }: { product: Product }) {
         onClick={() =>
           addItem({ id: product.id, slug: product.slug, name: product.name, price: product.price, image: product.images[0] })
         }
-        className="bg-charcoal hover:bg-terracotta text-white font-body font-medium uppercase tracking-[0.12em] transition-colors px-5 min-h-[46px]"
+        className="rounded-full bg-charcoal hover:bg-terracotta text-white font-body font-medium uppercase tracking-[0.12em] transition-colors px-5 min-h-[46px]"
         style={{ fontSize: '11px' }}
       >
         Add to cart

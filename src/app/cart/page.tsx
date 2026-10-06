@@ -20,7 +20,7 @@ export default function CartPage() {
         </p>
         <Link
           href="/"
-          className="bg-terracotta text-warm-white px-8 py-3 rounded text-sm font-medium hover:bg-terracotta-dark transition-colors"
+          className="bg-terracotta text-warm-white px-8 py-3 rounded-full text-sm font-medium hover:bg-terracotta-dark transition-colors"
         >
           Shop now
         </Link>
@@ -92,7 +92,7 @@ export default function CartPage() {
           </p>
           <Link
             href="/checkout"
-            className="w-full bg-terracotta text-warm-white py-4 px-8 rounded text-base font-medium tracking-wide text-center hover:bg-terracotta-dark transition-colors"
+            className="w-full bg-terracotta text-warm-white py-4 px-8 rounded-full text-base font-medium tracking-wide text-center hover:bg-terracotta-dark transition-colors"
           >
             Checkout — R{cartTotal}
           </Link>

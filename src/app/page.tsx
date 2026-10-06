@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDown, Sparkles, Truck, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
-import products from '@/data/products.json'
 import ProductCard from '@/components/ProductCard'
+import { categories, hoverPhoto, products } from '@/lib/catalog'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -24,31 +24,30 @@ const FAQ = [
   { q: 'How do I track my order?', a: 'You get a tracking number by email once your order is dispatched. You can also WhatsApp us on +27 71 027 8563 with your order reference.' },
 ]
 
+const sectionTitle = 'font-display font-semibold text-charcoal tracking-tight lowercase'
+
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="bg-cream overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-          <div className="flex flex-col gap-5 sm:gap-6 items-center md:items-start text-center md:text-left">
-            <p className="font-body text-terracotta uppercase font-medium tracking-[0.22em]" style={{ fontSize: '11px' }}>
+      <section className="overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div className="flex flex-col gap-5 items-center md:items-start text-center md:text-left">
+            <p className="font-body text-warm-gray uppercase font-medium tracking-[0.18em]" style={{ fontSize: '12px' }}>
               Viral finds, delivered
             </p>
-            <h1
-              className="font-display italic text-charcoal leading-[1.05]"
-              style={{ fontSize: 'clamp(40px, 7vw, 60px)' }}
-            >
+            <h1 className={`${sectionTitle} leading-[1.05]`} style={{ fontSize: 'clamp(38px, 6.5vw, 58px)' }}>
               The finds everyone’s talking about
             </h1>
             <p className="font-body text-charcoal-light max-w-md" style={{ fontSize: '16px', lineHeight: '1.6' }}>
               Hand-picked from what’s trending on TikTok right now, with free delivery to your door across South Africa.
             </p>
             <Link
-              href="#products"
-              className="inline-flex items-center justify-center bg-charcoal hover:bg-terracotta text-white font-body font-medium uppercase tracking-[0.16em] transition-colors duration-300 w-full sm:w-auto px-10 min-h-[52px]"
-              style={{ fontSize: '12px' }}
+              href="/shop"
+              className="inline-flex items-center justify-center bg-charcoal hover:bg-terracotta-dark text-white font-body font-medium transition-colors w-full sm:w-auto px-10 min-h-[50px] rounded-full"
+              style={{ fontSize: '15px' }}
             >
-              Shop the finds
+              Shop all finds
             </Link>
           </div>
 
@@ -57,20 +56,17 @@ export default function HomePage() {
               <Link
                 key={p.id}
                 href={`/product/${p.slug}`}
-                className={`group relative overflow-hidden bg-warm-white ${i === 0 ? 'col-span-3 row-span-2' : 'col-span-2'}`}
+                className={`group relative overflow-hidden bg-cream ${i === 0 ? 'col-span-3 row-span-2' : 'col-span-2'}`}
               >
                 <Image
                   src={p.images[0]}
                   alt={p.seo.alt}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes={i === 0 ? '(min-width: 768px) 330px, 60vw' : '(min-width: 768px) 220px, 40vw'}
+                  sizes={i === 0 ? '(min-width: 768px) 360px, 60vw' : '(min-width: 768px) 240px, 40vw'}
                   priority
                 />
-                <span
-                  className="absolute left-2 bottom-2 bg-warm-white/95 text-charcoal font-body font-medium px-2.5 py-1"
-                  style={{ fontSize: '12px' }}
-                >
+                <span className="absolute left-2 bottom-2 bg-white text-charcoal font-body font-medium px-2.5 py-1 rounded-full" style={{ fontSize: '12px' }}>
                   R{p.price}
                 </span>
               </Link>
@@ -79,64 +75,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TRUST BAR ── */}
-      <section className="bg-warm-white border-y border-border/60">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5">
-          <ul className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:gap-12">
-            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
-              Free Delivery
-            </li>
-            <li className="hidden sm:block text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
-            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
-              Tracked SA-Wide
-            </li>
-            <li className="hidden sm:block text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
-            <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
-              Secure Checkout
-            </li>
-          </ul>
+      {/* ── SHOP BY CATEGORY ── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16">
+        <h2 className={sectionTitle} style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>Shop by category</h2>
+        <div className="mt-6 flex gap-3 sm:gap-4 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-6">
+          {categories.map((c) => (
+            <Link key={c.slug} href={`/shop?category=${c.slug}`} className="group flex-shrink-0 w-[42%] sm:w-auto flex flex-col gap-2">
+              <span className="relative block aspect-square overflow-hidden bg-cream">
+                <Image src={c.image} alt={c.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 42vw, 16vw" />
+              </span>
+              <span className="font-body text-charcoal group-hover:underline underline-offset-4" style={{ fontSize: '14px' }}>
+                {c.name} →
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* ── PRODUCTS ── */}
-      <section id="products" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="mb-10 sm:mb-14 flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <div className="h-px bg-border flex-1 max-w-[40px]" />
-            <p className="font-body text-terracotta uppercase font-medium tracking-[0.22em]" style={{ fontSize: '10px' }}>
-              Trending now
-            </p>
-          </div>
-          <h2 className="font-display italic text-charcoal leading-tight" style={{ fontSize: 'clamp(30px, 5vw, 42px)' }}>
-            This week’s<br className="sm:hidden" /> best finds.
-          </h2>
+      {/* ── TRENDING NOW ── */}
+      <section id="products" className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="flex items-end justify-between gap-4 mb-6">
+          <h2 className={sectionTitle} style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>Trending now</h2>
+          <Link href="/shop" className="font-body text-charcoal underline underline-offset-4 whitespace-nowrap" style={{ fontSize: '14px' }}>
+            View all
+          </Link>
         </div>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6">
           {products.map((p) => (
-            <div key={p.id} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-              <ProductCard
-                id={p.id}
-                slug={p.slug}
-                name={p.name}
-                price={p.price}
-                image={p.images[0]}
-                trustLine={p.trustLine}
-                category={p.category}
-              />
-            </div>
+            <ProductCard key={p.id} id={p.id} slug={p.slug} name={p.name} price={p.price} image={p.images[0]} hoverImage={hoverPhoto(p)} />
           ))}
         </div>
       </section>
 
       {/* ── WHY US ── */}
-      <section className="bg-cream border-y border-border/60">
-        <ul className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
+      <section className="bg-cream">
+        <ul className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
           {WHY_US.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
-              <span className="w-11 h-11 bg-warm-white flex items-center justify-center">
-                <Icon size={20} strokeWidth={1.5} className="text-terracotta" aria-hidden="true" />
-              </span>
-              <h3 className="font-display text-charcoal" style={{ fontSize: '20px' }}>{title}</h3>
+            <li key={title} className="flex flex-col items-center text-center gap-3">
+              <Icon size={28} strokeWidth={1.25} className="text-charcoal" aria-hidden="true" />
+              <h3 className="font-display font-semibold text-charcoal" style={{ fontSize: '17px' }}>{title}</h3>
               <p className="font-body text-charcoal-light max-w-xs" style={{ fontSize: '14px', lineHeight: '1.6' }}>{body}</p>
             </li>
           ))}
@@ -144,9 +121,9 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <h2 className="font-display italic text-charcoal mb-8" style={{ fontSize: 'clamp(28px, 5vw, 38px)' }}>
-          Good to know
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h2 className={`${sectionTitle} text-center mb-8`} style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>
+          Frequently asked questions
         </h2>
         <div className="border-t border-border">
           {FAQ.map(({ q, a }) => (

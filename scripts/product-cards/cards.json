@@ -151,5 +151,209 @@
         ]
       ]
     }
+  },
+  "3-in-1-pet-steam-brush": {
+    "eyebrow": "Pet care",
+    "benefits": {
+      "headline": "Less fur. Calmer pet.",
+      "points": [
+        "A fine mist settles loose fur and static",
+        "Soft teeth give a gentle massage",
+        "Shed hair stays in the brush, not on the couch",
+        "For cats and dogs, short or long hair"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Fill",
+          "Add a little water to the tank"
+        ],
+        [
+          "Brush",
+          "Mist and brush in the direction of the fur"
+        ],
+        [
+          "Lift",
+          "Pull the loose hair off the teeth and bin it"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Brushing, upgraded",
+      "left": "Ordinary brush",
+      "right": "Pet steam brush",
+      "rows": [
+        [
+          "Static",
+          "Fur flies everywhere",
+          "Settled by the mist"
+        ],
+        [
+          "Feel",
+          "Can tug and scratch",
+          "Soft massage teeth"
+        ],
+        [
+          "Loose hair",
+          "Ends up on the couch",
+          "Stays in the brush"
+        ]
+      ]
+    }
+  },
+  "mini-bag-sealer-2-pack": {
+    "eyebrow": "Kitchen",
+    "benefits": {
+      "headline": "No more stale chips.",
+      "points": [
+        "Seals snack and food bags in one slide",
+        "Built-in cutter to open them neatly",
+        "Rechargeable and pocket-sized",
+        "Two in the box"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Charge",
+          "Top it up with the USB cable"
+        ],
+        [
+          "Slide",
+          "Run it along the top of the bag"
+        ],
+        [
+          "Sealed",
+          "Open it again with the built-in cutter"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Ditch the bag clips",
+      "left": "Bag clip",
+      "right": "Mini bag sealer",
+      "rows": [
+        [
+          "Seal",
+          "Air still gets in",
+          "Sealed shut"
+        ],
+        [
+          "Size",
+          "Bulky in the drawer",
+          "Pocket-sized"
+        ],
+        [
+          "Opening",
+          "Scissors needed",
+          "Built-in cutter"
+        ]
+      ]
+    }
+  },
+  "ice-face-roller": {
+    "eyebrow": "Beauty",
+    "benefits": {
+      "headline": "The five-minute reset.",
+      "points": [
+        "Fill with water, freeze, and roll",
+        "Cooling roll for face, under-eyes and neck",
+        "Silicone holder keeps your hands warm",
+        "Reusable every day"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Fill",
+          "Fill the mould with water"
+        ],
+        [
+          "Freeze",
+          "Pop it in the freezer overnight"
+        ],
+        [
+          "Roll",
+          "Glide over face, eyes and neck"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Better than a bag of ice",
+      "left": "Ice in a cloth",
+      "right": "Ice face roller",
+      "rows": [
+        [
+          "Your hands",
+          "Frozen fingers",
+          "Silicone grip"
+        ],
+        [
+          "Mess",
+          "Drips everywhere",
+          "Holds the ice in place"
+        ],
+        [
+          "Use",
+          "Once and done",
+          "Refill and reuse"
+        ]
+      ]
+    }
+  },
+  "rechargeable-lint-shaver": {
+    "eyebrow": "Home cleaning",
+    "benefits": {
+      "headline": "Old jerseys, new again.",
+      "points": [
+        "Trims fuzz and pills off fabric",
+        "Fluff collects in an easy-empty tray",
+        "Rechargeable, with an LED charge display",
+        "Works on clothes, couches and blankets"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Charge",
+          "Top it up with the USB cable"
+        ],
+        [
+          "Glide",
+          "Move it gently over the bobbly fabric"
+        ],
+        [
+          "Empty",
+          "Tip the fluff out of the tray"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Smarter than a razor",
+      "left": "Disposable razor",
+      "right": "Lint shaver",
+      "rows": [
+        [
+          "Risk",
+          "Can cut the fabric",
+          "Guarded blades"
+        ],
+        [
+          "Mess",
+          "Fluff everywhere",
+          "Caught in the tray"
+        ],
+        [
+          "Big areas",
+          "Slow going",
+          "Couches and blankets"
+        ]
+      ]
+    }
   }
 }

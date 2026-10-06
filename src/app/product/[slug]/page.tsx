@@ -8,6 +8,7 @@ import DeliveryEstimate from './DeliveryEstimate'
 import StickyAddToCart from './StickyAddToCart'
 import { ChevronDown, ShieldCheck, RotateCcw, Truck } from 'lucide-react'
 import ProductCard from '@/components/ProductCard'
+import { hoverPhoto } from '@/lib/catalog'
 import { absoluteImageUrl } from '@/lib/images'
 
 const TRUST_BADGES = [
@@ -66,7 +67,7 @@ export default async function ProductPage({ params }: Props) {
 
   const related = products
     .filter((p) => p.slug !== product.slug)
-    .slice(0, 3)
+    .slice(0, 4)
 
   const storeUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
   const productSchema = {
@@ -116,7 +117,7 @@ export default async function ProductPage({ params }: Props) {
               <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
                 {product.category}
               </p>
-              <h1 className="font-display text-charcoal leading-snug" style={{ fontSize: '32px' }}>
+              <h1 className="font-display font-semibold text-charcoal tracking-tight leading-snug" style={{ fontSize: '30px' }}>
                 {product.seo.h1}
               </h1>
               <div className="flex items-baseline gap-3">
@@ -196,17 +197,12 @@ export default async function ProductPage({ params }: Props) {
       <StickyAddToCart product={product} />
 
       {/* You might also like */}
-      <section className="bg-cream border-t border-border mt-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-          <div className="mb-10 flex flex-col gap-2">
-            <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
-              More finds
-            </p>
-            <h2 className="font-display text-charcoal" style={{ fontSize: '28px' }}>
-              You might also like
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <section className="border-t border-border mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <h2 className="font-display font-semibold text-charcoal tracking-tight lowercase mb-6" style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>
+            You might also like
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6">
             {related.map((p) => (
               <ProductCard
                 key={p.id}
@@ -215,8 +211,7 @@ export default async function ProductPage({ params }: Props) {
                 name={p.name}
                 price={p.price}
                 image={p.images[0]}
-                trustLine={p.trustLine}
-                category={p.category}
+                hoverImage={hoverPhoto(p)}
               />
             ))}
           </div>

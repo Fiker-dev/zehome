@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Playfair_Display } from 'next/font/google'
+import { DM_Sans, Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
@@ -13,11 +13,10 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
-const playfair = Playfair_Display({
+const heading = Inter({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  weight: ['500', '600', '700'],
+  variable: '--font-heading',
   display: 'swap',
 })
 
@@ -56,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en-ZA" className={`${dmSans.variable} ${playfair.variable}`}>
+    <html lang="en-ZA" className={`${dmSans.variable} ${heading.variable}`}>
       <body className="bg-background text-charcoal font-body min-h-screen flex flex-col text-[15px] leading-[1.6]">
         <script
           type="application/ld+json"

@@ -1,27 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FDFCFA;
+  --background: #FBF9F6;
 }
 
 @theme inline {
-  /* Ze Home Finds — Yemi design system */
-  --color-background: #FDFCFA;
-  --color-cream:      #F5F0E8;
+  /* Ze Home Finds — Shopify (Dawn) structure, rhode-inspired soft warm neutrals */
+  --color-background: #FBF9F6;
+  --color-cream:      #F1ECE4;
   --color-warm-white: #FFFFFF;
-  --color-charcoal:   #1A1A1A;
-  --color-warm-gray:  #8A8278;
-  --color-terracotta: #C4622D;
-  --color-terracotta-dark: #A8521F;
-  --color-border:     #E2DDD4;
+  --color-charcoal:   #1C1C1C;
+  --color-warm-gray:  #8A8178;
+  --color-terracotta: #1C1C1C;
+  --color-terracotta-dark: #4A4540;
+  --color-border:     #E7E0D6;
+  --color-sale:       #B4261A;
 
-  /* Legacy aliases — keep components compiling during transition */
-  --color-charcoal-light: #4A4040;
-  --color-charcoal-muted: #8A8278;
-  --color-warm-white-alt: #FDFCFA;
+  /* Legacy aliases — keep components compiling */
+  --color-charcoal-light: #4A4540;
+  --color-charcoal-muted: #8A8178;
+  --color-warm-white-alt: #FFFFFF;
 
   /* Fonts — resolved by next/font variables in layout */
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-heading);
   --font-body:    var(--font-dm-sans);
 }
 
@@ -38,6 +39,11 @@ body {
 }
 
 ::selection {
-  background: #C4622D22;
+  background: #12121222;
   color: #1A1A1A;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }

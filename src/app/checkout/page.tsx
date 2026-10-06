@@ -54,7 +54,7 @@ export default function CheckoutPage() {
         </h1>
         <Link
           href="/"
-          className="bg-terracotta text-warm-white px-8 py-3 rounded text-sm font-medium hover:bg-terracotta-dark transition-colors"
+          className="bg-terracotta text-warm-white px-8 py-3 rounded-full text-sm font-medium hover:bg-terracotta-dark transition-colors"
         >
           Shop now
         </Link>
@@ -274,7 +274,7 @@ export default function CheckoutPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-terracotta text-warm-white py-4 px-8 rounded text-base font-medium tracking-wide hover:bg-terracotta-dark transition-colors disabled:opacity-60"
+          className="w-full bg-terracotta text-warm-white py-4 px-8 rounded-full text-base font-medium tracking-wide hover:bg-terracotta-dark transition-colors disabled:opacity-60"
         >
           {loading ? 'Preparing payment…' : 'Complete my order'}
         </button>

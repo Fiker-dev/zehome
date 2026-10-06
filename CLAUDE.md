@@ -41,7 +41,8 @@ Target market: SA local — Johannesburg and surrounding areas
   retail starts around R399.
 - Live catalogue (6 Oct 2026, only products on current TikTok viral lists):
   flame aroma diffuser R549, water ripple crystal lamp R449, self-cleaning pet
-  hair remover 2-pack R399. Dropped: tumbler (trend peaked), motion light (not
+  hair remover 2-pack R399, 3-in-1 pet steam brush R299, mini bag sealer
+  2-pack R349, ice face roller R299, rechargeable lint shaver R449. Dropped: tumbler (trend peaked), motion light (not
   trending), sunset lamp (needs R699, undercut locally). Photos are stored in
   public/images/products/ (GitHub Action copies any remote CJ image), branded
   cards via `npm run cards`, share image via `npm run og`.
@@ -135,14 +136,16 @@ merchant_id, merchant_key, return_url, cancel_url, notify_url,
 name_first, name_last, email_address, m_payment_id,
 amount (2 decimals e.g. "350.00"), item_name, signature
 
-## Design (Yemi)
-Palette:     Warm white #FDFCFA, cream #F5F0E8, charcoal #1A1A1A,
-             terracotta accent #C4622D
-Typography:  Playfair Display (headings), Inter (body)
-Feel:        Premium boutique. Not a dropship store.
+## Design (Yemi) — updated 6 Oct 2026
+Structure:   Shopify Dawn-style store: announcement bar, lowercase wordmark,
+             full nav + mobile drawer, /shop collection with category chips
+             and sort, 2/4-column product grid with hover photo + quick add,
+             multi-column footer.
+Look:        rhode-inspired: warm off-white #FBF9F6, soft cream tiles #F1ECE4,
+             charcoal #1C1C1C, greige #8A8178, border #E7E0D6. Inter
+             (headings, lowercase) + DM Sans (body). Black pill buttons.
 Mobile:      First. All TikTok traffic is mobile.
-Images:      Full-bleed hero. Lifestyle over product shots.
-Avoid:       Blue CTA buttons, generic gradients, stock aesthetics.
+Avoid:       Copying any brand's logo, photos or text; fake reviews or timers.
 
 ## Copy (Felix)
 Hero H1:       "Change your whole room for R400"

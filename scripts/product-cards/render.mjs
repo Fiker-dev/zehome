@@ -20,12 +20,12 @@ const { chromium } = require(require.resolve('playwright', { paths: [root.pathna
 const W = 1080
 const H = 1080
 const C = {
-  bg: '#FDFCFA',
-  cream: '#F5F0E8',
-  charcoal: '#1A1A1A',
+  bg: '#FBF9F6',
+  cream: '#F1ECE4',
+  charcoal: '#1C1C1C',
   gray: '#8A8278',
-  terracotta: '#C4622D',
-  border: '#E2DDD4',
+  terracotta: '#1C1C1C',
+  border: '#E7E0D6',
 }
 
 const esc = (s) =>
@@ -36,19 +36,19 @@ const check = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" strok
 const shell = (eyebrow, body) => `<!doctype html>
 <html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=block" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { width: ${W}px; height: ${H}px; background: ${C.bg}; color: ${C.charcoal};
          font-family: 'DM Sans', sans-serif; display: flex; flex-direction: column; }
   .top { padding: 56px 72px 0; display: flex; justify-content: space-between; align-items: baseline; }
-  .brand { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; letter-spacing: 0.5px; }
+  .brand { font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 600; letter-spacing: -1px; text-transform: lowercase; }
   .eyebrow { color: ${C.terracotta}; font-size: 22px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
   .main { flex: 1; padding: 0 72px; display: flex; flex-direction: column; justify-content: center; }
-  h1 { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 68px; line-height: 1.05; margin-bottom: 40px; }
+  h1 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 66px; line-height: 1.05; letter-spacing: -2px; text-transform: lowercase; margin-bottom: 40px; }
   .foot { background: ${C.charcoal}; color: #fff; padding: 28px 72px; display: flex; justify-content: space-between;
           font-size: 22px; letter-spacing: 1px; }
-  .foot b { color: ${C.terracotta}; font-weight: 700; }
+  .foot b { color: #fff; font-weight: 700; }
 </style></head>
 <body>
   <div class="top"><span class="brand">Ze Home Finds</span><span class="eyebrow">${esc(eyebrow)}</span></div>
@@ -74,8 +74,8 @@ const steps = ({ headline, items }) => `
     ${items
       .map(
         ([title, text], i) => `<div style="display:flex;gap:40px;align-items:flex-start;padding:26px 0;${i ? `border-top:2px solid ${C.border}` : ''}">
-      <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:88px;line-height:0.85;color:${C.terracotta};width:72px">${i + 1}</span>
-      <div><div style="font-family:'Playfair Display',serif;font-size:44px;margin-bottom:8px">${esc(title)}</div>
+      <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:80px;line-height:0.85;color:${C.terracotta};width:72px">${i + 1}</span>
+      <div><div style="font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-1px;font-size:42px;margin-bottom:8px">${esc(title)}</div>
       <div style="font-size:29px;color:${C.gray};line-height:1.35">${esc(text)}</div></div></div>`
       )
       .join('')}

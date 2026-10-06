@@ -22,20 +22,20 @@ const tile = (p, cls) =>
   `<div class="${cls}" style="background-image:url('${dataUri(p.images[0])}')"><span>R${p.price}</span></div>`
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=DM+Sans:wght@500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=DM+Sans:wght@500;700&display=block" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { width: 1200px; height: 630px; background: #F5F0E8; color: #1A1A1A; font-family: 'DM Sans', sans-serif;
+  body { width: 1200px; height: 630px; background: #F1ECE4; color: #1C1C1C; font-family: 'DM Sans', sans-serif;
          display: grid; grid-template-columns: 540px 1fr; gap: 40px; padding: 48px 56px; }
   .copy { display: flex; flex-direction: column; justify-content: center; gap: 22px; }
-  .brand { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 30px; }
-  h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: 64px; line-height: 1.05; }
-  .tag { color: #C4622D; font-weight: 700; font-size: 18px; letter-spacing: 4px; text-transform: uppercase; }
+  .brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px; letter-spacing: -1px; text-transform: lowercase; }
+  h1 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 62px; line-height: 1.05; letter-spacing: -2px; text-transform: lowercase; }
+  .tag { color: #8A8178; font-weight: 700; font-size: 18px; letter-spacing: 4px; text-transform: uppercase; }
   .sub { font-size: 22px; color: #4A4040; }
   .grid { display: grid; grid-template-columns: 3fr 2fr; grid-template-rows: 1fr 1fr; gap: 12px; }
   .grid div { background-size: cover; background-position: center; position: relative; }
   .big { grid-row: span 2; }
-  .grid span { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,.95); padding: 5px 12px; font-weight: 700; font-size: 18px; }
+  .grid span { position: absolute; left: 10px; bottom: 10px; background: rgba(255,255,255,.95); padding: 5px 14px; border-radius: 999px; font-weight: 700; font-size: 18px; }
 </style></head><body>
   <div class="copy">
     <div class="brand">Ze Home Finds</div>
