@@ -38,9 +38,15 @@ Target market: SA local — Johannesburg and surrounding areas
   items ship from CN. To ZA: "CJPacket Ordinary" 7-13 days for non-electric
   goods; anything with a battery/electronics is forced onto "CJPacket
   Sensitive" 13-30 days. Shipping is ~R200+ per parcel even at ~240 g, so
-  retail starts around R399. Shortlist + margins was given to the owner; awaiting
-  their pick before touching products.json. Vercel connector still lists 0
-  projects (team visible), so the owner must re-grant project access.
+  retail starts around R399.
+- Live catalogue (6 Oct 2026, only products on current TikTok viral lists):
+  flame aroma diffuser R549, water ripple crystal lamp R449, self-cleaning pet
+  hair remover 2-pack R399. Dropped: tumbler (trend peaked), motion light (not
+  trending), sunset lamp (needs R699, undercut locally). Photos are stored in
+  public/images/products/ (GitHub Action copies any remote CJ image), branded
+  cards via `npm run cards`, share image via `npm run og`.
+- Vercel connector works without teamId (team-scoped calls return nothing).
+  Previews are behind Vercel Authentication; Claude cannot open them.
 
 ## Tech Stack
 - Framework: Next.js 14 (App Router)

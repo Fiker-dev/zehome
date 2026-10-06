@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Ze Home Finds',
     locale: 'en_ZA',
     type: 'website',
-    images: [{ url: '/images/og-lamp.jpg', width: 1200, height: 630, alt: 'Ze Home Finds — Trending Finds SA' }],
+    images: [{ url: '/images/og-home.jpg', width: 1200, height: 630, alt: 'Ze Home Finds — the viral finds everyone is talking about' }],
   },
 }
 

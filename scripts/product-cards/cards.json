@@ -13,9 +13,18 @@
     "steps": {
       "headline": "How it works",
       "items": [
-        ["Swipe", "Brush it back and forth over the fabric"],
-        ["Collect", "The hair gathers inside the chamber"],
-        ["Empty", "Press the button and tip it into the bin"]
+        [
+          "Swipe",
+          "Brush it back and forth over the fabric"
+        ],
+        [
+          "Collect",
+          "The hair gathers inside the chamber"
+        ],
+        [
+          "Empty",
+          "Press the button and tip it into the bin"
+        ]
       ]
     },
     "compare": {
@@ -23,39 +32,21 @@
       "left": "Sticky lint roller",
       "right": "Ze pet hair remover",
       "rows": [
-        ["Refills", "Keep buying sheets", "Never"],
-        ["Waste", "Sheets in the bin", "Only the hair"],
-        ["Cost over time", "Keeps adding up", "Buy once"]
-      ]
-    }
-  },
-  "gradient-tumbler-780ml": {
-    "eyebrow": "780ml tumbler",
-    "benefits": {
-      "headline": "One cup. All day.",
-      "points": [
-        "780ml, so fewer refills through the day",
-        "Double-wall stainless steel",
-        "Keeps iced drinks cold and coffee hot",
-        "Carry handle, lid and straw"
-      ]
-    },
-    "steps": {
-      "headline": "Made for your day",
-      "items": [
-        ["Fill", "Ice, water, smoothie or coffee"],
-        ["Seal", "Lid on, straw in"],
-        ["Take it", "Desk, car, gym or school run"]
-      ]
-    },
-    "compare": {
-      "headline": "Upgrade your takeaway cup",
-      "left": "Takeaway cup",
-      "right": "Ze tumbler",
-      "rows": [
-        ["Size", "Around 350ml", "780ml"],
-        ["Hot or cold", "Not for long", "Double-wall insulated"],
-        ["Reusable", "Straight to the bin", "Every day"]
+        [
+          "Refills",
+          "Keep buying sheets",
+          "Never"
+        ],
+        [
+          "Waste",
+          "Sheets in the bin",
+          "Only the hair"
+        ],
+        [
+          "Cost over time",
+          "Keeps adding up",
+          "Buy once"
+        ]
       ]
     }
   },
@@ -73,9 +64,18 @@
     "steps": {
       "headline": "How it works",
       "items": [
-        ["Charge", "Top it up with the USB cable"],
-        ["Pick", "Choose one of 16 colours on the remote"],
-        ["Relax", "Lights off. Watch the ripples move"]
+        [
+          "Charge",
+          "Top it up with the USB cable"
+        ],
+        [
+          "Pick",
+          "Choose one of 16 colours on the remote"
+        ],
+        [
+          "Relax",
+          "Lights off. Watch the ripples move"
+        ]
       ]
     },
     "compare": {
@@ -83,9 +83,21 @@
       "left": "Ordinary night light",
       "right": "Ripple crystal lamp",
       "rows": [
-        ["Effect", "Flat glow", "Moving ripples"],
-        ["Colours", "One", "16"],
-        ["Cable", "Always plugged in", "Rechargeable"]
+        [
+          "Effect",
+          "Flat glow",
+          "Moving ripples"
+        ],
+        [
+          "Colours",
+          "One",
+          "16"
+        ],
+        [
+          "Cable",
+          "Always plugged in",
+          "Rechargeable"
+        ]
       ]
     }
   },
@@ -103,9 +115,18 @@
     "steps": {
       "headline": "How it works",
       "items": [
-        ["Fill", "Water and a few drops of your oil"],
-        ["Plug in", "Connect it with the USB cable"],
-        ["Unwind", "Pick a flame colour and breathe in"]
+        [
+          "Fill",
+          "Water and a few drops of your oil"
+        ],
+        [
+          "Plug in",
+          "Connect it with the USB cable"
+        ],
+        [
+          "Unwind",
+          "Pick a flame colour and breathe in"
+        ]
       ]
     },
     "compare": {
@@ -113,39 +134,21 @@
       "left": "Scented candle",
       "right": "Flame diffuser",
       "rows": [
-        ["Open flame", "Yes", "No"],
-        ["Scent", "Burns down", "Refill with any oil"],
-        ["Colours", "One", "Several"]
-      ]
-    }
-  },
-  "motion-sensor-wood-light-2-pack": {
-    "eyebrow": "Smart lighting",
-    "benefits": {
-      "headline": "Walk past. It lights up.",
-      "points": [
-        "Motion sensor: on when you walk by, off when you leave",
-        "Magnetic mount, with no wiring or electrician",
-        "USB rechargeable, so it works through load-shedding",
-        "Walnut wood-grain finish, two in the box"
-      ]
-    },
-    "steps": {
-      "headline": "How it works",
-      "items": [
-        ["Charge", "Top it up with the USB cable"],
-        ["Mount", "Fix the magnetic mount and click it on"],
-        ["Walk by", "It switches on by itself"]
-      ]
-    },
-    "compare": {
-      "headline": "No electrician needed",
-      "left": "Wired light",
-      "right": "Ze motion light",
-      "rows": [
-        ["Installation", "Call an electrician", "Stick it up"],
-        ["Load-shedding", "Goes dark", "Keeps going on battery"],
-        ["Switching on", "Find the switch", "Turns on by itself"]
+        [
+          "Open flame",
+          "Yes",
+          "No"
+        ],
+        [
+          "Scent",
+          "Burns down",
+          "Refill with any oil"
+        ],
+        [
+          "Colours",
+          "One",
+          "Several"
+        ]
       ]
     }
   }

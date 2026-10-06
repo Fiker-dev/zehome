@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
 import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import ProductCard from '@/components/ProductCard'
@@ -9,45 +8,65 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
+const heroProducts = products.slice(0, 3)
+
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative bg-charcoal flex flex-col items-center justify-center overflow-hidden" style={{ minHeight: '70vh' }}>
-        <Image
-          src="/images/lamp-lifestyle-hero.jpg"
-          alt="Warm mood lighting in a South African home"
-          fill
-          className="object-cover opacity-40"
-          priority
-          sizes="100vw"
-          quality={85}
-        />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center flex flex-col items-center gap-5 sm:gap-6">
-          <h1
-            className="font-display italic text-white leading-tight"
-            style={{ fontSize: 'clamp(48px, 8vw, 64px)' }}
-          >
-            The finds everyone’s talking about
-          </h1>
-          <p className="font-body text-white max-w-md" style={{ fontSize: '16px', opacity: 0.8 }}>
-            Trending products, hand-picked and delivered free to your door across South Africa
-          </p>
-          <Link
-            href="#products"
-            className="inline-flex items-center justify-center border border-white/70 text-white hover:bg-white hover:text-charcoal font-body font-medium uppercase tracking-[0.16em] transition-all duration-300 w-full sm:w-auto px-10 min-h-[50px]"
-            style={{ fontSize: '12px' }}
-          >
-            Shop the finds
-          </Link>
-        </div>
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white opacity-50 animate-bounce">
-          <ChevronDown size={20} strokeWidth={1.5} />
+      <section className="bg-cream overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
+          <div className="flex flex-col gap-5 sm:gap-6 items-center md:items-start text-center md:text-left">
+            <p className="font-body text-terracotta uppercase font-medium tracking-[0.22em]" style={{ fontSize: '11px' }}>
+              Viral finds, delivered
+            </p>
+            <h1
+              className="font-display italic text-charcoal leading-[1.05]"
+              style={{ fontSize: 'clamp(40px, 7vw, 60px)' }}
+            >
+              The finds everyone’s talking about
+            </h1>
+            <p className="font-body text-charcoal-light max-w-md" style={{ fontSize: '16px', lineHeight: '1.6' }}>
+              Hand-picked from what’s trending on TikTok right now, with free delivery to your door across South Africa.
+            </p>
+            <Link
+              href="#products"
+              className="inline-flex items-center justify-center bg-charcoal hover:bg-terracotta text-white font-body font-medium uppercase tracking-[0.16em] transition-colors duration-300 w-full sm:w-auto px-10 min-h-[52px]"
+              style={{ fontSize: '12px' }}
+            >
+              Shop the finds
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-5 grid-rows-2 gap-3 aspect-[5/4]">
+            {heroProducts.map((p, i) => (
+              <Link
+                key={p.id}
+                href={`/product/${p.slug}`}
+                className={`group relative overflow-hidden bg-warm-white ${i === 0 ? 'col-span-3 row-span-2' : 'col-span-2'}`}
+              >
+                <Image
+                  src={p.images[0]}
+                  alt={p.seo.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes={i === 0 ? '(min-width: 768px) 330px, 60vw' : '(min-width: 768px) 220px, 40vw'}
+                  priority
+                />
+                <span
+                  className="absolute left-2 bottom-2 bg-warm-white/95 text-charcoal font-body font-medium px-2.5 py-1"
+                  style={{ fontSize: '12px' }}
+                >
+                  R{p.price}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ── TRUST BAR ── */}
-      <section className="bg-cream border-y border-border/60">
+      <section className="bg-warm-white border-y border-border/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3.5">
           <ul className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-1 sm:gap-12">
             <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>

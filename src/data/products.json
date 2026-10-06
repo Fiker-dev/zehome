@@ -1,82 +1,42 @@
 [
   {
-    "id": "self-cleaning-pet-hair-remover-2-pack",
-    "slug": "self-cleaning-pet-hair-remover-2-pack",
-    "name": "Self-Cleaning Pet Hair Remover (2-Pack)",
-    "category": "Home Cleaning",
-    "price": 399,
+    "id": "flame-aroma-diffuser",
+    "slug": "flame-aroma-diffuser",
+    "name": "Flame Aroma Diffuser",
+    "category": "Home Fragrance",
+    "price": 549,
     "currency": "ZAR",
     "inStock": true,
-    "deliveryDays": "8-16 days",
-    "description": "Swipe it back and forth over the couch and watch the fur come up. No sticky sheets, no refills, no batteries. All the hair collects in the built-in chamber — press the button to open it and tip it straight into the bin without touching a thing. It works on couches, beds, blankets and clothes. You get two: one for the lounge, one for the car or the cupboard by the door.",
+    "deliveryDays": "15-33 days",
+    "description": "It looks like a real flame. It's cool mist. Add water and a few drops of your favourite oil, and the Flame Aroma Diffuser fills the room with scent while a soft, flickering flame effect dances on top. Switch between colours to match the mood. 130ml tank, USB powered, and nothing to light.",
     "bullets": [
-      "Lifts pet hair and fluff off couches, beds, blankets and clothes",
-      "Self-cleaning — hair collects in the chamber, one press to empty",
-      "Reusable forever — no sticky sheets, no refills, no batteries",
-      "2-pack in blush pink — one for home, one for the car",
-      "Free delivery across South Africa — arrives in 8-16 days"
+      "Realistic flame effect on cool, scented mist",
+      "Multiple flame colours to match the mood",
+      "130ml tank — add water and a few drops of oil",
+      "USB powered — no open flame, nothing to light",
+      "Free delivery across South Africa — arrives in 15-33 days"
     ],
     "images": [
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-3.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/benefits.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/how-it-works.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/compare.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-4.jpg",
-      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-1.png"
+      "/images/products/flame-aroma-diffuser/photo-1.jpg",
+      "/images/products/flame-aroma-diffuser/benefits.jpg",
+      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
+      "/images/products/flame-aroma-diffuser/compare.jpg",
+      "/images/products/flame-aroma-diffuser/photo-2.jpg"
     ],
-    "trustLine": "No refills. No batteries. Just swipe and empty.",
+    "trustLine": "All the mood of a flame. None of the fire.",
     "keywords": [
-      "pet hair remover south africa",
-      "reusable lint roller SA",
-      "dog hair remover couch",
-      "cat hair remover roller",
-      "self cleaning pet hair remover"
+      "flame diffuser south africa",
+      "flame humidifier SA",
+      "aroma diffuser with flame effect",
+      "essential oil diffuser SA",
+      "tiktok flame diffuser"
     ],
     "seo": {
-      "title": "Self-Cleaning Pet Hair Remover 2-Pack SA | Ze Home Finds",
-      "description": "Swipe pet hair off your couch, bed and clothes. Reusable, self-cleaning, no refills or batteries. 2-pack with free delivery across South Africa.",
-      "ogTitle": "The fur comes right off. Every time.",
-      "alt": "Pink self-cleaning pet hair remover roller lifting dog hair off a couch",
-      "h1": "Self-Cleaning Pet Hair Remover"
-    }
-  },
-  {
-    "id": "gradient-tumbler-780ml",
-    "slug": "gradient-tumbler-780ml",
-    "name": "780ml Insulated Tumbler with Handle",
-    "category": "Drinkware",
-    "price": 649,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "8-16 days",
-    "description": "The cup that goes everywhere with you. Double-wall stainless steel keeps iced drinks cold and coffee hot, and the 780ml size means fewer refills through the day. A built-in carry handle makes it easy to grab on the way out, and the lid and straw are included. Finished in soft pink with a black handle — as good on your desk as it is in the car.",
-    "bullets": [
-      "780ml — big enough to last the morning",
-      "Double-wall stainless steel keeps drinks hot or cold",
-      "Built-in carry handle",
-      "Lid and straw included",
-      "Free delivery across South Africa — arrives in 8-16 days"
-    ],
-    "images": [
-      "/images/products/gradient-tumbler-780ml/photo-1.jpg",
-      "/images/products/gradient-tumbler-780ml/benefits.jpg",
-      "/images/products/gradient-tumbler-780ml/how-it-works.jpg",
-      "/images/products/gradient-tumbler-780ml/compare.jpg"
-    ],
-    "trustLine": "Stainless steel. Hot or cold. Carry handle built in.",
-    "keywords": [
-      "insulated tumbler with handle south africa",
-      "stanley cup dupe SA",
-      "insulated tumbler 780ml",
-      "aesthetic tumbler SA",
-      "stainless steel tumbler with lid"
-    ],
-    "seo": {
-      "title": "780ml Insulated Tumbler with Handle SA | Ze Home Finds",
-      "description": "Double-wall stainless steel tumbler with carry handle, lid and straw. 780ml, keeps drinks hot or cold. Soft pink. Free delivery across South Africa.",
-      "ogTitle": "The cup that goes everywhere",
-      "alt": "Soft pink 780ml insulated tumbler with black carry handle and lid",
-      "h1": "780ml Insulated Tumbler"
+      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
+      "description": "Cool-mist aroma diffuser with a realistic flickering flame effect. Multiple colours, 130ml tank, USB powered. Free delivery across South Africa.",
+      "ogTitle": "It looks like fire. It's mist.",
+      "alt": "Black flame aroma diffuser with a glowing orange flame effect in the mist",
+      "h1": "Flame Aroma Diffuser"
     }
   },
   {
@@ -119,84 +79,44 @@
     }
   },
   {
-    "id": "flame-aroma-diffuser",
-    "slug": "flame-aroma-diffuser",
-    "name": "Flame Aroma Diffuser",
-    "category": "Home Fragrance",
-    "price": 549,
+    "id": "self-cleaning-pet-hair-remover-2-pack",
+    "slug": "self-cleaning-pet-hair-remover-2-pack",
+    "name": "Self-Cleaning Pet Hair Remover (2-Pack)",
+    "category": "Home Cleaning",
+    "price": 399,
     "currency": "ZAR",
     "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "It looks like a real flame. It's cool mist. Add water and a few drops of your favourite oil, and the Flame Aroma Diffuser fills the room with scent while a soft, flickering flame effect dances on top. Switch between colours to match the mood. 130ml tank, USB powered, and nothing to light.",
+    "deliveryDays": "8-16 days",
+    "description": "Swipe it back and forth over the couch and watch the fur come up. No sticky sheets, no refills, no batteries. All the hair collects in the built-in chamber — press the button to open it and tip it straight into the bin without touching a thing. It works on couches, beds, blankets and clothes. You get two: one for the lounge, one for the car or the cupboard by the door.",
     "bullets": [
-      "Realistic flame effect on cool, scented mist",
-      "Multiple flame colours to match the mood",
-      "130ml tank — add water and a few drops of oil",
-      "USB powered — no open flame, nothing to light",
-      "Free delivery across South Africa — arrives in 15-33 days"
+      "Lifts pet hair and fluff off couches, beds, blankets and clothes",
+      "Self-cleaning — hair collects in the chamber, one press to empty",
+      "Reusable forever — no sticky sheets, no refills, no batteries",
+      "2-pack in blush pink — one for home, one for the car",
+      "Free delivery across South Africa — arrives in 8-16 days"
     ],
     "images": [
-      "/images/products/flame-aroma-diffuser/photo-1.jpg",
-      "/images/products/flame-aroma-diffuser/benefits.jpg",
-      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
-      "/images/products/flame-aroma-diffuser/compare.jpg",
-      "/images/products/flame-aroma-diffuser/photo-2.jpg"
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-3.jpg",
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/benefits.jpg",
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/how-it-works.jpg",
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/compare.jpg",
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-4.jpg",
+      "/images/products/self-cleaning-pet-hair-remover-2-pack/photo-1.png"
     ],
-    "trustLine": "All the mood of a flame. None of the fire.",
+    "trustLine": "No refills. No batteries. Just swipe and empty.",
     "keywords": [
-      "flame diffuser south africa",
-      "flame humidifier SA",
-      "aroma diffuser with flame effect",
-      "essential oil diffuser SA",
-      "tiktok flame diffuser"
+      "pet hair remover south africa",
+      "reusable lint roller SA",
+      "dog hair remover couch",
+      "cat hair remover roller",
+      "self cleaning pet hair remover"
     ],
     "seo": {
-      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
-      "description": "Cool-mist aroma diffuser with a realistic flickering flame effect. Multiple colours, 130ml tank, USB powered. Free delivery across South Africa.",
-      "ogTitle": "It looks like fire. It's mist.",
-      "alt": "Black flame aroma diffuser with a glowing orange flame effect in the mist",
-      "h1": "Flame Aroma Diffuser"
-    }
-  },
-  {
-    "id": "motion-sensor-wood-light-2-pack",
-    "slug": "motion-sensor-wood-light-2-pack",
-    "name": "Motion Sensor Wood Light (2-Pack)",
-    "category": "Smart Lighting",
-    "price": 549,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "15-33 days",
-    "description": "Walk past and it lights up. Walk away and it switches off. These walnut-finish lights stick on with a magnetic mount, so you can put them in the passage, cupboards, stairs or next to the bed — no wiring, no electrician. USB rechargeable, so they keep working when the power goes out. Two in the box.",
-    "bullets": [
-      "Motion sensor — lights up when you walk past, off when you leave",
-      "Magnetic mount — stick it up anywhere, no wiring",
-      "USB rechargeable — keeps working through load-shedding",
-      "Walnut wood-grain finish that blends into any room",
-      "Free delivery across South Africa — arrives in 15-33 days"
-    ],
-    "images": [
-      "/images/products/motion-sensor-wood-light-2-pack/photo-1.jpg",
-      "/images/products/motion-sensor-wood-light-2-pack/benefits.jpg",
-      "/images/products/motion-sensor-wood-light-2-pack/how-it-works.jpg",
-      "/images/products/motion-sensor-wood-light-2-pack/compare.jpg",
-      "/images/products/motion-sensor-wood-light-2-pack/photo-2.png",
-      "/images/products/motion-sensor-wood-light-2-pack/photo-3.jpg"
-    ],
-    "trustLine": "No wiring. Rechargeable. Works when the power's off.",
-    "keywords": [
-      "motion sensor light south africa",
-      "rechargeable motion sensor light SA",
-      "load shedding light",
-      "wireless cupboard light",
-      "magnetic LED wall light SA"
-    ],
-    "seo": {
-      "title": "Motion Sensor Wood Light 2-Pack SA | Ze Home Finds",
-      "description": "Rechargeable motion sensor lights with a walnut finish and magnetic mount. No wiring, works through load-shedding. 2-pack, free delivery across SA.",
-      "ogTitle": "Walk past. It lights up.",
-      "alt": "Walnut-finish motion sensor light glowing warm white on a passage wall",
-      "h1": "Motion Sensor Wood Light"
+      "title": "Self-Cleaning Pet Hair Remover 2-Pack SA | Ze Home Finds",
+      "description": "Swipe pet hair off your couch, bed and clothes. Reusable, self-cleaning, no refills or batteries. 2-pack with free delivery across South Africa.",
+      "ogTitle": "The fur comes right off. Every time.",
+      "alt": "Pink self-cleaning pet hair remover roller lifting dog hair off a couch",
+      "h1": "Self-Cleaning Pet Hair Remover"
     }
   }
 ]
