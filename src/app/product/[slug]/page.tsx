@@ -5,6 +5,7 @@ import products from '@/data/products.json'
 import AddToCartButton from './AddToCartButton'
 import ImageGallery from './ImageGallery'
 import ProductCard from '@/components/ProductCard'
+import { absoluteImageUrl } from '@/lib/images'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: `${storeUrl}${product.images[0]}`,
+          url: absoluteImageUrl(product.images[0], storeUrl),
           width: 900,
           height: 900,
           alt: product.seo.alt,
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: product.seo.ogTitle,
       description: product.seo.description,
-      images: [`${storeUrl}${product.images[0]}`],
+      images: [absoluteImageUrl(product.images[0], storeUrl)],
     },
   }
 }
@@ -64,7 +65,7 @@ export default async function ProductPage({ params }: Props) {
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: product.images.map((img) => `${storeUrl}${img}`),
+    image: product.images.map((img) => absoluteImageUrl(img, storeUrl)),
     offers: {
       '@type': 'Offer',
       price: product.price,

@@ -31,7 +31,7 @@ export default function HomePage() {
             The finds everyone’s talking about
           </h1>
           <p className="font-body text-white max-w-md" style={{ fontSize: '16px', opacity: 0.8 }}>
-            Trending products, hand-picked and delivered to your door in 3-7 business days across South Africa
+            Trending products, hand-picked and delivered free to your door across South Africa
           </p>
           <Link
             href="#products"
@@ -55,7 +55,7 @@ export default function HomePage() {
             </li>
             <li className="hidden sm:block text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
             <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>
-              3–7 Days SA-Wide
+              Tracked SA-Wide
             </li>
             <li className="hidden sm:block text-border flex-shrink-0" style={{ fontSize: '10px' }}>·</li>
             <li className="font-body text-warm-gray uppercase tracking-[0.14em] whitespace-nowrap flex-shrink-0" style={{ fontSize: '10px' }}>

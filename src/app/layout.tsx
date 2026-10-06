@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    "The viral finds everyone's talking about, hand-picked for South Africa. Home, lifestyle and gadget finds with free delivery across SA in 3-7 business days.",
+    "The viral finds everyone's talking about, hand-picked for South Africa. Home, lifestyle and gadget finds with free delivery across SA.",
   keywords: [
     'trending products south africa',
     'tiktok finds south africa',

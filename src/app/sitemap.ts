@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import products from '@/data/products.json'
+import { absoluteImageUrl } from '@/lib/images'
 
 const baseUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
 
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
     changeFrequency: 'weekly',
     priority: 0.9,
-    images: product.images.map((image) => `${baseUrl}${image}`),
+    images: product.images.map((image) => absoluteImageUrl(image, baseUrl)),
   }))
 
   return [...pages, ...productPages]

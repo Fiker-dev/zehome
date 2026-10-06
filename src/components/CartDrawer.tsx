@@ -122,7 +122,7 @@ export default function CartDrawer() {
               <span>R{cartTotal}</span>
             </div>
             <p className="text-xs text-charcoal-muted">
-              Free delivery across South Africa · 3-7 business days
+              Free delivery across South Africa · delivery time shown on each product
             </p>
             <Link
               href="/checkout"

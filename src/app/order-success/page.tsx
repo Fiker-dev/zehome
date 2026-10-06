@@ -38,7 +38,7 @@ export default async function OrderSuccessPage({
           <p className="font-medium text-charcoal">PayFast ref: {pf_payment_id}</p>
         )}
         <p>Free delivery across South Africa</p>
-        <p>Estimated arrival: 3-7 business days</p>
+        <p>Estimated arrival: as shown on the product page. We&apos;ll email your tracking number once it ships.</p>
         <a
           href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%20have%20a%20question%20about%20my%20order."
           className="text-terracotta hover:text-terracotta-dark transition-colors"

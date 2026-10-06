@@ -22,7 +22,7 @@ export default function Footer() {
           </p>
           <p className="font-body text-warm-gray mt-2" style={{ fontSize: '13px', lineHeight: '1.6' }}>
             The finds you keep seeing on TikTok, in one place.<br />
-            Free delivery. 3-7 business days nationwide.
+            Free, tracked delivery nationwide.
           </p>
         </div>
 

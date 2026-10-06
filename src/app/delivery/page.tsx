@@ -3,7 +3,7 @@ import { Truck, Clock, MapPin, Package } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Delivery Info | Ze Home Finds',
-  description: 'Free delivery on all orders. Delivered in 3-7 business days nationwide across South Africa.',
+  description: 'Free, tracked delivery on all orders across South Africa. The delivery time for each find is shown on its product page.',
   alternates: { canonical: '/delivery' },
 }
 
@@ -15,8 +15,8 @@ const items = [
   },
   {
     icon: Clock,
-    title: '3–7 business days nationwide',
-    body: 'We process orders daily — you will receive tracking information via email once your order has been dispatched.',
+    title: 'Delivery time shown on every product',
+    body: 'Some finds arrive in 3–7 business days. Others ship from our international supplier and take 8–33 days. The exact window is on each product page before you buy, and we email tracking once your order is dispatched.',
   },
   {
     icon: MapPin,
@@ -26,7 +26,7 @@ const items = [
   {
     icon: Package,
     title: 'Door-to-door, tracked',
-    body: 'Dispatched from Johannesburg via a trusted nationwide courier. Your order arrives safely, every time.',
+    body: 'Every order is tracked from dispatch to your door, so you always know where it is.',
   },
 ]
 
