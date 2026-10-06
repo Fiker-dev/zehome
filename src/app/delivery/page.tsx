@@ -26,7 +26,7 @@ const items = [
   {
     icon: Package,
     title: 'Door-to-door, tracked',
-    body: 'Dispatched from Johannesburg via a trusted nationwide courier. Your lamp arrives safely, every time.',
+    body: 'Dispatched from Johannesburg via a trusted nationwide courier. Your order arrives safely, every time.',
   },
 ]
 

@@ -18,10 +18,10 @@ export default function Footer() {
             className="font-body text-warm-gray uppercase tracking-[0.12em]"
             style={{ fontSize: '11px' }}
           >
-            Mood lighting, delivered.
+            Viral finds, delivered.
           </p>
           <p className="font-body text-warm-gray mt-2" style={{ fontSize: '13px', lineHeight: '1.6' }}>
-            SA&apos;s home for atmosphere and mood lighting.<br />
+            The finds you keep seeing on TikTok, in one place.<br />
             Free delivery. 3-7 business days nationwide.
           </p>
         </div>

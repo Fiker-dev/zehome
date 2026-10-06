@@ -22,20 +22,18 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ze Home Finds | Mood Lighting | Free Delivery SA',
+    default: 'Ze Home Finds | Trending Finds | Free Delivery SA',
     template: '%s',
   },
   description:
-    "SA's mood lighting store. Projection lamps, sunset lamps, moon lamps, neon strips and more. Set the mood in any room. Free delivery across South Africa in 3-7 business days.",
+    "The viral finds everyone's talking about, hand-picked for South Africa. Home, lifestyle and gadget finds with free delivery across SA in 3-7 business days.",
   keywords: [
-    'mood lighting south africa',
-    'atmosphere lamp SA',
-    'projection lamp south africa',
-    'aesthetic room lighting johannesburg',
-    'neon strip lights SA',
-    'moon lamp south africa',
-    'sunset lamp SA',
-    'ambient lighting south africa',
+    'trending products south africa',
+    'tiktok finds south africa',
+    'viral products SA',
+    'online store free delivery south africa',
+    'home finds south africa',
+    'gadgets and home finds SA',
   ],
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
@@ -47,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Ze Home Finds',
     locale: 'en_ZA',
     type: 'website',
-    images: [{ url: '/images/og-lamp.jpg', width: 1200, height: 630, alt: 'Ze Home Finds — Mood Lighting SA' }],
+    images: [{ url: '/images/og-lamp.jpg', width: 1200, height: 630, alt: 'Ze Home Finds — Trending Finds SA' }],
   },
 }
 
@@ -68,7 +66,7 @@ export default function RootLayout({
               name: 'Ze Home Finds',
               url: 'https://zehomefinds.co.za',
               logo: 'https://zehomefinds.co.za/images/logo.png',
-              description: 'SA mood and atmosphere lighting store',
+              description: 'South African online store for trending home, lifestyle and gadget finds',
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: '+27710278563',

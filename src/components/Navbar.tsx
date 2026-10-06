@@ -29,7 +29,7 @@ export default function Navbar() {
               className="hidden sm:block font-body text-warm-gray uppercase tracking-[0.12em]"
               style={{ fontSize: '12px' }}
             >
-              Mood lighting, delivered.
+              Viral finds, delivered.
             </span>
           </Link>
 

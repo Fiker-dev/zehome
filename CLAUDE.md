@@ -4,7 +4,11 @@
 Building a Next.js homeware e-commerce store from scratch.
 Store: Ze Home Finds
 Domain: zehomefinds.co.za (.com redirects to .co.za)
-Product: Sunset Projection Lamp (single product V1)
+Positioning: general "viral finds" store (home, lifestyle, gadgets), not lamp-only.
+  Tagline: "Viral finds, delivered."  Products are rotated as winners are found;
+  the lamp copy below is from V1 and only applies to lamp products.
+Product data: src/data/products.json (category per product). Supplier costs:
+  src/data/supplier-costs.json. Run `npm run margins` before any price goes live.
 Payment: PayFast (SA-native)
 Hosting: Vercel (free tier)
 Target market: SA local — Johannesburg and surrounding areas

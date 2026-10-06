@@ -10,16 +10,6 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
-const CATEGORIES: Record<string, string> = {
-  'star-projector-galaxy-night-light': 'STAR PROJECTOR',
-  '3d-solar-projection-lamp':          'PROJECTION LAMP',
-  '3d-moon-light-lamp-20cm':           'COLOUR MOON LAMP',
-  '3d-moon-lamp-humidifier':           'MOON LAMP + HUMIDIFIER',
-}
-
-const BADGES: Record<string, string> = {
-}
-
 export async function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }))
 }
@@ -100,7 +90,7 @@ export default async function ProductPage({ params }: Props) {
           </Link>
           <span>/</span>
           <Link href="/#products" className="hover:text-charcoal transition-colors">
-            Mood Lighting
+            Shop
           </Link>
           <span>/</span>
           <span className="text-charcoal">{product.name}</span>
@@ -114,7 +104,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
               <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
-                {CATEGORIES[product.slug] ?? 'MOOD LIGHTING'}
+                {product.category}
               </p>
               <h1 className="font-display text-charcoal leading-snug" style={{ fontSize: '32px' }}>
                 {product.seo.h1}
@@ -151,7 +141,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
           <div className="mb-10 flex flex-col gap-2">
             <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
-              More from the collection
+              More finds
             </p>
             <h2 className="font-display text-charcoal" style={{ fontSize: '28px' }}>
               You might also like
@@ -167,8 +157,7 @@ export default async function ProductPage({ params }: Props) {
                 price={p.price}
                 image={p.images[0]}
                 trustLine={p.trustLine}
-                category={CATEGORIES[p.slug]}
-                badge={BADGES[p.slug]}
+                category={p.category}
               />
             ))}
           </div>

@@ -21,7 +21,7 @@ export default function ProductCard({
   name,
   price,
   image,
-  category = 'MOOD LIGHTING',
+  category,
   trustLine,
   badge,
 }: ProductCardProps) {
