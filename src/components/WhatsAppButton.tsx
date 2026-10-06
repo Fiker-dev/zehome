@@ -1,4 +1,17 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
+import { useCart } from '@/lib/cart'
+
+// Pages where the floating button would sit on top of the checkout buttons
+const HIDDEN_ON = ['/cart', '/checkout']
+
 export default function WhatsAppButton() {
+  const pathname = usePathname()
+  const cartOpen = useCart((s) => s.isOpen)
+
+  if (cartOpen || HIDDEN_ON.includes(pathname)) return null
+
   return (
     <a
       href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%27m%20interested%20in%20your%20lamps."

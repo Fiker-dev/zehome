@@ -12,7 +12,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
   const [selected, setSelected] = useState(0)
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 min-w-0">
       {/* Main image */}
       <div className="relative overflow-hidden bg-cream" style={{ aspectRatio: '1/1' }}>
         <Image
@@ -27,7 +27,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto">
           {images.map((img, i) => (
             <button
               key={i}
