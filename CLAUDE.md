@@ -13,6 +13,24 @@ Payment: PayFast (SA-native)
 Hosting: Vercel (free tier)
 Target market: SA local — Johannesburg and surrounding areas
 
+## Current Status (Oct 2026) — read first
+- Branch claude/affiliate-product-workflow-pc24ax (not merged to main yet):
+  PayFast ITN fix (real orders were never logged), server-side pricing +
+  amount HMAC in order IDs, margin checker, mobile fixes, rebrand to
+  "viral finds".
+- PayFast: account active (merchant ID 31199311). Passphrase must be rotated
+  (it was exposed in chat); keep "require signature" OFF — the checkout form
+  is unsigned by design.
+- Supplier: CJdropshipping (account fifiab569@gmail.com, CJ3503236). API store
+  "zehomefinds.co.za" is authorised. Key goes in env var CJ_API_KEY (Vercel +
+  Claude environment). API base https://developers.cjdropshipping.com/api2.0/v1
+- Next: CJ product research -> shortlist through `npm run margins`; auto-place
+  CJ order on PayFast COMPLETE ITN; update delivery promise to CJ's real SA
+  transit time; replace lamp products once winners are picked.
+- Vercel: 4 projects (zehome, zehomenew, zehome-yxcz, zehome-4jx2) build the
+  same repo; failures alternate between them (infra, not code). Owner to
+  delete the 3 that don't hold the domain.
+
 ## Tech Stack
 - Framework: Next.js 14 (App Router)
 - Styling: Tailwind CSS
