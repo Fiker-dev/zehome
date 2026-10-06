@@ -12,6 +12,9 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 const BASE = 'https://perfectdealz.co.za'
 const out = new URL('../../data/suppliers/perfectdealz-catalog.json', import.meta.url)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+const htmlToText = (html = '') =>
+  html.replace(/<(br|\/p|\/li|\/h\d)[^>]*>/gi, '\n').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&').replace(/[ \t]+/g, ' ').replace(/\n\s*/g, '\n').trim()
 
 const products = []
 for (let page = 1; page <= 60; page++) {
@@ -31,6 +34,7 @@ for (let page = 1; page <= 60; page++) {
       type: p.product_type,
       vendor: p.vendor,
       tags: p.tags,
+      description: htmlToText(p.body_html).slice(0, 700),
       minPrice: prices.length ? Math.min(...prices) : null,
       maxPrice: prices.length ? Math.max(...prices) : null,
       compareAt: Number(p.variants[0]?.compare_at_price) || null,
