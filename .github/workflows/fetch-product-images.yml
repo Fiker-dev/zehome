@@ -1,0 +1,39 @@
+name: Fetch product images
+
+# Copies supplier photos referenced in src/data/products.json into the repo
+# (public/images/products/) and commits them, so the store serves its own
+# images instead of hotlinking the supplier CDN.
+on:
+  push:
+    paths:
+      - src/data/products.json
+      - scripts/fetch-product-images.mjs
+      - .github/workflows/fetch-product-images.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-product-images-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download remote product images
+        run: node scripts/fetch-product-images.mjs
+      - name: Commit local copies
+        if: always()
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "Nothing to commit"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images/products src/data/products.json
+          git commit -m "Store supplier product photos locally"
+          git push
