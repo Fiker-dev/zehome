@@ -80,8 +80,7 @@ export default function CheckoutPage() {
           city: form.city,
           province: form.province,
           postalCode: form.postalCode,
-          amount: cartTotal,
-          itemName: items.map((i) => `${i.name} x${i.quantity}`).join(', '),
+          items: items.map((i) => ({ id: i.id, quantity: i.quantity })),
         }),
       })
 

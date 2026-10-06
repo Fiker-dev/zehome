@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { generateSignature } from '@/lib/payfast'
+import { confirmItnWithPayFast, orderAmountMatches, verifyItnSignature } from '@/lib/payfast'
 import { appendOrderRow } from '@/lib/sheets'
 
 const PAYFAST_IPS = [
@@ -57,12 +57,8 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Verify signature
-    const { signature, ...rest } = params
-    const passphrase = process.env.PAYFAST_PASSPHRASE ?? ''
-    const expected = generateSignature(rest, passphrase)
-
-    if (expected !== signature) {
+    // Verify signature (fields in the order PayFast sent them)
+    if (!verifyItnSignature(body, process.env.PAYFAST_PASSPHRASE ?? '')) {
       return new NextResponse('Invalid signature', { status: 400 })
     }
 
@@ -71,9 +67,27 @@ export async function POST(req: NextRequest) {
       return new NextResponse('Forbidden', { status: 403 })
     }
 
+    // Confirm with PayFast's servers that they sent this notification
+    const isSandbox = process.env.PAYFAST_SANDBOX === 'true'
+    if (!(await confirmItnWithPayFast(body, isSandbox))) {
+      return new NextResponse('PayFast did not confirm notification', { status: 400 })
+    }
+
     const paymentStatus = params.payment_status
     const orderId = params.m_payment_id
-    const mappedStatus = mapPaymentStatus(paymentStatus)
+    let mappedStatus = mapPaymentStatus(paymentStatus)
+
+    // A customer can edit the amount in the browser before it reaches
+    // PayFast, so only dispatch when they paid what the server charged.
+    if (
+      paymentStatus?.toUpperCase() === 'COMPLETE' &&
+      !orderAmountMatches(orderId ?? '', params.amount_gross ?? '')
+    ) {
+      mappedStatus = {
+        paymentStatus: 'Paid — amount does not match order',
+        dispatchStatus: 'DO NOT DISPATCH — check payment',
+      }
+    }
 
     await appendOrderRow({
       orderId: orderId ?? '',

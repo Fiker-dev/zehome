@@ -21,26 +21,68 @@ export interface PayFastParams {
   custom_str5?: string // postal code
 }
 
-export function generateSignature(
-  data: Record<string, string>,
-  passphrase = ''
-): string {
-  const pfEncode = (v: string) =>
-    encodeURIComponent(v).replace(/%20/g, '+')
+// PHP urlencode(), which PayFast uses when it signs: spaces become '+' and
+// !'()*~ are percent-encoded (encodeURIComponent leaves those alone).
+function pfEncode(value: string): string {
+  return encodeURIComponent(value)
+    .replace(/[!'()*~]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase())
+    .replace(/%20/g, '+')
+}
 
-  // Sort all data fields alphabetically, skip empty values
-  let str = Object.keys(data)
-    .sort()
-    .filter((k) => data[k] !== '')
-    .map((k) => `${k}=${pfEncode(data[k])}`)
-    .join('&')
-
-  // Passphrase is appended at the END — not sorted with the other fields
-  if (passphrase) {
-    str += `&passphrase=${pfEncode(passphrase)}`
+// ITN fields joined in the order PayFast sent them, up to the signature.
+// This is both what PayFast signs and what its validate endpoint expects.
+export function itnParamString(body: string): string {
+  const parts: string[] = []
+  for (const [key, value] of new URLSearchParams(body)) {
+    if (key === 'signature') break
+    parts.push(`${key}=${pfEncode(value)}`)
   }
+  return parts.join('&')
+}
 
-  return crypto.createHash('md5').update(str).digest('hex')
+export function verifyItnSignature(body: string, passphrase = ''): boolean {
+  const signature = new URLSearchParams(body).get('signature') ?? ''
+  let str = itnParamString(body)
+  if (passphrase) str += `&passphrase=${pfEncode(passphrase.trim())}`
+  const expected = crypto.createHash('md5').update(str).digest('hex')
+  return signature.length === expected.length &&
+    crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))
+}
+
+// Ask PayFast to confirm the ITN really came from them.
+export async function confirmItnWithPayFast(body: string, sandbox: boolean): Promise<boolean> {
+  const host = sandbox ? 'sandbox.payfast.co.za' : 'www.payfast.co.za'
+  const res = await fetch(`https://${host}/eng/query/validate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: itnParamString(body),
+    signal: AbortSignal.timeout(10000),
+  })
+  return (await res.text()).trim() === 'VALID'
+}
+
+// Order IDs carry an HMAC of the amount the server charged, so the ITN can
+// prove the customer paid that amount even though the PayFast form itself is
+// unsigned and editable in the browser.
+function amountTag(orderRef: string, amount: string): string {
+  const secret = process.env.PAYFAST_PASSPHRASE || process.env.PAYFAST_MERCHANT_KEY || ''
+  return crypto
+    .createHmac('sha256', secret)
+    .update(`${orderRef}|${Number(amount).toFixed(2)}`)
+    .digest('hex')
+    .slice(0, 12)
+}
+
+export function createOrderId(amount: string): string {
+  const ref = `ORD-${Date.now()}`
+  return `${ref}-${amountTag(ref, amount)}`
+}
+
+export function orderAmountMatches(orderId: string, amountPaid: string): boolean {
+  const match = /^(ORD-\d+)-([0-9a-f]{12})$/.exec(orderId)
+  if (!match) return false
+  const expected = amountTag(match[1], amountPaid)
+  return crypto.timingSafeEqual(Buffer.from(match[2]), Buffer.from(expected))
 }
 
 export function buildPayFastParams(fields: PayFastParams): Record<string, string> {

@@ -1,20 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { buildPayFastParams } from '@/lib/payfast'
+import products from '@/data/products.json'
+import { buildPayFastParams, createOrderId } from '@/lib/payfast'
 import { appendOrderRow } from '@/lib/sheets'
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { firstName, lastName, email, phone, address, city, province, postalCode, amount, itemName } = body
+    const { firstName, lastName, email, phone, address, city, province, postalCode, items } = body
 
-    if (!firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode || !amount || !itemName) {
+    if (!firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
+    // Price the order from our own product data, never from the browser
+    const lines = Array.isArray(items)
+      ? items.map((item: { id?: unknown; quantity?: unknown }) => ({
+          product: products.find((p) => p.id === item.id && p.inStock),
+          quantity: Number(item.quantity),
+        }))
+      : []
+    const validLines = lines.filter(
+      (l) => l.product && Number.isInteger(l.quantity) && l.quantity >= 1 && l.quantity <= 10
+    )
+    if (validLines.length === 0 || validLines.length !== lines.length) {
+      return NextResponse.json({ error: 'Invalid cart' }, { status: 400 })
+    }
+    const amount = validLines.reduce((sum, l) => sum + l.product!.price * l.quantity, 0)
+    const itemName = validLines.map((l) => `${l.product!.name} x${l.quantity}`).join(', ')
+
     const storeUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
-    const orderId = `ORD-${Date.now()}`
-    const amountValue = Number(amount).toFixed(2)
-    const product = String(itemName).substring(0, 100)
+    const amountValue = amount.toFixed(2)
+    const orderId = createOrderId(amountValue)
+    const product = itemName.substring(0, 100)
     const returnUrl = new URL('/order-success', storeUrl)
     const cancelUrl = new URL('/api/payfast/cancel', storeUrl)
     const notifyUrl = new URL('/api/payfast/notify', storeUrl)
