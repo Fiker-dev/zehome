@@ -1,0 +1,152 @@
+{
+  "self-cleaning-pet-hair-remover-2-pack": {
+    "eyebrow": "Pet hair remover",
+    "benefits": {
+      "headline": "Fur off the couch in seconds",
+      "points": [
+        "Swipe back and forth and the hair lifts straight off",
+        "Self-cleaning: press the button to empty the chamber",
+        "No sticky sheets, no refills, no batteries",
+        "Works on couches, beds, blankets and clothes"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        ["Swipe", "Brush it back and forth over the fabric"],
+        ["Collect", "The hair gathers inside the chamber"],
+        ["Empty", "Press the button and tip it into the bin"]
+      ]
+    },
+    "compare": {
+      "headline": "Ditch the sticky roller",
+      "left": "Sticky lint roller",
+      "right": "Ze pet hair remover",
+      "rows": [
+        ["Refills", "Keep buying sheets", "Never"],
+        ["Waste", "Sheets in the bin", "Only the hair"],
+        ["Cost over time", "Keeps adding up", "Buy once"]
+      ]
+    }
+  },
+  "gradient-tumbler-780ml": {
+    "eyebrow": "780ml tumbler",
+    "benefits": {
+      "headline": "One cup. All day.",
+      "points": [
+        "780ml, so fewer refills through the day",
+        "Double-wall stainless steel",
+        "Keeps iced drinks cold and coffee hot",
+        "Lid and straw included"
+      ]
+    },
+    "steps": {
+      "headline": "Made for your day",
+      "items": [
+        ["Fill", "Ice, water, smoothie or coffee"],
+        ["Seal", "Lid on, straw in"],
+        ["Take it", "Desk, car, gym or school run"]
+      ]
+    },
+    "compare": {
+      "headline": "Upgrade your takeaway cup",
+      "left": "Takeaway cup",
+      "right": "Ze tumbler",
+      "rows": [
+        ["Size", "Around 350ml", "780ml"],
+        ["Hot or cold", "Not for long", "Double-wall insulated"],
+        ["Reusable", "Straight to the bin", "Every day"]
+      ]
+    }
+  },
+  "water-ripple-crystal-lamp": {
+    "eyebrow": "Mood lighting",
+    "benefits": {
+      "headline": "Your ceiling, but underwater",
+      "points": [
+        "Moving water-ripple light on walls and ceiling",
+        "16 colours, switched with the remote",
+        "USB rechargeable, so no cable once it's charged",
+        "Fits a bedside table, desk or shelf"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        ["Charge", "Top it up with the USB cable"],
+        ["Pick", "Choose one of 16 colours on the remote"],
+        ["Relax", "Lights off. Watch the ripples move"]
+      ]
+    },
+    "compare": {
+      "headline": "More than a night light",
+      "left": "Ordinary night light",
+      "right": "Ripple crystal lamp",
+      "rows": [
+        ["Effect", "Flat glow", "Moving ripples"],
+        ["Colours", "One", "16"],
+        ["Cable", "Always plugged in", "Rechargeable"]
+      ]
+    }
+  },
+  "flame-aroma-diffuser": {
+    "eyebrow": "Home fragrance",
+    "benefits": {
+      "headline": "It looks like fire. It's mist.",
+      "points": [
+        "Flickering flame effect on cool, scented mist",
+        "Switch between flame colours",
+        "130ml tank: water plus a few drops of oil",
+        "USB powered, with nothing to light"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        ["Fill", "Water and a few drops of your oil"],
+        ["Plug in", "Connect it with the USB cable"],
+        ["Unwind", "Pick a flame colour and breathe in"]
+      ]
+    },
+    "compare": {
+      "headline": "All the mood. None of the fire.",
+      "left": "Scented candle",
+      "right": "Flame diffuser",
+      "rows": [
+        ["Open flame", "Yes", "No"],
+        ["Scent", "Burns down", "Refill with any oil"],
+        ["Colours", "One", "Several"]
+      ]
+    }
+  },
+  "motion-sensor-wood-light-2-pack": {
+    "eyebrow": "Smart lighting",
+    "benefits": {
+      "headline": "Walk past. It lights up.",
+      "points": [
+        "Motion sensor: on when you walk by, off when you leave",
+        "Magnetic mount, with no wiring or electrician",
+        "USB rechargeable, so it works through load-shedding",
+        "Walnut wood-grain finish, two in the box"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        ["Charge", "Top it up with the USB cable"],
+        ["Mount", "Fix the magnetic mount and click it on"],
+        ["Walk by", "It switches on by itself"]
+      ]
+    },
+    "compare": {
+      "headline": "No electrician needed",
+      "left": "Wired light",
+      "right": "Ze motion light",
+      "rows": [
+        ["Installation", "Call an electrician", "Stick it up"],
+        ["Load-shedding", "Goes dark", "Keeps going on battery"],
+        ["Switching on", "Find the switch", "Turns on by itself"]
+      ]
+    }
+  }
+}

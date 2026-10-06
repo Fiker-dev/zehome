@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "margins": "node scripts/margins.ts"
+    "margins": "node scripts/margins.ts",
+    "cards": "node scripts/product-cards/render.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.14.0",
