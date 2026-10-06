@@ -1,0 +1,40 @@
+name: Fetch supplier catalogue
+
+# Mirrors the Perfect Dealz product feed into data/suppliers/ for product
+# research (their site is blocked from the Claude environment). Runs when the
+# script changes, weekly, or on demand.
+on:
+  push:
+    paths:
+      - scripts/suppliers/fetch-perfectdealz-catalog.mjs
+      - .github/workflows/fetch-supplier-catalog.yml
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-supplier-catalog-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download Perfect Dealz catalogue
+        run: node scripts/suppliers/fetch-perfectdealz-catalog.mjs
+      - name: Commit catalogue
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "Nothing to commit"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/suppliers
+          git commit -m "Update Perfect Dealz catalogue"
+          git pull --rebase
+          git push
