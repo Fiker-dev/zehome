@@ -1,5 +1,6 @@
 // Renders the site's social share image (public/images/og-home.jpg, 1200x630)
-// from the first three products in src/data/products.json.
+// from the first three products in src/data/products.json, plus the 512x512
+// logo used in structured data (public/images/logo.png).
 //
 //   npm run og
 
@@ -51,5 +52,15 @@ const page = await browser.newPage({ viewport: { width: 1200, height: 630 } })
 await page.setContent(html, { waitUntil: 'networkidle' })
 await page.evaluate(() => document.fonts.ready)
 await page.screenshot({ path: new URL('public/images/og-home.jpg', root).pathname, type: 'jpeg', quality: 88 })
-await browser.close()
 console.log('OK /images/og-home.jpg')
+
+await page.setViewportSize({ width: 512, height: 512 })
+await page.setContent(`<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=block" rel="stylesheet">
+<style>body{margin:0;width:512px;height:512px;background:#1C1C1C;color:#FBF9F6;display:flex;align-items:center;
+justify-content:center;font-family:'Inter',sans-serif;font-weight:600;font-size:300px;letter-spacing:-12px}</style>
+</head><body>z</body></html>`, { waitUntil: 'networkidle' })
+await page.evaluate(() => document.fonts.ready)
+await page.screenshot({ path: new URL('public/images/logo.png', root).pathname, type: 'png' })
+await browser.close()
+console.log('OK /images/logo.png')

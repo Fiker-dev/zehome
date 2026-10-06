@@ -1,40 +1,26 @@
 import type { MetadataRoute } from 'next'
-import products from '@/data/products.json'
+import { categories, products } from '@/lib/catalog'
 import { absoluteImageUrl } from '@/lib/images'
-
-const baseUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
+import { SITE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
-
-  const pages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/delivery`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/returns`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-  ]
-
-  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-    url: `${baseUrl}/product/${product.slug}`,
+  const page = (path: string, priority: number, changeFrequency: 'weekly' | 'monthly') => ({
+    url: `${SITE_URL}${path}`,
     lastModified,
-    changeFrequency: 'weekly',
-    priority: 0.9,
-    images: product.images.map((image) => absoluteImageUrl(image, baseUrl)),
-  }))
+    changeFrequency,
+    priority,
+  })
 
-  return [...pages, ...productPages]
+  return [
+    page('', 1, 'weekly'),
+    page('/shop', 0.9, 'weekly'),
+    ...categories.map((c) => page(`/collections/${c.slug}`, 0.8, 'weekly')),
+    ...products.map((p) => ({
+      ...page(`/product/${p.slug}`, 0.9, 'weekly'),
+      images: p.images.map((image) => absoluteImageUrl(image, SITE_URL)),
+    })),
+    page('/delivery', 0.4, 'monthly'),
+    page('/returns', 0.4, 'monthly'),
+  ]
 }

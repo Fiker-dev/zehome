@@ -8,7 +8,7 @@ export default function Icon() {
     (
       <div
         style={{
-          background: '#1A1A1A',
+          background: '#1C1C1C',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -18,15 +18,15 @@ export default function Icon() {
       >
         <span
           style={{
-            color: '#C4622D',
+            color: '#FBF9F6',
             fontSize: 21,
             fontWeight: 600,
-            fontFamily: 'Georgia, serif',
+            fontFamily: 'sans-serif',
             letterSpacing: '-0.02em',
             lineHeight: 1,
           }}
         >
-          Z
+          z
         </span>
       </div>
     ),

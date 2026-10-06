@@ -4,6 +4,7 @@ import { ChevronDown, Sparkles, Truck, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
 import ProductCard from '@/components/ProductCard'
 import { categories, hoverPhoto, products } from '@/lib/catalog'
+import { faqSchema, itemListSchema, jsonLd } from '@/lib/schema'
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -29,6 +30,8 @@ const sectionTitle = 'font-display font-semibold text-charcoal tracking-tight lo
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema(FAQ))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(itemListSchema(products))} />
       {/* ── HERO ── */}
       <section className="overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16 grid md:grid-cols-2 gap-8 md:gap-14 items-center">
@@ -37,10 +40,10 @@ export default function HomePage() {
               Viral finds, delivered
             </p>
             <h1 className={`${sectionTitle} leading-[1.05]`} style={{ fontSize: 'clamp(38px, 6.5vw, 58px)' }}>
-              The finds everyone’s talking about
+              The TikTok finds everyone’s talking about
             </h1>
             <p className="font-body text-charcoal-light max-w-md" style={{ fontSize: '16px', lineHeight: '1.6' }}>
-              Hand-picked from what’s trending on TikTok right now, with free delivery to your door across South Africa.
+              Viral products hand-picked from what’s trending on TikTok right now, shipped from Johannesburg with free delivery across South Africa.
             </p>
             <Link
               href="/shop"
@@ -80,7 +83,7 @@ export default function HomePage() {
         <h2 className={sectionTitle} style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>Shop by category</h2>
         <div className="mt-6 flex gap-3 sm:gap-4 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-6">
           {categories.map((c) => (
-            <Link key={c.slug} href={`/shop?category=${c.slug}`} className="group flex-shrink-0 w-[42%] sm:w-auto flex flex-col gap-2">
+            <Link key={c.slug} href={`/collections/${c.slug}`} className="group flex-shrink-0 w-[42%] sm:w-auto flex flex-col gap-2">
               <span className="relative block aspect-square overflow-hidden bg-cream">
                 <Image src={c.image} alt={c.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 42vw, 16vw" />
               </span>

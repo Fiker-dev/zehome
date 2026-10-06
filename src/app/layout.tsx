@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { jsonLd } from '@/lib/schema'
+import { SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -22,11 +24,11 @@ const heading = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ze Home Finds | Trending Finds | Free Delivery SA',
+    default: 'Viral TikTok Products South Africa | Ze Home Finds',
     template: '%s',
   },
   description:
-    "The viral finds everyone's talking about, hand-picked for South Africa. Home, lifestyle and gadget finds with free delivery across SA.",
+    'Shop the viral TikTok products everyone in South Africa is talking about: beauty gadgets, pet grooming, flame diffusers and more. Free delivery, 3-7 business days.',
   keywords: [
     'trending products south africa',
     'tiktok finds south africa',
@@ -35,9 +37,9 @@ export const metadata: Metadata = {
     'home finds south africa',
     'gadgets and home finds SA',
   ],
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
-  ),
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  formatDetection: { telephone: false },
   verification: {
     google: 'so4EC5gmUDYwm_Yu6_Ib5sbtrpYAHSkOZUAfKP9Llss',
   },
@@ -59,23 +61,36 @@ export default function RootLayout({
       <body className="bg-background text-charcoal font-body min-h-screen flex flex-col text-[15px] leading-[1.6]">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Ze Home Finds',
-              url: 'https://zehomefinds.co.za',
-              logo: 'https://zehomefinds.co.za/images/logo.png',
-              description: 'South African online store for trending home, lifestyle and gadget finds',
-              contactPoint: {
-                '@type': 'ContactPoint',
-                telephone: '+27710278563',
-                contactType: 'customer service',
-                availableLanguage: 'English',
+          dangerouslySetInnerHTML={jsonLd({
+            '@context': 'https://schema.org',
+            '@graph': [
+              {
+                '@type': 'OnlineStore',
+                '@id': `${SITE_URL}/#organization`,
+                name: SITE_NAME,
+                url: SITE_URL,
+                logo: `${SITE_URL}/images/logo.png`,
+                description: 'South African online store for viral TikTok products: beauty, pet, home and wellness finds',
+                areaServed: { '@type': 'Country', name: 'South Africa' },
+                contactPoint: {
+                  '@type': 'ContactPoint',
+                  telephone: WHATSAPP,
+                  contactType: 'customer service',
+                  areaServed: 'ZA',
+                  availableLanguage: 'English',
+                },
+                sameAs: ['https://www.tiktok.com/@zehomefinds'],
               },
-              sameAs: ['https://www.tiktok.com/@zehomefinds'],
-            }),
-          }}
+              {
+                '@type': 'WebSite',
+                '@id': `${SITE_URL}/#website`,
+                name: SITE_NAME,
+                url: SITE_URL,
+                inLanguage: 'en-ZA',
+                publisher: { '@id': `${SITE_URL}/#organization` },
+              },
+            ],
+          })}
         />
         <AnnouncementBar />
         <Navbar />

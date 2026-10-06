@@ -170,13 +170,20 @@ Meta title:    "Sunset Projection Lamp | Ze Home Finds"
 Meta desc:     "Transform your room instantly with the Sunset Projection
                 Lamp. Warm golden-hour lighting. Free delivery in SA."
 
-## SEO (Aria)
-Primary keyword:   sunset projection lamp south africa
-Secondary:         room transformation lamp, aesthetic room lighting SA
-URL:               /product/sunset-projection-lamp
-OG image:          /images/og-lamp.jpg (1200x630)
-Alt text:          "Sunset projection lamp casting warm golden glow on wall"
-Canonical:         https://zehomefinds.co.za
+## SEO (Aria) — updated 6 Oct 2026
+Canonical host:    https://www.zehomefinds.co.za (apex redirects to www).
+                   Always use SITE_URL from src/lib/site.ts, never the apex.
+Head terms:        viral TikTok products south africa (home, /shop)
+Per product:       "<product> south africa" + price in title, keywords,
+                   FAQs (products.json `seo`, `keywords`, `faqs`).
+Collections:       /collections/<category-slug>, copy in
+                   src/data/collections.json (title, h1, intro).
+Structured data:   src/lib/schema.ts — Product (price, free shipping, 14-day
+                   returns), BreadcrumbList, FAQPage, ItemList, OnlineStore.
+Files:             /robots.txt, /sitemap.xml, /feed.xml (Google Merchant
+                   Center free listings feed).
+Owner to do:       Search Console: submit sitemap. Merchant Center: add
+                   /feed.xml as data source, enable free listings.
 
 ## DNS (Kai — domains.co.za)
 zehomefinds.co.za:

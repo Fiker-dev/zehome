@@ -22,7 +22,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2.5">
             <li><Link href="/shop" className={link}>Shop all</Link></li>
             {categories.map((c) => (
-              <li key={c.slug}><Link href={`/shop?category=${c.slug}`} className={link}>{c.name}</Link></li>
+              <li key={c.slug}><Link href={`/collections/${c.slug}`} className={link}>{c.name}</Link></li>
             ))}
           </ul>
         </div>

@@ -4,8 +4,10 @@ import ProductCard from '@/components/ProductCard'
 import { categories, categorySlug, hoverPhoto, products } from '@/lib/catalog'
 
 export const metadata: Metadata = {
-  title: 'Shop all finds | Ze Home Finds',
-  description: 'Every viral find we stock, from pet care to beauty and home. Free delivery across South Africa.',
+  title: 'Shop Viral TikTok Products in South Africa | Ze Home Finds',
+  description: 'Shop every viral TikTok find we stock — beauty gadgets, pet grooming, diffusers, massage guns and more. Free delivery across South Africa.',
+  // Filtered and sorted views (?category=, ?sort=) all point back here; the
+  // indexable category pages live at /collections/<slug>.
   alternates: { canonical: '/shop' },
 }
 
@@ -45,12 +47,18 @@ export default async function ShopPage({ searchParams }: Props) {
       <h1 className="font-display font-semibold text-charcoal tracking-tight lowercase" style={{ fontSize: 'clamp(28px, 5vw, 40px)' }}>
         {active ? active.name : 'Shop all'}
       </h1>
+      {!active && (
+        <p className="mt-3 max-w-2xl font-body text-charcoal-light" style={{ fontSize: '15px' }}>
+          The viral TikTok products South Africa keeps asking about, from beauty gadgets and pet grooming tools to
+          flame diffusers and mini massage guns. Free, tracked delivery anywhere in SA in 3–7 business days.
+        </p>
+      )}
 
       {/* Filters */}
       <div className="mt-6 flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 font-body" style={{ fontSize: '13px' }}>
         <Link href={href({ sort })} className={chip(!active)}>All</Link>
         {categories.map((c) => (
-          <Link key={c.slug} href={href({ category: c.slug, sort })} className={chip(active?.slug === c.slug)}>
+          <Link key={c.slug} href={`/collections/${c.slug}`} className={chip(active?.slug === c.slug)}>
             {c.name}
           </Link>
         ))}
