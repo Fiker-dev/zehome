@@ -82,7 +82,7 @@
     "id": "self-cleaning-pet-hair-remover-2-pack",
     "slug": "self-cleaning-pet-hair-remover-2-pack",
     "name": "Self-Cleaning Pet Hair Remover (2-Pack)",
-    "category": "Home Cleaning",
+    "category": "Pet Care",
     "price": 399,
     "currency": "ZAR",
     "inStock": true,
@@ -117,6 +117,154 @@
       "ogTitle": "The fur comes right off. Every time.",
       "alt": "Pink self-cleaning pet hair remover roller lifting dog hair off a couch",
       "h1": "Self-Cleaning Pet Hair Remover"
+    }
+  },
+  {
+    "id": "3-in-1-pet-steam-brush",
+    "slug": "3-in-1-pet-steam-brush",
+    "name": "3-in-1 Pet Steam Brush",
+    "category": "Pet Care",
+    "price": 299,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "15-33 days",
+    "description": "The brush your cat actually lets you use. A fine mist settles loose fur and static as you brush, the soft teeth give a gentle massage, and the shed hair stays in the brush instead of on your couch. Works on cats and dogs, short or long hair.",
+    "bullets": [
+      "Fine mist settles loose fur and static as you brush",
+      "Soft teeth for a gentle, calming massage",
+      "Catches shed hair so it stays off your furniture",
+      "For cats and dogs, short or long hair",
+      "Free delivery across South Africa — arrives in 15-33 days"
+    ],
+    "images": [
+      "https://oss-cf.cjdropshipping.com/product/2024/05/06/05/f7600714-9d08-4f6b-b34e-bceb64b4ee4c.jpg",
+      "https://oss-cf.cjdropshipping.com/product/2023/12/29/06/8b1abbb7-012e-4446-a9ef-887add67a6e8.jpg"
+    ],
+    "trustLine": "Less shedding. Happier pet. Cleaner couch.",
+    "keywords": [
+      "pet steam brush south africa",
+      "cat steam brush SA",
+      "steamy cat brush",
+      "dog grooming brush with spray",
+      "tiktok cat brush"
+    ],
+    "seo": {
+      "title": "3-in-1 Pet Steam Brush SA | Ze Home Finds",
+      "description": "The viral steamy pet brush: fine mist, gentle massage and loose fur caught in one stroke. For cats and dogs. Free delivery across South Africa.",
+      "ogTitle": "The brush your cat actually likes",
+      "alt": "Green 3-in-1 pet steam brush misting while brushing a cat",
+      "h1": "3-in-1 Pet Steam Brush"
+    }
+  },
+  {
+    "id": "mini-bag-sealer-2-pack",
+    "slug": "mini-bag-sealer-2-pack",
+    "name": "Mini Bag Sealer (2-Pack)",
+    "category": "Kitchen",
+    "price": 349,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "15-33 days",
+    "description": "Half-eaten chips, coffee, frozen veg — seal any bag shut in one slide. The mini heat sealer is rechargeable and pocket-sized, with a built-in cutter to open the bag again neatly. Two in the box: one for the kitchen, one for the snack drawer.",
+    "bullets": [
+      "Slide it along any plastic snack or food bag to seal it shut",
+      "Built-in cutter to open bags neatly",
+      "Rechargeable and pocket-sized",
+      "2-pack — one for the kitchen, one for the snack drawer",
+      "Free delivery across South Africa — arrives in 15-33 days"
+    ],
+    "images": [
+      "https://oss-cf.cjdropshipping.com/product/2024/09/09/08/91fcd3e0-99f5-45aa-a654-fb91f4b82b92.jpg",
+      "https://oss-cf.cjdropshipping.com/product/2026/08/03/12/ee499fdb-12cf-4e51-ad3f-d08c47284d48.jpg"
+    ],
+    "trustLine": "No more stale chips. No more clips.",
+    "keywords": [
+      "mini bag sealer south africa",
+      "heat sealer for chip bags SA",
+      "rechargeable bag sealer",
+      "snack bag sealer",
+      "tiktok kitchen gadget SA"
+    ],
+    "seo": {
+      "title": "Mini Bag Sealer 2-Pack SA | Ze Home Finds",
+      "description": "Seal chips, coffee and snack bags in one slide. Rechargeable mini heat sealer with built-in cutter. 2-pack with free delivery across South Africa.",
+      "ogTitle": "Seal any bag in one slide",
+      "alt": "Mini rechargeable bag sealer sliding along a chip packet to seal it",
+      "h1": "Mini Bag Sealer"
+    }
+  },
+  {
+    "id": "ice-face-roller",
+    "slug": "ice-face-roller",
+    "name": "Ice Face Roller",
+    "category": "Beauty",
+    "price": 299,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "8-16 days",
+    "description": "The five-minute morning reset. Fill it with water, freeze it, then roll the ice over your face, under your eyes and down your neck. The silicone holder keeps your fingers warm and the ice in one piece. Reusable every day.",
+    "bullets": [
+      "Fill with water, freeze, and roll",
+      "Cooling roll for face, under-eyes and neck",
+      "Silicone holder keeps your hands warm",
+      "Reusable — just refill and refreeze",
+      "Free delivery across South Africa — arrives in 8-16 days"
+    ],
+    "images": [
+      "https://oss-cf.cjdropshipping.com/product/2025/05/05/06/fae6d7ea-92d4-4869-8bdf-77f4d86a634d.jpg",
+      "https://cf.cjdropshipping.com/quick/product/29fa192a-cc2b-42d0-965c-5af7c653917e.jpg"
+    ],
+    "trustLine": "Freeze. Roll. Wake up.",
+    "keywords": [
+      "ice roller south africa",
+      "ice face roller SA",
+      "silicone ice roller",
+      "skincare ice roller",
+      "tiktok skincare SA"
+    ],
+    "seo": {
+      "title": "Ice Face Roller SA | Ze Home Finds",
+      "description": "Fill, freeze and roll: the viral silicone ice roller for a cooling morning reset on face, eyes and neck. Free delivery across South Africa.",
+      "ogTitle": "The five-minute morning reset",
+      "alt": "Pink silicone ice face roller held against the cheek",
+      "h1": "Ice Face Roller"
+    }
+  },
+  {
+    "id": "rechargeable-lint-shaver",
+    "slug": "rechargeable-lint-shaver",
+    "name": "Rechargeable Lint Shaver",
+    "category": "Home Cleaning",
+    "price": 449,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "15-33 days",
+    "description": "Bobbly jersey, pilled couch cushion, fuzzy leggings — one pass and they look new again. The rechargeable lint shaver trims fuzz and pills off fabric and collects them in its tray. The LED display shows how much charge is left.",
+    "bullets": [
+      "Trims fuzz and pills off clothes, couches and blankets",
+      "Collects the fluff in a tray you empty in seconds",
+      "Rechargeable, with an LED charge display",
+      "Compact enough for the cupboard or a suitcase",
+      "Free delivery across South Africa — arrives in 15-33 days"
+    ],
+    "images": [
+      "https://oss-cf.cjdropshipping.com/product/2024/06/24/05/828407c7-959e-48b7-823f-914a45256f52.jpg",
+      "https://oss-cf.cjdropshipping.com/product/2023/12/21/10/9598ed88-16d6-4a04-873b-194700170166.jpg"
+    ],
+    "trustLine": "Make old jerseys look new again.",
+    "keywords": [
+      "lint shaver south africa",
+      "fabric shaver SA",
+      "rechargeable lint remover",
+      "bobble remover clothes",
+      "pill remover jersey SA"
+    ],
+    "seo": {
+      "title": "Rechargeable Lint Shaver SA | Ze Home Finds",
+      "description": "Trim fuzz and pills off jerseys, couches and blankets in one pass. Rechargeable with LED display. Free delivery across South Africa.",
+      "ogTitle": "Make old jerseys look new",
+      "alt": "Beige rechargeable lint shaver removing pills from a knit jersey",
+      "h1": "Rechargeable Lint Shaver"
     }
   }
 ]
