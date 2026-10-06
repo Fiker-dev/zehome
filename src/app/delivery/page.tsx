@@ -16,7 +16,7 @@ const items = [
   {
     icon: Clock,
     title: 'Delivery time shown on every product',
-    body: 'Some finds arrive in 3–7 business days. Others ship from our international supplier and take 8–33 days. The exact window is on each product page before you buy, and we email tracking once your order is dispatched.',
+    body: 'Our finds ship from our international supplier and arrive in 8–33 days, depending on the item. The exact window and an estimated arrival date are on each product page before you buy, and we email tracking once your order is dispatched.',
   },
   {
     icon: MapPin,
