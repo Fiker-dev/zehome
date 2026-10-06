@@ -16,7 +16,7 @@ const items = [
   {
     icon: Clock,
     title: 'Delivery time shown on every product',
-    body: 'Our finds ship from our international supplier and arrive in 8–33 days, depending on the item. The exact window and an estimated arrival date are on each product page before you buy, and we email tracking once your order is dispatched.',
+    body: 'Every find ships from local stock in Johannesburg and arrives in 3–7 business days. An estimated arrival date is on each product page before you buy, and we email tracking once your order is dispatched.',
   },
   {
     icon: MapPin,

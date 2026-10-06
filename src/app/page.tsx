@@ -18,7 +18,7 @@ const WHY_US = [
 ]
 
 const FAQ = [
-  { q: 'How long does delivery take?', a: 'Each product page shows its delivery window and an estimated arrival date before you buy. Delivery is free and tracked, and we email your tracking number when your order ships.' },
+  { q: 'How long does delivery take?', a: 'Orders ship from local stock in Johannesburg and arrive in 3–7 business days. Each product page shows an estimated arrival date before you buy. Delivery is free and tracked, and we email your tracking number when your order ships.' },
   { q: 'How do I pay?', a: 'Checkout runs through PayFast, South Africa’s trusted payment gateway. You can pay by card, Instant EFT and other PayFast methods. We never see your card details.' },
   { q: 'Can I return something?', a: 'Yes. Return any unused item in its original packaging within 14 days. If something arrives damaged or faulty, WhatsApp us and we will sort it out.' },
   { q: 'How do I track my order?', a: 'You get a tracking number by email once your order is dispatched. You can also WhatsApp us on +27 71 027 8563 with your order reference.' },

@@ -1,4 +1,29 @@
-# Product scorecard — 6 Oct 2026
+# Product scorecard — 6 Oct 2026 (v2: Perfect Dealz local stock)
+
+Owner rules: products already selling in SA, no paid ads (organic content),
+buy per order from Perfect Dealz at their website price. Cost = Perfect Dealz
+price + ⚠️ R99 delivery. All pass `npm run margins` (≥ R100 profit, ≥ 25%).
+
+| Product | Our price | PD cost | Profit | SA market | Trending | SA | Price | Delivery | Profit | Content | Risk | Total | Verdict |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Flame Aroma Diffuser | R399 | R139 | R144 | Takealot R398 | 5 | 5 | 4 | 5 | 3 | 5 | 4 | 31 | ✅ launch |
+| Mini Massage Gun | R449 | R199 | R132 | Takealot R648–699 | 4 | 5 | 5 | 5 | 3 | 4 | 4 | 30 | ✅ launch |
+| Glow-Up Kit (ice roller + brush cleaner + scalp comb) | R449 | R207 | R124 | parts R200–455 each locally | 4 | 4 | 4 | 5 | 3 | 5 | 4 | 29 | ✅ launch |
+| Pet Grooming Kit (steam brush + roller + dog bottle) | R449 | R187 | R144 | parts sold separately locally | 4 | 4 | 4 | 5 | 3 | 5 | 4 | 29 | ✅ launch |
+| 3-in-1 Cordless Handheld Vacuum | R349 | R129 | R106 | ~R399 SA | 3 | 4 | 4 | 5 | 2 | 4 | 4 | 26 | ✅ launch |
+| One-Step Hair Dryer Brush | R499 | R239 | R140 | Takealot R274–451, One Step R399 | 4 | 5 | 2 | 5 | 3 | 4 | 3 | 26 | 🟡 test (above market) |
+
+Dropped from the Perfect Dealz shortlist: sunrise alarm clock (R549 needed vs
+R240–399 in SA), spin scrubber (no SA evidence). Weak: mug set, moon humidifier.
+
+Caveat: Perfect Dealz sells the same items on its own site for less, so these
+sell on our content and bundles, not on price comparison. Bundles are the
+workaround: one R99 delivery over three items.
+
+---
+
+# v1 (CJ, superseded)
+
 
 Method: `.claude/skills/sa-product-research/SKILL.md`. Rate R17/USD. Launch
 needs ≥ 24/35 with no 1s. "With ads" = price needed to keep R100 profit and

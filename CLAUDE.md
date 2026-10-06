@@ -24,7 +24,7 @@ Target market: SA local — Johannesburg and surrounding areas
 - Supplier: CJdropshipping (account fifiab569@gmail.com, CJ3503236). API store
   "zehomefinds.co.za" is authorised. Key goes in env var CJ_API_KEY (Vercel +
   Claude environment). API base https://developers.cjdropshipping.com/api2.0/v1
-- Next: CJ product research -> shortlist through `npm run margins`; auto-place
+- Next (old CJ plan, superseded by Perfect Dealz below): CJ research; auto-place
   CJ order on PayFast COMPLETE ITN; update delivery promise to CJ's real SA
   transit time; replace lamp products once winners are picked.
 - Vercel: 4 projects (zehome, zehomenew, zehome-yxcz, zehome-4jx2) build the
@@ -42,14 +42,21 @@ Target market: SA local — Johannesburg and surrounding areas
 - PRODUCT RULE (owner): enter with products already selling in SA, priced and
   delivered competitively. Before adding/replacing/repricing ANY product, follow
   .claude/skills/sa-product-research/SKILL.md and show the owner the scorecard.
-- Live catalogue (6 Oct 2026, see docs/product-scorecard-2026-10.md): pet hair
-  remover 2-pack R399, pet steam brush R299, ice face roller R299, flame aroma
-  diffuser R549 — organic-content tests only; none survives a R150 ad cost.
-  Dropped: lint shaver, crystal lamp, bag sealer (cheaper locally). Next: get
-  Perfect Dealz dropship/trade prices to sell proven SA sellers with local
-  stock. Earlier drops: tumbler, motion light, sunset lamp. Photos are stored in
-  public/images/products/ (GitHub Action copies any remote CJ image), branded
-  cards via `npm run cards`, share image via `npm run og`.
+- Live catalogue (6 Oct 2026, see docs/product-scorecard-2026-10.md): all
+  Perfect Dealz local stock, 3-7 business days, bought per order at their
+  website price + R99 delivery (⚠️ confirm fee in dropshipper account): flame
+  aroma diffuser R399, Glow-Up Kit R449 (ice roller + brush cleaner + scalp
+  comb), mini massage gun R449, Pet Grooming Kit R449 (steam brush + hair
+  roller + dog bottle), cordless handheld vacuum R349, hair dryer brush R499.
+  Bundles spread one delivery fee over three cheap viral items.
+  Order flow: paid PayFast ITN -> Google Sheet row whose "reminder" column
+  reads "BUY -> Perfect Dealz: 1x <item> <url>; ..." (src/lib/supplier.ts);
+  owner buys those items on perfectdealz.co.za with the customer's address.
+  Supplier catalogue mirror: data/suppliers/perfectdealz-catalog.json (weekly
+  Action). CJ products removed (dearer and slower than local). Photos are
+  stored in public/images/products/ (Action copies remote images), branded
+  cards via `npm run cards`, share image via `npm run og`. If a product page
+  404s locally after catalogue changes, `rm -rf .next` and rebuild.
 - Vercel connector works without teamId (team-scoped calls return nothing).
   Previews are behind Vercel Authentication; Claude cannot open them.
 

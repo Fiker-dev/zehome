@@ -1,51 +1,102 @@
 {
-  "self-cleaning-pet-hair-remover-2-pack": {
-    "eyebrow": "Pet hair remover",
+  "pet-grooming-kit": {
+    "eyebrow": "Pet grooming kit",
     "benefits": {
-      "headline": "Fur off the couch in seconds",
+      "headline": "Three pet essentials, one box",
       "points": [
-        "Swipe back and forth and the hair lifts straight off",
-        "Self-cleaning: press the button to empty the chamber",
-        "No sticky sheets, no refills, no batteries",
-        "Works on couches, beds, blankets and clothes"
+        "Steam brush detangles and lifts loose fur",
+        "Reusable roller clears fur off couches and clothes",
+        "Leak-proof bottle with a built-in bowl for walks",
+        "For cats and dogs of all coat types"
       ]
     },
     "steps": {
       "headline": "How it works",
       "items": [
         [
-          "Swipe",
-          "Brush it back and forth over the fabric"
+          "Groom",
+          "Steam brush lifts tangles and loose fur"
         ],
         [
-          "Collect",
-          "The hair gathers inside the chamber"
+          "Roll",
+          "Reusable roller picks fur off fabric"
         ],
         [
-          "Empty",
-          "Press the button and tip it into the bin"
+          "Walk",
+          "Fill the bottle, flip down the bowl"
         ]
       ]
     },
     "compare": {
-      "headline": "Ditch the sticky roller",
-      "left": "Sticky lint roller",
-      "right": "Ze pet hair remover",
+      "headline": "Kit vs. buying separately",
+      "left": "Separate",
+      "right": "Ze kit",
       "rows": [
         [
-          "Refills",
-          "Keep buying sheets",
-          "Never"
+          "Items",
+          "Bought one by one",
+          "All three in one box"
         ],
         [
-          "Waste",
-          "Sheets in the bin",
-          "Only the hair"
+          "Delivery",
+          "Paid per order",
+          "Free"
         ],
         [
-          "Cost over time",
-          "Keeps adding up",
-          "Buy once"
+          "Roller refills",
+          "Sticky sheets",
+          "None needed"
+        ]
+      ]
+    }
+  },
+  "glow-up-kit": {
+    "eyebrow": "Glow-up kit",
+    "benefits": {
+      "headline": "Three self-care favourites",
+      "points": [
+        "Cooling ice roller with a gel-filled head",
+        "Electric cleaner spins makeup brushes clean",
+        "Scalp massager comb for wash day",
+        "No batteries needed for the roller — load-shedding proof"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Chill",
+          "Pop the roller in the freezer overnight"
+        ],
+        [
+          "Roll",
+          "Roll over face and neck in the morning"
+        ],
+        [
+          "Clean",
+          "Spin your brushes clean in seconds"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Kit vs. buying separately",
+      "left": "Separate",
+      "right": "Ze kit",
+      "rows": [
+        [
+          "Items",
+          "Bought one by one",
+          "All three in one box"
+        ],
+        [
+          "Delivery",
+          "Paid per order",
+          "Free"
+        ],
+        [
+          "Gift-ready",
+          "No",
+          "Yes"
         ]
       ]
     }
@@ -55,10 +106,10 @@
     "benefits": {
       "headline": "It looks like fire. It's mist.",
       "points": [
-        "Flickering flame effect on cool, scented mist",
-        "Switch between flame colours",
-        "130ml tank: water plus a few drops of oil",
-        "USB powered, with nothing to light"
+        "LED flame-effect night light",
+        "Ultrasonic humidifier for dry air",
+        "Add essential oils for aromatherapy",
+        "No open flame, nothing to light"
       ]
     },
     "steps": {
@@ -66,21 +117,21 @@
       "items": [
         [
           "Fill",
-          "Water and a few drops of your oil"
+          "Add water and a few drops of oil"
         ],
         [
-          "Plug in",
-          "Connect it with the USB cable"
+          "Switch on",
+          "The mist glows like a flame"
         ],
         [
-          "Unwind",
-          "Pick a flame colour and breathe in"
+          "Relax",
+          "Bedroom, lounge or desk"
         ]
       ]
     },
     "compare": {
-      "headline": "All the mood. None of the fire.",
-      "left": "Scented candle",
+      "headline": "Better than a candle",
+      "left": "Candle",
       "right": "Flame diffuser",
       "rows": [
         [
@@ -89,116 +140,167 @@
           "No"
         ],
         [
-          "Scent",
           "Burns down",
-          "Refill with any oil"
+          "Every use",
+          "Never"
         ],
         [
-          "Colours",
-          "One",
-          "Several"
+          "Humidifies air",
+          "No",
+          "Yes"
         ]
       ]
     }
   },
-  "3-in-1-pet-steam-brush": {
-    "eyebrow": "Pet care",
+  "mini-massage-gun": {
+    "eyebrow": "Wellness",
     "benefits": {
-      "headline": "Less fur. Calmer pet.",
+      "headline": "Recovery that fits in your bag",
       "points": [
-        "A fine mist settles loose fur and static",
-        "Soft teeth give a gentle massage",
-        "Shed hair stays in the brush, not on the couch",
-        "For cats and dogs, short or long hair"
+        "Rapid percussion for neck, shoulders and legs",
+        "Quiet enough to use while watching TV",
+        "Compact and easy to hold",
+        "Gym bag or desk drawer size"
       ]
     },
     "steps": {
       "headline": "How it works",
       "items": [
         [
-          "Fill",
-          "Add a little water to the tank"
+          "Pick a spot",
+          "Neck, shoulders, calves or thighs"
         ],
         [
-          "Brush",
-          "Mist and brush in the direction of the fur"
+          "Glide",
+          "Let the pulses work into the muscle"
+        ],
+        [
+          "Repeat",
+          "After workouts or long office days"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Mini vs. full-size gun",
+      "left": "Full-size gun",
+      "right": "Mini gun",
+      "rows": [
+        [
+          "Size",
+          "Bulky",
+          "Pocket-sized"
+        ],
+        [
+          "Noise",
+          "Loud",
+          "Quiet"
+        ],
+        [
+          "Takes it everywhere",
+          "Rarely",
+          "Always"
+        ]
+      ]
+    }
+  },
+  "cordless-handheld-vacuum": {
+    "eyebrow": "Home cleaning",
+    "benefits": {
+      "headline": "Quick clean-ups, no cables",
+      "points": [
+        "3-in-1 handheld vacuum",
+        "Cordless — no plug, no cable",
+        "120W in a compact body",
+        "Car, couch, desk and corners"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Grab",
+          "Lift it off the shelf"
+        ],
+        [
+          "Clean",
+          "Crumbs, dust and sand"
+        ],
+        [
+          "Empty",
+          "Tip out the dust cup"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Handheld vs. big vacuum",
+      "left": "Big vacuum",
+      "right": "Handheld",
+      "rows": [
+        [
+          "Set-up",
+          "Drag it out, plug in",
+          "Grab and go"
+        ],
+        [
+          "In the car",
+          "Hard",
+          "Easy"
+        ],
+        [
+          "Storage",
+          "Cupboard space",
+          "A drawer"
+        ]
+      ]
+    }
+  },
+  "one-step-hair-dryer-brush": {
+    "eyebrow": "Hair styling",
+    "benefits": {
+      "headline": "Salon blow-dry, one tool",
+      "points": [
+        "Dries, smooths and volumises in one step",
+        "Bristles detangle as you go",
+        "Lifts at the roots for volume",
+        "Replaces a dryer and round brush"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Towel-dry",
+          "Start with damp hair"
+        ],
+        [
+          "Brush through",
+          "Section by section"
         ],
         [
           "Lift",
-          "Pull the loose hair off the teeth and bin it"
+          "Roll at the roots for volume"
         ]
       ]
     },
     "compare": {
-      "headline": "Brushing, upgraded",
-      "left": "Ordinary brush",
-      "right": "Pet steam brush",
+      "headline": "One tool vs. two",
+      "left": "Dryer + round brush",
+      "right": "Dryer brush",
       "rows": [
         [
-          "Static",
-          "Fur flies everywhere",
-          "Settled by the mist"
+          "Hands needed",
+          "Two tools at once",
+          "One"
         ],
         [
-          "Feel",
-          "Can tug and scratch",
-          "Soft massage teeth"
+          "Styling time",
+          "Longer",
+          "Shorter"
         ],
         [
-          "Loose hair",
-          "Ends up on the couch",
-          "Stays in the brush"
-        ]
-      ]
-    }
-  },
-  "ice-face-roller": {
-    "eyebrow": "Beauty",
-    "benefits": {
-      "headline": "The five-minute reset.",
-      "points": [
-        "Fill with water, freeze, and roll",
-        "Cooling roll for face, under-eyes and neck",
-        "Silicone holder keeps your hands warm",
-        "Reusable every day"
-      ]
-    },
-    "steps": {
-      "headline": "How it works",
-      "items": [
-        [
-          "Fill",
-          "Fill the mould with water"
-        ],
-        [
-          "Freeze",
-          "Pop it in the freezer overnight"
-        ],
-        [
-          "Roll",
-          "Glide over face, eyes and neck"
-        ]
-      ]
-    },
-    "compare": {
-      "headline": "Better than a bag of ice",
-      "left": "Ice in a cloth",
-      "right": "Ice face roller",
-      "rows": [
-        [
-          "Your hands",
-          "Frozen fingers",
-          "Silicone grip"
-        ],
-        [
-          "Mess",
-          "Drips everywhere",
-          "Holds the ice in place"
-        ],
-        [
-          "Use",
-          "Once and done",
-          "Refill and reuse"
+          "Learning curve",
+          "Takes practice",
+          "Brush as usual"
         ]
       ]
     }

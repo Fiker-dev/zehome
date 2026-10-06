@@ -1,5 +1,129 @@
 [
   {
+    "id": "flame-aroma-diffuser",
+    "slug": "flame-aroma-diffuser",
+    "name": "Flame Aroma Diffuser",
+    "category": "Home Fragrance",
+    "price": 399,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "It looks like a real flame. It's cool mist. The Flame Aroma Diffuser combines a soft LED flame-effect night light with an ultrasonic humidifier and essential-oil diffuser, turning your bedroom, lounge or desk into a calm, glowing retreat.",
+    "bullets": [
+      "LED flame-effect night light for a cosy glow",
+      "Ultrasonic humidifier adds moisture to dry air",
+      "Add a few drops of essential oil for aromatherapy",
+      "No open flame — nothing to light",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "/images/products/flame-aroma-diffuser/photo-1.jpg",
+      "/images/products/flame-aroma-diffuser/benefits.jpg",
+      "/images/products/flame-aroma-diffuser/how-it-works.jpg",
+      "/images/products/flame-aroma-diffuser/compare.jpg",
+      "/images/products/flame-aroma-diffuser/photo-2.jpg",
+      "/images/products/flame-aroma-diffuser/photo-3.jpg",
+      "/images/products/flame-aroma-diffuser/photo-4.png"
+    ],
+    "trustLine": "All the mood of a flame. None of the fire.",
+    "keywords": [
+      "flame diffuser south africa",
+      "flame humidifier SA",
+      "aroma diffuser with flame effect",
+      "essential oil diffuser SA",
+      "tiktok flame diffuser"
+    ],
+    "seo": {
+      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
+      "description": "LED flame-effect diffuser and ultrasonic humidifier for essential oils. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "It looks like fire. It's mist.",
+      "alt": "Flame aroma diffuser with glowing flame-effect mist",
+      "h1": "Flame Aroma Diffuser"
+    }
+  },
+  {
+    "id": "glow-up-kit",
+    "slug": "glow-up-kit",
+    "name": "Glow-Up Kit (3-Piece)",
+    "category": "Beauty",
+    "price": 449,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "The three viral self-care tools, together. A cooling ice roller with a gel-filled head for a fresh morning reset, an electric makeup brush cleaner that spins out old makeup and oil so your brushes stay soft, and a scalp massager comb for a relaxing wash-day ritual.",
+    "bullets": [
+      "Cooling facial ice roller — gel-filled head, no batteries needed",
+      "Electric makeup brush cleaner — spins brushes clean in seconds",
+      "Scalp massager comb for a relaxing hair-care routine",
+      "The perfect gift — three self-care favourites in one box",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "/images/products/glow-up-kit/photo-1.png",
+      "/images/products/glow-up-kit/benefits.jpg",
+      "/images/products/glow-up-kit/how-it-works.jpg",
+      "/images/products/glow-up-kit/compare.jpg",
+      "/images/products/glow-up-kit/photo-2.jpg",
+      "/images/products/glow-up-kit/photo-4.jpg",
+      "/images/products/glow-up-kit/photo-5.jpg"
+    ],
+    "trustLine": "Three self-care favourites. One box.",
+    "keywords": [
+      "ice roller south africa",
+      "makeup brush cleaner SA",
+      "self care gift set south africa",
+      "skincare gift SA",
+      "scalp massager"
+    ],
+    "seo": {
+      "title": "Glow-Up Kit (Ice Roller, Brush Cleaner, Scalp Massager) | Ze Home Finds",
+      "description": "Cooling ice roller, electric makeup brush cleaner and scalp massager comb in one self-care kit. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Three self-care favourites in one box",
+      "alt": "Glow-up kit with cooling ice roller, electric makeup brush cleaner and scalp massager",
+      "h1": "Glow-Up Kit"
+    }
+  },
+  {
+    "id": "mini-massage-gun",
+    "slug": "mini-massage-gun",
+    "name": "Mini Massage Gun",
+    "category": "Wellness",
+    "price": 449,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "Your pocket-sized recovery tool. The mini massage gun uses rapid percussion to work into tight neck, shoulder and leg muscles after a long day at the desk or a hard workout — and it's quiet enough to use while you watch TV.",
+    "bullets": [
+      "Rapid percussion for tight neck, shoulders and legs",
+      "Quiet, compact and easy to hold",
+      "Small enough for your gym bag or desk drawer",
+      "Great after workouts or long office days",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "/images/products/mini-massage-gun/photo-1.jpg",
+      "/images/products/mini-massage-gun/benefits.jpg",
+      "/images/products/mini-massage-gun/how-it-works.jpg",
+      "/images/products/mini-massage-gun/compare.jpg",
+      "/images/products/mini-massage-gun/photo-2.jpg"
+    ],
+    "trustLine": "Recovery that fits in your bag.",
+    "keywords": [
+      "mini massage gun south africa",
+      "massage gun SA price",
+      "portable massage gun",
+      "muscle massager SA",
+      "gym recovery tool"
+    ],
+    "seo": {
+      "title": "Mini Massage Gun SA | Ze Home Finds",
+      "description": "Quiet, compact mini massage gun for tight neck, shoulders and legs. Free delivery across South Africa in 3-7 business days.",
+      "ogTitle": "Recovery that fits in your bag",
+      "alt": "Compact mini massage gun held against the shoulder",
+      "h1": "Mini Massage Gun"
+    }
+  },
+  {
     "id": "pet-grooming-kit",
     "slug": "pet-grooming-kit",
     "name": "Pet Grooming Kit (3-Piece)",
@@ -18,7 +142,9 @@
     ],
     "images": [
       "/images/products/pet-grooming-kit/photo-1.jpg",
-      "/images/products/pet-grooming-kit/photo-2.jpg",
+      "/images/products/pet-grooming-kit/benefits.jpg",
+      "/images/products/pet-grooming-kit/how-it-works.jpg",
+      "/images/products/pet-grooming-kit/compare.jpg",
       "/images/products/pet-grooming-kit/photo-3.jpg",
       "/images/products/pet-grooming-kit/photo-4.jpg",
       "/images/products/pet-grooming-kit/photo-5.jpg",
@@ -41,122 +167,6 @@
     }
   },
   {
-    "id": "glow-up-kit",
-    "slug": "glow-up-kit",
-    "name": "Glow-Up Kit (3-Piece)",
-    "category": "Beauty",
-    "price": 449,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "3-7 business days",
-    "description": "The three viral self-care tools, together. A cooling ice roller with a gel-filled head for a fresh morning reset, an electric makeup brush cleaner that spins out old makeup and oil so your brushes stay soft, and a scalp massager comb for a relaxing wash-day ritual.",
-    "bullets": [
-      "Cooling facial ice roller — gel-filled head, no batteries needed",
-      "Electric makeup brush cleaner — spins brushes clean in seconds",
-      "Scalp massager comb for a relaxing hair-care routine",
-      "The perfect gift — three self-care favourites in one box",
-      "Free delivery across South Africa — 3-7 business days"
-    ],
-    "images": [
-      "/images/products/glow-up-kit/photo-1.png",
-      "/images/products/glow-up-kit/photo-2.jpg",
-      "/images/products/glow-up-kit/photo-3.jpg",
-      "/images/products/glow-up-kit/photo-4.jpg",
-      "/images/products/glow-up-kit/photo-5.jpg"
-    ],
-    "trustLine": "Three self-care favourites. One box.",
-    "keywords": [
-      "ice roller south africa",
-      "makeup brush cleaner SA",
-      "self care gift set south africa",
-      "skincare gift SA",
-      "scalp massager"
-    ],
-    "seo": {
-      "title": "Glow-Up Kit (Ice Roller, Brush Cleaner, Scalp Massager) | Ze Home Finds",
-      "description": "Cooling ice roller, electric makeup brush cleaner and scalp massager comb in one self-care kit. Free delivery across South Africa in 3-7 business days.",
-      "ogTitle": "Three self-care favourites in one box",
-      "alt": "Glow-up kit with cooling ice roller, electric makeup brush cleaner and scalp massager",
-      "h1": "Glow-Up Kit"
-    }
-  },
-  {
-    "id": "flame-aroma-diffuser",
-    "slug": "flame-aroma-diffuser",
-    "name": "Flame Aroma Diffuser",
-    "category": "Home Fragrance",
-    "price": 399,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "3-7 business days",
-    "description": "It looks like a real flame. It's cool mist. The Flame Aroma Diffuser combines a soft LED flame-effect night light with an ultrasonic humidifier and essential-oil diffuser, turning your bedroom, lounge or desk into a calm, glowing retreat.",
-    "bullets": [
-      "LED flame-effect night light for a cosy glow",
-      "Ultrasonic humidifier adds moisture to dry air",
-      "Add a few drops of essential oil for aromatherapy",
-      "No open flame — nothing to light",
-      "Free delivery across South Africa — 3-7 business days"
-    ],
-    "images": [
-      "/images/products/flame-aroma-diffuser/photo-1.jpg",
-      "/images/products/flame-aroma-diffuser/photo-2.jpg",
-      "/images/products/flame-aroma-diffuser/photo-3.jpg",
-      "/images/products/flame-aroma-diffuser/photo-4.png"
-    ],
-    "trustLine": "All the mood of a flame. None of the fire.",
-    "keywords": [
-      "flame diffuser south africa",
-      "flame humidifier SA",
-      "aroma diffuser with flame effect",
-      "essential oil diffuser SA",
-      "tiktok flame diffuser"
-    ],
-    "seo": {
-      "title": "Flame Aroma Diffuser SA | Ze Home Finds",
-      "description": "LED flame-effect diffuser and ultrasonic humidifier for essential oils. Free delivery across South Africa in 3-7 business days.",
-      "ogTitle": "It looks like fire. It's mist.",
-      "alt": "Flame aroma diffuser with glowing flame-effect mist",
-      "h1": "Flame Aroma Diffuser"
-    }
-  },
-  {
-    "id": "mini-massage-gun",
-    "slug": "mini-massage-gun",
-    "name": "Mini Massage Gun",
-    "category": "Wellness",
-    "price": 449,
-    "currency": "ZAR",
-    "inStock": true,
-    "deliveryDays": "3-7 business days",
-    "description": "Your pocket-sized recovery tool. The mini massage gun uses rapid percussion to work into tight neck, shoulder and leg muscles after a long day at the desk or a hard workout — and it's quiet enough to use while you watch TV.",
-    "bullets": [
-      "Rapid percussion for tight neck, shoulders and legs",
-      "Quiet, compact and easy to hold",
-      "Small enough for your gym bag or desk drawer",
-      "Great after workouts or long office days",
-      "Free delivery across South Africa — 3-7 business days"
-    ],
-    "images": [
-      "/images/products/mini-massage-gun/photo-1.jpg",
-      "/images/products/mini-massage-gun/photo-2.jpg"
-    ],
-    "trustLine": "Recovery that fits in your bag.",
-    "keywords": [
-      "mini massage gun south africa",
-      "massage gun SA price",
-      "portable massage gun",
-      "muscle massager SA",
-      "gym recovery tool"
-    ],
-    "seo": {
-      "title": "Mini Massage Gun SA | Ze Home Finds",
-      "description": "Quiet, compact mini massage gun for tight neck, shoulders and legs. Free delivery across South Africa in 3-7 business days.",
-      "ogTitle": "Recovery that fits in your bag",
-      "alt": "Compact mini massage gun held against the shoulder",
-      "h1": "Mini Massage Gun"
-    }
-  },
-  {
     "id": "cordless-handheld-vacuum",
     "slug": "cordless-handheld-vacuum",
     "name": "3-in-1 Cordless Handheld Vacuum",
@@ -174,7 +184,10 @@
       "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
-      "/images/products/cordless-handheld-vacuum/photo-1.jpg"
+      "/images/products/cordless-handheld-vacuum/photo-1.jpg",
+      "/images/products/cordless-handheld-vacuum/benefits.jpg",
+      "/images/products/cordless-handheld-vacuum/how-it-works.jpg",
+      "/images/products/cordless-handheld-vacuum/compare.jpg"
     ],
     "trustLine": "Quick clean-ups. No cables.",
     "keywords": [
@@ -210,7 +223,10 @@
       "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
-      "/images/products/one-step-hair-dryer-brush/photo-1.jpg"
+      "/images/products/one-step-hair-dryer-brush/photo-1.jpg",
+      "/images/products/one-step-hair-dryer-brush/benefits.jpg",
+      "/images/products/one-step-hair-dryer-brush/how-it-works.jpg",
+      "/images/products/one-step-hair-dryer-brush/compare.jpg"
     ],
     "trustLine": "Salon blow-dry. One tool. At home.",
     "keywords": [

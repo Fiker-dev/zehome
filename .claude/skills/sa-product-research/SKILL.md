@@ -103,11 +103,16 @@ ships an SA plug. Avoid medical/health claims in copy.
 ## Step 6 — Adding a product (only after the owner approves)
 
 1. Add the product to `src/data/products.json` (exact variant, honest copy —
-   only facts from the CJ listing) and costs + `cjPid/cjVid/cjVariant` to
-   `src/data/supplier-costs.json`. `npm run margins` must exit 0.
-2. Push; the "Fetch product images" GitHub Action copies CJ photos into
+   only facts from the supplier listing, `deliveryDays` "3-7 business days"
+   for Perfect Dealz) and to `src/data/supplier-costs.json`: `supplier`,
+   `supplierUrl`, `costPrice`, `deliveryCost`, plus `components` (title, url,
+   quantity) for a bundle or `cjPid/cjVid/cjVariant` for CJ. These drive the
+   "BUY →" shopping list on each paid order. `npm run margins` must exit 0.
+2. Put the supplier's image URLs in `images` and push; the "Fetch product
+   images" GitHub Action copies them into
    `public/images/products/<id>/`. Pull, then **look at every photo**: drop any
-   showing colours/variants we don't sell or another brand's logo.
+   showing colours/variants we don't sell, foreign-language text or another
+   store's watermark.
 3. Add card copy to `scripts/product-cards/cards.json`, run `npm run cards`;
    insert the three card paths after the first photo.
 4. Build, run the full QA (all product pages, shop filters, cart, PayFast

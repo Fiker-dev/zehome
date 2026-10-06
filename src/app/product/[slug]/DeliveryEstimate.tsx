@@ -9,18 +9,27 @@ const todayKey = () => new Date().toDateString()
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-ZA', { weekday: 'short', day: 'numeric', month: 'short' })
 
-// "8-16 days" -> "Order today, arrives Tue 14 Oct – Wed 22 Oct". Computed in the
-// browser so the dates are never stale from the static build.
+// "3-7 business days" -> "Order today, arrives Thu 9 Oct – Wed 15 Oct" (business
+// days skip weekends). Computed in the browser so the dates are never stale
+// from the static build.
+const addDays = (start: Date, days: number, businessOnly: boolean) => {
+  const d = new Date(start)
+  for (let left = days; left > 0; ) {
+    d.setDate(d.getDate() + 1)
+    if (!businessOnly || (d.getDay() !== 0 && d.getDay() !== 6)) left--
+  }
+  return d
+}
+
 export default function DeliveryEstimate({ deliveryDays }: { deliveryDays: string }) {
   const today = useSyncExternalStore(noopSubscribe, todayKey, () => null)
   const match = deliveryDays.match(/(\d+)\s*[-–]\s*(\d+)/)
 
   let text = `Free delivery — arrives in ${deliveryDays}`
   if (today && match) {
-    const from = new Date(today)
-    const to = new Date(today)
-    from.setDate(from.getDate() + Number(match[1]))
-    to.setDate(to.getDate() + Number(match[2]))
+    const businessOnly = /business/i.test(deliveryDays)
+    const from = addDays(new Date(today), Number(match[1]), businessOnly)
+    const to = addDays(new Date(today), Number(match[2]), businessOnly)
     text = `Order today, arrives ${fmt(from)} – ${fmt(to)}`
   }
 
