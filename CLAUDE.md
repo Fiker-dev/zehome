@@ -28,8 +28,12 @@ Target market: SA local — Johannesburg and surrounding areas
   CJ order on PayFast COMPLETE ITN; update delivery promise to CJ's real SA
   transit time; replace lamp products once winners are picked.
 - Vercel: 4 projects (zehome, zehomenew, zehome-yxcz, zehome-4jx2) build the
-  same repo; failures alternate between them (infra, not code). Owner to
-  delete the 3 that don't hold the domain.
+  same repo (Hobby plan, 1 concurrent build, so they queue). zehomefinds.co.za
+  resolves to production deployment dpl_8HKD5ASsur52QKMzbbi5TB8Li661, which is
+  **zehome-4jx2** — that is the live project. Env vars (PayFast, CJ_API_KEY,
+  GOOGLE_SHEETS_WEBHOOK_URL) belong there. Owner still to confirm in the
+  dashboard before deleting the other three.
+- CJ: CJMCP connector signed in via OAuth (valid 180 days).
 
 ## Tech Stack
 - Framework: Next.js 14 (App Router)
