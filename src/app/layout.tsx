@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
@@ -77,6 +78,7 @@ export default function RootLayout({
             }),
           }}
         />
+        <AnnouncementBar />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

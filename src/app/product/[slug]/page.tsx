@@ -4,8 +4,17 @@ import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import AddToCartButton from './AddToCartButton'
 import ImageGallery from './ImageGallery'
+import DeliveryEstimate from './DeliveryEstimate'
+import StickyAddToCart from './StickyAddToCart'
+import { ChevronDown, ShieldCheck, RotateCcw, Truck } from 'lucide-react'
 import ProductCard from '@/components/ProductCard'
 import { absoluteImageUrl } from '@/lib/images'
+
+const TRUST_BADGES = [
+  { icon: Truck, label: 'Free tracked delivery' },
+  { icon: ShieldCheck, label: 'Secure PayFast checkout' },
+  { icon: RotateCcw, label: '14-day returns' },
+]
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -102,7 +111,7 @@ export default async function ProductPage({ params }: Props) {
           <ImageGallery images={product.images} alt={product.seo.alt} />
 
           {/* Detail */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
               <p className="font-body text-terracotta uppercase font-medium tracking-[0.2em]" style={{ fontSize: '11px' }}>
                 {product.category}
@@ -110,17 +119,21 @@ export default async function ProductPage({ params }: Props) {
               <h1 className="font-display text-charcoal leading-snug" style={{ fontSize: '32px' }}>
                 {product.seo.h1}
               </h1>
-              <p className="font-body font-medium text-charcoal" style={{ fontSize: '24px' }}>
-                R{product.price}
+              <div className="flex items-baseline gap-3">
+                <p className="font-body font-medium text-charcoal" style={{ fontSize: '24px' }}>
+                  R{product.price}
+                </p>
+                <p className="font-body text-terracotta font-medium" style={{ fontSize: '13px' }}>
+                  Free delivery
+                </p>
+              </div>
+              <p className="font-body text-charcoal-light" style={{ fontSize: '14px' }}>
+                {product.trustLine}
               </p>
             </div>
 
-            <p className="font-body text-charcoal-light leading-relaxed" style={{ fontSize: '15px' }}>
-              {product.description}
-            </p>
-
             <ul className="flex flex-col gap-2">
-              {product.bullets.map((b, i) => (
+              {product.bullets.slice(0, -1).map((b, i) => (
                 <li key={i} className="flex items-start gap-2 font-body text-charcoal-light" style={{ fontSize: '14px' }}>
                   <span className="text-terracotta mt-0.5 flex-shrink-0">✓</span>
                   <span>{b}</span>
@@ -128,14 +141,59 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </ul>
 
-            <AddToCartButton product={product} />
+            <div id="main-atc">
+              <AddToCartButton product={product} />
+            </div>
 
-            <p className="font-body text-warm-gray" style={{ fontSize: '12px' }}>
-              {product.trustLine}
-            </p>
+            <ul className="grid grid-cols-3 gap-2 text-center font-body text-charcoal-light" style={{ fontSize: '11px' }}>
+              {TRUST_BADGES.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex flex-col items-center gap-1.5 border border-border px-2 py-3">
+                  <Icon size={18} strokeWidth={1.5} className="text-terracotta" aria-hidden="true" />
+                  {label}
+                </li>
+              ))}
+            </ul>
+
+            <DeliveryEstimate deliveryDays={product.deliveryDays} />
+
+            <div className="border-t border-border">
+              {[
+                { title: 'Product details', body: product.description, open: true },
+                {
+                  title: 'Delivery',
+                  body: `Free, tracked delivery anywhere in South Africa. This find arrives in ${product.deliveryDays} from the day you order. We email your tracking number as soon as it ships.`,
+                },
+                {
+                  title: 'Returns',
+                  body: 'Changed your mind? Return it unused in its original packaging within 14 days. Arrived damaged or faulty? WhatsApp us and we will make it right.',
+                  link: { href: '/returns', label: 'Read the returns policy' },
+                },
+                {
+                  title: 'Secure payment',
+                  body: 'Checkout is handled by PayFast, South Africa’s trusted payment gateway. Pay by card, Instant EFT and more. We never see your card details.',
+                },
+              ].map(({ title, body, open, link }) => (
+                <details key={title} open={open} className="group border-b border-border">
+                  <summary className="flex items-center justify-between cursor-pointer list-none py-4 font-body font-medium text-charcoal" style={{ fontSize: '14px' }}>
+                    {title}
+                    <ChevronDown size={16} strokeWidth={1.5} className="transition-transform group-open:rotate-180" aria-hidden="true" />
+                  </summary>
+                  <div className="pb-4 font-body text-charcoal-light leading-relaxed" style={{ fontSize: '14px' }}>
+                    <p>{body}</p>
+                    {link && (
+                      <Link href={link.href} className="inline-block mt-2 text-terracotta underline underline-offset-4">
+                        {link.label}
+                      </Link>
+                    )}
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      <StickyAddToCart product={product} />
 
       {/* You might also like */}
       <section className="bg-cream border-t border-border mt-16">

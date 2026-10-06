@@ -12,13 +12,16 @@ export default function WhatsAppButton() {
 
   if (cartOpen || HIDDEN_ON.includes(pathname)) return null
 
+  // Product pages have a sticky add-to-cart bar along the bottom on mobile
+  const offset = pathname.startsWith('/product/') ? 'bottom-24 md:bottom-6' : 'bottom-6'
+
   return (
     <a
       href="https://wa.me/27710278563?text=Hi%20Ze%20Home%20Finds%2C%20I%27m%20interested%20in%20one%20of%20your%20finds."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:scale-105 transition-transform"
+      className={`fixed ${offset} right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:scale-105 transition-transform`}
       style={{ backgroundColor: '#25D366' }}
     >
       <svg

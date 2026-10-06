@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ChevronDown, Sparkles, Truck, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
 import products from '@/data/products.json'
 import ProductCard from '@/components/ProductCard'
@@ -9,6 +10,19 @@ export const metadata: Metadata = {
 }
 
 const heroProducts = products.slice(0, 3)
+
+const WHY_US = [
+  { icon: Sparkles, title: 'Only what’s trending', body: 'We test what’s going viral and only stock the finds worth the hype.' },
+  { icon: Truck, title: 'Free, tracked delivery', body: 'No minimum spend. Every order is tracked from dispatch to your door, anywhere in SA.' },
+  { icon: ShieldCheck, title: 'Safe checkout', body: 'Pay securely with PayFast by card or Instant EFT, with 14-day returns if it’s not for you.' },
+]
+
+const FAQ = [
+  { q: 'How long does delivery take?', a: 'Each product page shows its delivery window and an estimated arrival date before you buy. Delivery is free and tracked, and we email your tracking number when your order ships.' },
+  { q: 'How do I pay?', a: 'Checkout runs through PayFast, South Africa’s trusted payment gateway. You can pay by card, Instant EFT and other PayFast methods. We never see your card details.' },
+  { q: 'Can I return something?', a: 'Yes. Return any unused item in its original packaging within 14 days. If something arrives damaged or faulty, WhatsApp us and we will sort it out.' },
+  { q: 'How do I track my order?', a: 'You get a tracking number by email once your order is dispatched. You can also WhatsApp us on +27 71 027 8563 with your order reference.' },
+]
 
 export default function HomePage() {
   return (
@@ -110,6 +124,39 @@ export default function HomePage() {
                 category={p.category}
               />
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── WHY US ── */}
+      <section className="bg-cream border-y border-border/60">
+        <ul className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
+          {WHY_US.map(({ icon: Icon, title, body }) => (
+            <li key={title} className="flex flex-col items-center sm:items-start text-center sm:text-left gap-3">
+              <span className="w-11 h-11 bg-warm-white flex items-center justify-center">
+                <Icon size={20} strokeWidth={1.5} className="text-terracotta" aria-hidden="true" />
+              </span>
+              <h3 className="font-display text-charcoal" style={{ fontSize: '20px' }}>{title}</h3>
+              <p className="font-body text-charcoal-light max-w-xs" style={{ fontSize: '14px', lineHeight: '1.6' }}>{body}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <h2 className="font-display italic text-charcoal mb-8" style={{ fontSize: 'clamp(28px, 5vw, 38px)' }}>
+          Good to know
+        </h2>
+        <div className="border-t border-border">
+          {FAQ.map(({ q, a }) => (
+            <details key={q} className="group border-b border-border">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none py-5 font-body font-medium text-charcoal" style={{ fontSize: '15px' }}>
+                {q}
+                <ChevronDown size={18} strokeWidth={1.5} className="flex-shrink-0 transition-transform group-open:rotate-180" aria-hidden="true" />
+              </summary>
+              <p className="pb-5 font-body text-charcoal-light leading-relaxed" style={{ fontSize: '14px' }}>{a}</p>
+            </details>
           ))}
         </div>
       </section>
