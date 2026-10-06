@@ -34,6 +34,13 @@ Target market: SA local — Johannesburg and surrounding areas
   GOOGLE_SHEETS_WEBHOOK_URL) belong there. Owner still to confirm in the
   dashboard before deleting the other three.
 - CJ: CJMCP connector signed in via OAuth (valid 180 days).
+- CJ research (6 Oct 2026, R17/USD): CJ holds no SA warehouse stock, so all
+  items ship from CN. To ZA: "CJPacket Ordinary" 7-13 days for non-electric
+  goods; anything with a battery/electronics is forced onto "CJPacket
+  Sensitive" 13-30 days. Shipping is ~R200+ per parcel even at ~240 g, so
+  retail starts around R399. Shortlist + margins was given to the owner; awaiting
+  their pick before touching products.json. Vercel connector still lists 0
+  projects (team visible), so the owner must re-grant project access.
 
 ## Tech Stack
 - Framework: Next.js 14 (App Router)
