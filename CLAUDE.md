@@ -28,7 +28,9 @@ Target market: SA local — Johannesburg and surrounding areas
   CJ order on PayFast COMPLETE ITN; update delivery promise to CJ's real SA
   transit time; replace lamp products once winners are picked.
 - Vercel: 4 projects (zehome, zehomenew, zehome-yxcz, zehome-4jx2) build the
-  same repo (Hobby plan, 1 concurrent build, so they queue). zehomefinds.co.za
+  same repo (Hobby plan, 1 concurrent build, so they queue). Every push costs
+  4 of the 100 deployments/day — the limit was hit on 6 Oct. Owner asked to
+  delete the three duplicates in the dashboard (only 4jx2 has the domain). zehomefinds.co.za
   resolves to production deployment dpl_8HKD5ASsur52QKMzbbi5TB8Li661, which is
   **zehome-4jx2** — that is the live project. Env vars (PayFast, CJ_API_KEY,
   GOOGLE_SHEETS_WEBHOOK_URL) belong there. Owner still to confirm in the
@@ -180,6 +182,8 @@ Collections:       /collections/<category-slug>, copy in
                    src/data/collections.json (title, h1, intro).
 Structured data:   src/lib/schema.ts — Product (price, free shipping, 14-day
                    returns), BreadcrumbList, FAQPage, ItemList, OnlineStore.
+Guides:            /guides/<slug>, content in src/data/guides.json (Article
+                   + FAQ schema; link products via section `products`).
 Files:             /robots.txt, /sitemap.xml, /feed.xml (Google Merchant
                    Center free listings feed).
 Owner to do:       Search Console: submit sitemap. Merchant Center: add
@@ -205,7 +209,9 @@ Account: zehomefinds (1.5k followers, homeware niche)
 Hook 1: "POV: R400 changed my whole room"
 Hook 2: "Ze Home Finds just dropped and I'm not okay"
 Hook 3: "Rating aesthetic room upgrades under R500"
-Bio link: https://zehomefinds.co.za
+Bio link: https://www.zehomefinds.co.za
+Plan:     docs/tiktok-content-plan-2026-10.md (scripts per product; real
+          product footage only, AI/stock for mood B-roll)
 
 ## The Bureau — Agent Roles
 

@@ -10,6 +10,7 @@ import CartDrawer from './CartDrawer'
 const NAV = [
   { label: 'Shop all', href: '/shop' },
   ...categories.map((c) => ({ label: c.name, href: `/collections/${c.slug}` })),
+  { label: 'Gifts under R500', href: '/guides/gifts-under-r500-south-africa' },
 ]
 
 export default function Navbar() {

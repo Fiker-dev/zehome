@@ -30,6 +30,7 @@ export default function Footer() {
         <div>
           <p className={heading}>Help</p>
           <ul className="flex flex-col gap-2.5">
+            <li><Link href="/guides" className={link}>Guides &amp; gift ideas</Link></li>
             <li><Link href="/delivery" className={link}>Delivery</Link></li>
             <li><Link href="/returns" className={link}>Returns &amp; refunds</Link></li>
             <li><a href="https://wa.me/27710278563" className={link}>WhatsApp support</a></li>
