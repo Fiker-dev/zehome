@@ -15,8 +15,10 @@ export const VAT_RATE = 0.15
 export type PaymentMethod = keyof typeof PAYFAST_FEES
 
 export const PRICING_RULES = {
-  minProfit: 100, // rand per order, after all costs
-  minMarginPct: 0.25, // profit / selling price
+  // Launch pricing (7 Oct 2026, owner): at or below SA market prices with a
+  // slim margin; no ad spend to cover. Raise again once reviews build trust.
+  minProfit: 70, // rand per order, after all costs
+  minMarginPct: 0.15, // profit / selling price
   // Price for the most expensive method, since the customer picks it
   method: 'card' as PaymentMethod,
 }

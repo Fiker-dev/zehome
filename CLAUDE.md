@@ -47,10 +47,12 @@ Target market: SA local — Johannesburg and surrounding areas
   .claude/skills/sa-product-research/SKILL.md and show the owner the scorecard.
 - Live catalogue (6 Oct 2026, see docs/product-scorecard-2026-10.md): all
   Perfect Dealz local stock, 3-7 business days, bought per order at their
-  website price + R99 delivery (⚠️ confirm fee in dropshipper account): flame
-  aroma diffuser R399, Glow-Up Kit R449 (ice roller + brush cleaner + scalp
-  comb), mini massage gun R449, Pet Grooming Kit R449 (steam brush + hair
-  roller + dog bottle), cordless handheld vacuum R349, hair dryer brush R499.
+  website price + R99 delivery (⚠️ confirm fee in dropshipper account).
+  Launch prices (7 Oct, at/below SA market, ≥R70 profit / 15% after PayFast
+  card fees): flame aroma diffuser R349, Glow-Up Kit R399 (ice roller + brush
+  cleaner + scalp comb), mini massage gun R399, Pet Grooming Kit R399 (steam
+  brush + hair roller + dog bottle), cordless handheld vacuum R329, hair dryer
+  brush R429.
   Bundles spread one delivery fee over three cheap viral items.
   Order flow: paid PayFast ITN -> Google Sheet row whose "reminder" column
   reads "BUY -> Perfect Dealz: 1x <item> <url>; ..." (src/lib/supplier.ts);

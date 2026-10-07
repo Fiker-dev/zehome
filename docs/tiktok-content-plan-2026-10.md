@@ -27,11 +27,11 @@ the Bureau viral-ai-playbook (script → reference → CapCut), with one rule:
 
 ---
 
-## 1. Flame Aroma Diffuser — R399
+## 1. Flame Aroma Diffuser — R349
 
 Hooks:
 1. "This isn't fire. Watch." (finger through the 'flame')
-2. "POV: your bedroom at 9pm after R399"
+2. "POV: your bedroom at 9pm after R349"
 3. "Candles vs this — which one would you leave on while you sleep?"
 
 ```
@@ -55,13 +55,13 @@ Transition: fade
 
 SCENE 4  Duration: 3s
 Visual: Product on desk, price card.
-Text overlay: "R399 · free delivery SA · link in bio"
+Text overlay: "R349 · free delivery SA · link in bio"
 ```
 Caption: "The viral flame diffuser — cool mist, no fire, works as a humidifier.
-R399 with free delivery in SA 🇿🇦 #flamediffuser #roomdecor #southafrica #tiktokmademebuyit"
+R349 with free delivery in SA 🇿🇦 #flamediffuser #roomdecor #southafrica #tiktokmademebuyit"
 B-roll (optional, Pexels): "cozy bedroom night", "rain window night".
 
-## 2. Glow-Up Kit — R449
+## 2. Glow-Up Kit — R399
 
 Hooks:
 1. "3 self-care things I'd buy again, in one box"
@@ -77,13 +77,13 @@ SCENE 3  4s  Visual: Dirty makeup brush into the cleaner, spin, clean brush.
              Text: "brush cleaner does the work"
 SCENE 4  3s  Visual: Scalp comb in the shower / wash-day shot.
              Text: "scalp massager for wash day"
-SCENE 5  3s  Visual: All three again. Text: "R449 · free delivery SA"
+SCENE 5  3s  Visual: All three again. Text: "R399 · free delivery SA"
 ```
 Caption: "Ice roller + electric makeup brush cleaner + scalp massager in one kit.
-R449, free delivery across SA. #iceroller #skincaresa #selfcare #giftideas"
+R399, free delivery across SA. #iceroller #skincaresa #selfcare #giftideas"
 Avoid: skin/medical claims ("reduces puffiness/acne"). Say "feels refreshing".
 
-## 3. Mini Massage Gun — R449
+## 3. Mini Massage Gun — R399
 
 Hooks:
 1. "My neck after 8 hours at a desk vs after 2 minutes of this"
@@ -96,13 +96,13 @@ SCENE 1  3s  Visual: Rubbing a stiff neck at a laptop (can be Pexels B-roll
 SCENE 2  5s  Visual: Using it on shoulder, then calf. Let the (quiet) sound play.
              Text: "quiet enough for Netflix"
 SCENE 3  3s  Visual: Gun next to a phone for size. Text: "pocket-sized"
-SCENE 4  3s  Text: "mini massage gun · R449 · free delivery SA"
+SCENE 4  3s  Text: "mini massage gun · R399 · free delivery SA"
 ```
-Caption: "Mini massage gun for tight neck & shoulders — R449, free delivery SA.
+Caption: "Mini massage gun for tight neck & shoulders — R399, free delivery SA.
 #massagegun #gymtok #officelife #southafrica"
 Avoid: "treats", "heals", "pain relief" claims.
 
-## 4. Pet Grooming Kit — R449
+## 4. Pet Grooming Kit — R399
 
 Hooks:
 1. "My cat's reaction to the steam brush"
@@ -116,16 +116,16 @@ SCENE 2  4s  Visual: Roller back-and-forth on a furry couch, open it, show the f
              Text: "no sticky sheets"
 SCENE 3  4s  Visual: Dog drinking from the bottle's bowl on a walk.
              Text: "leak-proof water bottle + bowl"
-SCENE 4  3s  Text: "pet grooming kit · R449 · free delivery SA"
+SCENE 4  3s  Text: "pet grooming kit · R399 · free delivery SA"
 ```
-Caption: "Steam brush + reusable pet hair remover + dog water bottle. R449, free
+Caption: "Steam brush + reusable pet hair remover + dog water bottle. R399, free
 delivery SA. #pettok #dogsofsouthafrica #cattok #pethair"
 Tip: pet reaction videos are the most shareable format here — film several pets.
 
-## 5. Cordless Handheld Vacuum — R349
+## 5. Cordless Handheld Vacuum — R329
 
 Hooks:
-1. "Car cleaning ASMR with a R349 vacuum"
+1. "Car cleaning ASMR with a R329 vacuum"
 2. "Beach sand in the car? Watch this"
 3. "Stop dragging the big vacuum out for crumbs"
 
@@ -134,12 +134,12 @@ SCENE 1  3s  Visual: Crumbs/sand on a car seat (close-up). REAL.
 SCENE 2  6s  Visual: Vacuum sweeps it up — ASMR, natural sound, no music.
              Text: "cordless 120W"
 SCENE 3  3s  Visual: Empty the dust cup into the bin.
-SCENE 4  3s  Text: "handheld vacuum · R349 · free delivery SA"
+SCENE 4  3s  Text: "handheld vacuum · R329 · free delivery SA"
 ```
-Caption: "Cordless handheld vacuum for the car, couch and desk. R349, free delivery
+Caption: "Cordless handheld vacuum for the car, couch and desk. R329, free delivery
 SA. #carcleaning #asmr #cleantok #southafrica"
 
-## 6. One-Step Hair Dryer Brush — R499
+## 6. One-Step Hair Dryer Brush — R429
 
 Hooks:
 1. "Salon blow-dry at home in one step"
@@ -151,9 +151,9 @@ SCENE 1  3s  Visual: Towel-dried hair, before shot. REAL.
 SCENE 2  6s  Visual: Brushing through section by section, lifting at roots.
              Text: "dries + smooths + volume"
 SCENE 3  3s  Visual: Final hair flip.
-SCENE 4  3s  Text: "hair dryer brush · R499 · free delivery SA"
+SCENE 4  3s  Text: "hair dryer brush · R429 · free delivery SA"
 ```
-Caption: "One-step hair dryer brush — salon-style blow-dry at home. R499, free
+Caption: "One-step hair dryer brush — salon-style blow-dry at home. R429, free
 delivery SA. #hairdryerbrush #hairtok #blowout #southafrica"
 Note: priced above some local competitors — lead with the honest-test format.
 
