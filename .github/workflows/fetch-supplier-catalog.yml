@@ -6,6 +6,9 @@ name: Fetch supplier catalogue
 # product we sell changed price or went out of stock.
 on:
   push:
+    # main only: running on several branches commits competing snapshots
+    # that then conflict when the branches are merged.
+    branches: [main]
     paths:
       - scripts/suppliers/fetch-perfectdealz-catalog.mjs
       - scripts/suppliers/check-costs.mjs

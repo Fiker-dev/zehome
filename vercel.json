@@ -2,5 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "next build",
   "outputDirectory": ".next",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)data/suppliers' ':(exclude)docs' ':(exclude)*.md'"
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)data/suppliers' ':(exclude)docs' ':(exclude)*.md' ':(exclude).github'"
 }
