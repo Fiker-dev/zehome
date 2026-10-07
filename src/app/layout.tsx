@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
@@ -8,16 +8,18 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import { jsonLd } from '@/lib/schema'
 import { SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+// Fonts are bundled (src/fonts, SIL OFL) rather than fetched from Google
+// Fonts at build time, so a Google Fonts hiccup can't fail a deployment.
+const dmSans = localFont({
+  src: '../fonts/dm-sans-latin-variable.woff2',
+  weight: '100 1000',
   variable: '--font-dm-sans',
   display: 'swap',
 })
 
-const heading = Inter({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
+const heading = localFont({
+  src: '../fonts/inter-latin-variable.woff2',
+  weight: '100 900',
   variable: '--font-heading',
   display: 'swap',
 })
