@@ -10,7 +10,7 @@ import { ChevronDown, ShieldCheck, RotateCcw, Truck } from 'lucide-react'
 import ProductCard from '@/components/ProductCard'
 import { categorySlug, hoverPhoto } from '@/lib/catalog'
 import { absoluteImageUrl } from '@/lib/images'
-import { breadcrumbSchema, faqSchema, jsonLd, productSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, jsonLd, productSchema, reviewsOf } from '@/lib/schema'
 import { SITE_URL } from '@/lib/site'
 
 const TRUST_BADGES = [
@@ -76,6 +76,8 @@ export default async function ProductPage({ params }: Props) {
 
   const collection = { name: product.category, path: `/collections/${categorySlug(product.category)}` }
   const faqs = product.faqs ?? []
+  const reviews = reviewsOf(product)
+  const avgRating = reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0
 
   return (
     <>
@@ -193,6 +195,29 @@ export default async function ProductPage({ params }: Props) {
       </div>
 
       <StickyAddToCart product={product} />
+
+      {reviews.length > 0 && (
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-4 pb-8" id="reviews">
+          <h2 className="font-display font-semibold text-charcoal tracking-tight lowercase" style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>
+            customer reviews
+          </h2>
+          <p className="mt-1 mb-4 font-body text-charcoal-light" style={{ fontSize: '14px' }}>
+            <span aria-hidden="true">{'★'.repeat(Math.round(avgRating))}</span> {avgRating.toFixed(1)} out of 5 · {reviews.length} review{reviews.length !== 1 ? 's' : ''}
+          </p>
+          <ul className="border-t border-border">
+            {reviews.map((r) => (
+              <li key={`${r.author}-${r.date}`} className="border-b border-border py-4 font-body">
+                <p className="text-charcoal" style={{ fontSize: '14px' }}>
+                  <span aria-label={`${r.rating} out of 5`}>{'★'.repeat(r.rating)}</span>{' '}
+                  <span className="font-medium">{r.author}</span>
+                  {r.location ? <span className="text-warm-gray">, {r.location}</span> : null}
+                </p>
+                <p className="mt-1 text-charcoal-light leading-relaxed" style={{ fontSize: '14px' }}>{r.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {faqs.length > 0 && (
         <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-4">

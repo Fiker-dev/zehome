@@ -10,6 +10,18 @@ const businessDays = (deliveryDays: string) => {
   return { min, max }
 }
 
+// Real customer reviews only (collected after delivery, proof kept). Google
+// treats invented reviews as spam and the Consumer Protection Act bans them.
+export interface Review {
+  author: string
+  rating: number
+  date: string
+  body: string
+  location?: string
+}
+
+export const reviewsOf = (product: Product) => ((product as { reviews?: Review[] }).reviews ?? []) as Review[]
+
 export function productSchema(product: Product) {
   const url = `${SITE_URL}/product/${product.slug}`
   const { min, max } = businessDays(product.deliveryDays)
@@ -24,6 +36,7 @@ export function productSchema(product: Product) {
     category: product.category,
     url,
     image: product.images.map((img) => absoluteImageUrl(img, SITE_URL)),
+    ...reviewMarkup(product),
     offers: {
       '@type': 'Offer',
       url,
@@ -50,6 +63,28 @@ export function productSchema(product: Product) {
         merchantReturnDays: RETURN_DAYS,
       },
     },
+  }
+}
+
+function reviewMarkup(product: Product) {
+  const reviews = reviewsOf(product)
+  if (!reviews.length) return {}
+  const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+  return {
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: avg.toFixed(1),
+      reviewCount: reviews.length,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: reviews.slice(0, 10).map((r) => ({
+      '@type': 'Review',
+      author: { '@type': 'Person', name: r.author },
+      datePublished: r.date,
+      reviewBody: r.body,
+      reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+    })),
   }
 }
 

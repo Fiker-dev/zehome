@@ -59,7 +59,8 @@
         "q": "How long does delivery take?",
         "a": "It ships from local stock in Johannesburg and arrives in 3-7 business days, with free tracked delivery anywhere in South Africa."
       }
-    ]
+    ],
+    "reviews": []
   },
   {
     "id": "glow-up-kit",
@@ -121,7 +122,8 @@
         "q": "Is it a good gift?",
         "a": "Yes. It's three self-care favourites in one box, delivered free anywhere in South Africa in 3-7 business days."
       }
-    ]
+    ],
+    "reviews": []
   },
   {
     "id": "mini-massage-gun",
@@ -181,7 +183,8 @@
         "q": "How long does delivery take?",
         "a": "3-7 business days from local stock in Johannesburg, with free tracked delivery anywhere in South Africa."
       }
-    ]
+    ],
+    "reviews": []
   },
   {
     "id": "pet-grooming-kit",
@@ -212,16 +215,17 @@
     ],
     "trustLine": "Three pet essentials. One box. Local stock.",
     "keywords": [
-      "pet grooming kit south africa",
-      "cat steam brush",
       "steam pet brush south africa",
+      "cat steam brush",
+      "spray cat brush",
       "pet hair remover south africa",
+      "pet grooming kit south africa",
       "reusable lint roller pet hair",
       "dog water bottle for walks",
       "dog grooming brush"
     ],
     "seo": {
-      "title": "Pet Grooming Kit: Steam Brush, Hair Roller & Bottle | Ze Home Finds",
+      "title": "Steam Pet Brush & Pet Hair Remover Kit SA – R449 | Ze Home Finds",
       "description": "Cat and dog grooming kit: 3-in-1 steam pet brush, reusable pet hair remover roller and leak-proof dog water bottle. R449, free delivery across South Africa.",
       "ogTitle": "Everything your pet (and your couch) needs",
       "alt": "Pet grooming kit with steam pet brush, reusable pet hair roller and dog water bottle",
@@ -244,7 +248,8 @@
         "q": "How long does delivery take?",
         "a": "3-7 business days from local stock in Johannesburg, free and tracked anywhere in South Africa."
       }
-    ]
+    ],
+    "reviews": []
   },
   {
     "id": "cordless-handheld-vacuum",
@@ -302,7 +307,8 @@
         "q": "How long does delivery take?",
         "a": "3-7 business days from local stock in Johannesburg, free and tracked anywhere in South Africa."
       }
-    ]
+    ],
+    "reviews": []
   },
   {
     "id": "one-step-hair-dryer-brush",
@@ -360,6 +366,7 @@
         "q": "How long does delivery take?",
         "a": "3-7 business days from local stock in Johannesburg, free and tracked anywhere in South Africa."
       }
-    ]
+    ],
+    "reviews": []
   }
 ]

@@ -14,7 +14,8 @@ Hosting: Vercel (free tier)
 Target market: SA local — Johannesburg and surrounding areas
 
 ## Current Status (Oct 2026) — read first
-- Branch claude/affiliate-product-workflow-pc24ax (not merged to main yet):
+- Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
+  on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
   amount HMAC in order IDs, margin checker, mobile fixes, rebrand to
   "viral finds".
@@ -186,6 +187,9 @@ Guides:            /guides/<slug>, content in src/data/guides.json (Article
                    + FAQ schema; link products via section `products`).
 Files:             /robots.txt, /sitemap.xml, /feed.xml (Google Merchant
                    Center free listings feed).
+Strategy:          docs/seo-competitive-strategy-2026-10.md (how we outrank
+                   Perfect Dealz). Reviews: products.json `reviews` (real
+                   only) -> stars + AggregateRating schema.
 Owner to do:       Search Console: submit sitemap. Merchant Center: add
                    /feed.xml as data source, enable free listings.
 
