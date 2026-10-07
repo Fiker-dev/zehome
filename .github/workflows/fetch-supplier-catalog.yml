@@ -2,11 +2,13 @@ name: Fetch supplier catalogue
 
 # Mirrors the Perfect Dealz product feed into data/suppliers/ for product
 # research (their site is blocked from the Claude environment). Runs when the
-# script changes, weekly, or on demand.
+# script changes, weekly, or on demand, then fails (emailing the owner) if a
+# product we sell changed price or went out of stock.
 on:
   push:
     paths:
       - scripts/suppliers/fetch-perfectdealz-catalog.mjs
+      - scripts/suppliers/check-costs.mjs
       - .github/workflows/fetch-supplier-catalog.yml
   schedule:
     - cron: '17 4 * * 1'
@@ -38,3 +40,5 @@ jobs:
           git commit -m "Update Perfect Dealz catalogue"
           git pull --rebase
           git push
+      - name: Check prices and stock of products we sell
+        run: node scripts/suppliers/check-costs.mjs
