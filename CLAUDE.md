@@ -65,6 +65,11 @@ Target market: SA local — Johannesburg and surrounding areas
   Order sheet: "zehome finds orders" (Google Drive, tab Orders). Its Apps
   Script source is scripts/google-sheets/orders-webhook.gs (one row per order,
   upsert by Order ID; owner pastes + redeploys same deployment to update).
+  Paid orders also email fikerzabate16@gmail.com (from the Apps Script) with a
+  "BUY NOW" one-click Perfect Dealz cart link (Shopify cart permalink with
+  variantIds + prefilled address, src/lib/supplier.ts supplierCartLinks).
+  Owner checks and pays; fully automatic buying needs a supplier API/credit
+  account (asked Perfect Dealz, docs/supplier-automation-2026-10.md).
   Order flow: paid PayFast ITN -> Google Sheet row whose "reminder" column
   reads "BUY -> Perfect Dealz: 1x <item> <url>; ..." (src/lib/supplier.ts);
   owner buys those items on perfectdealz.co.za with the customer's address.

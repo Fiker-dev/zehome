@@ -47,7 +47,10 @@ export async function appendOrderRow(
       headers: { 'Content-Type': 'application/json' },
       // Neutralise spreadsheet formulas in customer-supplied text
       body: JSON.stringify(
-        Object.fromEntries(Object.entries(row).map(([k, v]) => [k, sheetSafe(String(v).slice(0, 500))]))
+        Object.fromEntries(
+          // reminder carries the supplier cart link (with delivery address), so allow more
+          Object.entries(row).map(([k, v]) => [k, sheetSafe(String(v).slice(0, k === 'reminder' ? 2500 : 500))])
+        )
       ),
       signal: controller.signal,
     })

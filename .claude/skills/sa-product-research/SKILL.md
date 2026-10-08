@@ -106,7 +106,10 @@ ships an SA plug. Avoid medical/health claims in copy.
    only facts from the supplier listing, `deliveryDays` "3-7 business days"
    for Perfect Dealz) and to `src/data/supplier-costs.json`: `supplier`,
    `supplierUrl`, `costPrice`, `deliveryCost`, plus `components` (title, url,
-   quantity) for a bundle or `cjPid/cjVid/cjVariant` for CJ. These drive the
+   quantity, variantId) for a bundle or `cjPid/cjVid/cjVariant` for CJ. For
+   Perfect Dealz always add `variantId` (from the catalogue mirror's
+   `variants[].id`) — it powers the one-click supplier cart link in the
+   paid-order email. These drive the
    "BUY →" shopping list on each paid order. `npm run margins` must exit 0.
 2. Put the supplier's image URLs in `images` and push; the "Fetch product
    images" GitHub Action copies them into

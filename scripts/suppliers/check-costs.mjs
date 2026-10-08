@@ -16,6 +16,13 @@ const problems = []
 for (const [id, entry] of Object.entries(costs)) {
   if (entry.supplier !== 'Perfect Dealz') continue
   const urls = entry.components?.length ? entry.components.flatMap((c) => Array(c.quantity).fill(c.url)) : [entry.supplierUrl]
+  // One-click cart links use the supplier's variant IDs; flag any that vanished
+  const variants = entry.components?.length ? entry.components.map((c) => [c.url, c.variantId]) : [[entry.supplierUrl, entry.variantId]]
+  for (const [url, variantId] of variants) {
+    const item = catalogue.get(url)
+    if (!variantId) problems.push(`${id}: no variantId for ${url} — 1-click cart link disabled`)
+    else if (item && !item.variants.some((v) => v.id === variantId)) problems.push(`${id}: variant ${variantId} no longer exists at ${url} — update variantId`)
+  }
   let now = 0
   for (const url of urls) {
     const item = catalogue.get(url)

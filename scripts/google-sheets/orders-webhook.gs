@@ -95,10 +95,14 @@ function notifyPaid(raw, ss) {
   var problem = /match|DO NOT/i.test(String(d.paymentStatus) + ' ' + String(d.dispatchStatus))
   var name = [d.firstName, d.lastName].filter(Boolean).join(' ')
   var buy = String(d.reminder || '').split(' · ').filter(function (p) { return /^BUY/.test(p) })[0] || ''
+  var parts = buy.split(' | ')
+  var carts = parts.filter(function (p) { return /^1-CLICK CART/.test(p) })
+    .map(function (p) { return p.replace(/^1-CLICK CART → ([^:]+): /, '👉 BUY NOW at $1 (opens checkout with the items and delivery address filled in — check, then pay):\n') })
+  var itemLines = parts.filter(function (p) { return !/^1-CLICK CART/.test(p) }).join('\n')
   var subject = (problem ? '⚠️ DO NOT DISPATCH — check payment ' : '🛒 New paid order R') +
     (problem ? d.orderId : d.amount + ' — ' + d.product)
   var body = [
-    problem ? 'PayFast says this was paid, but the amount or items do not match the order. Check it in the PayFast dashboard before buying anything.\n' : 'You have a new paid order. Buy the items below from Perfect Dealz with the customer\'s address.\n',
+    problem ? 'PayFast says this was paid, but the amount or items do not match the order. Check it in the PayFast dashboard before buying anything.\n' : 'You have a new paid order.\n\n' + carts.join('\n\n') + '\n',
     'Order: ' + d.orderId,
     'Amount: R' + d.amount,
     'Items: ' + d.product,
@@ -108,7 +112,8 @@ function notifyPaid(raw, ss) {
     'Email: ' + d.email,
     'Address: ' + [d.address, d.city, d.province, d.postalCode].filter(Boolean).join(', '),
     '',
-    buy.replace(/; /g, '\n  ').replace(' | ', '\n'),
+    'Items to buy (if the link does not work):',
+    itemLines.replace(/; /g, '\n  '),
     '',
     'Then add the tracking number in the sheet: ' + ss.getUrl(),
   ].join('\n')

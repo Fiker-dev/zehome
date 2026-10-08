@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
       amount: amountValue,
       paymentStatus: 'Pending payment',
       dispatchStatus: 'Awaiting payment',
-      reminder: supplierOrderNote(orderLines),
+      reminder: supplierOrderNote(orderLines, { firstName, lastName, email, phone, address, city, province, postalCode }),
     })
 
     const params = buildPayFastParams({

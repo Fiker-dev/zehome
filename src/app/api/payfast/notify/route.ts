@@ -118,7 +118,18 @@ export async function POST(req: NextRequest) {
       reminder: [
         params.pf_payment_id ? `PayFast ref: ${params.pf_payment_id}` : '',
         // On a good paid order, put the supplier shopping list right on the row
-        mappedStatus.paymentStatus === 'Paid' ? supplierOrderNote(linesFromCartCode(cart)) : '',
+        mappedStatus.paymentStatus === 'Paid'
+          ? supplierOrderNote(linesFromCartCode(cart), {
+              firstName: params.name_first ?? '',
+              lastName: params.name_last ?? '',
+              email: params.email_address ?? '',
+              phone: params.custom_str1 ?? '',
+              address: params.custom_str2 ?? '',
+              city: params.custom_str3 ?? '',
+              province: params.custom_str4 ?? '',
+              postalCode: params.custom_str5 ?? '',
+            })
+          : '',
       ].filter(Boolean).join(' · '),
     })
 
