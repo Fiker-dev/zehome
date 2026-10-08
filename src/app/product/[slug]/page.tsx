@@ -8,7 +8,7 @@ import DeliveryEstimate from './DeliveryEstimate'
 import StickyAddToCart from './StickyAddToCart'
 import { ChevronDown, ShieldCheck, RotateCcw, Truck } from 'lucide-react'
 import ProductCard from '@/components/ProductCard'
-import { categorySlug, hoverPhoto } from '@/lib/catalog'
+import { categorySlug, hoverPhoto, isHidden, products as listed } from '@/lib/catalog'
 import { absoluteImageUrl } from '@/lib/images'
 import { breadcrumbSchema, faqSchema, jsonLd, productSchema, reviewsOf } from '@/lib/schema'
 import { SITE_URL } from '@/lib/site'
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: product.seo.title,
+    ...(isHidden(product) ? { robots: { index: false, follow: false } } : {}),
     description: product.seo.description,
     keywords: product.keywords,
     alternates: { canonical: `/product/${product.slug}` },
@@ -70,18 +71,21 @@ export default async function ProductPage({ params }: Props) {
 
   // Same category first, then the rest, so related links stay on-topic
   const related = [
-    ...products.filter((p) => p.slug !== product.slug && p.category === product.category),
-    ...products.filter((p) => p.slug !== product.slug && p.category !== product.category),
+    ...listed.filter((p) => p.slug !== product.slug && p.category === product.category),
+    ...listed.filter((p) => p.slug !== product.slug && p.category !== product.category),
   ].slice(0, 4)
 
-  const collection = { name: product.category, path: `/collections/${categorySlug(product.category)}` }
+  // Hidden products have no collection page, so link back to the shop
+  const collection = isHidden(product)
+    ? { name: 'Shop', path: '/shop' }
+    : { name: product.category, path: `/collections/${categorySlug(product.category)}` }
   const faqs = product.faqs ?? []
   const reviews = reviewsOf(product)
   const avgRating = reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(productSchema(product))} />
+      {!isHidden(product) && <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(productSchema(product))} />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(

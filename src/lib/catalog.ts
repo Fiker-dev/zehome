@@ -1,6 +1,11 @@
-import products from '@/data/products.json'
+import allProducts from '@/data/products.json'
 
-export type Product = (typeof products)[number]
+export type Product = (typeof allProducts)[number]
+
+// Hidden products (e.g. the R10 payment test) can be bought by direct link
+// but never appear in listings, collections, the sitemap or the Shopping feed.
+const products = allProducts.filter((p) => !(p as { hidden?: boolean }).hidden)
+export const isHidden = (p: Product) => Boolean((p as { hidden?: boolean }).hidden)
 
 export const categorySlug = (category: string) =>
   category.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')

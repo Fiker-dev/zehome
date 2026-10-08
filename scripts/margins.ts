@@ -38,13 +38,17 @@ if (costArg) {
   process.exit(0)
 }
 
-const products: { id: string; name: string; price: number }[] = readJson('../src/data/products.json')
+const products: { id: string; name: string; price: number; hidden?: boolean }[] = readJson('../src/data/products.json')
 const costs: Record<string, SupplierCost> = readJson('../src/data/supplier-costs.json')
 
 console.log(rulesLine + '\n')
 let problems = 0
 
 for (const p of products) {
+  if (p.hidden) {
+    console.log(`-- ${p.name}: hidden test product (R${p.price}), not checked`)
+    continue
+  }
   const c = costs[p.id]
   if (c?.costPrice == null || c.deliveryCost == null) {
     console.log(`?  ${p.name}: supplier cost unknown — add it to src/data/supplier-costs.json`)

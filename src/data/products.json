@@ -431,5 +431,38 @@
       }
     ],
     "reviews": []
+  },
+  {
+    "id": "payment-test",
+    "slug": "payment-test",
+    "name": "Payment test (do not ship)",
+    "category": "Test",
+    "price": 10,
+    "currency": "ZAR",
+    "inStock": true,
+    "hidden": true,
+    "deliveryDays": "3-7 business days",
+    "description": "Internal R10 product used to test checkout, PayFast payment notifications, the order sheet and the order email. Not for sale — nothing is shipped.",
+    "bullets": [
+      "Internal payment test — not for sale",
+      "Nothing is shipped",
+      "Refund it in PayFast after testing",
+      "Hidden from the shop, search and Google",
+      "—"
+    ],
+    "images": [
+      "/images/logo.png"
+    ],
+    "trustLine": "Internal test product.",
+    "keywords": [],
+    "seo": {
+      "title": "Payment test | Ze Home Finds",
+      "description": "Internal payment test.",
+      "ogTitle": "Payment test",
+      "alt": "Ze Home Finds logo",
+      "h1": "Payment test (do not ship)"
+    },
+    "faqs": [],
+    "reviews": []
   }
 ]
