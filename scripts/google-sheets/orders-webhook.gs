@@ -12,12 +12,16 @@
  * details and the Perfect Dealz shopping list (sent from the account that
  * owns this script, via MailApp; first deploy asks you to Allow email).
  *
- * Install: Extensions > Apps Script > replace Code.gs with this file > Save >
+ * Install: open the existing script project (from the sheet: Extensions >
+ * Apps Script, or the project in Drive) > replace Code.gs with this file > Save >
  * Deploy > Manage deployments > (pencil) > Version: New version > Deploy.
  * Editing the existing deployment keeps the same URL, so Vercel needs no change.
  */
 
 var SHEET_NAME = 'Orders'
+// The "zehome finds orders" spreadsheet, so this works whether the script is
+// attached to the sheet (Extensions > Apps Script) or a separate project.
+var SPREADSHEET_ID = '1rb3iaJNuWmpGmW7p0cDGz3GXfsRx371oE0esil-KW1I'
 var NOTIFY_EMAIL = 'fikerzabate16@gmail.com'
 
 // Sheet header -> field in the store's JSON (or a function of it)
@@ -46,7 +50,7 @@ function doPost(e) {
   try {
     var data = JSON.parse(e.postData.contents)
     if (!data.orderId) return reply({ ok: false, error: 'orderId required' })
-    var ss = SpreadsheetApp.getActiveSpreadsheet()
+    var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
     var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0]
       .map(function (h) { return String(h).trim() })
