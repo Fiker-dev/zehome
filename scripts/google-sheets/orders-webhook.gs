@@ -8,12 +8,17 @@
  * by header name, so you can reorder columns or add your own (e.g. Notes).
  * Tracking Number and anything you type yourself is never overwritten.
  *
+ * When an order becomes Paid it emails NOTIFY_EMAIL once with the customer's
+ * details and the Perfect Dealz shopping list (sent from the account that
+ * owns this script, via MailApp; first deploy asks you to Allow email).
+ *
  * Install: Extensions > Apps Script > replace Code.gs with this file > Save >
  * Deploy > Manage deployments > (pencil) > Version: New version > Deploy.
  * Editing the existing deployment keeps the same URL, so Vercel needs no change.
  */
 
 var SHEET_NAME = 'Orders'
+var NOTIFY_EMAIL = 'fikerzabate16@gmail.com'
 
 // Sheet header -> field in the store's JSON (or a function of it)
 var COLUMNS = {
@@ -58,6 +63,8 @@ function doPost(e) {
 
     var idCol = headers.indexOf('Order ID')
     var row = findRow(sheet, idCol, String(data.orderId))
+    var statusCol = headers.indexOf('Payment Status')
+    var previousStatus = row === -1 || statusCol < 0 ? '' : String(sheet.getRange(row, statusCol + 1).getValue())
     if (row === -1) {
       sheet.appendRow(incoming.map(function (v) { return v === null ? '' : v }))
     } else {
@@ -72,9 +79,43 @@ function doPost(e) {
       })
       range.setValues([merged])
     }
+    // Email once, when the order first reaches a Paid status
+    var status = String(data.paymentStatus || '')
+    if (/^Paid/.test(status) && !/^Paid/.test(previousStatus)) notifyPaid(data, ss)
     return reply({ ok: true, row: row === -1 ? sheet.getLastRow() : row })
   } finally {
     lock.releaseLock()
+  }
+}
+
+function notifyPaid(raw, ss) {
+  // The store prefixes ' to keep text as text in the sheet; drop it for email
+  var d = {}
+  Object.keys(raw).forEach(function (k) { d[k] = String(raw[k] == null ? '' : raw[k]).replace(/^'/, '') })
+  var problem = /match|DO NOT/i.test(String(d.paymentStatus) + ' ' + String(d.dispatchStatus))
+  var name = [d.firstName, d.lastName].filter(Boolean).join(' ')
+  var buy = String(d.reminder || '').split(' · ').filter(function (p) { return /^BUY/.test(p) })[0] || ''
+  var subject = (problem ? '⚠️ DO NOT DISPATCH — check payment ' : '🛒 New paid order R') +
+    (problem ? d.orderId : d.amount + ' — ' + d.product)
+  var body = [
+    problem ? 'PayFast says this was paid, but the amount or items do not match the order. Check it in the PayFast dashboard before buying anything.\n' : 'You have a new paid order. Buy the items below from Perfect Dealz with the customer\'s address.\n',
+    'Order: ' + d.orderId,
+    'Amount: R' + d.amount,
+    'Items: ' + d.product,
+    '',
+    'Customer: ' + name,
+    'Phone: ' + d.phone,
+    'Email: ' + d.email,
+    'Address: ' + [d.address, d.city, d.province, d.postalCode].filter(Boolean).join(', '),
+    '',
+    buy.replace(/; /g, '\n  ').replace(' | ', '\n'),
+    '',
+    'Then add the tracking number in the sheet: ' + ss.getUrl(),
+  ].join('\n')
+  try {
+    MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, name: 'Ze Home Finds orders' })
+  } catch (err) {
+    console.error('Order email failed: ' + err) // the sheet row is still written
   }
 }
 
