@@ -32,6 +32,12 @@ history, browser headers, GitHub Actions. All fixes verified with tests
 - 5 "high" advisories remain in the **lint toolchain only** (eslint-config-next
   → fast-glob/micromatch/braces). Dev-only, never deployed; npm's "fix" is a
   downgrade to v14. Re-check when Next ships an update.
+- Order signing works with no extra setup: if neither `ORDER_SIGNING_SECRET`
+  nor `PAYFAST_PASSPHRASE` is set, the key is derived from the server-only
+  `GOOGLE_SHEETS_WEBHOOK_URL` (production had no passphrase set on 8 Oct).
+- **Add `PAYFAST_PASSPHRASE` in Vercel** (same value as the PayFast dashboard)
+  if the PayFast account has a passphrase — otherwise ITN signatures can't
+  verify and paid orders aren't logged.
 - **Rotate** the PayFast passphrase, CJ API key and CJ MCP token (exposed in an
   earlier chat). Optional: set `ORDER_SIGNING_SECRET` (long random string) in
   Vercel so a future passphrase rotation doesn't affect order signing.

@@ -66,8 +66,15 @@ export async function confirmItnWithPayFast(body: string, sandbox: boolean): Pro
 // items, even though the PayFast form itself is unsigned and editable in the
 // browser. (Signing the amount alone let a buyer pay for a cheap item and edit
 // the cart to list expensive ones.) The key must be secret: the merchant key
-// is sent to the browser, so it is never used.
-const signingSecret = () => process.env.ORDER_SIGNING_SECRET || process.env.PAYFAST_PASSPHRASE || ''
+// is sent to the browser, so it is never used. Fallback: a key derived from
+// the Google Sheets webhook URL, which is server-only and already set in
+// production, so orders verify even before a dedicated secret is added.
+function signingSecret(): string {
+  if (process.env.ORDER_SIGNING_SECRET) return process.env.ORDER_SIGNING_SECRET
+  if (process.env.PAYFAST_PASSPHRASE) return process.env.PAYFAST_PASSPHRASE
+  const webhook = process.env.GOOGLE_SHEETS_WEBHOOK_URL
+  return webhook ? crypto.createHash('sha256').update(`zhf-order-signing|${webhook}`).digest('hex') : ''
+}
 
 function orderTag(orderRef: string, amount: string, cart: string): string {
   return crypto
@@ -86,7 +93,7 @@ export function createOrderId(amount: string, cart: string): string {
 
 export function orderMatches(orderId: string, amountPaid: string, cart: string): boolean {
   if (!signingSecret()) {
-    console.error('No ORDER_SIGNING_SECRET or PAYFAST_PASSPHRASE set: cannot verify orders')
+    console.error('No ORDER_SIGNING_SECRET, PAYFAST_PASSPHRASE or GOOGLE_SHEETS_WEBHOOK_URL set: cannot verify orders')
     return false
   }
   const match = ORDER_ID_PATTERN.exec(orderId)

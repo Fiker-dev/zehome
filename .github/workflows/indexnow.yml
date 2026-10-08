@@ -1,0 +1,29 @@
+name: Notify search engines (IndexNow)
+
+# After site changes reach main (and Vercel deploys them), submit every sitemap
+# URL to IndexNow so Bing and others re-crawl quickly. Google: use Search Console.
+on:
+  push:
+    branches: [main]
+    paths:
+      - src/**
+      - public/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Wait for deployment, then submit sitemap URLs
+        run: sleep 90 && node scripts/seo/indexnow.mjs

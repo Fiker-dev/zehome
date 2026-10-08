@@ -194,6 +194,8 @@ Files:             /robots.txt, /sitemap.xml, /feed.xml (Google Merchant
 Strategy:          docs/seo-competitive-strategy-2026-10.md (how we outrank
                    Perfect Dealz). Reviews: products.json `reviews` (real
                    only) -> stars + AggregateRating schema.
+IndexNow:          .github/workflows/indexnow.yml submits sitemap URLs to
+                   Bing/IndexNow after each push to main (key in public/).
 Owner to do:       Search Console: submit sitemap. Merchant Center: add
                    /feed.xml as data source, enable free listings.
 
