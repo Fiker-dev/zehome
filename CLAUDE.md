@@ -21,6 +21,14 @@ Target market: SA local — Johannesburg and surrounding areas
   "viral finds".
 - Security review 8 Oct 2026: docs/security-review-2026-10.md. Order IDs sign
   amount + cart (item_description); BUY list comes only from the signed cart.
+- OPEN (owner deferred to "check the APIs" later, 8 Oct): production has NO
+  PAYFAST_PASSPHRASE env var. If the PayFast account has a passphrase, ITN
+  signatures fail and paid orders aren't logged. Plan: owner rotates the
+  passphrase in PayFast (Settings > Developer Settings), adds it in Vercel
+  (zehome-4jx2, Sensitive, never via chat), Claude redeploys and checks the
+  key exists. Then reconcile PayFast transactions vs the order sheet.
+  Search Console: remove the two page URLs wrongly added as sitemaps, resubmit
+  sitemap.xml, request indexing. Delete 3 duplicate Vercel projects.
 - PayFast: account active (merchant ID 31199311). Passphrase must be rotated
   (it was exposed in chat); keep "require signature" OFF — the checkout form
   is unsigned by design.
