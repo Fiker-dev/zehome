@@ -65,7 +65,10 @@ function doPost(e) {
       var current = range.getValues()[0]
       var merged = current.map(function (cur, i) {
         if (KEEP_FIRST[headers[i]] && cur !== '') return cur
-        return incoming[i] === null ? cur : incoming[i]
+        if (incoming[i] !== null) return incoming[i]
+        // Kept as-is; re-mark text columns so writing back keeps leading zeros
+        if (AS_TEXT[headers[i]] && cur !== '') return "'" + String(cur).replace(/^'/, '')
+        return cur
       })
       range.setValues([merged])
     }
