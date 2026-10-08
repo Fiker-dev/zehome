@@ -71,7 +71,7 @@
     "currency": "ZAR",
     "inStock": true,
     "deliveryDays": "3-7 business days",
-    "description": "The three viral self-care tools, together. A cooling ice roller with a gel-filled head for a fresh morning reset, an electric makeup brush cleaner that spins out old makeup and oil so your brushes stay soft, and a scalp massager comb for a relaxing wash-day ritual.",
+    "description": "The three viral self-care tools, together. A cooling ice roller with a gel-filled head for a fresh morning reset, an electric makeup brush cleaner that spins out old makeup and oil so your brushes stay soft, and a scalp massager comb for a relaxing wash-day ritual. One of each item; colours may vary.",
     "bullets": [
       "Cooling facial ice roller — gel-filled head, no batteries needed",
       "Electric makeup brush cleaner — spins brushes clean in seconds",
@@ -80,6 +80,7 @@
       "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
+      "/images/products/glow-up-kit/cover.jpg",
       "/images/products/glow-up-kit/photo-1.png",
       "/images/products/glow-up-kit/benefits.jpg",
       "/images/products/glow-up-kit/how-it-works.jpg",
@@ -204,6 +205,7 @@
       "Free delivery across South Africa — 3-7 business days"
     ],
     "images": [
+      "/images/products/pet-grooming-kit/cover.jpg",
       "/images/products/pet-grooming-kit/photo-1.jpg",
       "/images/products/pet-grooming-kit/benefits.jpg",
       "/images/products/pet-grooming-kit/how-it-works.jpg",

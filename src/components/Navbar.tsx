@@ -13,6 +13,9 @@ const NAV = [
   { label: 'Gifts under R500', href: '/guides/gifts-under-r500-south-africa' },
 ]
 
+// Lowercase look for the desktop nav, but keep prices as "R500", not "r500"
+const lowerLabel = (label: string) => label.toLowerCase().replace(/\br(?=\d)/g, 'R')
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const itemCount = useCart((state) => state.items.reduce((sum, item) => sum + item.quantity, 0))
@@ -36,10 +39,10 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6 font-body text-charcoal-light lowercase" style={{ fontSize: '14px' }}>
+          <nav className="hidden lg:flex items-center gap-6 font-body text-charcoal-light" style={{ fontSize: '14px' }}>
             {NAV.map(({ label, href }) => (
               <Link key={href} href={href} className="hover:text-charcoal hover:underline underline-offset-4 transition-colors">
-                {label}
+                {lowerLabel(label)}
               </Link>
             ))}
           </nav>

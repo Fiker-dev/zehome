@@ -16,6 +16,6 @@ export { products }
 
 // Second real product photo (skips the branded benefit/how-it-works/compare cards),
 // used as the hover image on product cards.
-const CARD_IMAGES = ['/benefits.', '/how-it-works.', '/compare.']
+const CARD_IMAGES = ['/benefits.', '/how-it-works.', '/compare.', '/cover.']
 export const hoverPhoto = (p: Product) =>
   p.images.slice(1).find((img) => !CARD_IMAGES.some((c) => img.includes(c)))

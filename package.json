@@ -9,7 +9,8 @@
     "lint": "eslint",
     "margins": "node scripts/margins.ts",
     "cards": "node scripts/product-cards/render.mjs",
-    "og": "node scripts/product-cards/og.mjs"
+    "og": "node scripts/product-cards/og.mjs",
+    "kit-covers": "node scripts/product-cards/kit-covers.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.14.0",
