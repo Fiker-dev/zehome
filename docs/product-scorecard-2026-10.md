@@ -12,6 +12,7 @@ price + ⚠️ R99 delivery. All pass `npm run margins` (≥ R100 profit, ≥ 25
 | Pet Grooming Kit (steam brush + roller + dog bottle) | R449 | R187 | R144 | parts sold separately locally | 4 | 4 | 4 | 5 | 3 | 5 | 4 | 29 | ✅ launch |
 | 3-in-1 Cordless Handheld Vacuum | R349 | R129 | R106 | ~R399 SA | 3 | 4 | 4 | 5 | 2 | 4 | 4 | 26 | ✅ launch |
 | One-Step Hair Dryer Brush | R499 | R239 | R140 | Takealot R274–451, One Step R399 | 4 | 5 | 2 | 5 | 3 | 4 | 3 | 26 | 🟡 test (above market) |
+| Mushroom Crystal Salt Lamp (added 8 Oct, test) | R399 | R169 | R114 | R241–R559 SA (PriceCheck) | 2 | 5 | 3 | 5 | 4 | 4 | 4 | 27 | 🟡 test — evergreen, not trending |
 
 Dropped from the Perfect Dealz shortlist: sunrise alarm clock (R549 needed vs
 R240–399 in SA), spin scrubber (no SA evidence). Weak: mug set, moon humidifier.

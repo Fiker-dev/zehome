@@ -59,7 +59,8 @@ Target market: SA local — Johannesburg and surrounding areas
   card fees): flame aroma diffuser R349, Glow-Up Kit R399 (ice roller + brush
   cleaner + scalp comb), mini massage gun R399, Pet Grooming Kit R399 (steam
   brush + hair roller + dog bottle), cordless handheld vacuum R329, hair dryer
-  brush R429.
+  brush R429. Test product (8 Oct, owner's idea): Mushroom Crystal Salt Lamp
+  R399 (PD R169; SA market R241-R559; no health/ion claims), Home Décor.
   Bundles spread one delivery fee over three cheap viral items.
   Order sheet: "zehome finds orders" (Google Drive, tab Orders). Its Apps
   Script source is scripts/google-sheets/orders-webhook.gs (one row per order,

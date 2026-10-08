@@ -304,5 +304,56 @@
         ]
       ]
     }
+  },
+  "mushroom-salt-lamp": {
+    "eyebrow": "Home décor",
+    "benefits": {
+      "headline": "A warm glow, hand-carved",
+      "points": [
+        "Natural Himalayan salt crystal",
+        "Soft amber light for bedtime",
+        "Cute mushroom shape for any shelf",
+        "Every lamp is one of a kind"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Place",
+          "Bedside, desk or shelf"
+        ],
+        [
+          "Switch on",
+          "Enjoy the warm amber glow"
+        ],
+        [
+          "Unwind",
+          "Dim the big light and relax"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Night light upgrade",
+      "left": "Plain night light",
+      "right": "Salt lamp",
+      "rows": [
+        [
+          "Look",
+          "Plastic",
+          "Natural salt crystal"
+        ],
+        [
+          "Light",
+          "Harsh or blue",
+          "Warm amber"
+        ],
+        [
+          "Each one",
+          "Identical",
+          "Unique"
+        ]
+      ]
+    }
   }
 }
