@@ -65,6 +65,7 @@ Target market: SA local — Johannesburg and surrounding areas
   Order sheet: "zehome finds orders" (Google Drive, tab Orders). Its Apps
   Script source is scripts/google-sheets/orders-webhook.gs (one row per order,
   upsert by Order ID; owner pastes + redeploys same deployment to update).
+  Deployed as version 5 on 8 Oct 2026 (email permission granted).
   Paid orders also email fikerzabate16@gmail.com (from the Apps Script) with a
   "BUY NOW" one-click Perfect Dealz cart link (Shopify cart permalink with
   variantIds + prefilled address, src/lib/supplier.ts supplierCartLinks).
