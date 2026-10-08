@@ -21,9 +21,11 @@ Target market: SA local — Johannesburg and surrounding areas
   "viral finds".
 - Security review 8 Oct 2026: docs/security-review-2026-10.md. Order IDs sign
   amount + cart (item_description); BUY list comes only from the signed cart.
-- OPEN (owner deferred to "check the APIs" later, 8 Oct): production has NO
-  PAYFAST_PASSPHRASE env var. If the PayFast account has a passphrase, ITN
-  signatures fail and paid orders aren't logged. Plan: owner rotates the
+- OPEN (8 Oct): production has NO PAYFAST_PASSPHRASE env var, and the PayFast
+  account DOES have a passphrase (owner screenshot 8 Oct) -> every ITN fails
+  the signature check and paid orders aren't logged. The passphrase was shown
+  in chat again, so it must be replaced. Order signing no longer depends on
+  it (ORDER_SIGNING_SECRET > webhook-derived key > passphrase). Plan: owner rotates the
   passphrase in PayFast (Settings > Developer Settings), adds it in Vercel
   (zehome-4jx2, Sensitive, never via chat), Claude redeploys and checks the
   key exists. Then reconcile PayFast transactions vs the order sheet.
