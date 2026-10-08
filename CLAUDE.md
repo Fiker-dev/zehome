@@ -61,6 +61,9 @@ Target market: SA local — Johannesburg and surrounding areas
   brush + hair roller + dog bottle), cordless handheld vacuum R329, hair dryer
   brush R429.
   Bundles spread one delivery fee over three cheap viral items.
+  Order sheet: "zehome finds orders" (Google Drive, tab Orders). Its Apps
+  Script source is scripts/google-sheets/orders-webhook.gs (one row per order,
+  upsert by Order ID; owner pastes + redeploys same deployment to update).
   Order flow: paid PayFast ITN -> Google Sheet row whose "reminder" column
   reads "BUY -> Perfect Dealz: 1x <item> <url>; ..." (src/lib/supplier.ts);
   owner buys those items on perfectdealz.co.za with the customer's address.
