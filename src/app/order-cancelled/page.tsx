@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { ORDER_ID_PATTERN } from '@/lib/payfast'
 
 export const metadata: Metadata = {
   title: 'Payment Cancelled',
@@ -11,7 +12,8 @@ export default async function OrderCancelledPage({
 }: {
   searchParams: Promise<{ orderId?: string }>
 }) {
-  const { orderId } = await searchParams
+  const params = await searchParams
+  const orderId = ORDER_ID_PATTERN.test(params.orderId ?? '') ? params.orderId : undefined
 
   return (
     <div className="max-w-lg mx-auto px-4 py-24 flex flex-col items-center gap-6 text-center">

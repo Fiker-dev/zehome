@@ -35,13 +35,16 @@ export function supplierOrderNote(lines: OrderLine[]): string {
   return 'BUY → ' + [...bySupplier].map(([s, items]) => `${s}: ${items.join('; ')}`).join(' | ')
 }
 
-// Recover order lines from PayFast's item_name ("Name x2, Other name x1").
-// Used on the paid notification, which doesn't carry our structured cart.
-export function linesFromItemName(itemName: string): OrderLine[] {
-  const lines: OrderLine[] = []
-  for (const product of products) {
-    const match = itemName.match(new RegExp(`${product.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')} x(\\d+)`))
-    if (match) lines.push({ id: product.id, quantity: Number(match[1]) })
-  }
-  return lines
+// Compact cart sent to PayFast as item_description ("id*qty,id*qty") and
+// signed into the order ID, so the paid notification says exactly what to buy.
+export function cartCode(lines: OrderLine[]): string {
+  return lines.map((l) => `${l.id}*${l.quantity}`).join(',')
+}
+
+export function linesFromCartCode(code: string): OrderLine[] {
+  return code
+    .split(',')
+    .map((part) => /^([a-z0-9-]+)\*(\d{1,2})$/.exec(part.trim()))
+    .filter((m): m is RegExpExecArray => m !== null && products.some((p) => p.id === m[1]))
+    .map((m) => ({ id: m[1], quantity: Number(m[2]) }))
 }

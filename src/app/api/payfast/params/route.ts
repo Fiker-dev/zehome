@@ -1,23 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server'
 import products from '@/data/products.json'
 import { buildPayFastParams, createOrderId } from '@/lib/payfast'
+import { cleanText, clientIp, rateLimited } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
-import { supplierOrderNote } from '@/lib/supplier'
+import { cartCode, supplierOrderNote } from '@/lib/supplier'
+
+const SA_PROVINCES = [
+  'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
+  'Mpumalanga', 'North West', 'Northern Cape', 'Western Cape',
+]
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 export async function POST(req: NextRequest) {
   try {
+    // Each call writes a row to the order sheet, so slow down floods
+    if (rateLimited(`params:${clientIp(req)}`, 10, 10 * 60 * 1000)) {
+      return NextResponse.json({ error: 'Too many attempts. Please wait a few minutes.' }, { status: 429 })
+    }
+
     const body = await req.json()
-    const { firstName, lastName, email, phone, address, city, province, postalCode, items } = body
+    const firstName = cleanText(body?.firstName, 50)
+    const lastName = cleanText(body?.lastName, 50)
+    const email = cleanText(body?.email, 100)
+    const phone = cleanText(body?.phone, 20)
+    const address = cleanText(body?.address, 200)
+    const city = cleanText(body?.city, 60)
+    const province = cleanText(body?.province, 30)
+    const postalCode = cleanText(body?.postalCode, 10)
+    const items: unknown = body?.items
 
     if (!firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+      return NextResponse.json({ error: 'Please fill in every field (and keep each one short).' }, { status: 400 })
+    }
+    const invalid =
+      (!EMAIL.test(email) && 'Please enter a valid email address.') ||
+      (!/^[+0-9 ()-]{9,20}$/.test(phone) && 'Please enter a valid phone number.') ||
+      (!/^\d{4}$/.test(postalCode) && 'Please enter your 4-digit postal code.') ||
+      (!SA_PROVINCES.includes(province) && 'Please choose your province.')
+    if (invalid) {
+      return NextResponse.json({ error: invalid }, { status: 400 })
     }
 
     // Price the order from our own product data, never from the browser
-    const lines = Array.isArray(items)
+    const lines = Array.isArray(items) && items.length <= 20
       ? items.map((item: { id?: unknown; quantity?: unknown }) => ({
-          product: products.find((p) => p.id === item.id && p.inStock),
-          quantity: Number(item.quantity),
+          product: products.find((p) => p.id === item?.id && p.inStock),
+          quantity: Number(item?.quantity),
         }))
       : []
     const validLines = lines.filter(
@@ -26,12 +54,18 @@ export async function POST(req: NextRequest) {
     if (validLines.length === 0 || validLines.length !== lines.length) {
       return NextResponse.json({ error: 'Invalid cart' }, { status: 400 })
     }
+    const orderLines = validLines.map((l) => ({ id: l.product!.id, quantity: l.quantity }))
     const amount = validLines.reduce((sum, l) => sum + l.product!.price * l.quantity, 0)
     const itemName = validLines.map((l) => `${l.product!.name} x${l.quantity}`).join(', ')
+    // Signed into the order ID; PayFast limits item_description to 255 chars
+    const cart = cartCode(orderLines)
+    if (cart.length > 255) {
+      return NextResponse.json({ error: 'Too many different items in one order' }, { status: 400 })
+    }
 
     const storeUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
     const amountValue = amount.toFixed(2)
-    const orderId = createOrderId(amountValue)
+    const orderId = createOrderId(amountValue, cart)
     const product = itemName.substring(0, 100)
     const returnUrl = new URL('/order-success', storeUrl)
     const cancelUrl = new URL('/api/payfast/cancel', storeUrl)
@@ -43,19 +77,19 @@ export async function POST(req: NextRequest) {
     await appendOrderRow({
       orderId,
       date: new Date().toISOString(),
-      firstName: String(firstName),
-      lastName: String(lastName),
-      email: String(email),
-      phone: String(phone),
-      address: String(address),
-      city: String(city),
-      province: String(province),
-      postalCode: String(postalCode),
-      product,
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      city,
+      province,
+      postalCode,
+      product: itemName,
       amount: amountValue,
       paymentStatus: 'Pending payment',
       dispatchStatus: 'Awaiting payment',
-      reminder: supplierOrderNote(validLines.map((l) => ({ id: l.product!.id, quantity: l.quantity }))),
+      reminder: supplierOrderNote(orderLines),
     })
 
     const params = buildPayFastParams({
@@ -70,11 +104,12 @@ export async function POST(req: NextRequest) {
       m_payment_id: orderId,
       amount: amountValue,
       item_name: product,
-      custom_str1: String(phone),
-      custom_str2: String(address),
-      custom_str3: String(city),
-      custom_str4: String(province),
-      custom_str5: String(postalCode),
+      item_description: cart,
+      custom_str1: phone,
+      custom_str2: address,
+      custom_str3: city,
+      custom_str4: province,
+      custom_str5: postalCode,
     })
 
     return NextResponse.json(params)

@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { ORDER_ID_PATTERN } from '@/lib/payfast'
+import { clientIp, rateLimited } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
 
 export async function GET(req: NextRequest) {
   const orderId = req.nextUrl.searchParams.get('orderId') ?? ''
   const redirectUrl = new URL('/order-cancelled', req.nextUrl.origin)
 
-  if (orderId) {
+  // Only log real-looking order IDs (anyone can call this URL), and not floods
+  if (ORDER_ID_PATTERN.test(orderId) && !rateLimited(`cancel:${clientIp(req)}`, 5, 10 * 60 * 1000)) {
     redirectUrl.searchParams.set('orderId', orderId)
 
     await appendOrderRow({

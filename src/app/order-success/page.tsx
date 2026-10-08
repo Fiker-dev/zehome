@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { ORDER_ID_PATTERN } from '@/lib/payfast'
 
 export const metadata: Metadata = {
   title: 'Payment Received',
@@ -11,7 +12,11 @@ export default async function OrderSuccessPage({
 }: {
   searchParams: Promise<{ pf_payment_id?: string; m_payment_id?: string }>
 }) {
-  const { pf_payment_id, m_payment_id } = await searchParams
+  const params = await searchParams
+  // Only echo values shaped like real references, so a crafted link can't
+  // make this page display arbitrary text
+  const m_payment_id = ORDER_ID_PATTERN.test(params.m_payment_id ?? '') ? params.m_payment_id : undefined
+  const pf_payment_id = /^\d{1,20}$/.test(params.pf_payment_id ?? '') ? params.pf_payment_id : undefined
   const hasPaymentReference = Boolean(pf_payment_id || m_payment_id)
 
   return (

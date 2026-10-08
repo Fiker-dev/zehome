@@ -19,6 +19,8 @@ Target market: SA local — Johannesburg and surrounding areas
   PayFast ITN fix (real orders were never logged), server-side pricing +
   amount HMAC in order IDs, margin checker, mobile fixes, rebrand to
   "viral finds".
+- Security review 8 Oct 2026: docs/security-review-2026-10.md. Order IDs sign
+  amount + cart (item_description); BUY list comes only from the signed cart.
 - PayFast: account active (merchant ID 31199311). Passphrase must be rotated
   (it was exposed in chat); keep "require signature" OFF — the checkout form
   is unsigned by design.

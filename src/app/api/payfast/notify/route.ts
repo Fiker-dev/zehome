@@ -1,18 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { confirmItnWithPayFast, orderAmountMatches, verifyItnSignature } from '@/lib/payfast'
+import { confirmItnWithPayFast, orderMatches, verifyItnSignature } from '@/lib/payfast'
+import { clientIp } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
-import { linesFromItemName, supplierOrderNote } from '@/lib/supplier'
+import { linesFromCartCode, supplierOrderNote } from '@/lib/supplier'
 
-const PAYFAST_IPS = [
-  '197.97.145.144',
-  '197.97.145.145',
-  '197.97.145.146',
-  '197.97.145.147',
-  '41.74.179.194',
-  '41.74.179.195',
-  '41.74.179.196',
-  '41.74.179.197',
+// PayFast's ITN server ranges (197.97.145.144/28 and 41.74.179.192/27). The
+// old list held 8 single IPs, so ITNs from the rest of the range were refused
+// and those paid orders were never logged. PayFast's validate call below is
+// the stronger check; this just drops obvious junk early.
+const PAYFAST_RANGES: [number, number][] = [
+  [ipToInt('197.97.145.144'), 28],
+  [ipToInt('41.74.179.192'), 27],
 ]
+
+function ipToInt(ip: string): number {
+  const parts = ip.split('.').map(Number)
+  if (parts.length !== 4 || parts.some((p) => !Number.isInteger(p) || p < 0 || p > 255)) return -1
+  return ((parts[0] << 24) >>> 0) + (parts[1] << 16) + (parts[2] << 8) + parts[3]
+}
+
+function isPayFastIp(ip: string): boolean {
+  const n = ipToInt(ip)
+  return n >= 0 && PAYFAST_RANGES.some(([base, bits]) => n >>> (32 - bits) === base >>> (32 - bits))
+}
 
 function mapPaymentStatus(status = '') {
   switch (status.toUpperCase()) {
@@ -51,9 +61,7 @@ export async function POST(req: NextRequest) {
 
     // Verify source IP in production
     if (process.env.PAYFAST_SANDBOX !== 'true') {
-      const ip =
-        req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? ''
-      if (!PAYFAST_IPS.includes(ip)) {
+      if (!isPayFastIp(clientIp(req))) {
         return new NextResponse('Forbidden', { status: 403 })
       }
     }
@@ -78,14 +86,16 @@ export async function POST(req: NextRequest) {
     const orderId = params.m_payment_id
     let mappedStatus = mapPaymentStatus(paymentStatus)
 
-    // A customer can edit the amount in the browser before it reaches
-    // PayFast, so only dispatch when they paid what the server charged.
+    // A customer can edit the amount and cart in the browser before they
+    // reach PayFast, so only dispatch when they paid what the server charged
+    // for the cart the server priced (both are signed into the order ID).
+    const cart = params.item_description ?? ''
     if (
       paymentStatus?.toUpperCase() === 'COMPLETE' &&
-      !orderAmountMatches(orderId ?? '', params.amount_gross ?? '')
+      !orderMatches(orderId ?? '', params.amount_gross ?? '', cart)
     ) {
       mappedStatus = {
-        paymentStatus: 'Paid — amount does not match order',
+        paymentStatus: 'Paid — amount or items do not match order',
         dispatchStatus: 'DO NOT DISPATCH — check payment',
       }
     }
@@ -108,7 +118,7 @@ export async function POST(req: NextRequest) {
       reminder: [
         params.pf_payment_id ? `PayFast ref: ${params.pf_payment_id}` : '',
         // On a good paid order, put the supplier shopping list right on the row
-        mappedStatus.paymentStatus === 'Paid' ? supplierOrderNote(linesFromItemName(params.item_name ?? '')) : '',
+        mappedStatus.paymentStatus === 'Paid' ? supplierOrderNote(linesFromCartCode(cart)) : '',
       ].filter(Boolean).join(' · '),
     })
 

@@ -1,3 +1,5 @@
+import { sheetSafe } from './security'
+
 export interface OrderRow {
   orderId: string
   date: string
@@ -43,7 +45,10 @@ export async function appendOrderRow(
     const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(row),
+      // Neutralise spreadsheet formulas in customer-supplied text
+      body: JSON.stringify(
+        Object.fromEntries(Object.entries(row).map(([k, v]) => [k, sheetSafe(String(v).slice(0, 500))]))
+      ),
       signal: controller.signal,
     })
 

@@ -61,27 +61,37 @@ export async function confirmItnWithPayFast(body: string, sandbox: boolean): Pro
   return (await res.text()).trim() === 'VALID'
 }
 
-// Order IDs carry an HMAC of the amount the server charged, so the ITN can
-// prove the customer paid that amount even though the PayFast form itself is
-// unsigned and editable in the browser.
-function amountTag(orderRef: string, amount: string): string {
-  const secret = process.env.PAYFAST_PASSPHRASE || process.env.PAYFAST_MERCHANT_KEY || ''
+// Order IDs carry an HMAC of the amount AND the cart (item_description) the
+// server priced, so the ITN can prove the customer paid that amount for those
+// items, even though the PayFast form itself is unsigned and editable in the
+// browser. (Signing the amount alone let a buyer pay for a cheap item and edit
+// the cart to list expensive ones.) The key must be secret: the merchant key
+// is sent to the browser, so it is never used.
+const signingSecret = () => process.env.ORDER_SIGNING_SECRET || process.env.PAYFAST_PASSPHRASE || ''
+
+function orderTag(orderRef: string, amount: string, cart: string): string {
   return crypto
-    .createHmac('sha256', secret)
-    .update(`${orderRef}|${Number(amount).toFixed(2)}`)
+    .createHmac('sha256', signingSecret())
+    .update(`${orderRef}|${Number(amount).toFixed(2)}|${cart}`)
     .digest('hex')
-    .slice(0, 12)
+    .slice(0, 16)
 }
 
-export function createOrderId(amount: string): string {
+export const ORDER_ID_PATTERN = /^(ORD-\d{13})-([0-9a-f]{16})$/
+
+export function createOrderId(amount: string, cart: string): string {
   const ref = `ORD-${Date.now()}`
-  return `${ref}-${amountTag(ref, amount)}`
+  return `${ref}-${orderTag(ref, amount, cart)}`
 }
 
-export function orderAmountMatches(orderId: string, amountPaid: string): boolean {
-  const match = /^(ORD-\d+)-([0-9a-f]{12})$/.exec(orderId)
+export function orderMatches(orderId: string, amountPaid: string, cart: string): boolean {
+  if (!signingSecret()) {
+    console.error('No ORDER_SIGNING_SECRET or PAYFAST_PASSPHRASE set: cannot verify orders')
+    return false
+  }
+  const match = ORDER_ID_PATTERN.exec(orderId)
   if (!match) return false
-  const expected = amountTag(match[1], amountPaid)
+  const expected = orderTag(match[1], amountPaid, cart)
   return crypto.timingSafeEqual(Buffer.from(match[2]), Buffer.from(expected))
 }
 

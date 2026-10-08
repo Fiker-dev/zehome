@@ -84,7 +84,10 @@ export default function CheckoutPage() {
         }),
       })
 
-      if (!res.ok) throw new Error('Could not build payment. Try again.')
+      if (!res.ok) {
+        const { error: message } = await res.json().catch(() => ({ error: '' }))
+        throw new Error(message || 'Could not build payment. Try again.')
+      }
 
       const data = await res.json()
       setPayFastParams(data)
@@ -243,6 +246,10 @@ export default function CheckoutPage() {
               type="text"
               required
               autoComplete="postal-code"
+              inputMode="numeric"
+              pattern="[0-9]{4}"
+              maxLength={4}
+              title="4-digit postal code"
               value={form.postalCode}
               onChange={(e) => setForm((f) => ({ ...f, postalCode: e.target.value }))}
               className={inputClass}
