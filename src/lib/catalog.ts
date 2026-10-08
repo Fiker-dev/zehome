@@ -3,7 +3,7 @@ import products from '@/data/products.json'
 export type Product = (typeof products)[number]
 
 export const categorySlug = (category: string) =>
-  category.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+  category.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
 // Categories in the order they first appear in products.json
 export const categories = [...new Set(products.map((p) => p.category))].map((name) => ({

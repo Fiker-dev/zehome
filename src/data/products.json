@@ -370,5 +370,63 @@
       }
     ],
     "reviews": []
+  },
+  {
+    "id": "mushroom-salt-lamp",
+    "slug": "mushroom-salt-lamp",
+    "name": "Mushroom Crystal Salt Lamp",
+    "category": "Home Décor",
+    "price": 399,
+    "currency": "ZAR",
+    "inStock": true,
+    "deliveryDays": "3-7 business days",
+    "description": "A little glowing mushroom for your bedside. Hand-carved from natural Himalayan salt crystal, this lamp gives off a warm amber light that makes a bedroom, desk or reading corner feel instantly calmer. Because it's natural salt, every lamp's colour and texture is slightly different — yours is one of a kind.",
+    "bullets": [
+      "Hand-carved from natural Himalayan salt crystal",
+      "Whimsical mushroom shape with a warm amber glow",
+      "Perfect bedside, desk or shelf night light",
+      "Every lamp is unique — natural colour and texture vary",
+      "Free delivery across South Africa — 3-7 business days"
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/b8f2618e-Mushroom-Crystal-Salt-Bedside-Lamp.jpg?v=1768539272",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/83c18b9f-Mushroom-Crystal-Salt-Bedside-Lamp-2.jpg?v=1768539271",
+      "https://cdn.shopify.com/s/files/1/0599/8821/3889/files/2f0ed87b-Mushroom-Crystal-Salt-Bedside-Lamp-3.jpg?v=1768539272"
+    ],
+    "trustLine": "A warm glow for your bedside. Every one is unique.",
+    "keywords": [
+      "himalayan salt lamp south africa",
+      "salt lamp price south africa",
+      "mushroom lamp",
+      "mushroom salt lamp",
+      "bedside lamp south africa",
+      "aesthetic room decor south africa"
+    ],
+    "seo": {
+      "title": "Himalayan Salt Lamp (Mushroom) South Africa – R399 | Ze Home Finds",
+      "description": "Hand-carved Himalayan salt crystal mushroom lamp with a warm amber glow. Bedside night light, every one unique. R399, free delivery across South Africa.",
+      "ogTitle": "A little glowing mushroom for your bedside",
+      "alt": "Mushroom-shaped Himalayan salt crystal lamp glowing warm amber on a bedside table",
+      "h1": "Mushroom Crystal Salt Lamp"
+    },
+    "faqs": [
+      {
+        "q": "Is it real Himalayan salt?",
+        "a": "Yes. It's hand-carved from natural Himalayan salt crystal, so the colour and texture of every lamp is slightly different."
+      },
+      {
+        "q": "What kind of light does it give?",
+        "a": "A soft, warm amber glow — ideal as a bedside or desk night light rather than a reading lamp."
+      },
+      {
+        "q": "Why is my salt lamp damp?",
+        "a": "Salt naturally attracts moisture in humid air (common at the coast). Keep it in a dry spot and switch it on regularly; wipe it with a dry cloth if needed."
+      },
+      {
+        "q": "How long does delivery take?",
+        "a": "3-7 business days from local stock in Johannesburg, free and tracked anywhere in South Africa."
+      }
+    ],
+    "reviews": []
   }
 ]
