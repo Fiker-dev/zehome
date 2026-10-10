@@ -4,13 +4,17 @@ import { clientIp } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
 import { linesFromCartCode, supplierOrderNote } from '@/lib/supplier'
 
-// PayFast's ITN server ranges (197.97.145.144/28 and 41.74.179.192/27). The
+// PayFast's ITN server ranges (197.97.145.144/28, 41.74.179.192/27, and the
+// newer 102.216.36.0/28, 102.216.36.128/28 and 144.126.193.139). The
 // old list held 8 single IPs, so ITNs from the rest of the range were refused
 // and those paid orders were never logged. PayFast's validate call below is
 // the stronger check; this just drops obvious junk early.
 const PAYFAST_RANGES: [number, number][] = [
   [ipToInt('197.97.145.144'), 28],
   [ipToInt('41.74.179.192'), 27],
+  [ipToInt('102.216.36.0'), 28],
+  [ipToInt('102.216.36.128'), 28],
+  [ipToInt('144.126.193.139'), 32],
 ]
 
 function ipToInt(ip: string): number {

@@ -1,3 +1,4 @@
+import { SITE_URL } from '@/lib/site'
 import { NextRequest, NextResponse } from 'next/server'
 import products from '@/data/products.json'
 import { buildPayFastParams, createOrderId } from '@/lib/payfast'
@@ -63,7 +64,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Too many different items in one order' }, { status: 400 })
     }
 
-    const storeUrl = process.env.NEXT_PUBLIC_STORE_URL ?? 'https://zehomefinds.co.za'
+    // Always the www host: the apex redirects to www, and PayFast does not
+    // follow redirects, so an apex notify_url meant paid ITNs never arrived.
+    const storeUrl = SITE_URL
     const amountValue = amount.toFixed(2)
     const orderId = createOrderId(amountValue, cart)
     const product = itemName.substring(0, 100)
