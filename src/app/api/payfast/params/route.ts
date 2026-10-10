@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       (l) => l.product && Number.isInteger(l.quantity) && l.quantity >= 1 && l.quantity <= 10
     )
     if (validLines.length === 0 || validLines.length !== lines.length) {
-      return NextResponse.json({ error: 'Invalid cart' }, { status: 400 })
+      return NextResponse.json({ error: 'Something in your cart is no longer available. Please remove it and try again.' }, { status: 400 })
     }
     const orderLines = validLines.map((l) => ({ id: l.product!.id, quantity: l.quantity }))
     const amount = validLines.reduce((sum, l) => sum + l.product!.price * l.quantity, 0)

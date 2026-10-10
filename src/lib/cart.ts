@@ -2,6 +2,7 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import products from '@/data/products.json'
 
 export interface CartItem {
   id: string
@@ -76,6 +77,29 @@ export const useCart = create<CartStore>()(
     {
       name: 'ze-home-cart-v2',
       partialize: (state) => ({ items: state.items }),
+      // A saved cart can outlive the catalogue: drop items we no longer sell
+      // (checkout would reject them) and refresh name, price and image.
+      merge: (persisted, current) => ({
+        ...current,
+        items: syncWithCatalogue((persisted as Partial<CartStore>)?.items),
+      }),
     }
   )
 )
+
+function syncWithCatalogue(items: unknown): CartItem[] {
+  if (!Array.isArray(items)) return []
+  return items.flatMap((item: Partial<CartItem>) => {
+    const product = products.find((p) => p.id === item?.id && p.inStock)
+    const quantity = Math.min(10, Math.max(1, Math.floor(Number(item?.quantity)) || 1))
+    if (!product) return []
+    return [{
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      quantity,
+      image: product.images[0],
+    }]
+  })
+}
