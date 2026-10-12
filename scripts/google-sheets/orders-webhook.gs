@@ -256,11 +256,17 @@ function remindUnpaid() {
       }
       var sent = []
       if (/@/.test(email) && !optedOut[email] && !(wa && optedOut[wa])) {
-        try {
-          sendCustomerReminder(d)
-          sent.push('email to customer')
-        } catch (err) {
-          console.error('Reminder email failed for ' + d.orderId + ': ' + err)
+        // Customers must never get mail from the owner's personal Gmail: only
+        // send once Script property CUSTOMER_EMAIL_FROM (the store address) is set
+        if (!PropertiesService.getScriptProperties().getProperty('CUSTOMER_EMAIL_FROM')) {
+          sent.push('customer email held (store address not set up yet)')
+        } else {
+          try {
+            sendCustomerReminder(d)
+            sent.push('email to customer')
+          } catch (err) {
+            console.error('Reminder email failed for ' + d.orderId + ': ' + err)
+          }
         }
       }
       d.waLink = wa && !optedOut[wa] && !optedOut[email] ? whatsappReminderLink(d, wa) : ''

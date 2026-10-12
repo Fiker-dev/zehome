@@ -97,6 +97,16 @@ unless Fiker asks directly.
     Gmail with display name "Ze Home Finds"; owner wants a store address
     instead (being set up next). Next: part 4 (tracking number -> WhatsApp
     "on its way" button).
+  * 12 Oct RELAY 4: customer reminder emails PAUSED until the store address
+    exists (owner: customers must never get mail from her personal Gmail).
+    remindUnpaid only emails a customer when Script property
+    CUSTOMER_EMAIL_FROM is set; otherwise the Cart reminder column says
+    "customer email held (store address not set up yet)" and the owner's
+    WhatsApp digest still goes out. Saved in the Apps Script editor 12 Oct
+    (triggers run saved code). In progress: hello@zehomefinds.co.za via
+    ImprovMX forwarding (free) + Gmail "Send mail as" alias; then switch
+    sendCustomerReminder to GmailApp with from: CUSTOMER_EMAIL_FROM and set
+    that property.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
