@@ -17,6 +17,11 @@ Target market: SA local — Johannesburg and surrounding areas
 RULE (owner, 12 Oct 2026): after EVERY change (code, env vars, Apps Script
 deployments, sheet, accounts), update this Current Status section in the
 same session, before finishing. Commit it to main.
+REPO CHECK (owner, 12 Oct 2026): the only repo for this store is
+github.com/Fiker-dev/zehome, branch main, which Vercel project zehome-4jx2
+deploys to zehomefinds.co.za. Before any push, confirm `git remote -v` shows
+Fiker-dev/zehome and the branch is main; after pushing, confirm Vercel
+zehome-4jx2 picked up that commit SHA. Never push store code anywhere else.
 - STATUS 12 Oct 2026 (handoff):
   * Payments WORK end to end: 3 test payments (R10 + 2x R5) reached
     /api/payfast/notify and passed IP/signature/validate/HMAC -> sheet "Paid".
