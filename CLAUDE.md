@@ -56,7 +56,7 @@ unless Fiker asks directly.
     All other deployments archived 12 Oct (archived deployments cannot be
     deleted; an archived "Orders webhook v2" entry is the old Version 8
     record). Test rows from 12 Oct deleted.
-  * Agreed next build (owner approved; parts 1-2 done, see RELAY 1-2): phone required,
+  * Agreed next build (owner approved; parts 1-3 done, see RELAY 1-3): phone required,
     email optional with "why we ask" lines; paid-order email gets a "Send
     receipt on WhatsApp" wa.me button (flagged when no email); time trigger in
     Apps Script: unpaid after 1 h -> one cart reminder email to the customer
@@ -83,6 +83,20 @@ unless Fiker asks directly.
     DISPATCH emails. Live as Apps Script Version 10 of Orders webhook v2
     (same URL), tested 12 Oct with a no-email order (email received, test
     row deleted). Next: part 3 (1-hour unpaid reminder).
+  * 12 Oct RELAY 3 (8f28bc6, Vercel READY dpl_HHnBYuTPMVktaYG4ur75ERJkpAdT):
+    unpaid reminders live as Apps Script Version 11 of Orders webhook v2
+    (same URL). remindUnpaid trigger runs every 15 min: orders "Pending
+    payment" 1-48 h after checkout get ONE customer email (if given, with a
+    signed POPIA opt-out link served by doGet) and the owner gets a digest
+    email with a WhatsApp reminder button per order. "Cart reminder" column
+    added to the sheet (records what was sent; nothing is sent twice).
+    Opt-outs stored in Script property OPTED_OUT; WEBAPP_URL property = the
+    /exec URL. Checkout shows a POPIA privacy notice under the pay button.
+    Tested 12 Oct (customer email + owner digest received, opt-out worked,
+    test rows deleted). Customer emails currently come from the owner's
+    Gmail with display name "Ze Home Finds"; owner wants a store address
+    instead (being set up next). Next: part 4 (tracking number -> WhatsApp
+    "on its way" button).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
