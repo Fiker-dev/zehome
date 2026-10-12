@@ -16,6 +16,11 @@
  * Apps Script, or the project in Drive) > replace Code.gs with this file > Save >
  * Deploy > Manage deployments > (pencil) > Version: New version > Deploy.
  * Editing the existing deployment keeps the same URL, so Vercel needs no change.
+ *
+ * Shared secret: the web app is open to "Anyone", so every POST must carry
+ * "secret" equal to the Script property WEBHOOK_SECRET (Project Settings >
+ * Script properties). The store sends it from the Vercel env var
+ * GOOGLE_SHEETS_WEBHOOK_SECRET. Without the property set, posts are refused.
  */
 
 var SHEET_NAME = 'Orders'
@@ -49,6 +54,9 @@ function doPost(e) {
   lock.waitLock(15000) // PayFast can notify twice at once; avoid duplicate rows
   try {
     var data = JSON.parse(e.postData.contents)
+    var expected = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET')
+    if (!expected || data.secret !== expected) return reply({ ok: false, error: 'unauthorized' })
+    delete data.secret // never stored or emailed
     if (!data.orderId) return reply({ ok: false, error: 'orderId required' })
     var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
