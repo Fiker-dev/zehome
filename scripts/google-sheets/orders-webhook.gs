@@ -111,17 +111,25 @@ function notifyPaid(raw, ss) {
   var carts = parts.filter(function (p) { return /^1-CLICK CART/.test(p) })
     .map(function (p) { return p.replace(/^1-CLICK CART → ([^:]+): /, '👉 BUY NOW at $1 (opens checkout with the items and delivery address filled in — check, then pay):\n') })
   var itemLines = parts.filter(function (p) { return !/^1-CLICK CART/.test(p) }).join('\n')
+  var noEmail = !/@/.test(d.email)
+  // Receipt the owner can send to the customer on WhatsApp in one tap (only
+  // for good payments; a mismatched payment must be checked first)
+  var waLink = problem ? '' : whatsappReceiptLink(d)
   var subject = (problem ? '⚠️ DO NOT DISPATCH — check payment ' : '🛒 New paid order R') +
-    (problem ? d.orderId : d.amount + ' — ' + d.product)
+    (problem ? d.orderId : d.amount + ' — ' + d.product) +
+    (!problem && noEmail ? (waLink ? ' — 📱 no email, send receipt on WhatsApp' : ' — 📱 no email, check phone number') : '')
+  var receiptLine = waLink
+    ? (noEmail ? '📱 NO EMAIL GIVEN — send the customer their receipt on WhatsApp:\n' : '📱 Send the customer their receipt on WhatsApp:\n') + waLink + '\n'
+    : (!problem && noEmail ? '📱 No email given and the phone number could not be read — contact the customer by phone.\n' : '')
   var body = [
-    problem ? 'PayFast says this was paid, but the amount or items do not match the order. Check it in the PayFast dashboard before buying anything.\n' : 'You have a new paid order.\n\n' + carts.join('\n\n') + '\n',
+    problem ? 'PayFast says this was paid, but the amount or items do not match the order. Check it in the PayFast dashboard before buying anything.\n' : 'You have a new paid order.\n\n' + receiptLine + '\n' + carts.join('\n\n') + '\n',
     'Order: ' + d.orderId,
     'Amount: R' + d.amount,
     'Items: ' + d.product,
     '',
     'Customer: ' + name,
     'Phone: ' + d.phone,
-    'Email: ' + d.email,
+    'Email: ' + (noEmail ? '(none given)' : d.email),
     'Address: ' + [d.address, d.city, d.province, d.postalCode].filter(Boolean).join(', '),
     '',
     'Items to buy (if the link does not work):',
@@ -130,10 +138,47 @@ function notifyPaid(raw, ss) {
     'Then add the tracking number in the sheet: ' + ss.getUrl(),
   ].join('\n')
   try {
-    MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, name: 'Ze Home Finds orders' })
+    // The button replaces the long raw link in the formatted email
+    var html = escapeHtml(waLink ? body.replace(receiptLine, '') : body).replace(/\n/g, '<br>')
+    if (waLink) {
+      var button = '<p><a href="' + escapeHtml(waLink) + '" style="display:inline-block;background:#25D366;color:#ffffff;' +
+        'padding:12px 20px;border-radius:24px;text-decoration:none;font-weight:bold">Send receipt on WhatsApp</a></p>'
+      html = (noEmail ? '<p><b>📱 No email given — WhatsApp is the only way to send this customer a receipt.</b></p>' : '') + button + html
+    }
+    MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, htmlBody: html, name: 'Ze Home Finds orders' })
   } catch (err) {
     console.error('Order email failed: ' + err) // the sheet row is still written
   }
+}
+
+// South African number as WhatsApp wants it (27XXXXXXXXX), or '' if unreadable
+function waNumber(phone) {
+  var digits = String(phone || '').replace(/\D/g, '')
+  if (/^0\d{9}$/.test(digits)) digits = '27' + digits.slice(1)
+  return /^27\d{9}$/.test(digits) ? digits : ''
+}
+
+// wa.me link that opens a chat with the customer, receipt text filled in
+function whatsappReceiptLink(d) {
+  var number = waNumber(d.phone)
+  if (!number) return ''
+  var ref = (String(d.reminder || '').match(/PayFast ref: (\S+)/) || [])[1]
+  var text = [
+    'Hi ' + (d.firstName || 'there') + ', thank you for your Ze Home Finds order! 🧾',
+    '',
+    'Receipt',
+    'Order: ' + d.orderId,
+    'Items: ' + d.product,
+    'Total paid: R' + d.amount + ' (PayFast' + (ref ? ' ref ' + ref : '') + ')',
+    'Delivery: free, to ' + [d.address, d.city, d.postalCode].filter(Boolean).join(', '),
+    '',
+    'We will send your tracking number here as soon as it ships.',
+  ].join('\n')
+  return 'https://wa.me/' + number + '?text=' + encodeURIComponent(text)
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
 function findRow(sheet, idCol, orderId) {
