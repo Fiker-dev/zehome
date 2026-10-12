@@ -53,6 +53,9 @@ zehome-4jx2 picked up that commit SHA. Never push store code anywhere else.
     owner declined that edit for now.
   * Owner to-dos: delete older test rows in the sheet (May/Oct 10); rotate PayFast passphrase + CJ
     key/MCP token; Search Console sitemap; Merchant Center feed.
+  * 12 Oct (Claude Code cloud session): direct `git push` to Fiker-dev/zehome
+    main from Claude Code cloud sessions now works (no more committing via
+    the GitHub website).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
