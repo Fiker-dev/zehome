@@ -69,6 +69,13 @@ unless Fiker asks directly.
   * 12 Oct (Claude Code cloud session): direct `git push` to Fiker-dev/zehome
     main from Claude Code cloud sessions now works (no more committing via
     the GitHub website).
+  * 12 Oct RELAY 1 (38b82a0, READY in dpl_CkBi3qoGTdLWnz2RuV2sSzCjvC8W): WhatsApp/cell
+    number now required and email optional, each with a "Why we ask" line.
+    PayFast gets cell_number (src/lib/phone.ts saMobile) when email is blank
+    and email_address is omitted; supplier cart link skips an empty email;
+    order-success says tracking comes on WhatsApp (and email if given).
+    Still to build: WhatsApp receipt button, 1 h unpaid reminder, tracking
+    WhatsApp button (Apps Script parts).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
