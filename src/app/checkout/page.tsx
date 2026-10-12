@@ -297,6 +297,10 @@ export default function CheckoutPage() {
         <p className="text-xs text-charcoal-muted text-center">
           You will be redirected to PayFast to complete your payment securely.
         </p>
+        <p className="text-xs text-charcoal-muted text-center">
+          Your privacy: we use your details only to process, deliver and support this order (POPIA). If you don&apos;t finish
+          paying, we may send one reminder, by email if you gave one, and every reminder email has a one-click opt-out.
+        </p>
       </form>
 
       {/* Auto-submit hidden PayFast form when params are ready */}

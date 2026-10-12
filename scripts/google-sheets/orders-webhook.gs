@@ -21,6 +21,14 @@
  * "secret" equal to the Script property WEBHOOK_SECRET (Project Settings >
  * Script properties). The store sends it from the Vercel env var
  * GOOGLE_SHEETS_WEBHOOK_SECRET. Without the property set, posts are refused.
+ *
+ * Unpaid reminders: remindUnpaid() runs every 15 minutes (install once by
+ * running installReminderTrigger from the editor). For each order still
+ * "Pending payment" 1-48 hours after checkout it sends the customer ONE
+ * reminder email (if they gave one, with a one-click opt-out) and emails the
+ * owner a WhatsApp button per order. The "Cart reminder" column records what
+ * was sent, so nothing is sent twice. installReminderTrigger also saves this
+ * web app's /exec URL as Script property WEBAPP_URL for the opt-out link.
  */
 
 var SHEET_NAME = 'Orders'
@@ -179,6 +187,187 @@ function whatsappReceiptLink(d) {
 
 function escapeHtml(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+var STORE_URL = 'https://www.zehomefinds.co.za'
+var STORE_WHATSAPP = '27710278563'
+var REMIND_AFTER_MS = 60 * 60 * 1000       // 1 hour after checkout
+var REMIND_UNTIL_MS = 48 * 60 * 60 * 1000  // never chase orders older than 2 days
+var REMINDER_COL = 'Cart reminder'
+
+// Run once from the editor: installs the 15-minute reminder check
+function installReminderTrigger() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'remindUnpaid') ScriptApp.deleteTrigger(t)
+  })
+  ScriptApp.newTrigger('remindUnpaid').timeBased().everyMinutes(15).create()
+  // The opt-out link points at this web app; remember its /exec URL
+  var props = PropertiesService.getScriptProperties()
+  var url = ScriptApp.getService().getUrl()
+  // Only the public /exec URL works for customers (the editor reports /dev)
+  if (url && /\/exec$/.test(url)) props.setProperty('WEBAPP_URL', url)
+  console.log('Reminder trigger installed; opt-out links use ' + (props.getProperty('WEBAPP_URL') || '(no web app URL!)'))
+}
+
+function remindUnpaid() {
+  var lock = LockService.getScriptLock()
+  if (!lock.tryLock(10000)) return // a webhook is writing; try next run
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
+    var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
+    var lastCol = sheet.getLastColumn()
+    var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0].map(function (h) { return String(h).trim() })
+    var remCol = headers.indexOf(REMINDER_COL)
+    if (remCol < 0) {
+      remCol = lastCol
+      sheet.getRange(1, remCol + 1).setValue(REMINDER_COL)
+      headers.push(REMINDER_COL)
+    }
+    var last = sheet.getLastRow()
+    if (last < 2) return
+    var rows = sheet.getRange(2, 1, last - 1, headers.length).getValues()
+    var col = function (name) { return headers.indexOf(name) }
+    var get = function (r, name) { var i = col(name); return i < 0 ? '' : String(r[i] == null ? '' : r[i]).replace(/^'/, '').trim() }
+    var optedOut = optOutList()
+    // Customers who have a paid order: never chase them for an older cart
+    var paid = {}
+    rows.forEach(function (r) {
+      if (/^Paid/.test(get(r, 'Payment Status'))) {
+        if (get(r, 'Email')) paid[get(r, 'Email').toLowerCase()] = true
+        if (waNumber(get(r, 'Phone'))) paid[waNumber(get(r, 'Phone'))] = true
+      }
+    })
+    var now = Date.now()
+    var forOwner = []
+    rows.forEach(function (r, i) {
+      if (get(r, 'Payment Status') !== 'Pending payment' || get(r, REMINDER_COL)) return
+      var placed = r[col('Date')] instanceof Date ? r[col('Date')].getTime() : Date.parse(get(r, 'Date'))
+      if (!placed || now - placed < REMIND_AFTER_MS || now - placed > REMIND_UNTIL_MS) return
+      var d = {
+        orderId: get(r, 'Order ID'), name: get(r, 'Name'), email: get(r, 'Email'), phone: get(r, 'Phone'),
+        product: get(r, 'Product'), amount: get(r, 'Amount'),
+      }
+      if (!d.orderId || /^TEST/i.test(d.orderId)) return
+      var email = d.email.toLowerCase()
+      var wa = waNumber(d.phone)
+      if (paid[email] || (wa && paid[wa])) {
+        sheet.getRange(i + 2, remCol + 1).setValue('Skipped: customer has a paid order')
+        return
+      }
+      var sent = []
+      if (/@/.test(email) && !optedOut[email] && !(wa && optedOut[wa])) {
+        try {
+          sendCustomerReminder(d)
+          sent.push('email to customer')
+        } catch (err) {
+          console.error('Reminder email failed for ' + d.orderId + ': ' + err)
+        }
+      }
+      d.waLink = wa && !optedOut[wa] && !optedOut[email] ? whatsappReminderLink(d, wa) : ''
+      if (d.waLink) forOwner.push(d)
+      sent.push(d.waLink ? 'WhatsApp button to owner' : 'no WhatsApp (number unreadable or opted out)')
+      sheet.getRange(i + 2, remCol + 1).setValue(Utilities.formatDate(new Date(), 'Africa/Johannesburg', 'yyyy-MM-dd HH:mm') + ' — ' + sent.join(', '))
+    })
+    if (forOwner.length) sendOwnerReminderDigest(forOwner, ss)
+  } finally {
+    lock.releaseLock()
+  }
+}
+
+function firstName(name) { return String(name || '').split(' ')[0] || 'there' }
+
+function sendCustomerReminder(d) {
+  var optOut = optOutLink(d.email)
+  var text = [
+    'Hi ' + firstName(d.name) + ',',
+    '',
+    'You started an order at Ze Home Finds but the payment did not go through:',
+    '  ' + d.product + ' — R' + d.amount,
+    '',
+    'If you still want it, you can complete your order here: ' + STORE_URL + '/checkout',
+    '(open it on the same phone or computer you used, or add the items again from the shop).',
+    'Questions or trouble paying? WhatsApp us: https://wa.me/' + STORE_WHATSAPP,
+    '',
+    'This is the only reminder we will send about this order.',
+    optOut ? 'Don\'t want reminders? ' + optOut : '',
+    '',
+    'Ze Home Finds',
+  ].join('\n')
+  var html = '<div style="font-family:Arial,sans-serif;font-size:15px;color:#222;max-width:520px">' +
+    '<p>Hi ' + escapeHtml(firstName(d.name)) + ',</p>' +
+    '<p>You started an order at Ze Home Finds but the payment did not go through:<br><b>' +
+    escapeHtml(d.product) + ' — R' + escapeHtml(d.amount) + '</b></p>' +
+    '<p><a href="' + STORE_URL + '/checkout" style="display:inline-block;background:#1f1f1f;color:#fff;padding:12px 22px;' +
+    'border-radius:24px;text-decoration:none;font-weight:bold">Complete my order</a></p>' +
+    '<p style="font-size:13px;color:#555">Open it on the same phone or computer you used, or add the items again from the ' +
+    '<a href="' + STORE_URL + '">shop</a>. Questions or trouble paying? ' +
+    '<a href="https://wa.me/' + STORE_WHATSAPP + '">WhatsApp us</a>.</p>' +
+    '<p style="font-size:12px;color:#777">This is the only reminder we will send about this order.' +
+    (optOut ? ' <a href="' + escapeHtml(optOut) + '" style="color:#777">Don\'t want reminders? Opt out</a>.' : '') + '</p>' +
+    '<p>Ze Home Finds</p></div>'
+  MailApp.sendEmail({ to: d.email, subject: 'Your Ze Home Finds order is waiting', body: text, htmlBody: html, name: 'Ze Home Finds' })
+}
+
+function whatsappReminderLink(d, number) {
+  var text = 'Hi ' + firstName(d.name) + ', this is Ze Home Finds. Your order (' + d.product + ', R' + d.amount +
+    ') was not paid yet. Can we help you complete it? Reply STOP if you would rather not hear from us.'
+  return 'https://wa.me/' + number + '?text=' + encodeURIComponent(text)
+}
+
+function sendOwnerReminderDigest(list, ss) {
+  var body = ['Unpaid orders from 1+ hour ago. Tap to send a WhatsApp reminder:', '']
+  var html = '<div style="font-family:Arial,sans-serif;font-size:14px"><p>Unpaid orders from 1+ hour ago. Tap to send a WhatsApp reminder:</p>'
+  list.forEach(function (d) {
+    body.push(d.name + ' — ' + d.product + ' — R' + d.amount + ' (' + d.orderId + ')', d.waLink, '')
+    html += '<p>' + escapeHtml(d.name) + ' — ' + escapeHtml(d.product) + ' — R' + escapeHtml(d.amount) +
+      '<br><span style="color:#777;font-size:12px">' + escapeHtml(d.orderId) + '</span><br>' +
+      '<a href="' + escapeHtml(d.waLink) + '" style="display:inline-block;margin-top:6px;background:#25D366;color:#fff;' +
+      'padding:10px 18px;border-radius:22px;text-decoration:none;font-weight:bold">WhatsApp reminder</a></p>'
+  })
+  body.push('Sheet: ' + ss.getUrl())
+  html += '<p style="font-size:12px;color:#777">Sheet: ' + escapeHtml(ss.getUrl()) + '</p></div>'
+  MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: '⏰ ' + list.length + ' unpaid order' + (list.length > 1 ? 's' : '') + ' — WhatsApp reminder', body: body.join('\n'), htmlBody: html, name: 'Ze Home Finds orders' })
+}
+
+// --- Opt-out (POPIA): signed one-click link handled by doGet ---------------
+
+function optOutSig(id) {
+  var secret = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET') || ''
+  var raw = Utilities.computeHmacSha256Signature('optout|' + id, secret)
+  return raw.map(function (b) { return ('0' + (b & 0xff).toString(16)).slice(-2) }).join('').slice(0, 24)
+}
+
+function optOutLink(id) {
+  var base = PropertiesService.getScriptProperties().getProperty('WEBAPP_URL')
+  if (!base) return ''
+  id = String(id).toLowerCase().trim()
+  return base + '?optout=' + encodeURIComponent(id) + '&sig=' + optOutSig(id)
+}
+
+function optOutList() {
+  try { return JSON.parse(PropertiesService.getScriptProperties().getProperty('OPTED_OUT') || '{}') } catch (e) { return {} }
+}
+
+function doGet(e) {
+  var id = String((e && e.parameter && e.parameter.optout) || '').toLowerCase().trim()
+  var ok = id && e.parameter.sig === optOutSig(id)
+  if (ok) {
+    var lock = LockService.getScriptLock()
+    lock.waitLock(10000)
+    try {
+      var list = optOutList()
+      list[id] = new Date().toISOString().slice(0, 10)
+      PropertiesService.getScriptProperties().setProperty('OPTED_OUT', JSON.stringify(list))
+    } finally {
+      lock.releaseLock()
+    }
+  }
+  return HtmlService.createHtmlOutput(
+    '<div style="font-family:Arial,sans-serif;max-width:480px;margin:40px auto;font-size:16px">' +
+    (ok ? '<h2>You\'re unsubscribed</h2><p>Ze Home Finds will not send you order reminders again.</p>'
+        : '<h2>Link not valid</h2><p>This opt-out link is incomplete. Reply to our email or WhatsApp us and we\'ll remove you.</p>') +
+    '<p><a href="' + STORE_URL + '">Back to the shop</a></p></div>'
+  ).setTitle('Ze Home Finds')
 }
 
 function findRow(sheet, idCol, orderId) {
