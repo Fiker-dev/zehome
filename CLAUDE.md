@@ -14,6 +14,35 @@ Hosting: Vercel (free tier)
 Target market: SA local — Johannesburg and surrounding areas
 
 ## Current Status (Oct 2026) — read first
+- STATUS 12 Oct 2026 (handoff):
+  * Payments WORK end to end: 3 test payments (R10 + 2x R5) reached
+    /api/payfast/notify and passed IP/signature/validate/HMAC -> sheet "Paid".
+    Fixes that got it there: notify/return/cancel URLs now use SITE_URL (www;
+    apex redirect lost every ITN), PayFast's newer IP ranges, saved carts drop
+    discontinued items (old "3D Solar Projection Lamp" blocked checkout).
+    Test product is now R5 (PayFast minimum). Keep the R10/R5 test payments,
+    don't refund (PayFast balance would go negative).
+  * BLOCKER: the Apps Script deployment the store posted to ("Orders webhook",
+    Version 1, May 16) runs OLD code (appends a row per event, no email) and
+    was ARCHIVED by accident on 12 Oct, so order logging is down until fixed.
+    Fix: Deploy -> New deployment -> Web app, Execute as Me, access Anyone ->
+    copy the /exec URL -> set Vercel env GOOGLE_SHEETS_WEBHOOK_URL (project
+    zehome-4jx2) -> redeploy. Code in the project (Code.gs) is already current.
+    Changing the URL changes the order-signing secret (derived from it) — fine
+    while no real orders are pending; better: also set ORDER_SIGNING_SECRET.
+    Then test free with a curl POST (Pending then Paid, same orderId) and check
+    one row + the "New paid order" email in fikerzabate16@gmail.com.
+  * Agreed next build (owner approved the plan, not yet built): phone required,
+    email optional with "why we ask" lines; paid-order email gets a "Send
+    receipt on WhatsApp" wa.me button (flagged when no email); time trigger in
+    Apps Script: unpaid after 1 h -> one cart reminder email to the customer
+    (POPIA notice at checkout + opt-out link) and a WhatsApp reminder button
+    to the owner; tracking number added -> WhatsApp "on its way" button.
+    Rules, not an AI agent. Province hint (postcode vs province) was proposed;
+    owner declined that edit for now.
+  * Owner to-dos: delete test rows in the sheet; archive spare "Untitled"
+    deployments only after the new one works; rotate PayFast passphrase + CJ
+    key/MCP token; Search Console sitemap; Merchant Center feed.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
@@ -64,8 +93,8 @@ Target market: SA local — Johannesburg and surrounding areas
   Order sheet: "zehome finds orders" (Google Drive, tab Orders). Its Apps
   Script source is scripts/google-sheets/orders-webhook.gs (one row per order,
   upsert by Order ID; owner pastes + redeploys same deployment to update).
-  Deployed as version 5 on 8 Oct 2026 (email permission granted).
-  R10 hidden test product: /product/payment-test ("hidden": true in
+  Email permission granted 8 Oct; see STATUS 12 Oct for the deployment issue.
+  R5 hidden test product: /product/payment-test ("hidden": true in
   products.json -> excluded from listings, sitemap, feed; noindex). Use it to
   test checkout -> ITN -> sheet -> email, then refund in PayFast.
   Paid orders also email fikerzabate16@gmail.com (from the Apps Script) with a
