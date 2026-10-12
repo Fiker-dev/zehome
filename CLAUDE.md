@@ -14,6 +14,9 @@ Hosting: Vercel (free tier)
 Target market: SA local — Johannesburg and surrounding areas
 
 ## Current Status (Oct 2026) — read first
+RULE (owner, 12 Oct 2026): after EVERY change (code, env vars, Apps Script
+deployments, sheet, accounts), update this Current Status section in the
+same session, before finishing. Commit it to main.
 - STATUS 12 Oct 2026 (handoff):
   * Payments WORK end to end: 3 test payments (R10 + 2x R5) reached
     /api/payfast/notify and passed IP/signature/validate/HMAC -> sheet "Paid".
@@ -23,8 +26,7 @@ Target market: SA local — Johannesburg and surrounding areas
     Test product is now R5 (PayFast minimum). Keep the R10/R5 test payments,
     don't refund (PayFast balance would go negative).
   * RESOLVED 12 Oct (Cowork session): order logging is live on the Apps Script
-    deployment "Orders webhook v2" (now Version 9; shows as "Untitled" in
-    Manage deployments because the new version has no description). Vercel
+    deployment "Orders webhook v2" (Version 9; same URL as Version 8). Vercel
     zehome-4jx2 Production: GOOGLE_SHEETS_WEBHOOK_URL = its /exec URL,
     ORDER_SIGNING_SECRET set (order-signing key no longer derived from the
     URL), GOOGLE_SHEETS_WEBHOOK_SECRET set. doPost refuses posts unless
@@ -33,7 +35,9 @@ Target market: SA local — Johannesburg and surrounding areas
     Manage deployments > pencil > New version (keeps the URL).
     Email alerts were never sending: the script lacked the "Send email as
     you" grant. Owner approved it 12 Oct; a Paid test emailed OK.
-    All other deployments archived 12 Oct. Test rows from 12 Oct deleted.
+    All other deployments archived 12 Oct (archived deployments cannot be
+    deleted; an archived "Orders webhook v2" entry is the old Version 8
+    record). Test rows from 12 Oct deleted.
   * Agreed next build (owner approved the plan, not yet built): phone required,
     email optional with "why we ask" lines; paid-order email gets a "Send
     receipt on WhatsApp" wa.me button (flagged when no email); time trigger in
