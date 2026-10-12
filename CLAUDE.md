@@ -22,6 +22,19 @@ github.com/Fiker-dev/zehome, branch main, which Vercel project zehome-4jx2
 deploys to zehomefinds.co.za. Before any push, confirm `git remote -v` shows
 Fiker-dev/zehome and the branch is main; after pushing, confirm Vercel
 zehome-4jx2 picked up that commit SHA. Never push store code anywhere else.
+RELAY WORKFLOW (owner, 12 Oct 2026): the Cowork session plans and writes
+changes but cannot push; a Claude Code cloud session is its hands on the repo.
+Cowork sends a change as a git patch starting with "RELAY:". For each one:
+1) git pull; REPO CHECK (remote Fiker-dev/zehome, branch main).
+2) git apply the patch exactly; if it does not apply cleanly, stop and say why
+   (no improvising).
+3) Run lint, typecheck (npx tsc --noEmit) and build; if any fail, do not push,
+   report the error.
+4) Commit with the message Cowork gives; push to main.
+5) Confirm Vercel zehome-4jx2 picked up that SHA; report READY/ERROR/CANCELED.
+6) Update Current Status below (RULE) and push that too.
+Reply briefly: commit SHA, checks passed, Vercel state. No other code changes
+unless Fiker asks directly.
 - STATUS 12 Oct 2026 (handoff):
   * Payments WORK end to end: 3 test payments (R10 + 2x R5) reached
     /api/payfast/notify and passed IP/signature/validate/HMAC -> sheet "Paid".
