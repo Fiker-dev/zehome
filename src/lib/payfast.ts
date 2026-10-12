@@ -9,6 +9,7 @@ export interface PayFastParams {
   name_first: string
   name_last: string
   email_address: string
+  cell_number?: string
   m_payment_id: string
   amount: string
   item_name: string
@@ -115,7 +116,8 @@ export function buildPayFastParams(fields: PayFastParams): Record<string, string
     notify_url: fields.notify_url,
     name_first: fields.name_first,
     name_last: fields.name_last,
-    email_address: fields.email_address,
+    ...(fields.email_address ? { email_address: fields.email_address } : {}),
+    ...(fields.cell_number ? { cell_number: fields.cell_number } : {}),
     m_payment_id: fields.m_payment_id,
     amount: fields.amount,
     item_name: fields.item_name,

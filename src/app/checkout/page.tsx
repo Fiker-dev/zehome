@@ -169,40 +169,48 @@ export default function CheckoutPage() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-sm text-charcoal-light">
-            Email address
-          </label>
-          <input
-            id="email"
-            type="email"
-            required
-            autoComplete="email"
-            value={form.email}
-            onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-            className={inputClass}
-            placeholder="alex@email.com"
-          />
-        </div>
-
-        <h2 className="font-medium text-charcoal text-sm uppercase tracking-wider pt-2">
-          Delivery address
-        </h2>
-
-        <div className="flex flex-col gap-1.5">
           <label htmlFor="phone" className="text-sm text-charcoal-light">
-            WhatsApp number
+            WhatsApp / cell number
           </label>
           <input
             id="phone"
             type="tel"
             required
             autoComplete="tel"
+            inputMode="tel"
+            aria-describedby="phone-why"
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             className={inputClass}
             placeholder="071 027 8563"
           />
+          <p id="phone-why" className="text-xs text-charcoal-muted">
+            Why we ask: we send your order updates and tracking on WhatsApp, and the courier needs it to reach you.
+          </p>
         </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-sm text-charcoal-light">
+            Email address <span className="text-charcoal-muted">(optional)</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            autoComplete="email"
+            aria-describedby="email-why"
+            value={form.email}
+            onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+            className={inputClass}
+            placeholder="alex@email.com"
+          />
+          <p id="email-why" className="text-xs text-charcoal-muted">
+            Why we ask: for an emailed receipt and tracking. Leave it blank and we&apos;ll use WhatsApp instead.
+          </p>
+        </div>
+
+        <h2 className="font-medium text-charcoal text-sm uppercase tracking-wider pt-2">
+          Delivery address
+        </h2>
 
         <div className="flex flex-col gap-1.5">
           <label htmlFor="address" className="text-sm text-charcoal-light">

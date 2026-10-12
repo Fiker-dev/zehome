@@ -60,7 +60,7 @@ export function supplierCartLinks(lines: OrderLine[], shipTo?: ShipTo): { suppli
       const items = [...cart].map(([variant, qty]) => `${variant}:${qty}`).join(',')
       const q = new URLSearchParams()
       if (shipTo) {
-        q.set('checkout[email]', shipTo.email)
+        if (shipTo.email) q.set('checkout[email]', shipTo.email)
         q.set('checkout[shipping_address][first_name]', shipTo.firstName)
         q.set('checkout[shipping_address][last_name]', shipTo.lastName)
         q.set('checkout[shipping_address][address1]', shipTo.address)

@@ -5,6 +5,7 @@ import { buildPayFastParams, createOrderId } from '@/lib/payfast'
 import { cleanText, clientIp, rateLimited } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
 import { cartCode, supplierOrderNote } from '@/lib/supplier'
+import { saMobile } from '@/lib/phone'
 
 const SA_PROVINCES = [
   'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
@@ -22,7 +23,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const firstName = cleanText(body?.firstName, 50)
     const lastName = cleanText(body?.lastName, 50)
-    const email = cleanText(body?.email, 100)
+    // Email is optional (phone is how we reach the customer); '' when left blank
+    const email = cleanText(body?.email, 100) ?? ''
     const phone = cleanText(body?.phone, 20)
     const address = cleanText(body?.address, 200)
     const city = cleanText(body?.city, 60)
@@ -30,11 +32,11 @@ export async function POST(req: NextRequest) {
     const postalCode = cleanText(body?.postalCode, 10)
     const items: unknown = body?.items
 
-    if (!firstName || !lastName || !email || !phone || !address || !city || !province || !postalCode) {
-      return NextResponse.json({ error: 'Please fill in every field (and keep each one short).' }, { status: 400 })
+    if (!firstName || !lastName || !phone || !address || !city || !province || !postalCode) {
+      return NextResponse.json({ error: 'Please fill in every required field (and keep each one short).' }, { status: 400 })
     }
     const invalid =
-      (!EMAIL.test(email) && 'Please enter a valid email address.') ||
+      (email !== '' && !EMAIL.test(email) && 'Please enter a valid email address, or leave it blank.') ||
       (!/^[+0-9 ()-]{9,20}$/.test(phone) && 'Please enter a valid phone number.') ||
       (!/^\d{4}$/.test(postalCode) && 'Please enter your 4-digit postal code.') ||
       (!SA_PROVINCES.includes(province) && 'Please choose your province.')
@@ -104,6 +106,8 @@ export async function POST(req: NextRequest) {
       name_first: firstName,
       name_last: lastName,
       email_address: email,
+      // Without an email PayFast can use the cell number for its receipt/login
+      cell_number: email ? undefined : saMobile(phone) ?? undefined,
       m_payment_id: orderId,
       amount: amountValue,
       item_name: product,
