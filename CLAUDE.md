@@ -56,7 +56,7 @@ unless Fiker asks directly.
     All other deployments archived 12 Oct (archived deployments cannot be
     deleted; an archived "Orders webhook v2" entry is the old Version 8
     record). Test rows from 12 Oct deleted.
-  * Agreed next build (owner approved the plan, not yet built): phone required,
+  * Agreed next build (owner approved; parts 1-2 done, see RELAY 1-2): phone required,
     email optional with "why we ask" lines; paid-order email gets a "Send
     receipt on WhatsApp" wa.me button (flagged when no email); time trigger in
     Apps Script: unpaid after 1 h -> one cart reminder email to the customer
@@ -76,6 +76,13 @@ unless Fiker asks directly.
     order-success says tracking comes on WhatsApp (and email if given).
     Still to build: WhatsApp receipt button, 1 h unpaid reminder, tracking
     WhatsApp button (Apps Script parts).
+  * 12 Oct RELAY 2 (8148813, Vercel READY dpl_DUMM8gk4ZLvx9HJ3YsdWCYUG4AsU;
+    repo now matches live Apps Script): paid-order email has a green "Send
+    receipt on WhatsApp" button (wa.me, receipt prefilled, customer number
+    from the order); subject flags no-email orders; no button on DO NOT
+    DISPATCH emails. Live as Apps Script Version 10 of Orders webhook v2
+    (same URL), tested 12 Oct with a no-email order (email received, test
+    row deleted). Next: part 3 (1-hour unpaid reminder).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
