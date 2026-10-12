@@ -22,16 +22,18 @@ Target market: SA local — Johannesburg and surrounding areas
     discontinued items (old "3D Solar Projection Lamp" blocked checkout).
     Test product is now R5 (PayFast minimum). Keep the R10/R5 test payments,
     don't refund (PayFast balance would go negative).
-  * BLOCKER: the Apps Script deployment the store posted to ("Orders webhook",
-    Version 1, May 16) runs OLD code (appends a row per event, no email) and
-    was ARCHIVED by accident on 12 Oct, so order logging is down until fixed.
-    Fix: Deploy -> New deployment -> Web app, Execute as Me, access Anyone ->
-    copy the /exec URL -> set Vercel env GOOGLE_SHEETS_WEBHOOK_URL (project
-    zehome-4jx2) -> redeploy. Code in the project (Code.gs) is already current.
-    Changing the URL changes the order-signing secret (derived from it) — fine
-    while no real orders are pending; better: also set ORDER_SIGNING_SECRET.
-    Then test free with a curl POST (Pending then Paid, same orderId) and check
-    one row + the "New paid order" email in fikerzabate16@gmail.com.
+  * RESOLVED 12 Oct (Cowork session): order logging is live on the Apps Script
+    deployment "Orders webhook v2" (now Version 9; shows as "Untitled" in
+    Manage deployments because the new version has no description). Vercel
+    zehome-4jx2 Production: GOOGLE_SHEETS_WEBHOOK_URL = its /exec URL,
+    ORDER_SIGNING_SECRET set (order-signing key no longer derived from the
+    URL), GOOGLE_SHEETS_WEBHOOK_SECRET set. doPost refuses posts unless
+    "secret" matches Script property WEBHOOK_SECRET (same value as the Vercel
+    var; never stored in the sheet). To change code: edit Code.gs, then
+    Manage deployments > pencil > New version (keeps the URL).
+    Email alerts were never sending: the script lacked the "Send email as
+    you" grant. Owner approved it 12 Oct; a Paid test emailed OK.
+    All other deployments archived 12 Oct. Test rows from 12 Oct deleted.
   * Agreed next build (owner approved the plan, not yet built): phone required,
     email optional with "why we ask" lines; paid-order email gets a "Send
     receipt on WhatsApp" wa.me button (flagged when no email); time trigger in
@@ -40,8 +42,7 @@ Target market: SA local — Johannesburg and surrounding areas
     to the owner; tracking number added -> WhatsApp "on its way" button.
     Rules, not an AI agent. Province hint (postcode vs province) was proposed;
     owner declined that edit for now.
-  * Owner to-dos: delete test rows in the sheet; archive spare "Untitled"
-    deployments only after the new one works; rotate PayFast passphrase + CJ
+  * Owner to-dos: delete older test rows in the sheet (May/Oct 10); rotate PayFast passphrase + CJ
     key/MCP token; Search Console sitemap; Merchant Center feed.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
