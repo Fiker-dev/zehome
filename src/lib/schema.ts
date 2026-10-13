@@ -1,6 +1,6 @@
 import type { Product } from '@/lib/catalog'
 import { absoluteImageUrl } from '@/lib/images'
-import { RETURN_DAYS, SITE_NAME, SITE_URL } from '@/lib/site'
+import { ORG_ID, RETURN_DAYS, SITE_NAME, SITE_URL } from '@/lib/site'
 
 // schema.org JSON-LD builders. Product markup includes shipping and returns so
 // Google can show price, free delivery and returns in merchant listings.
@@ -8,6 +8,62 @@ import { RETURN_DAYS, SITE_NAME, SITE_URL } from '@/lib/site'
 const businessDays = (deliveryDays: string) => {
   const [min, max] = deliveryDays.match(/\d+/g)?.map(Number) ?? [3, 7]
   return { min, max }
+}
+
+// Store-wide promise; products.json deliveryDays should match it.
+const STORE_DELIVERY_DAYS = '3-7 business days'
+
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((d) => `https://schema.org/${d}`)
+
+const minMax = ({ min, max }: { min: number; max: number }) => ({ minValue: min, maxValue: max })
+
+// Order-to-door time split into handling (we buy and hand over to the courier)
+// and courier transit, in business days, so handling + transit adds up to the
+// "3-7 business days" promised on the page and in the Merchant Center feed.
+export const HANDLING_DAYS = { min: 1, max: 2 }
+export const transitDays = (deliveryDays: string) => {
+  const { min, max } = businessDays(deliveryDays)
+  return { min: Math.max(min - HANDLING_DAYS.min, 1), max: Math.max(max - HANDLING_DAYS.max, 1) }
+}
+
+// One return policy for the whole store (matches /returns). Used at
+// Organization level and repeated on every Offer for merchant listings.
+// returnFees is left out on purpose until the owner confirms who pays for
+// return courier costs on change-of-mind returns.
+export const returnPolicy = {
+  '@type': 'MerchantReturnPolicy',
+  '@id': `${SITE_URL}/returns#policy`,
+  applicableCountry: 'ZA',
+  returnPolicyCountry: 'ZA',
+  returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+  merchantReturnDays: RETURN_DAYS,
+  returnMethod: 'https://schema.org/ReturnByMail',
+  refundType: 'https://schema.org/FullRefund',
+  merchantReturnLink: `${SITE_URL}/returns`,
+}
+
+// Store-wide shipping policy (Organization > hasShippingService).
+export const shippingService = {
+  '@type': 'ShippingService',
+  '@id': `${SITE_URL}/delivery#shipping`,
+  name: 'Free tracked delivery',
+  description: 'Free, tracked door-to-door delivery anywhere in South Africa in 3-7 business days. No minimum spend.',
+  fulfillmentType: 'https://schema.org/FulfillmentTypeDelivery',
+  handlingTime: {
+    '@type': 'ServicePeriod',
+    businessDays: WEEKDAYS,
+    duration: { '@type': 'QuantitativeValue', minValue: HANDLING_DAYS.min, maxValue: HANDLING_DAYS.max, unitCode: 'DAY' },
+  },
+  shippingConditions: {
+    '@type': 'ShippingConditions',
+    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'ZA' },
+    shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'ZAR' },
+    transitTime: {
+      '@type': 'ServicePeriod',
+      businessDays: WEEKDAYS,
+      duration: { '@type': 'QuantitativeValue', ...minMax(transitDays(STORE_DELIVERY_DAYS)), unitCode: 'DAY' },
+    },
+  },
 }
 
 // Real customer reviews only (collected after delivery, proof kept). Google
@@ -24,7 +80,7 @@ export const reviewsOf = (product: Product) => ((product as { reviews?: Review[]
 
 export function productSchema(product: Product) {
   const url = `${SITE_URL}/product/${product.slug}`
-  const { min, max } = businessDays(product.deliveryDays)
+  const transit = transitDays(product.deliveryDays)
   const nextYear = `${new Date().getFullYear() + 1}-12-31`
   return {
     '@context': 'https://schema.org',
@@ -45,23 +101,19 @@ export function productSchema(product: Product) {
       priceValidUntil: nextYear,
       itemCondition: 'https://schema.org/NewCondition',
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      seller: { '@type': 'Organization', name: SITE_NAME },
+      seller: { '@type': 'OnlineStore', '@id': ORG_ID, name: SITE_NAME },
       shippingDetails: {
         '@type': 'OfferShippingDetails',
-        shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'ZAR' },
+        shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'ZAR' },
         shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'ZA' },
         deliveryTime: {
           '@type': 'ShippingDeliveryTime',
-          handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'DAY' },
-          transitTime: { '@type': 'QuantitativeValue', minValue: Math.max(min - 1, 1), maxValue: max - 1, unitCode: 'DAY' },
+          businessDays: { '@type': 'OpeningHoursSpecification', dayOfWeek: WEEKDAYS },
+          handlingTime: { '@type': 'QuantitativeValue', minValue: HANDLING_DAYS.min, maxValue: HANDLING_DAYS.max, unitCode: 'DAY' },
+          transitTime: { '@type': 'QuantitativeValue', ...minMax(transit), unitCode: 'DAY' },
         },
       },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'ZA',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: RETURN_DAYS,
-      },
+      hasMerchantReturnPolicy: returnPolicy,
     },
   }
 }

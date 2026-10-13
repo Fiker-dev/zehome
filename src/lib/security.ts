@@ -6,6 +6,13 @@ export function clientIp(req: NextRequest): string {
   return req.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown'
 }
 
+// Rate-limit key for an IP: IPv6 clients usually control a whole /64, so
+// bucket by that prefix or every request can come from a "new" address.
+export function ipBucket(ip: string): string {
+  if (!ip.includes(':')) return ip
+  return ip.toLowerCase().split(':').slice(0, 4).join(':') + '::/64'
+}
+
 // Best-effort rate limit per server instance. Serverless instances don't share
 // memory, so this slows abuse rather than stopping it; add a Vercel Firewall
 // rate-limit rule for a hard limit.
@@ -15,7 +22,8 @@ export function rateLimited(key: string, limit: number, windowMs: number): boole
   const recent = (hits.get(key) ?? []).filter((t) => now - t < windowMs)
   recent.push(now)
   hits.set(key, recent)
-  if (hits.size > 5000) hits.clear()
+  // Evict the oldest key instead of resetting everyone's counters
+  if (hits.size > 5000) hits.delete(hits.keys().next().value as string)
   return recent.length > limit
 }
 

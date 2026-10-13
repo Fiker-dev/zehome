@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import ProductCard from '@/components/ProductCard'
 import { hoverPhoto, products } from '@/lib/catalog'
-import { allGuides } from '@/lib/guides'
+import { allGuides, lastUpdated } from '@/lib/guides'
 import { absoluteImageUrl } from '@/lib/images'
 import { breadcrumbSchema, faqSchema, jsonLd } from '@/lib/schema'
 import { SITE_NAME, SITE_URL } from '@/lib/site'
@@ -58,7 +58,7 @@ export default async function GuidePage({ params }: Props) {
     headline: guide.h1,
     description: guide.description,
     datePublished: guide.published,
-    dateModified: guide.published,
+    dateModified: lastUpdated(guide),
     image: [firstImage(slug)],
     mainEntityOfPage: `${SITE_URL}/guides/${slug}`,
     author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
@@ -92,7 +92,7 @@ export default async function GuidePage({ params }: Props) {
       </h1>
       <p className="mt-2 font-body text-warm-gray" style={{ fontSize: '12px' }}>
         Updated{' '}
-        {new Date(guide.published).toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' })}
+        {new Date(lastUpdated(guide)).toLocaleDateString('en-ZA', { day: 'numeric', month: 'long', year: 'numeric' })}
       </p>
       <p className="mt-5 font-body text-charcoal-light leading-relaxed" style={{ fontSize: '16px' }}>{guide.intro}</p>
 

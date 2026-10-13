@@ -71,14 +71,15 @@ var KEEP_FIRST = { 'Date': true }                 // keep when the order was pla
 var AS_TEXT = { 'Phone': true, 'Postal Code': true } // keep leading zeros
 
 function doPost(e) {
+  var data = JSON.parse(e.postData.contents)
+  var expected = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET')
+  if (!expected || data.secret !== expected) return reply({ ok: false, error: 'unauthorized' })
+  delete data.secret // never stored or emailed
+  // Read-only: never takes the lock, so lookup traffic can't block PayFast writes
+  if (data.action === 'lookup') return reply(lookupOrder(data))
   var lock = LockService.getScriptLock()
   lock.waitLock(15000) // PayFast can notify twice at once; avoid duplicate rows
   try {
-    var data = JSON.parse(e.postData.contents)
-    var expected = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET')
-    if (!expected || data.secret !== expected) return reply({ ok: false, error: 'unauthorized' })
-    delete data.secret // never stored or emailed
-    if (data.action === 'lookup') return reply(lookupOrder(data))
     if (!data.orderId) return reply({ ok: false, error: 'orderId required' })
     var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
@@ -99,6 +100,11 @@ function doPost(e) {
     var row = findRow(sheet, idCol, String(data.orderId))
     var statusCol = headers.indexOf('Payment Status')
     var previousStatus = row === -1 || statusCol < 0 ? '' : String(sheet.getRange(row, statusCol + 1).getValue())
+    // A paid order is never downgraded by a later cancel/pending message (the
+    // cancel link is public and only format-checked); the owner edits it by hand
+    if (/^Paid/.test(previousStatus) && !/^Paid/.test(String(data.paymentStatus || ''))) {
+      return reply({ ok: true, row: row, kept: 'already paid' })
+    }
     if (row === -1) {
       sheet.appendRow(incoming.map(function (v) { return v === null ? '' : v }))
     } else {
@@ -269,7 +275,11 @@ function remindUnpaid() {
         return
       }
       var sent = []
-      if (/@/.test(email) && !optedOut[email] && !(wa && optedOut[wa])) {
+      // Keep mail quota for paid-order alerts: checkout is public, so anyone
+      // can queue reminders to addresses they typed in
+      if (/@/.test(email) && MailApp.getRemainingDailyQuota() < 40) {
+        sent.push('customer email skipped (mail quota low)')
+      } else if (/@/.test(email) && !optedOut[email] && !(wa && optedOut[wa])) {
         // Customers must never get mail from the owner's personal Gmail: only
         // send once Script property CUSTOMER_EMAIL_FROM (the store address) is set
         if (!PropertiesService.getScriptProperties().getProperty('CUSTOMER_EMAIL_FROM')) {
@@ -299,7 +309,11 @@ function remindUnpaid() {
   }
 }
 
-function firstName(name) { return String(name || '').split(' ')[0] || 'there' }
+// Customer-typed, so only a plain name goes into emails/WhatsApp (no URLs)
+function firstName(name) {
+  var n = String(name || '').split(' ')[0]
+  return /^[A-Za-z\u00C0-\u024F'-]{1,30}$/.test(n) ? n : 'there'
+}
 
 function sendCustomerReminder(d) {
   var optOut = optOutLink(d.email)

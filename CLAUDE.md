@@ -149,6 +149,33 @@ unless Fiker asks directly.
       13 Oct; repo .gs matches.
     - Later (owner wants zero cost now): optional AI answers, WhatsApp
       Business Platform bot (paid per message since 1 Oct 2026).
+  * 13 Oct RELAY 7 (security review + SEO audit, owner approved; rebrand =
+    keep "Ze Home Finds", positioned as viral home finds):
+    Security fixes: PayFast notify now names items from the signed cart (not
+    the editable item_name) and uses throwOnError so a failed sheet write
+    returns 500 and PayFast retries; Apps Script lookup runs before the lock
+    (lookups can't block ITN writes); a Paid row is never downgraded by a
+    later cancel/pending post (cancel link is public); customer reminder
+    emails skip when MailApp daily quota < 40; firstName() only allows plain
+    names; rate limit buckets IPv6 by /64 and evicts oldest key; order
+    lookup returns a masked ref (last 6). Hidden R5 payment-test product set
+    inStock false (flip to true only while testing). npm audit: 0 vulns.
+    Apps Script part live as Version 13 of Orders webhook v2 (same URL).
+    Still open: Vercel Firewall rate-limit rule on /api/order-status,
+    /api/payfast/params, /api/payfast/cancel (owner dashboard).
+    SEO: returns page showed the supplier's email, now contact@ (CONTACT_EMAIL
+    in site.ts); Merchant Center feed uses products.json feedTitle (no price
+    or "free delivery" in titles), adds handling 1-2 + transit 2-5 days and
+    product_highlight; Organization (OnlineStore) carries
+    hasMerchantReturnPolicy (ZA, 14 days, by mail, full refund) and shipping
+    service; Offers reference them, businessDays fixed to 3-7; product pages
+    link to related guides; guides accept "updated"; new guide
+    /guides/mini-massage-gun-south-africa. Google Business Profile: not
+    eligible (online-only), use Merchant Center + Search Console instead.
+    Owner to-dos: decide who pays change-of-mind return courier (then add
+    returnFees), change /returns to "14 days from delivery", Search Console
+    domain TXT at domains.co.za + submit sitemap, Merchant Center free
+    listings with feed https://www.zehomefinds.co.za/feed.xml.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +

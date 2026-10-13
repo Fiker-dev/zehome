@@ -5,8 +5,8 @@ import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
 import ChatHelper from '@/components/ChatHelper'
-import { jsonLd } from '@/lib/schema'
-import { SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
+import { jsonLd, returnPolicy, shippingService } from '@/lib/schema'
+import { CONTACT_EMAIL, ORG_ID, SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
 
 // Fonts are bundled (src/fonts, SIL OFL) rather than fetched from Google
 // Fonts at build time, so a Google Fonts hiccup can't fail a deployment.
@@ -68,15 +68,24 @@ export default function RootLayout({
             '@graph': [
               {
                 '@type': 'OnlineStore',
-                '@id': `${SITE_URL}/#organization`,
+                '@id': ORG_ID,
                 name: SITE_NAME,
+                alternateName: 'zehomefinds',
                 url: SITE_URL,
-                logo: `${SITE_URL}/images/logo.png`,
-                description: 'South African online store for viral TikTok products: beauty, pet, home and wellness finds',
+                logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.png` },
+                image: `${SITE_URL}/images/og-home.jpg`,
+                description: 'South African online store for viral TikTok products: beauty, pet, home and wellness finds, with free tracked delivery and PayFast checkout',
+                email: CONTACT_EMAIL,
+                telephone: WHATSAPP,
                 areaServed: { '@type': 'Country', name: 'South Africa' },
+                currenciesAccepted: 'ZAR',
+                paymentAccepted: 'Credit card, debit card, Instant EFT (PayFast)',
+                hasMerchantReturnPolicy: returnPolicy,
+                hasShippingService: shippingService,
                 contactPoint: {
                   '@type': 'ContactPoint',
                   telephone: WHATSAPP,
+                  email: CONTACT_EMAIL,
                   contactType: 'customer service',
                   areaServed: 'ZA',
                   availableLanguage: 'English',
@@ -89,7 +98,7 @@ export default function RootLayout({
                 name: SITE_NAME,
                 url: SITE_URL,
                 inLanguage: 'en-ZA',
-                publisher: { '@id': `${SITE_URL}/#organization` },
+                publisher: { '@id': ORG_ID },
               },
             ],
           })}

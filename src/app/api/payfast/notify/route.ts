@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import products from '@/data/products.json'
 import { confirmItnWithPayFast, orderMatches, verifyItnSignature } from '@/lib/payfast'
 import { clientIp } from '@/lib/security'
 import { appendOrderRow } from '@/lib/sheets'
@@ -104,6 +105,14 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // item_name is editable in the browser; name the items from the signed cart
+    const cartLines = linesFromCartCode(cart)
+    const productName = cartLines.length
+      ? cartLines.map((l) => `${products.find((p) => p.id === l.id)?.name ?? l.id} x${l.quantity}`).join(', ')
+      : `(unverified) ${params.item_name ?? ''}`
+
+    // Throw on failure so we answer 500 and PayFast retries the ITN, instead
+    // of answering OK for a paid order that never reached the sheet
     await appendOrderRow({
       orderId: orderId ?? '',
       date: new Date().toISOString(),
@@ -115,7 +124,7 @@ export async function POST(req: NextRequest) {
       city: params.custom_str3 ?? '',
       province: params.custom_str4 ?? '',
       postalCode: params.custom_str5 ?? '',
-      product: params.item_name ?? '',
+      product: productName,
       amount: params.amount_gross ?? '',
       paymentStatus: mappedStatus.paymentStatus,
       dispatchStatus: mappedStatus.dispatchStatus,
@@ -135,7 +144,7 @@ export async function POST(req: NextRequest) {
             })
           : '',
       ].filter(Boolean).join(' · '),
-    })
+    }, { throwOnError: true, timeoutMs: 20000 })
 
     console.log(JSON.stringify({
       event: 'payfast_itn',

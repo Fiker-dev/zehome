@@ -9,6 +9,7 @@ import StickyAddToCart from './StickyAddToCart'
 import { ChevronDown, ShieldCheck, RotateCcw, Truck } from 'lucide-react'
 import ProductCard from '@/components/ProductCard'
 import { categorySlug, hoverPhoto, isHidden, products as listed } from '@/lib/catalog'
+import { guidesFor } from '@/lib/guides'
 import { absoluteImageUrl } from '@/lib/images'
 import { breadcrumbSchema, faqSchema, jsonLd, productSchema, reviewsOf } from '@/lib/schema'
 import { SITE_URL } from '@/lib/site'
@@ -80,6 +81,7 @@ export default async function ProductPage({ params }: Props) {
     ? { name: 'Shop', path: '/shop' }
     : { name: product.category, path: `/collections/${categorySlug(product.category)}` }
   const faqs = product.faqs ?? []
+  const guides = isHidden(product) ? [] : guidesFor(product.id)
   const reviews = reviewsOf(product)
   const avgRating = reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0
 
@@ -166,7 +168,7 @@ export default async function ProductPage({ params }: Props) {
                 { title: 'Product details', body: product.description, open: true },
                 {
                   title: 'Delivery',
-                  body: `Free, tracked delivery anywhere in South Africa. This find arrives in ${product.deliveryDays} from the day you order. We email your tracking number as soon as it ships.`,
+                  body: `Free, tracked delivery anywhere in South Africa. This find arrives in ${product.deliveryDays} from the day you order. We send your tracking number on WhatsApp (and email, if you gave one) as soon as it ships.`,
                 },
                 {
                   title: 'Returns',
@@ -239,6 +241,23 @@ export default async function ProductPage({ params }: Props) {
               </details>
             ))}
           </div>
+        </section>
+      )}
+
+      {guides.length > 0 && (
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 pt-8">
+          <h2 className="font-display font-semibold text-charcoal tracking-tight lowercase mb-3" style={{ fontSize: '18px' }}>
+            read before you buy
+          </h2>
+          <ul className="flex flex-col gap-2 font-body" style={{ fontSize: '14px' }}>
+            {guides.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/guides/${g.slug}`} className="text-charcoal underline underline-offset-4 hover:text-terracotta-dark">
+                  {g.h1}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { clientIp, ipBucket, rateLimited } from '@/lib/security'
 
 // "Track my order" in the chat helper. The customer gives their order number
 // (full, or its last 6+ characters) and the phone number used at checkout; the
@@ -8,23 +9,9 @@ import { NextRequest, NextResponse } from 'next/server'
 const STAGES = ['unpaid', 'preparing', 'shipped', 'cancelled', 'checking'] as const
 type Stage = (typeof STAGES)[number]
 
-// Best-effort brake on guessing (per server instance)
-const hits = new Map<string, number[]>()
-const WINDOW_MS = 10 * 60 * 1000
-const MAX_TRIES = 10
-
-function tooMany(ip: string) {
-  const now = Date.now()
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
-  recent.push(now)
-  hits.set(ip, recent)
-  if (hits.size > 5000) hits.clear()
-  return recent.length > MAX_TRIES
-}
-
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
-  if (tooMany(ip)) {
+  // Best-effort brake on guessing (per instance; a Vercel Firewall rule is the hard limit)
+  if (rateLimited(`lookup:${ipBucket(clientIp(req))}`, 10, 10 * 60 * 1000)) {
     return NextResponse.json({ error: 'Too many tries. Please wait a few minutes or WhatsApp us.' }, { status: 429 })
   }
 
@@ -71,7 +58,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       found: true,
       order: {
-        ref: String(o.ref ?? '').slice(0, 60),
+        // Masked: the full ID is what the public cancel link accepts
+        ref: `…${String(o.ref ?? '').slice(-6)}`,
         date: String(o.date ?? '').slice(0, 10),
         product: String(o.product ?? '').slice(0, 300),
         amount: String(o.amount ?? '').slice(0, 12),

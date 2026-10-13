@@ -5,3 +5,5 @@ export const SITE_URL = 'https://www.zehomefinds.co.za'
 export const SITE_NAME = 'Ze Home Finds'
 export const WHATSAPP = '+27710278563'
 export const RETURN_DAYS = 14
+export const ORG_ID = `${SITE_URL}/#organization`
+export const CONTACT_EMAIL = 'contact@zehomefinds.co.za'

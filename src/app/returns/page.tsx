@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { RotateCcw, CheckCircle, XCircle, MessageCircle } from 'lucide-react'
+import { CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Returns Policy | Ze Home Finds',
@@ -95,10 +96,10 @@ export default function ReturnsPage() {
           Report any defects or damage within 7 working days of receiving your order.
           For defect queries, you can also email{' '}
           <a
-            href="mailto:info@perfectdealz.co.za"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="text-terracotta hover:text-terracotta-dark transition-colors"
           >
-            info@perfectdealz.co.za
+            {CONTACT_EMAIL}
           </a>
           . Exchanges are offered for defective or damaged items.
         </p>
