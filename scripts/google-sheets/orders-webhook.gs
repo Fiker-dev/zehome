@@ -311,7 +311,11 @@ function sendCustomerReminder(d) {
     '<p style="font-size:12px;color:#777">This is the only reminder we will send about this order.' +
     (optOut ? ' <a href="' + escapeHtml(optOut) + '" style="color:#777">Don\'t want reminders? Opt out</a>.' : '') + '</p>' +
     '<p>Ze Home Finds</p></div>'
-  MailApp.sendEmail({ to: d.email, subject: 'Your Ze Home Finds order is waiting', body: text, htmlBody: html, name: 'Ze Home Finds' })
+  // Sent from the store address (Gmail "Send mail as" alias), never the owner's
+  // personal address. remindUnpaid only calls this when CUSTOMER_EMAIL_FROM is set.
+  var from = PropertiesService.getScriptProperties().getProperty('CUSTOMER_EMAIL_FROM')
+  GmailApp.sendEmail(d.email, 'Your Ze Home Finds order is waiting', text,
+    { htmlBody: html, name: 'Ze Home Finds', from: from, replyTo: from })
 }
 
 function whatsappReminderLink(d, number) {

@@ -107,6 +107,24 @@ unless Fiker asks directly.
     ImprovMX forwarding (free) + Gmail "Send mail as" alias; then switch
     sendCustomerReminder to GmailApp with from: CUSTOMER_EMAIL_FROM and set
     that property.
+  * 13 Oct RELAY 5: store email address LIVE: contact@zehomefinds.co.za.
+    Receiving: ImprovMX (free plan, account fikerzabate16@gmail.com) forwards
+    contact@ plus a catch-all *@zehomefinds.co.za to the owner's Gmail.
+    DNS at domains.co.za (zone for zehomefinds.co.za): MX 10 mx1.improvmx.com,
+    MX 20 mx2.improvmx.com (replaced mx1.tld-mx.com; the domains.co.za
+    mailbox is no longer used), SPF TXT "v=spf1 include:spf.improvmx.com
+    include:_spf.google.com ~all". Website A/CNAME records untouched.
+    Sending: Gmail "Send mail as" contact@ via smtp.gmail.com:587 TLS with a
+    Gmail app password named "Ze Home Finds mail" (owner holds it; revoke at
+    myaccount.google.com/apppasswords to stop). Verified 13 Oct.
+    Apps Script: sendCustomerReminder now uses GmailApp.sendEmail with
+    from/replyTo = Script property CUSTOMER_EMAIL_FROM (set to
+    contact@zehomefinds.co.za, so customer reminders are back ON) and display
+    name "Ze Home Finds". Owner approved the Gmail scope 13 Oct. Tested: a
+    reminder arrived from contact@zehomefinds.co.za. Owner alerts/digests
+    still use MailApp from the owner's Gmail (internal only). Saved code
+    matches the repo; web app deployment not re-versioned (only the trigger
+    uses this code).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
