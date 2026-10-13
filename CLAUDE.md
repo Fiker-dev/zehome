@@ -125,6 +125,30 @@ unless Fiker asks directly.
     still use MailApp from the owner's Gmail (internal only). Saved code
     matches the repo; web app deployment not re-versioned (only the trigger
     uses this code).
+  * 13 Oct RELAY 6 (zero-cost helper, owner approved "no paid API for now"):
+    - Website chat helper (src/components/ChatHelper.tsx) replaces the plain
+      WhatsApp bubble: rule-based, no AI. Topics: Track my order, Delivery,
+      Returns, Payment, Help me choose (catalog picks), Talk to a person.
+      Typed questions are keyword-matched; anything else goes to WhatsApp
+      with a pre-written message (question + product page + cart). Hidden on
+      /cart and /checkout. /?help=track opens it straight on order tracking.
+    - Order tracking: POST /api/order-status {ref (full or last 6+ chars),
+      phone} -> Apps Script doPost action "lookup" (secret checked); both
+      must match a row. Returns only a stage (unpaid/preparing/shipped/
+      cancelled/checking) and the tracking number once shipped. ~10 tries
+      per IP per 10 min.
+    - Agreed build part 4 DONE as shipping notices: the 15-min remindUnpaid
+      run also calls notifyShipped(): paid rows with a Tracking Number and an
+      empty "Shipped notice" column -> customer "on its way" email from
+      contact@ (if email given) + one owner email with a WhatsApp "on its
+      way" button per order; the column records what was sent.
+      Owner just types the tracking number in the sheet.
+    - Copy: FAQ + delivery page now say tracking comes on WhatsApp (and
+      email if given), and point to the chat helper's Track my order.
+    - Live as Apps Script Version 12 of Orders webhook v2 (same URL), saved
+      13 Oct; repo .gs matches.
+    - Later (owner wants zero cost now): optional AI answers, WhatsApp
+      Business Platform bot (paid per message since 1 Oct 2026).
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +

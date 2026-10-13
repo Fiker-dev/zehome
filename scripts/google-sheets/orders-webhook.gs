@@ -29,6 +29,19 @@
  * owner a WhatsApp button per order. The "Cart reminder" column records what
  * was sent, so nothing is sent twice. installReminderTrigger also saves this
  * web app's /exec URL as Script property WEBAPP_URL for the opt-out link.
+ * Customer emails go out from the store address in Script property
+ * CUSTOMER_EMAIL_FROM (a Gmail "Send mail as" alias), never the owner's Gmail.
+ *
+ * Shipping notices: the same 15-minute run checks for paid orders that have a
+ * Tracking Number but nothing in the "Shipped notice" column. The customer
+ * gets an "on its way" email with the tracking number (if they gave an email)
+ * and the owner gets a WhatsApp "on its way" button per order. The column
+ * records what was sent, so typing a tracking number is all the owner does.
+ *
+ * Order lookup: a POST with action "lookup" (plus the secret), an order
+ * number (full, or its last 6+ characters) and the phone number used at
+ * checkout returns that order's stage and tracking number. The website's
+ * "Track my order" helper calls this from the server; both must match.
  */
 
 var SHEET_NAME = 'Orders'
@@ -65,6 +78,7 @@ function doPost(e) {
     var expected = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET')
     if (!expected || data.secret !== expected) return reply({ ok: false, error: 'unauthorized' })
     delete data.secret // never stored or emailed
+    if (data.action === 'lookup') return reply(lookupOrder(data))
     if (!data.orderId) return reply({ ok: false, error: 'orderId required' })
     var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
     var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
@@ -275,6 +289,11 @@ function remindUnpaid() {
       sheet.getRange(i + 2, remCol + 1).setValue(Utilities.formatDate(new Date(), 'Africa/Johannesburg', 'yyyy-MM-dd HH:mm') + ' — ' + sent.join(', '))
     })
     if (forOwner.length) sendOwnerReminderDigest(forOwner, ss)
+    try {
+      notifyShipped(ss, sheet)
+    } catch (err) {
+      console.error('Shipping notices failed: ' + err)
+    }
   } finally {
     lock.releaseLock()
   }
@@ -378,6 +397,146 @@ function doGet(e) {
         : '<h2>Link not valid</h2><p>This opt-out link is incomplete. Reply to our email or WhatsApp us and we\'ll remove you.</p>') +
     '<p><a href="' + STORE_URL + '">Back to the shop</a></p></div>'
   ).setTitle('Ze Home Finds')
+}
+
+// ---- Shipping notices ------------------------------------------------------
+
+var SHIPPED_COL = 'Shipped notice'
+
+function notifyShipped(ss, sheet) {
+  var lastCol = sheet.getLastColumn()
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0].map(function (h) { return String(h).trim() })
+  if (headers.indexOf('Tracking Number') < 0) return
+  var noteCol = headers.indexOf(SHIPPED_COL)
+  if (noteCol < 0) {
+    noteCol = lastCol
+    sheet.getRange(1, noteCol + 1).setValue(SHIPPED_COL)
+    headers.push(SHIPPED_COL)
+  }
+  var last = sheet.getLastRow()
+  if (last < 2) return
+  var rows = sheet.getRange(2, 1, last - 1, headers.length).getDisplayValues()
+  var get = function (r, name) { var i = headers.indexOf(name); return i < 0 ? '' : String(r[i] || '').replace(/^'/, '').trim() }
+  var from = PropertiesService.getScriptProperties().getProperty('CUSTOMER_EMAIL_FROM')
+  var forOwner = []
+  rows.forEach(function (r, i) {
+    var d = {
+      orderId: get(r, 'Order ID'), name: get(r, 'Name'), email: get(r, 'Email'), phone: get(r, 'Phone'),
+      product: get(r, 'Product'), tracking: get(r, 'Tracking Number'),
+    }
+    if (!d.tracking || get(r, SHIPPED_COL) || !d.orderId || /^TEST/i.test(d.orderId)) return
+    var status = get(r, 'Payment Status') + ' ' + get(r, 'Dispatch status')
+    if (!/^Paid/.test(get(r, 'Payment Status')) || /match|DO NOT/i.test(status)) return
+    var sent = []
+    if (/@/.test(d.email)) {
+      if (!from) {
+        sent.push('customer email held (store address not set up)')
+      } else {
+        try {
+          sendShippedEmail(d, from)
+          sent.push('email to customer')
+        } catch (err) {
+          console.error('Shipped email failed for ' + d.orderId + ': ' + err)
+          sent.push('customer email FAILED')
+        }
+      }
+    }
+    var wa = waNumber(d.phone)
+    d.waLink = wa ? whatsappShippedLink(d, wa) : ''
+    if (d.waLink) forOwner.push(d)
+    sent.push(d.waLink ? 'WhatsApp button to owner' : 'no WhatsApp (number unreadable)')
+    sheet.getRange(i + 2, noteCol + 1).setValue(Utilities.formatDate(new Date(), 'Africa/Johannesburg', 'yyyy-MM-dd HH:mm') + ' — ' + sent.join(', '))
+  })
+  if (forOwner.length) sendOwnerShippedDigest(forOwner, ss)
+}
+
+function shippedText(d) {
+  return [
+    'Hi ' + firstName(d.name) + ', good news: your Ze Home Finds order is on its way! 📦',
+    '',
+    'Order: ' + d.orderId,
+    'Items: ' + d.product,
+    'Tracking number: ' + d.tracking,
+    '',
+    'You can check it any time at ' + STORE_URL + ' (tap the chat button, then "Track my order").',
+  ].join('\n')
+}
+
+function sendShippedEmail(d, from) {
+  var text = shippedText(d) + '\n\nQuestions? WhatsApp us: https://wa.me/' + STORE_WHATSAPP + '\n\nZe Home Finds'
+  var html = '<div style="font-family:Arial,sans-serif;font-size:15px;color:#222;max-width:520px">' +
+    '<p>Hi ' + escapeHtml(firstName(d.name)) + ',</p>' +
+    '<p>Good news: your Ze Home Finds order is on its way! 📦</p>' +
+    '<p><b>' + escapeHtml(d.product) + '</b><br>Order: ' + escapeHtml(d.orderId) + '</p>' +
+    '<p style="font-size:17px">Tracking number: <b>' + escapeHtml(d.tracking) + '</b></p>' +
+    '<p><a href="' + STORE_URL + '/?help=track" style="display:inline-block;background:#1f1f1f;color:#fff;padding:12px 22px;' +
+    'border-radius:24px;text-decoration:none;font-weight:bold">Track my order</a></p>' +
+    '<p style="font-size:13px;color:#555">Questions? <a href="https://wa.me/' + STORE_WHATSAPP + '">WhatsApp us</a> or reply to this email.</p>' +
+    '<p>Ze Home Finds</p></div>'
+  GmailApp.sendEmail(d.email, 'Your Ze Home Finds order is on its way', text,
+    { htmlBody: html, name: 'Ze Home Finds', from: from, replyTo: from })
+}
+
+function whatsappShippedLink(d, number) {
+  return 'https://wa.me/' + number + '?text=' + encodeURIComponent(shippedText(d))
+}
+
+function sendOwnerShippedDigest(list, ss) {
+  var body = ['Orders with a new tracking number. Tap to send the "on its way" WhatsApp:', '']
+  var html = '<div style="font-family:Arial,sans-serif;font-size:14px"><p>Orders with a new tracking number. Tap to send the "on its way" WhatsApp:</p>'
+  list.forEach(function (d) {
+    body.push(d.name + ' — ' + d.product + ' — ' + d.tracking + (/@/.test(d.email) ? ' (also emailed)' : ' (no email: WhatsApp only)'), d.waLink, '')
+    html += '<p>' + escapeHtml(d.name) + ' — ' + escapeHtml(d.product) + '<br><span style="color:#777;font-size:12px">' +
+      escapeHtml(d.orderId) + ' · tracking ' + escapeHtml(d.tracking) + (/@/.test(d.email) ? ' · customer also emailed' : ' · <b>no email: WhatsApp only</b>') + '</span><br>' +
+      '<a href="' + escapeHtml(d.waLink) + '" style="display:inline-block;margin-top:6px;background:#25D366;color:#fff;' +
+      'padding:8px 16px;border-radius:20px;text-decoration:none;font-weight:bold">Send "on its way" on WhatsApp</a></p>'
+  })
+  html += '<p style="color:#777;font-size:12px">Sheet: ' + escapeHtml(ss.getUrl()) + '</p></div>'
+  body.push('Sheet: ' + ss.getUrl())
+  MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: '📦 ' + list.length + ' order' + (list.length > 1 ? 's' : '') + ' shipped — send WhatsApp update', body: body.join('\n'), htmlBody: html, name: 'Ze Home Finds orders' })
+}
+
+// ---- Order lookup for the website's "Track my order" -----------------------
+
+function lookupOrder(data) {
+  var ref = String(data.ref || '').trim().toLowerCase()
+  var phone = String(data.phone || '').replace(/\D/g, '').slice(-9)
+  if (ref.length < 6 || phone.length < 9) return { ok: true, found: false }
+  var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID)
+  var sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0]
+  var values = sheet.getDataRange().getDisplayValues()
+  var headers = values[0].map(function (h) { return String(h).trim() })
+  var get = function (r, name) { var i = headers.indexOf(name); return i < 0 ? '' : String(r[i] || '').replace(/^'/, '').trim() }
+  for (var i = values.length - 1; i >= 1; i--) {
+    var r = values[i]
+    var id = get(r, 'Order ID').toLowerCase()
+    if (!id || /^test/.test(id)) continue
+    if (id !== ref && id.slice(-ref.length) !== ref) continue
+    if (get(r, 'Phone').replace(/\D/g, '').slice(-9) !== phone) continue
+    var stage = orderStage(get(r, 'Payment Status'), get(r, 'Dispatch status'), get(r, 'Tracking Number'))
+    return {
+      ok: true,
+      found: true,
+      order: {
+        ref: get(r, 'Order ID'),
+        date: get(r, 'Date').slice(0, 10),
+        product: get(r, 'Product'),
+        amount: get(r, 'Amount'),
+        stage: stage,
+        tracking: stage === 'shipped' ? get(r, 'Tracking Number') : '',
+      },
+    }
+  }
+  return { ok: true, found: false }
+}
+
+// Customer-facing stage only; internal notes in the sheet are never returned
+function orderStage(payment, dispatch, tracking) {
+  if (/match|DO NOT/i.test(payment + ' ' + dispatch)) return 'checking'
+  if (/cancel/i.test(payment)) return 'cancelled'
+  if (!/^Paid/.test(payment)) return 'unpaid'
+  if (tracking) return 'shipped'
+  return 'preparing'
 }
 
 function findRow(sheet, idCol, orderId) {

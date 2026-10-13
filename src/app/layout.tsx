@@ -4,7 +4,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
-import WhatsAppButton from '@/components/WhatsAppButton'
+import ChatHelper from '@/components/ChatHelper'
 import { jsonLd } from '@/lib/schema'
 import { SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
 
@@ -98,7 +98,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppButton />
+        <ChatHelper />
       </body>
     </html>
   )
