@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   poweredByHeader: false,
+  // Supplier (Perfect Dealz) photos, only until the fetch-product-images Action
+  // copies them into public/images/products/ (and as a fallback if a download fails).
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "cdn.shopify.com", pathname: "/s/files/1/0599/8821/3889/files/**" }],
+  },
   // Old Shopify-era URLs (still in Google's index) and products the owner has
   // retired go to the shop instead of a 404.
   async redirects() {
