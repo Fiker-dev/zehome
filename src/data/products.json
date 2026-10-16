@@ -385,7 +385,8 @@
     "category": "Home Décor",
     "price": 399,
     "currency": "ZAR",
-    "inStock": true,
+    "inStock": false,
+    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "A little glowing mushroom for your bedside. Hand-carved from natural Himalayan salt crystal, this lamp gives off a warm amber light that makes a bedroom, desk or reading corner feel instantly calmer. Because it's natural salt, every lamp's colour and texture is slightly different — yours is one of a kind.",
     "bullets": [
