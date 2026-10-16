@@ -208,6 +208,26 @@ unless Fiker asks directly.
     links/images, no horizontal scroll, JSON-LD valid, add-to-cart + checkout
     validation OK. Checkout phone placeholder was the store's real WhatsApp
     number (looked prefilled), now 082 123 4567.
+  * 16 Oct RELAY 10 (owner: "go live"): 5 new Perfect Dealz products LIVE.
+    Air Fryer Kit R279 (6 silicone liners + oil sprayer), Summer Cool-Down Kit
+    R399 (rechargeable mini fan + cooling towel + 500ml smart temp bottle),
+    Lint Remover R279, Portable Blender R349, Milk Frother R259. All pass
+    npm run margins (R76-R98 profit). Takealot checked 16 Oct; dropped mug
+    warmer set, water flosser and solo smart bottle (SA prices too low).
+    PRICING RULE (owner, standing): Claude sets prices; every price must cover
+    supplier + R99 delivery (free to customer) + PayFast card fee incl. VAT,
+    keep >= R70 profit, and stay at/below SA market. Owner: "no pills" - never
+    use "pill/pilling" wording (lint remover copy says bobbles/fuzz).
+    New collections: Kitchen, Summer Essentials. Merchant Center feed fetched
+    (11 products). Images: products.json can list supplier (cdn.shopify.com)
+    photo URLs - fetch-product-images Action stores them; new Action
+    render-product-cards.yml renders missing cards (cards.json) + kit covers
+    (kit-covers.mjs, photo names without extension) and commits them.
+    next.config allows cdn.shopify.com images as a fallback.
+    Socials 16 Oct: 14s faceless videos + pins for all 5 posted to TikTok
+    (Your brand + AI label on AI-photo products), Instagram reels, Facebook
+    page reels (via Business Suite, FB only) and Pinterest (boards Kitchen
+    Glow-Up Finds + new Home Finds South Africa). Sources in Cowork outputs.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
