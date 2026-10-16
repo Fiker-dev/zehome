@@ -82,6 +82,7 @@ export function productSchema(product: Product) {
   const url = `${SITE_URL}/product/${product.slug}`
   const transit = transitDays(product.deliveryDays)
   const nextYear = `${new Date().getFullYear() + 1}-12-31`
+  const thisYear = `${new Date().getFullYear()}-01-01`
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -98,6 +99,7 @@ export function productSchema(product: Product) {
       url,
       price: product.price.toFixed(2),
       priceCurrency: 'ZAR',
+      validFrom: thisYear,
       priceValidUntil: nextYear,
       itemCondition: 'https://schema.org/NewCondition',
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
