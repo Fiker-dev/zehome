@@ -3,11 +3,12 @@
 //
 //   npm run cards                 render every product in cards.json
 //   npm run cards -- <id> [...]   render only these products
+//   npm run cards -- --missing    only products that have no cards yet
 //
 // Needs Playwright with Chromium (`npm i -g playwright && npx playwright install chromium`).
 
 import { execSync } from 'node:child_process'
-import { mkdirSync, readFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 
 const root = new URL('../../', import.meta.url)
@@ -101,8 +102,12 @@ const compare = ({ headline, left, right, rows }) => `
 
 const cards = readJson('scripts/product-cards/cards.json')
 const productIds = new Set(readJson('src/data/products.json').map((p) => p.id))
-const only = process.argv.slice(2)
-const ids = only.length ? only : Object.keys(cards)
+const args = process.argv.slice(2)
+const missingOnly = args.includes('--missing')
+const only = args.filter((a) => a !== '--missing')
+const ids = (only.length ? only : Object.keys(cards)).filter(
+  (id) => !missingOnly || !existsSync(new URL(`public/images/products/${id}/benefits.jpg`, root))
+)
 
 const browser = await chromium.launch(
   process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}
