@@ -18,6 +18,18 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   poweredByHeader: false,
+  // Old Shopify-era URLs (still in Google's index) and products the owner has
+  // retired go to the shop instead of a 404.
+  async redirects() {
+    return [
+      { source: "/products/:path*", destination: "/shop", permanent: true },
+      { source: "/collections/all", destination: "/shop", permanent: true },
+      { source: "/collections/glassware-drinkware", destination: "/shop", permanent: true },
+      { source: "/collections/home-fragrance-decor", destination: "/collections/home-fragrance", permanent: true },
+      { source: "/collections/home-decor", destination: "/shop", permanent: true },
+      { source: "/product/mushroom-salt-lamp", destination: "/shop", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
