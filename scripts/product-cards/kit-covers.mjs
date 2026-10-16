@@ -2,10 +2,14 @@
 // showing every item in the box, from the supplier photos listed below. Used as
 // the first image so a kit never looks like a single product.
 //
-//   npm run kit-covers
+//   npm run kit-covers               render every kit
+//   npm run kit-covers -- --missing  only kits with no cover.jpg yet whose photos exist
+//
+// Photo names may leave out the extension ('photo-2'): the fetch-images Action
+// saves supplier photos as photo-<n>.<jpg|png|webp> depending on the file type.
 
 import { execSync } from 'node:child_process'
-import { readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 
 const root = new URL('../../', import.meta.url)
@@ -30,7 +34,32 @@ const KITS = {
       ['photo-6.jpg', 'Dog water bottle + bowl'],
     ],
   },
+  'air-fryer-kit': {
+    title: 'the air fryer kit',
+    pill: '7 PIECES',
+    items: [
+      ['photo-2', '6 reusable silicone liners'],
+      ['photo-6', 'Oil sprayer bottle'],
+    ],
+  },
+  'summer-cool-down-kit': {
+    title: 'the summer cool-down kit',
+    items: [
+      ['photo-2', 'Rechargeable mini fan'],
+      ['photo-3', 'Cooling towel + case (colour varies)'],
+      ['photo-6', 'Smart temperature bottle'],
+    ],
+  },
 }
+
+// 'photo-2' -> 'photo-2.png' (whatever extension is on disk); full names pass through.
+const resolve = (id, file) => {
+  const dir = new URL(`public/images/products/${id}/`, root)
+  if (/\.\w+$/.test(file)) return existsSync(new URL(file, dir)) ? file : null
+  if (!existsSync(dir)) return null
+  return readdirSync(dir).find((f) => f.startsWith(`${file}.`)) ?? null
+}
+const missingOnly = process.argv.includes('--missing')
 
 const dataUri = (path) => {
   const ext = path.split('.').pop().replace('jpg', 'jpeg')
@@ -41,6 +70,13 @@ const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePa
 const page = await browser.newPage({ viewport: { width: 1080, height: 1080 } })
 
 for (const [id, kit] of Object.entries(KITS)) {
+  const files = kit.items.map(([file]) => resolve(id, file))
+  if (files.some((f) => !f)) {
+    console.warn(`!  ${id}: photos not downloaded yet, skipping`)
+    continue
+  }
+  if (missingOnly && existsSync(new URL(`public/images/products/${id}/cover.jpg`, root))) continue
+  kit.items = kit.items.map(([, label], i) => [files[i], label])
   const tile = ([file, label], cls) => `
     <figure class="${cls}"><div class="img" style="background-image:url('${dataUri(`/images/products/${id}/${file}`)}')"></div>
     <figcaption>${label}</figcaption></figure>`
@@ -56,12 +92,14 @@ for (const [id, kit] of Object.entries(KITS)) {
   .grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; }
   figure { background: #fff; display: flex; flex-direction: column; overflow: hidden; }
   .big { grid-row: span 2; }
+  .two { grid-template-rows: 1fr; }
+  .two .big { grid-row: auto; }
   .img { flex: 1; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 16px; }
   figcaption { padding: 14px 18px; border-top: 1px solid #E7E0D6; font-weight: 700; font-size: 24px; }
   .n { color: #8A8178; margin-right: 8px; }
 </style></head><body>
-  <header><h1>${kit.title}</h1><span class="pill">3 PIECES</span></header>
-  <div class="grid">${tile(kit.items[0], 'big')}${tile(kit.items[1], '')}${tile(kit.items[2], '')}</div>
+  <header><h1>${kit.title}</h1><span class="pill">${kit.pill ?? `${kit.items.length} PIECES`}</span></header>
+  <div class="grid${kit.items.length === 2 ? ' two' : ''}">${kit.items.map((item, i) => tile(item, i ? '' : 'big')).join('')}</div>
 </body></html>`.replace(/<figcaption>/g, () => `<figcaption><span class="n"></span>`), { waitUntil: 'networkidle' })
   await page.evaluate(() => {
     document.querySelectorAll('.n').forEach((el, i) => (el.textContent = `${i + 1}.`))
