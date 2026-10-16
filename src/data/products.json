@@ -449,7 +449,6 @@
     "price": 279,
     "currency": "ZAR",
     "inStock": true,
-    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "Everything your air fryer is missing, in one box. Six reusable silicone liners (round and square trays plus divider inserts) keep the basket clean so you're not scrubbing grease after every meal, and the oil sprayer gives your food a light, even mist instead of a pour. Less mess, less oil, no more parchment paper.",
     "bullets": [
@@ -517,7 +516,6 @@
     "price": 399,
     "currency": "ZAR",
     "inStock": true,
-    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "Three things that make a South African summer easier. A USB-rechargeable mini fan for the taxi, the office or a power cut, a cooling towel that chills when you wet it and snap it, and a 500ml insulated bottle that shows your drink's temperature when you touch the lid. One of each; towel colour may vary.",
     "bullets": [
@@ -585,7 +583,6 @@
     "price": 279,
     "currency": "ZAR",
     "inStock": true,
-    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "That jersey you stopped wearing because of the bobbles? Bring it back. The rechargeable fabric shaver glides over knits, couches, blankets and school jerseys and shaves off bobbles and fuzz in seconds. A steel mesh guard keeps the blades off the fabric, and the clear bin shows you when to empty it.",
     "bullets": [
@@ -651,7 +648,6 @@
     "price": 349,
     "currency": "ZAR",
     "inStock": true,
-    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "Smoothie at your desk, shake at the gym, juice on the school run. The portable blender cup charges by USB, blends fruit and milk or water right in the cup, and comes with a straw so you can drink straight from it. No plug, no big blender to wash. Colour may vary (green, pink or blue).",
     "bullets": [
@@ -716,7 +712,6 @@
     "price": 259,
     "currency": "ZAR",
     "inStock": true,
-    "hidden": true,
     "deliveryDays": "3-7 business days",
     "description": "Make the coffee you'd buy at the café, at home. The rechargeable handheld frother whips milk into soft foam in seconds for cappuccinos, lattes, hot chocolate and matcha. One button, stainless steel whisk, charges by USB — no batteries. Colour may vary (black or white).",
     "bullets": [
