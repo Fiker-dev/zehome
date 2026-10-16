@@ -182,7 +182,7 @@ export default function CheckoutPage() {
             value={form.phone}
             onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
             className={inputClass}
-            placeholder="071 027 8563"
+            placeholder="082 123 4567"
           />
           <p id="phone-why" className="text-xs text-charcoal-muted">
             Why we ask: we send your order updates and tracking on WhatsApp, and the courier needs it to reach you.
