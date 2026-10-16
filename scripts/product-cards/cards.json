@@ -355,5 +355,260 @@
         ]
       ]
     }
+  },
+  "air-fryer-kit": {
+    "eyebrow": "Air fryer kit",
+    "benefits": {
+      "headline": "Less scrubbing, less oil",
+      "points": [
+        "6 reusable silicone liners, round and square",
+        "Lift the liner out and rinse — the basket stays clean",
+        "Oil sprayer mists a light, even coat",
+        "No more parchment paper to buy"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Line",
+          "Drop a liner into the basket"
+        ],
+        [
+          "Spray",
+          "Mist your food with a little oil"
+        ],
+        [
+          "Rinse",
+          "Lift out the liner and rinse it"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Liners vs. parchment paper",
+      "left": "Parchment",
+      "right": "Ze kit",
+      "rows": [
+        [
+          "Reuse",
+          "Single use",
+          "Meal after meal"
+        ],
+        [
+          "Basket",
+          "Grease still leaks",
+          "Stays clean"
+        ],
+        [
+          "Oil",
+          "Poured",
+          "Light mist"
+        ]
+      ]
+    }
+  },
+  "summer-cool-down-kit": {
+    "eyebrow": "Summer kit",
+    "benefits": {
+      "headline": "Beat the heat, anywhere",
+      "points": [
+        "Rechargeable mini fan — works without a plug",
+        "Cooling towel that chills when wet",
+        "500ml smart bottle shows your drink's temperature",
+        "Fan keeps going during load-shedding once charged"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Charge",
+          "Charge the fan by USB, take it anywhere"
+        ],
+        [
+          "Snap",
+          "Wet, wring and snap the towel to cool it"
+        ],
+        [
+          "Touch",
+          "Tap the bottle lid to see the temperature"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Kit vs. buying separately",
+      "left": "Separate",
+      "right": "Ze kit",
+      "rows": [
+        [
+          "Items",
+          "Bought one by one",
+          "All three in one box"
+        ],
+        [
+          "Delivery",
+          "Paid per order",
+          "Free"
+        ],
+        [
+          "Gift-ready",
+          "No",
+          "Yes"
+        ]
+      ]
+    }
+  },
+  "lint-remover": {
+    "eyebrow": "Lint remover",
+    "benefits": {
+      "headline": "Bobbles off in seconds",
+      "points": [
+        "Shaves bobbles and fuzz off knits and couches",
+        "Steel mesh guard protects the fabric",
+        "Rechargeable — no batteries to buy",
+        "Clear bin shows when to empty it"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Charge",
+          "Charge it up with the USB cable"
+        ],
+        [
+          "Glide",
+          "Move it gently over the bobbly fabric"
+        ],
+        [
+          "Empty",
+          "Pop off the clear bin and tip out the fuzz"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Shaver vs. sticky roller",
+      "left": "Sticky roller",
+      "right": "Fabric shaver",
+      "rows": [
+        [
+          "Bobbles",
+          "Stay on",
+          "Shaved off"
+        ],
+        [
+          "Refills",
+          "Buy more sheets",
+          "None"
+        ],
+        [
+          "Couches",
+          "Slow",
+          "Quick"
+        ]
+      ]
+    }
+  },
+  "portable-blender": {
+    "eyebrow": "Portable blender",
+    "benefits": {
+      "headline": "Your smoothie, anywhere",
+      "points": [
+        "USB rechargeable — blend without a plug",
+        "Blend and drink from the same cup",
+        "Straw included",
+        "Fits in a handbag or gym bag"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Add",
+          "Fruit plus milk, water or juice"
+        ],
+        [
+          "Blend",
+          "Press the button for a few seconds"
+        ],
+        [
+          "Sip",
+          "Drink straight from the cup"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Portable vs. big blender",
+      "left": "Big blender",
+      "right": "Portable cup",
+      "rows": [
+        [
+          "Power",
+          "Needs a plug",
+          "Rechargeable"
+        ],
+        [
+          "Washing up",
+          "Jug, lid and glass",
+          "One cup"
+        ],
+        [
+          "Take it out",
+          "No",
+          "Yes"
+        ]
+      ]
+    }
+  },
+  "milk-frother": {
+    "eyebrow": "Milk frother",
+    "benefits": {
+      "headline": "Café coffee at home",
+      "points": [
+        "Creamy milk foam in seconds",
+        "USB rechargeable, no batteries",
+        "Stainless steel whisk head",
+        "Lattes, cappuccinos, hot chocolate and matcha"
+      ]
+    },
+    "steps": {
+      "headline": "How it works",
+      "items": [
+        [
+          "Heat",
+          "Warm your milk (or keep it cold for iced)"
+        ],
+        [
+          "Froth",
+          "Whisk for 15 to 20 seconds"
+        ],
+        [
+          "Pour",
+          "Spoon the foam over your coffee"
+        ]
+      ]
+    },
+    "compare": {
+      "headline": "Home vs. café latte",
+      "left": "Café",
+      "right": "At home",
+      "rows": [
+        [
+          "Cost",
+          "Every single cup",
+          "Once-off R249"
+        ],
+        [
+          "Queue",
+          "Yes",
+          "No"
+        ],
+        [
+          "Your way",
+          "Sometimes",
+          "Always"
+        ]
+      ]
+    }
   }
 }
