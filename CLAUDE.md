@@ -176,6 +176,38 @@ unless Fiker asks directly.
     returnFees), change /returns to "14 days from delivery", Search Console
     domain TXT at domains.co.za + submit sitemap, Merchant Center free
     listings with feed https://www.zehomefinds.co.za/feed.xml.
+  * 13 Oct RELAY 8 (owner: "clear every lamp"): Mushroom Crystal Salt Lamp
+    retired: hidden + inStock false in products.json (stays for old cart
+    lookups; drops out of listings, Home Decor collection, sitemap and feed;
+    checkout refuses it). Permanent redirects: /product/mushroom-salt-lamp,
+    /collections/home-decor, /collections/all, /collections/glassware-
+    drinkware and old Shopify /products/* -> /shop;
+    /collections/home-fragrance-decor -> /collections/home-fragrance.
+    Search Console (fikerzabate16 has Full on the www property): sitemap
+    resubmitted 13 Oct (last read was 6 Jun); indexing requested for home,
+    /shop and 6 products. Glow-up-kit and guides hit the daily quota, so redo
+    them next day. The 24 not-indexed URLs are old Shopify pages.
+    Merchant Center 5668539067: fikerzabate16 is Admin; 0 products (old
+    Shopify sources empty). Next: add feed.xml as the primary source, plus
+    the returns policy.
+    Search Console emails 14 Oct (non-critical): Offer "validFrom" missing
+    (added: 1 Jan of the current year); no brand/gtin (left as is: unbranded
+    goods, feed sends identifier_exists=no; don't invent a brand);
+    aggregateRating/review missing (only real reviews, so this clears as
+    customers review).
+    Business Profile "Ze Home finds" (verified, fikerzabate16 manager) 15
+    Oct: categories Homewares Shop (primary), Gift shop, Pet Shop, Beauty
+    supply store (Lighting Shop/Lamp shade supplier removed); new 719-char
+    description; website https://www.zehomefinds.co.za/. Open: the profile
+    shows 103 Main Reef Rd (China Mall) 07:00-17:00. If there's no walk-in
+    stall, hide the address (service-area business) or risk suspension.
+    16 Oct: pushed by the Cowork session through the GitHub web editor in the
+    owner's Chrome (Claude Code session hit its weekly limit). Owner
+    approved this route; same checks (tsc + build) run locally first.
+    QA 15 Oct (all pages, desktop + iPhone, local build): all 200, no broken
+    links/images, no horizontal scroll, JSON-LD valid, add-to-cart + checkout
+    validation OK. Checkout phone placeholder was the store's real WhatsApp
+    number (looked prefilled), now 082 123 4567.
 - Branch claude/affiliate-product-workflow-pc24ax (fast-forwarded into main
   on 7 Oct 2026 at the owner's request):
   PayFast ITN fix (real orders were never logged), server-side pricing +
