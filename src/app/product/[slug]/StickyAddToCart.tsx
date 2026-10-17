@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useCart } from '@/lib/cart'
+import { track } from '@/lib/analytics'
 
 interface Product {
   id: string
@@ -16,6 +17,10 @@ interface Product {
 export default function StickyAddToCart({ product }: { product: Product }) {
   const [visible, setVisible] = useState(false)
   const { addItem } = useCart()
+
+  useEffect(() => {
+    track('view_item', { value: product.price, items: [{ item_id: product.id, item_name: product.name, price: product.price, quantity: 1 }] })
+  }, [product.id, product.name, product.price])
 
   useEffect(() => {
     const target = document.getElementById('main-atc')
