@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 import PayFastForm from '@/components/PayFastForm'
+import { toGaItems, track } from '@/lib/analytics'
 
 const SA_PROVINCES = [
   'Eastern Cape',
@@ -66,6 +67,7 @@ export default function CheckoutPage() {
     e.preventDefault()
     setError('')
     setLoading(true)
+    track('begin_checkout', { value: items.reduce((s, i) => s + i.price * i.quantity, 0), items: toGaItems(items) })
 
     try {
       const res = await fetch('/api/payfast/params', {
