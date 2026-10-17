@@ -3,6 +3,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import products from '@/data/products.json'
+import { track } from '@/lib/analytics'
 
 export interface CartItem {
   id: string
@@ -33,6 +34,7 @@ export const useCart = create<CartStore>()(
       isOpen: false,
 
       addItem: (item) => {
+        track('add_to_cart', { value: item.price, items: [{ item_id: item.id, item_name: item.name, price: item.price, quantity: 1 }] })
         const existing = get().items.find((i) => i.id === item.id)
         if (existing) {
           set((state) => ({
