@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar'
 import AnnouncementBar from '@/components/AnnouncementBar'
 import Footer from '@/components/Footer'
 import ChatHelper from '@/components/ChatHelper'
+import Analytics from '@/components/Analytics'
 import { jsonLd, returnPolicy, shippingService } from '@/lib/schema'
 import { CONTACT_EMAIL, ORG_ID, SITE_NAME, SITE_URL, WHATSAPP } from '@/lib/site'
 
@@ -108,6 +109,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <ChatHelper />
+        <Analytics />
       </body>
     </html>
   )
