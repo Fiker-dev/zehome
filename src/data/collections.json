@@ -25,8 +25,8 @@
   },
   "home-cleaning": {
     "h1": "home cleaning gadgets",
-    "title": "Cordless Vacuums & Cleaning Gadgets South Africa | Ze Home Finds",
-    "description": "Cordless handheld vacuums and cleaning gadgets for the car, couch and desk. Free delivery across South Africa in 3-7 business days.",
+    "title": "Cleaning Gadgets SA: Vacuums & Lint Removers | Ze Home Finds",
+    "description": "Cordless handheld vacuums and rechargeable lint removers for the car, couch and wardrobe. Free delivery anywhere in South Africa.",
     "intro": "Quick clean-ups without dragging out the big vacuum. Our cordless handheld vacuum is light enough for the car, couch and desk — and delivered free anywhere in South Africa."
   },
   "home-decor": {
@@ -34,5 +34,17 @@
     "title": "Salt Lamps & Aesthetic Room Décor South Africa | Ze Home Finds",
     "description": "Himalayan salt lamps and cosy night lights for an aesthetic bedroom. Free delivery across South Africa in 3-7 business days.",
     "intro": "Small things that change how a room feels. Warm-glow night lights and natural Himalayan salt lamps for your bedside, desk or shelf — delivered free anywhere in South Africa."
+  },
+  "kitchen": {
+    "h1": "kitchen gadgets",
+    "title": "Kitchen Gadgets South Africa: Air Fryer & Coffee | Ze Home Finds",
+    "description": "Reusable air fryer liners, a rechargeable milk frother and a USB portable blender. Kitchen gadgets with free delivery anywhere in South Africa.",
+    "intro": "The kitchen finds that actually earn their space: reusable silicone liners so you stop scrubbing the air fryer basket, a rechargeable frother for cafe-style lattes at home, and a USB blender cup for smoothies on the go. Every order ships free, tracked, anywhere in South Africa."
+  },
+  "summer-essentials": {
+    "h1": "summer essentials",
+    "title": "Summer Essentials South Africa: Mini Fans & More | Ze Home Finds",
+    "description": "Beat the heat and load-shedding: rechargeable mini fan, cooling towel and smart temperature bottle. Free delivery anywhere in South Africa.",
+    "intro": "Built for a South African summer. Our Cool-Down Kit puts a rechargeable mini fan (no plug needed when the power's off), a wet-wring-snap cooling towel and a smart bottle that shows your drink's temperature in one box. Free, tracked delivery anywhere in South Africa."
   }
 }
