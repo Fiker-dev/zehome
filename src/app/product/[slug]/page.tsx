@@ -172,7 +172,7 @@ export default async function ProductPage({ params }: Props) {
                 },
                 {
                   title: 'Returns',
-                  body: 'Changed your mind? Return it unused in its original packaging within 14 days. Arrived damaged or faulty? WhatsApp us and we will make it right.',
+                  body: 'Changed your mind? Return it unused in its original packaging within 14 days of delivery (return courier at your cost). Arrived damaged, faulty or wrong? We collect it free and refund or replace it.',
                   link: { href: '/returns', label: 'Read the returns policy' },
                 },
                 {
