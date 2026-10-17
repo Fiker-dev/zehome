@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Truck, Clock, MapPin, Package } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Delivery Info | Ze Home Finds',
+  title: 'Free Delivery Anywhere in South Africa | Ze Home Finds',
   description: 'Free, tracked delivery on all orders across South Africa. The delivery time for each find is shown on its product page.',
   alternates: { canonical: '/delivery' },
 }
