@@ -28,8 +28,8 @@ export const transitDays = (deliveryDays: string) => {
 
 // One return policy for the whole store (matches /returns). Used at
 // Organization level and repeated on every Offer for merchant listings.
-// returnFees is left out on purpose until the owner confirms who pays for
-// return courier costs on change-of-mind returns.
+// Change-of-mind returns: customer pays the return courier (ECTA s44);
+// damaged/defective/wrong items are collected free.
 export const returnPolicy = {
   '@type': 'MerchantReturnPolicy',
   '@id': `${SITE_URL}/returns#policy`,
@@ -39,6 +39,7 @@ export const returnPolicy = {
   merchantReturnDays: RETURN_DAYS,
   returnMethod: 'https://schema.org/ReturnByMail',
   refundType: 'https://schema.org/FullRefund',
+  returnFees: 'https://schema.org/ReturnShippingFees',
   merchantReturnLink: `${SITE_URL}/returns`,
 }
 
