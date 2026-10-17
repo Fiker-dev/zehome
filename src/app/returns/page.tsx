@@ -4,7 +4,7 @@ import { CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Returns Policy | Ze Home Finds',
-  description: '14-day returns policy. Items must be unused and in original packaging. Defects reported within 7 working days. Compliant with the Consumer Protection Act.',
+  description: '14-day returns from delivery. Free collection for damaged, defective or wrong items. Full refunds. Compliant with the CPA and ECTA.',
   alternates: { canonical: '/returns' },
 }
 
@@ -19,7 +19,7 @@ export default function ReturnsPage() {
           Returns policy
         </h1>
         <p className="font-body text-warm-gray" style={{ fontSize: '15px' }}>
-          14 days from purchase. Items must be unused and in original packaging.
+          14 days from delivery. Damaged, defective or wrong items are collected free.
         </p>
       </div>
 
@@ -28,9 +28,9 @@ export default function ReturnsPage() {
         <h2 className="font-display text-charcoal" style={{ fontSize: '22px' }}>How returns work</h2>
 
         {[
-          { icon: MessageCircle, step: '1', text: 'WhatsApp us within 14 days of purchase to initiate a return. Item must be unused and in original packaging.' },
-          { icon: RotateCcw,     step: '2', text: "Pack the item securely in its original packaging and we'll arrange collection or advise drop-off." },
-          { icon: CheckCircle,   step: '3', text: 'Once we receive and inspect the item, your refund is processed within 7 business days. Delivery costs are not refunded on returns.' },
+          { icon: MessageCircle, step: '1', text: 'WhatsApp us within 14 days of delivery with your order number and a photo of the item.' },
+          { icon: RotateCcw,     step: '2', text: "Pack the item in its original packaging. If it's damaged, defective or the wrong item, we arrange and pay for collection. For change-of-mind returns, you send it back to us at your own courier cost." },
+          { icon: CheckCircle,   step: '3', text: 'Once we receive and check the item, your full refund is paid within 7 business days, or we send a replacement if you prefer.' },
         ].map(({ icon: Icon, step, text }) => (
           <div key={step} className="flex gap-5 items-start border-b border-border pb-6 last:border-0 last:pb-0">
             <div className="flex-shrink-0 w-10 h-10 bg-cream flex items-center justify-center">
@@ -56,8 +56,7 @@ export default function ReturnsPage() {
               'Item received damaged or defective',
               'Wrong item delivered',
               'Item not as described',
-              'Within 14 days of purchase',
-              'Unused and in original packaging',
+              'Change of mind within 14 days of delivery (unused, in original packaging)',
             ].map((t) => (
               <li key={t} className="font-body text-warm-gray flex items-start gap-2" style={{ fontSize: '13px' }}>
                 <span className="text-terracotta mt-0.5 flex-shrink-0">✓</span>
@@ -74,11 +73,10 @@ export default function ReturnsPage() {
           </div>
           <ul className="flex flex-col gap-2">
             {[
-              'More than 14 days after purchase',
-              'Item has been used or opened',
-              'Missing original packaging',
-              'Delivery costs — not refunded on returns',
-              'Change of mind after 14 days',
+              'More than 14 days after delivery',
+              'Change-of-mind items that have been used',
+              'Change-of-mind items without original packaging',
+              'Return courier cost on change-of-mind returns',
             ].map((t) => (
               <li key={t} className="font-body text-warm-gray flex items-start gap-2" style={{ fontSize: '13px' }}>
                 <span className="flex-shrink-0 mt-0.5">×</span>
@@ -101,7 +99,7 @@ export default function ReturnsPage() {
           >
             {CONTACT_EMAIL}
           </a>
-          . Exchanges are offered for defective or damaged items.
+          . We collect damaged, defective or wrong items free of charge and offer a full refund or a replacement.
         </p>
       </div>
 
