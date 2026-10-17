@@ -7,3 +7,5 @@ export const WHATSAPP = '+27710278563'
 export const RETURN_DAYS = 14
 export const ORG_ID = `${SITE_URL}/#organization`
 export const CONTACT_EMAIL = 'contact@zehomefinds.co.za'
+// Google Analytics 4 measurement ID (G-XXXXXXX). Empty = analytics off.
+export const GA_ID = 'G-WF0X07KNW9'
