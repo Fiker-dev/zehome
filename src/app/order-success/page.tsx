@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { ORDER_ID_PATTERN } from '@/lib/payfast'
+import ClearCart from './ClearCart'
 
 export const metadata: Metadata = {
   title: 'Payment Received',
@@ -21,6 +22,7 @@ export default async function OrderSuccessPage({
 
   return (
     <div className="max-w-lg mx-auto px-4 py-24 flex flex-col items-center gap-6 text-center">
+      {hasPaymentReference && <ClearCart orderId={m_payment_id ?? pf_payment_id} />}
       <div className="w-16 h-16 rounded-full bg-terracotta/10 flex items-center justify-center text-terracotta text-3xl">
         {hasPaymentReference ? '✓' : '!'}
       </div>
