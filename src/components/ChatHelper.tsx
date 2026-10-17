@@ -129,9 +129,9 @@ export default function ChatHelper() {
         say(
           'bot',
           <>
-            You can return any unused item in its original packaging within <b>{RETURN_DAYS} days</b>. Refunds are processed
-            within 7 business days of us receiving it. If something arrived damaged or faulty, WhatsApp us a photo and we will
-            sort it out.{' '}
+            You can return any unused item in its original packaging within <b>{RETURN_DAYS} days</b> of delivery. Refunds are paid
+            within 7 business days of us receiving it. If something arrived damaged, faulty or wrong, WhatsApp us a photo and we
+            collect it free.{' '}
             <Link href="/returns" className="underline">Returns policy</Link>
             <br />
             {handoff('I would like help with a return.')}
